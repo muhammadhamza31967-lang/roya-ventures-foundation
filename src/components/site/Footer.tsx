@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUp, Linkedin, Twitter, Facebook, Mail, Phone, MapPin } from "lucide-react";
 import logo from "@/assets/roya-logo.png.asset.json";
+import visionLogo from "@/assets/royaventures-vision.png.asset.json";
 
 const QUICK = [
   { to: "/", label: "Home" },
@@ -81,15 +82,13 @@ export function Footer() {
               loading="lazy"
             />
             <span aria-hidden className="hidden sm:block h-14 w-px bg-gradient-to-b from-transparent via-[var(--gold)]/50 to-transparent" />
-            {/* Vision 2030 / partner logo slot — replace src when royaventures-vision.png is provided */}
-            <div className="flex items-center gap-4">
-              <div className="grid h-16 md:h-20 min-w-[140px] place-items-center rounded-xl border border-white/15 bg-white/[0.04] px-5 text-center backdrop-blur-sm">
-                <div>
-                  <div className="text-[10px] tracking-[0.28em] text-[var(--gold)] font-semibold">VISION</div>
-                  <div className="text-2xl md:text-3xl font-semibold text-white leading-none mt-1">2030</div>
-                </div>
-              </div>
-            </div>
+            {/* Vision 2030 partner logo */}
+            <img
+              src={visionLogo.url}
+              alt="Saudi Vision 2030"
+              className="h-16 md:h-20 w-auto"
+              loading="lazy"
+            />
           </div>
           <p className="mt-8 max-w-2xl text-[15px] leading-[1.85] text-white/70 font-light">
             A multidisciplinary technology and engineering firm — delivering data centers,
