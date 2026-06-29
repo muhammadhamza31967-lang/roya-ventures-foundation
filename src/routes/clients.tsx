@@ -6,14 +6,7 @@ import { CtaBanner } from "@/components/site/CtaBanner";
 import { Reveal } from "@/components/site/Reveal";
 import { Quote, ShieldCheck, Gauge, Globe2, Sparkles, Handshake, Layers } from "lucide-react";
 import heroClients from "@/assets/hero-clients.jpg";
-import collageDatacenter from "@/assets/svc-datacenter.jpg";
-import collageNetworking from "@/assets/svc-networking.jpg";
-import collageElectrical from "@/assets/svc-electrical.jpg";
-import collageFiber from "@/assets/svc-fiber.jpg";
-import collageSurveillance from "@/assets/svc-surveillance.jpg";
-import collageFire from "@/assets/svc-firefighting.jpg";
-import collageIt from "@/assets/svc-it.jpg";
-import collageDigital from "@/assets/svc-digital.jpg";
+import featureImage from "@/assets/svc-datacenter.jpg";
 
 // Auto-import all 32 client logo asset pointers
 const logoModules = import.meta.glob<{ default: { url: string } }>(
