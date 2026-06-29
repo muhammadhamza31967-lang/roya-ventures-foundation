@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUp, Linkedin, Twitter, Facebook, Mail, Phone, MapPin } from "lucide-react";
 import logo from "@/assets/roya-logo.png.asset.json";
+import visionLogo from "@/assets/royaventures-vision.png.asset.json";
 
 const QUICK = [
   { to: "/", label: "Home" },
