@@ -32,13 +32,6 @@ const VALUES = [
   { icon: Award, title: "Discretion", text: "Confidentiality is the foundation of our practice. Trust is the only currency that compounds." },
 ];
 
-const TIMELINE = [
-  ["2008", "Founded", "Roya Ventures established as a boutique strategy advisory."],
-  ["2012", "International expansion", "Opened presence across three continents and the Middle East."],
-  ["2016", "Corporate finance practice", "Launched dedicated capital advisory and M&A franchise."],
-  ["2020", "Digital transformation", "Built end-to-end transformation capability with enterprise technology partners."],
-  ["2024", "Sovereign mandates", "Trusted advisor to institutional and public-sector clients across emerging markets."],
-];
 
 function AboutPage() {
   return (
