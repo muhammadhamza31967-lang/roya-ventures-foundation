@@ -363,6 +363,8 @@ function HomePage() {
         eyebrow="Plan your next project"
         title="Tell us about the systems you need to build, secure or support."
       />
+
+      <PartnersMarquee />
     </SiteLayout>
   );
 }
