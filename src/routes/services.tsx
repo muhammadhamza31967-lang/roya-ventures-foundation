@@ -93,6 +93,7 @@ function ServicesPage() {
       <CtaBanner
         eyebrow="Define your project"
         title="Tell us what you need to build, secure or support."
+        showSecondary={false}
       />
     </SiteLayout>
   );
