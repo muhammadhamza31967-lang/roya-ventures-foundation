@@ -56,34 +56,25 @@ const DIFFERENTIATORS = [
   {
     icon: ShieldCheck,
     title: "Uncompromising Discretion",
-    body: "Every engagement is governed by strict confidentiality protocols. Our reputation is built on the trust of leaders who require privacy without exception.",
+    body: "Strict confidentiality on every engagement — the foundation of leader-to-leader trust.",
   },
   {
     icon: Layers,
     title: "Integrated Expertise",
-    body: "From electrical infrastructure to data centers and networking, our multidisciplinary teams deliver coherent, end-to-end solutions under a single accountability.",
+    body: "From electrical to data centers and networking — one team, end-to-end accountability.",
   },
   {
     icon: Globe2,
     title: "Global Reach, Local Insight",
-    body: "Operating across forty markets with embedded regional knowledge — we navigate jurisdictions, regulators and cultures with equal fluency.",
+    body: "Forty markets, embedded regional knowledge — fluent across jurisdictions and cultures.",
   },
   {
     icon: Gauge,
     title: "Engineering-Grade Rigor",
-    body: "Our work is governed by measurable standards: uptime, performance, cost predictability. We deliver to specification — on schedule, on budget.",
-  },
-  {
-    icon: Handshake,
-    title: "Partnership Beyond Delivery",
-    body: "We remain at the table long after handover — advising on optimization, scaling and the next horizon. Most relationships span a decade or more.",
-  },
-  {
-    icon: Sparkles,
-    title: "A Commitment to Excellence",
-    body: "Every detail is considered, every deliverable reviewed. We measure ourselves by outcomes our clients are proud to put their name to.",
+    body: "Measurable standards for uptime, performance and cost — delivered on schedule, on budget.",
   },
 ];
+
 
 function ClientsPage() {
   return (
