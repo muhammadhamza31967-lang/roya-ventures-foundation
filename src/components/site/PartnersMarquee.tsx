@@ -51,14 +51,14 @@ export function PartnersMarquee() {
           {row.map((p, i) => (
             <div
               key={`${p.name}-${i}`}
-              className="mx-4 flex h-28 w-56 shrink-0 items-center justify-center rounded-2xl border border-[color-mix(in_oklab,var(--navy)_10%,transparent)] bg-white shadow-[var(--shadow-card)] px-6 transition-all duration-500 hover:-translate-y-1 hover:border-[var(--gold)]/60 hover:shadow-[var(--shadow-elegant)]"
+              className="mx-4 flex h-28 w-56 shrink-0 items-center justify-center rounded-2xl border border-[color-mix(in_oklab,var(--navy)_10%,transparent)] bg-white shadow-[var(--shadow-card)] px-5 py-3 transition-all duration-500 hover:-translate-y-1 hover:border-[var(--gold)]/60 hover:shadow-[var(--shadow-elegant)]"
               data-cursor="hover"
             >
               <img
                 src={p.src}
                 alt={p.name}
                 loading="lazy"
-                className="max-h-16 max-w-full w-auto h-auto object-contain"
+                className="max-h-24 max-w-[88%] w-auto h-auto object-contain"
               />
             </div>
           ))}
