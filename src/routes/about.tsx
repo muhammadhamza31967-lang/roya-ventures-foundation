@@ -167,40 +167,67 @@ function AboutPage() {
             title={<>Six principles. <em className="not-italic text-[var(--gold)]">One standard.</em></>}
             description="The values that anchor every engagement, every conversation and every recommendation."
           />
-          <div className="mt-16 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {VALUES.map(({ icon: Icon, title, text }, i) => (
               <Reveal key={title} delay={(i % 3) * 0.08}>
                 <div
-                  className="group relative h-full rounded-2xl bg-card border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[var(--shadow-elegant)] hover:border-[var(--gold)]/50 overflow-hidden"
+                  className="group relative h-full rounded-[1.25rem] bg-white border border-[color-mix(in_oklab,var(--navy)_10%,transparent)] shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[var(--shadow-elegant)] hover:border-[var(--gold)]/60 overflow-hidden"
                   data-cursor="hover"
                 >
+                  {/* Corner gold glow on hover */}
+                  <div aria-hidden className="pointer-events-none absolute -top-24 -right-24 h-56 w-56 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_35%,transparent),transparent_65%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
                   {/* Decorative visual header */}
-                  <div className="relative h-32 overflow-hidden">
+                  <div className="relative h-44 overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-br from-[var(--navy-deep)] via-[var(--navy)] to-[color-mix(in_oklab,var(--emerald-deep)_70%,var(--navy-deep))]" />
-                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklab,var(--gold)_30%,transparent),transparent_60%)]" />
-                    <div className="absolute inset-0 bg-noise opacity-40" />
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklab,var(--gold)_35%,transparent),transparent_60%)]" />
+                    <div className="absolute inset-0 bg-noise opacity-50" />
+                    {/* Faint grid pattern */}
+                    <div
+                      aria-hidden
+                      className="absolute inset-0 opacity-[0.12]"
+                      style={{
+                        backgroundImage:
+                          "linear-gradient(to right, #ffffff22 1px, transparent 1px), linear-gradient(to bottom, #ffffff22 1px, transparent 1px)",
+                        backgroundSize: "28px 28px",
+                      }}
+                    />
+                    {/* Floating gold ring */}
+                    <div aria-hidden className="absolute -top-10 -left-10 h-40 w-40 rounded-full border border-[var(--gold)]/25" />
                     {/* Large watermark icon */}
                     <Icon
                       aria-hidden
-                      strokeWidth={0.9}
-                      className="absolute -right-4 -bottom-6 h-40 w-40 text-[var(--gold)]/15 transition-transform duration-700 group-hover:scale-110 group-hover:rotate-3"
+                      strokeWidth={0.7}
+                      className="absolute -right-6 -bottom-10 h-52 w-52 text-[var(--gold)]/20 transition-transform duration-[1200ms] group-hover:scale-110 group-hover:-rotate-3"
                     />
-                    {/* Number marker */}
-                    <span className="absolute top-5 left-6 font-display text-xs tracking-[0.35em] uppercase text-white/60">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
+                    {/* Number marker + label */}
+                    <div className="absolute top-6 left-7 flex items-center gap-3">
+                      <span className="font-display text-xs tracking-[0.4em] uppercase text-[var(--gold)]/90">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="h-px w-8 bg-[var(--gold)]/60" />
+                    </div>
+                    {/* Title overlaid on the visual */}
+                    <h3 className="absolute bottom-6 left-7 right-7 font-display text-2xl font-light tracking-tight text-white">
+                      {title}
+                    </h3>
                     {/* Gold hairline at bottom */}
-                    <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/70 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent" />
                   </div>
 
                   {/* Body */}
-                  <div className="relative p-9 md:p-10 -mt-9">
-                    <div className="grid h-16 w-16 place-items-center rounded-xl border border-[var(--gold)]/40 bg-white text-[var(--emerald-deep)] shadow-[var(--shadow-card)] transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-white group-hover:border-[var(--gold)]">
+                  <div className="relative p-9 md:p-10">
+                    {/* Floating icon chip overlapping the header */}
+                    <div className="absolute -top-9 right-8 grid h-[4.5rem] w-[4.5rem] place-items-center rounded-2xl border border-[var(--gold)]/45 bg-white text-[var(--emerald-deep)] shadow-[var(--shadow-elegant)] transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-white group-hover:border-[var(--gold)] group-hover:-rotate-6">
                       <Icon className="h-7 w-7" strokeWidth={1.5} />
                     </div>
-                    <h3 className="mt-7 text-xl font-semibold text-[var(--navy)] tracking-tight">{title}</h3>
-                    <p className="mt-4 text-muted-foreground leading-[1.75] text-[15px]">{text}</p>
-                    <div className="mt-7 h-px w-10 bg-[var(--gold)] transition-all duration-500 group-hover:w-24" />
+                    <p className="text-muted-foreground leading-[1.85] text-[15px]">{text}</p>
+                    <div className="mt-8 flex items-center gap-4">
+                      <div className="h-px w-10 bg-[var(--gold)] transition-all duration-500 group-hover:w-24" />
+                      <span className="text-[10px] tracking-[0.32em] uppercase text-[var(--navy)]/55">
+                        Principle
+                      </span>
+                    </div>
                   </div>
                 </div>
               </Reveal>
