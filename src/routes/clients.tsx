@@ -96,68 +96,126 @@ function ClientsPage() {
         height="compact"
       />
 
-      {/* Differentiators — replaces stats band */}
-      <section className="relative section-y overflow-hidden text-white bg-noise">
-        <div className="absolute inset-0 -z-20">
-          <img src={featureHQ} alt="" loading="lazy" className="h-full w-full object-cover opacity-30" />
-          <div className="absolute inset-0 bg-gradient-to-br from-[var(--navy-deep)] via-[var(--navy-deep)]/95 to-[color-mix(in_oklab,var(--emerald-deep)_85%,var(--navy-deep))]" />
-        </div>
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/50 to-transparent" />
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklab,var(--gold)_15%,transparent),transparent_60%)]" />
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_bottom_left,color-mix(in_oklab,var(--emerald-deep)_45%,transparent),transparent_55%)]" />
+      {/* Why Choose Roya Ventures — split layout with editorial collage */}
+      <section className="relative section-y overflow-hidden bg-[var(--ivory)]">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_left,color-mix(in_oklab,var(--gold)_10%,transparent),transparent_55%)]" />
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_bottom_right,color-mix(in_oklab,var(--navy)_8%,transparent),transparent_60%)]" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/40 to-transparent" />
 
         <div className="container-px mx-auto">
-          <div className="max-w-3xl mx-auto mb-20">
-            <SectionHeading
-              eyebrow="Why choose Roya Ventures"
-              title={<>The qualities that <em className="not-italic text-[var(--gold)]">define our practice.</em></>}
-              description="Six commitments that distinguish how we work, who we serve, and the standard we hold ourselves to on every mandate."
-              align="center"
-              invert
-            />
-          </div>
+          <div className="grid gap-16 lg:gap-20 lg:grid-cols-12 items-center">
+            {/* LEFT — Heading + principles list */}
+            <div className="lg:col-span-6">
+              <Reveal>
+                <p className="gold-rule">Why choose Roya Ventures</p>
+                <h2 className="heading-lg mt-6 text-[var(--navy)]">
+                  The qualities that <em className="not-italic text-[var(--gold)]">define our practice.</em>
+                </h2>
+                <p className="mt-6 text-lg leading-relaxed font-light text-muted-foreground">
+                  Six commitments that distinguish how we work, who we serve, and the standard we hold ourselves to on every mandate.
+                </p>
+                <div className="mt-8 gold-divider" />
+              </Reveal>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {DIFFERENTIATORS.map((d, i) => {
-              const Icon = d.icon;
-              return (
-                <Reveal key={d.title} delay={(i % 3) * 0.08}>
-                  <article
-                    data-cursor="hover"
-                    className="group relative h-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm p-8 md:p-9 transition-all duration-500 hover:-translate-y-1.5 hover:border-[var(--gold)]/50 hover:bg-white/[0.06] hover:shadow-[0_30px_80px_-30px_color-mix(in_oklab,var(--gold)_35%,transparent)]"
-                  >
-                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/60 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                    <div className="absolute -top-12 -right-12 h-32 w-32 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_22%,transparent),transparent_70%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
-
-                    <div className="flex items-start gap-5">
-                      <div className="shrink-0 relative">
-                        <div className="absolute inset-0 rounded-xl bg-[var(--gold)]/15 blur-md opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                        <div className="relative h-14 w-14 rounded-xl border border-white/15 bg-white/[0.05] flex items-center justify-center transition-all duration-500 group-hover:border-[var(--gold)]/70 group-hover:bg-[var(--gold)]/10">
-                          <Icon className="h-6 w-6 text-[var(--gold)]" strokeWidth={1.5} />
+              <ul className="mt-12 space-y-7">
+                {DIFFERENTIATORS.map((d, i) => {
+                  const Icon = d.icon;
+                  return (
+                    <Reveal key={d.title} delay={i * 0.05}>
+                      <li
+                        data-cursor="hover"
+                        className="group relative flex items-start gap-5 pb-7 border-b border-[color-mix(in_oklab,var(--navy)_10%,transparent)] last:border-0 last:pb-0"
+                      >
+                        <div className="shrink-0 relative">
+                          <div className="absolute inset-0 rounded-xl bg-[var(--gold)]/15 blur-md opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                          <div className="relative h-12 w-12 rounded-xl border border-[color-mix(in_oklab,var(--navy)_15%,transparent)] bg-white flex items-center justify-center transition-all duration-500 group-hover:border-[var(--gold)]/70 group-hover:bg-[var(--gold)]/10">
+                            <Icon className="h-5 w-5 text-[var(--gold)]" strokeWidth={1.5} />
+                          </div>
                         </div>
-                      </div>
-                      <div className="pt-1">
-                        <p className="font-display text-[10px] tracking-[0.32em] uppercase text-[var(--gold)]/80">
-                          {String(i + 1).padStart(2, "0")} · Principle
-                        </p>
-                      </div>
-                    </div>
+                        <div className="flex-1 pt-0.5">
+                          <div className="flex items-baseline gap-3">
+                            <span className="font-display text-[10px] tracking-[0.32em] uppercase text-[var(--gold)]/80">
+                              {String(i + 1).padStart(2, "0")}
+                            </span>
+                            <h3 className="font-display text-xl leading-tight text-[var(--navy)]">
+                              {d.title}
+                            </h3>
+                          </div>
+                          <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
+                            {d.body}
+                          </p>
+                        </div>
+                      </li>
+                    </Reveal>
+                  );
+                })}
+              </ul>
+            </div>
 
-                    <h3 className="font-display text-2xl mt-7 leading-tight text-white">
-                      {d.title}
-                    </h3>
-                    <p className="mt-4 text-[15px] leading-relaxed text-white/70">
-                      {d.body}
-                    </p>
+            {/* RIGHT — Editorial image collage */}
+            <div className="lg:col-span-6">
+              <Reveal delay={0.1}>
+                <div className="relative mx-auto w-full max-w-[620px] aspect-[5/6]">
+                  {/* Decorative backdrop */}
+                  <div className="absolute -top-6 -right-6 h-40 w-40 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_22%,transparent),transparent_70%)]" />
+                  <div className="absolute -bottom-8 -left-8 h-48 w-48 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--emerald-deep)_18%,transparent),transparent_70%)]" />
+                  <div className="absolute inset-y-10 left-1/2 -translate-x-1/2 w-px bg-gradient-to-b from-transparent via-[var(--gold)]/25 to-transparent" />
 
-                    <div className="mt-7 h-px w-10 bg-[var(--gold)]/70 transition-all duration-500 group-hover:w-20" />
-                  </article>
-                </Reveal>
-              );
-            })}
+                  {/* Tile 1 — Data center (large, top-left) */}
+                  <CollageTile
+                    src={collageDatacenter}
+                    label="Data Centers"
+                    className="absolute top-0 left-0 w-[58%] h-[42%] z-20"
+                  />
+                  {/* Tile 2 — Networking (top-right, smaller) */}
+                  <CollageTile
+                    src={collageNetworking}
+                    label="Networking"
+                    className="absolute top-[6%] right-0 w-[44%] h-[28%] z-10"
+                  />
+                  {/* Tile 3 — Fiber optics (mid-right tall) */}
+                  <CollageTile
+                    src={collageFiber}
+                    label="Fiber Optics"
+                    className="absolute top-[38%] right-[2%] w-[42%] h-[34%] z-30"
+                  />
+                  {/* Tile 4 — Electrical (mid-left) */}
+                  <CollageTile
+                    src={collageElectrical}
+                    label="Electrical"
+                    className="absolute top-[45%] left-[4%] w-[40%] h-[26%] z-10"
+                  />
+                  {/* Tile 5 — Surveillance (bottom-left wide) */}
+                  <CollageTile
+                    src={collageSurveillance}
+                    label="Surveillance"
+                    className="absolute bottom-0 left-0 w-[50%] h-[30%] z-20"
+                  />
+                  {/* Tile 6 — Fire protection (bottom-mid small) */}
+                  <CollageTile
+                    src={collageFire}
+                    label="Fire Protection"
+                    className="absolute bottom-[6%] left-[46%] w-[28%] h-[22%] z-30"
+                  />
+                  {/* Tile 7 — IT infra (bottom-right) */}
+                  <CollageTile
+                    src={collageIt}
+                    label="IT Infrastructure"
+                    className="absolute bottom-0 right-0 w-[32%] h-[26%] z-20"
+                  />
+                  {/* Tile 8 — Smart buildings (floating accent top-right corner) */}
+                  <CollageTile
+                    src={collageDigital}
+                    label="Smart Buildings"
+                    className="absolute top-[34%] left-[34%] w-[24%] h-[18%] z-40 ring-1 ring-[var(--gold)]/40"
+                  />
+                </div>
+              </Reveal>
+            </div>
           </div>
         </div>
-        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/50 to-transparent" />
+
+        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/40 to-transparent" />
       </section>
 
       {/* Premium logo showcase — real client logos */}
