@@ -2,10 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState, type FormEvent } from "react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
-import { SectionHeading } from "@/components/site/SectionHeading";
-import { CtaBanner } from "@/components/site/CtaBanner";
 import { Reveal } from "@/components/site/Reveal";
-import { Mail, Phone, MapPin, Send, Check } from "lucide-react";
+import { Mail, MapPin, Send, Check, PhoneCall } from "lucide-react";
 import heroContact from "@/assets/hero-contact.jpg";
 
 export const Route = createFileRoute("/contact")({
@@ -20,10 +18,24 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
-const OFFICES = [
-  { city: "Global Headquarters", address: "Level 24, One Global Tower, Business District, City" },
-  { city: "Middle East", address: "World Trade Centre, Sheikh Zayed Road, Dubai" },
-  { city: "Europe", address: "1 Carlton House Terrace, London SW1Y 5DB" },
+const CONTACT_DETAILS = [
+  {
+    icon: MapPin,
+    label: "Location",
+    value: "Al Nasirah, West Naseem Dist.\nRiyadh",
+  },
+  {
+    icon: Mail,
+    label: "Email",
+    value: "info@royaventure.com",
+    href: "mailto:info@royaventure.com",
+  },
+  {
+    icon: PhoneCall,
+    label: "National Number",
+    value: "7054175695",
+    href: "tel:7054175695",
+  },
 ];
 
 function ContactPage() {
@@ -46,130 +58,131 @@ function ContactPage() {
         height="compact"
       />
 
-      {/* Contact form + info */}
-      <section className="section-y">
-        <div className="container-px mx-auto grid gap-16 lg:grid-cols-12 lg:gap-20">
-          {/* Form */}
-          <Reveal as="div" className="lg:col-span-7">
-            <p className="gold-rule">Write to us</p>
-            <h2 className="heading-lg mt-5">Send a message.</h2>
-            <p className="mt-4 text-muted-foreground leading-relaxed">
-              Tell us briefly about your enquiry. Submissions are treated in strict confidence.
-            </p>
+      {/* Premium contact form + info */}
+      <section className="relative section-y overflow-hidden bg-[var(--ivory)]">
+        {/* Decorative background accents */}
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklab,var(--gold)_10%,transparent),transparent_55%)]" />
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_bottom_left,color-mix(in_oklab,var(--navy)_8%,transparent),transparent_60%)]" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/40 to-transparent" />
 
-            <form onSubmit={onSubmit} className="mt-12 grid gap-6">
-              <div className="grid gap-6 md:grid-cols-2">
-                <Field label="Full name" name="name" required />
-                <Field label="Organisation" name="organisation" />
-              </div>
-              <div className="grid gap-6 md:grid-cols-2">
-                <Field label="Email" name="email" type="email" required />
-                <Field label="Phone" name="phone" type="tel" />
-              </div>
-              <Field label="Subject" name="subject" />
-              <div>
-                <label className="eyebrow text-[var(--navy)] mb-3 block">Message</label>
-                <textarea
-                  name="message"
-                  required
-                  rows={6}
-                  className="w-full bg-transparent border-b border-input py-3 text-base text-[var(--navy)] placeholder:text-muted-foreground/60 focus:border-[var(--gold)] focus:outline-none transition-colors resize-none"
-                  placeholder="How can we help?"
-                />
-              </div>
-              <div className="pt-4">
-                <button type="submit" className="btn-primary">
-                  {sent ? <>Message sent <Check className="h-4 w-4" /></> : <>Send message <Send className="h-4 w-4" /></>}
-                </button>
-              </div>
-            </form>
-          </Reveal>
-
-          {/* Info */}
-          <Reveal as="aside" delay={0.1} className="lg:col-span-5">
-            <div className="bg-[var(--navy)] text-white p-10 md:p-12">
-              <p className="gold-rule">Direct lines</p>
-              <h3 className="heading-md mt-5 text-white">Reach a partner.</h3>
-              <ul className="mt-10 space-y-7">
-                <li className="grid grid-cols-[auto_1fr] gap-4">
-                  <Mail className="h-5 w-5 mt-1 text-[var(--gold)]" />
-                  <div>
-                    <p className="eyebrow text-[var(--gold)]">Email</p>
-                    <a href="mailto:info@royaventures.com" className="mt-1 block text-white/90 hover:text-[var(--gold)]">info@royaventures.com</a>
-                  </div>
-                </li>
-                <li className="grid grid-cols-[auto_1fr] gap-4">
-                  <Phone className="h-5 w-5 mt-1 text-[var(--gold)]" />
-                  <div>
-                    <p className="eyebrow text-[var(--gold)]">Telephone</p>
-                    <a href="tel:+10000000000" className="mt-1 block text-white/90 hover:text-[var(--gold)]">+1 (000) 000 0000</a>
-                  </div>
-                </li>
-                <li className="grid grid-cols-[auto_1fr] gap-4">
-                  <MapPin className="h-5 w-5 mt-1 text-[var(--gold)]" />
-                  <div>
-                    <p className="eyebrow text-[var(--gold)]">Headquarters</p>
-                    <p className="mt-1 text-white/90 leading-relaxed">Level 24, One Global Tower<br />Business District, City</p>
-                  </div>
-                </li>
-              </ul>
-              <div className="hairline mt-10 opacity-40" />
-              <p className="mt-6 text-sm text-white/65 leading-relaxed">
-                Business hours: Monday – Friday, 09:00 – 18:00 local time. We respond to every
-                enquiry within one business day.
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* Offices */}
-      <section className="section-y bg-[var(--stone)]">
         <div className="container-px mx-auto">
-          <SectionHeading
-            eyebrow="Our offices"
-            title="A global footprint, calibrated locally."
-          />
-          <div className="mt-14 grid gap-px bg-border md:grid-cols-3 border border-border">
-            {OFFICES.map((o) => (
-              <div key={o.city} className="bg-card p-10">
-                <p className="eyebrow text-[var(--gold)]">{o.city}</p>
-                <p className="mt-4 text-[var(--navy)] leading-relaxed">{o.address}</p>
+          <div className="grid gap-12 lg:gap-16 lg:grid-cols-12">
+            {/* FORM — primary focal point */}
+            <Reveal as="div" className="lg:col-span-8">
+              <div className="relative">
+                {/* Decorative corner frames */}
+                <div className="absolute -top-3 -left-3 h-16 w-16 border-t border-l border-[var(--gold)]/50 rounded-tl-2xl pointer-events-none" />
+                <div className="absolute -bottom-3 -right-3 h-16 w-16 border-b border-r border-[var(--gold)]/50 rounded-br-2xl pointer-events-none" />
+
+                <div className="relative bg-white rounded-2xl border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] shadow-[0_30px_80px_-30px_color-mix(in_oklab,var(--navy)_35%,transparent)] p-8 md:p-12 lg:p-14">
+                  <p className="gold-rule">Write to us</p>
+                  <h2 className="heading-lg mt-5 text-[var(--navy)]">
+                    Send a <em className="not-italic text-[var(--gold)]">message.</em>
+                  </h2>
+                  <p className="mt-4 text-muted-foreground leading-relaxed max-w-xl">
+                    Tell us briefly about your enquiry. Submissions are treated in strict confidence.
+                  </p>
+                  <div className="mt-6 h-px w-16 bg-[var(--gold)]" />
+
+                  <form onSubmit={onSubmit} className="mt-10 grid gap-6">
+                    <div className="grid gap-6 md:grid-cols-2">
+                      <Field label="Full name" name="name" required />
+                      <Field label="Organisation" name="organisation" />
+                    </div>
+                    <div className="grid gap-6 md:grid-cols-2">
+                      <Field label="Email" name="email" type="email" required />
+                      <Field label="Phone" name="phone" type="tel" />
+                    </div>
+                    <Field label="Subject" name="subject" />
+                    <div>
+                      <label htmlFor="message" className="eyebrow text-[var(--navy)] mb-3 block">Message</label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        required
+                        rows={5}
+                        placeholder="How can we help?"
+                        className="w-full rounded-xl border border-[color-mix(in_oklab,var(--navy)_12%,transparent)] bg-[var(--ivory)]/40 px-4 py-3.5 text-[15px] text-[var(--navy)] placeholder:text-muted-foreground/60 transition-all duration-300 hover:border-[color-mix(in_oklab,var(--navy)_22%,transparent)] focus:border-[var(--gold)] focus:bg-white focus:outline-none focus:ring-4 focus:ring-[var(--gold)]/10 resize-none"
+                      />
+                    </div>
+                    <div className="pt-3 flex items-center gap-5">
+                      <button
+                        type="submit"
+                        data-cursor="hover"
+                        className="group inline-flex items-center gap-3 rounded-full bg-[var(--navy)] text-white px-9 py-4 text-[13px] font-bold uppercase tracking-[0.18em] transition-all duration-500 hover:bg-[var(--gold)] hover:text-[var(--navy)] shadow-[0_15px_40px_-15px_color-mix(in_oklab,var(--navy)_60%,transparent)] hover:shadow-[0_18px_45px_-12px_var(--gold)] hover:-translate-y-0.5"
+                      >
+                        {sent ? (
+                          <>Message sent <Check className="h-4 w-4 transition-transform duration-500 group-hover:scale-110" /></>
+                        ) : (
+                          <>Send message <Send className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" /></>
+                        )}
+                      </button>
+                      <p className="text-xs text-muted-foreground tracking-wide hidden sm:block">
+                        Treated in strict confidence.
+                      </p>
+                    </div>
+                  </form>
+                </div>
               </div>
-            ))}
+            </Reveal>
+
+            {/* CONTACT INFO — premium aside */}
+            <Reveal as="aside" delay={0.1} className="lg:col-span-4">
+              <div className="relative overflow-hidden rounded-2xl bg-[var(--navy)] text-white p-10 md:p-12 h-full shadow-[0_30px_80px_-30px_color-mix(in_oklab,var(--navy)_60%,transparent)]">
+                {/* Layered backdrop */}
+                <div
+                  className="absolute inset-0 opacity-90"
+                  style={{ background: "linear-gradient(150deg, var(--navy) 0%, var(--emerald-deep) 100%)" }}
+                />
+                <div className="absolute -top-16 -right-16 h-56 w-56 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_25%,transparent),transparent_70%)]" />
+                <div className="absolute inset-0 bg-noise opacity-[0.06]" />
+
+                <div className="relative">
+                  <p className="gold-rule">Direct lines</p>
+                  <h3 className="heading-md mt-5 text-white">Reach a partner.</h3>
+                  <div className="mt-5 h-px w-12 bg-[var(--gold)]" />
+
+                  <ul className="mt-10 space-y-8">
+                    {CONTACT_DETAILS.map((d) => {
+                      const Icon = d.icon;
+                      const content = (
+                        <p className="mt-1.5 text-white/90 leading-relaxed whitespace-pre-line">
+                          {d.value}
+                        </p>
+                      );
+                      return (
+                        <li key={d.label} className="group grid grid-cols-[auto_1fr] gap-5">
+                          <div className="relative shrink-0">
+                            <div className="absolute inset-0 rounded-xl bg-[var(--gold)]/20 blur-md opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                            <div className="relative h-12 w-12 rounded-xl border border-white/15 bg-white/5 flex items-center justify-center transition-all duration-500 group-hover:border-[var(--gold)]/60 group-hover:bg-[var(--gold)]/10">
+                              <Icon className="h-[18px] w-[18px] text-[var(--gold)]" strokeWidth={1.5} />
+                            </div>
+                          </div>
+                          <div className="pt-1">
+                            <p className="eyebrow text-[var(--gold)]">{d.label}</p>
+                            {d.href ? (
+                              <a href={d.href} className="block text-white/90 hover:text-[var(--gold)] transition-colors mt-1.5 leading-relaxed">
+                                {d.value}
+                              </a>
+                            ) : content}
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
+
+                  <div className="hairline mt-12 opacity-40" />
+                  <p className="mt-6 text-sm text-white/65 leading-relaxed">
+                    Business hours: Sunday – Thursday, 09:00 – 18:00 local time. We respond to every enquiry within one business day.
+                  </p>
+                </div>
+              </div>
+            </Reveal>
           </div>
         </div>
-      </section>
 
-      {/* Map placeholder */}
-      <section>
-        <div className="relative w-full aspect-[21/9] bg-[var(--navy)] overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,color-mix(in_oklab,var(--gold)_18%,transparent),transparent_60%)]" />
-          <div
-            className="absolute inset-0 opacity-20"
-            style={{
-              backgroundImage:
-                "linear-gradient(color-mix(in oklab, var(--gold) 30%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in oklab, var(--gold) 30%, transparent) 1px, transparent 1px)",
-              backgroundSize: "60px 60px",
-            }}
-          />
-          <div className="relative h-full grid place-items-center text-center text-white px-6">
-            <div>
-              <MapPin className="h-10 w-10 mx-auto text-[var(--gold)]" />
-              <p className="mt-4 eyebrow text-[var(--gold)]">Map placeholder</p>
-              <p className="mt-3 text-xl md:text-2xl font-light max-w-xl mx-auto">
-                Interactive map will be embedded here in Phase 2.
-              </p>
-            </div>
-          </div>
-        </div>
+        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/40 to-transparent" />
       </section>
-
-      <CtaBanner
-        eyebrow="Prefer a call?"
-        title="Schedule a private call with one of our partners."
-        description="We are happy to arrange a no-obligation, confidential conversation at your convenience."
-      />
     </SiteLayout>
   );
 }
@@ -187,7 +200,7 @@ function Field({
         name={name}
         type={type}
         required={required}
-        className="w-full bg-transparent border-b border-input py-3 text-base text-[var(--navy)] placeholder:text-muted-foreground/60 focus:border-[var(--gold)] focus:outline-none transition-colors"
+        className="w-full rounded-xl border border-[color-mix(in_oklab,var(--navy)_12%,transparent)] bg-[var(--ivory)]/40 px-4 py-3.5 text-[15px] text-[var(--navy)] placeholder:text-muted-foreground/60 transition-all duration-300 hover:border-[color-mix(in_oklab,var(--navy)_22%,transparent)] focus:border-[var(--gold)] focus:bg-white focus:outline-none focus:ring-4 focus:ring-[var(--gold)]/10"
       />
     </div>
   );
