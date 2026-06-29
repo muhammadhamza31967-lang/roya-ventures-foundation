@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 export function HeroSlider({
   images,
-  interval = 6000,
+  interval = 5000,
 }: {
   images: { src: string; alt?: string }[];
   interval?: number;
@@ -19,19 +19,22 @@ export function HeroSlider({
   }, [images.length, interval]);
 
   return (
-    <div className="absolute inset-0 -z-20 overflow-hidden">
+    <div className="absolute inset-0 -z-20 overflow-hidden bg-[var(--navy-deep)]">
       {images.map((img, i) => (
         <div
           key={img.src}
-          className="absolute inset-0 transition-opacity duration-[2000ms] ease-in-out"
-          style={{ opacity: i === active ? 1 : 0 }}
+          className="absolute inset-0"
+          style={{
+            opacity: i === active ? 1 : 0,
+            transition: "opacity 1800ms ease-in-out",
+          }}
           aria-hidden={i !== active}
         >
           <img
             src={img.src}
             alt={img.alt ?? ""}
             className={[
-              "h-full w-full object-cover",
+              "h-full w-full object-cover will-change-transform",
               i === active ? "hero-zoom" : "",
             ].join(" ")}
             loading={i === 0 ? "eager" : "lazy"}
@@ -41,7 +44,6 @@ export function HeroSlider({
         </div>
       ))}
 
-      {/* Slide indicators */}
       {images.length > 1 && (
         <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 gap-2.5">
           {images.map((_, i) => (
