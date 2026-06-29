@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUp, ArrowRight, Linkedin, Twitter, Facebook, Mail, Phone, MapPin } from "lucide-react";
+import { ArrowUp, Linkedin, Twitter, Facebook, Mail, Phone, MapPin } from "lucide-react";
 import logo from "@/assets/roya-logo.png.asset.json";
 
 const QUICK = [
