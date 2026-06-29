@@ -15,12 +15,12 @@ export function ImageServiceCard({
 }) {
   const aspect =
     size === "tall"
-      ? "aspect-[4/5]"
+      ? "aspect-[5/6]"
       : size === "wide"
-      ? "aspect-[16/10]"
+      ? "aspect-[16/8]"
       : size === "banner"
-      ? "aspect-[24/9]"
-      : "aspect-[4/5]";
+      ? "aspect-[32/9]"
+      : "aspect-[1/1]";
 
   return (
     <article

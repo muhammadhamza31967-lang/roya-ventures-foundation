@@ -13,8 +13,13 @@ import heroTech1 from "@/assets/hero-tech-1.jpg";
 import heroTech2 from "@/assets/hero-tech-2.jpg";
 import heroTech3 from "@/assets/hero-tech-3.jpg";
 import svcDatacenter from "@/assets/svc-datacenter.jpg";
+import svcNetworking from "@/assets/svc-networking.jpg";
 import svcFiber from "@/assets/svc-fiber.jpg";
+import svcEms from "@/assets/svc-ems.jpg";
 import svcSurveillance from "@/assets/svc-surveillance.jpg";
+import svcFirefighting from "@/assets/svc-firefighting.jpg";
+import svcElectrical from "@/assets/svc-electrical.jpg";
+import svcIt from "@/assets/svc-it.jpg";
 import team1 from "@/assets/team-1.jpg";
 import team2 from "@/assets/team-2.jpg";
 import team3 from "@/assets/team-3.jpg";
@@ -45,14 +50,14 @@ const HERO_SLIDES = [
 const HOME_SERVICES = SERVICES.slice(0, 6);
 
 const CAPABILITIES = [
-  { icon: Cpu, name: "Data Centers" },
-  { icon: Network, name: "Enterprise Networks" },
-  { icon: Cable, name: "Fiber & Structured Cabling" },
-  { icon: ShieldCheck, name: "Access Control & EMS" },
-  { icon: Activity, name: "Surveillance & CCTV" },
-  { icon: Flame, name: "Fire Protection" },
-  { icon: Building2, name: "Electrical Contracts" },
-  { icon: Code2, name: "Web & IT Services" },
+  { icon: Cpu, name: "Data Centers", image: svcDatacenter },
+  { icon: Network, name: "Enterprise Networks", image: svcNetworking },
+  { icon: Cable, name: "Fiber & Structured Cabling", image: svcFiber },
+  { icon: ShieldCheck, name: "Access Control & EMS", image: svcEms },
+  { icon: Activity, name: "Surveillance & CCTV", image: svcSurveillance },
+  { icon: Flame, name: "Fire Protection", image: svcFirefighting },
+  { icon: Building2, name: "Electrical Contracts", image: svcElectrical },
+  { icon: Code2, name: "Web & IT Services", image: svcIt },
 ];
 
 const TEAM_PREVIEW = [
@@ -252,14 +257,28 @@ function HomePage() {
             description="A coordinated engineering practice — so your network, power, security and IT systems are designed to work as one."
           />
           <div className="mt-16 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
-            {CAPABILITIES.map(({ icon: Icon, name }, i) => (
+            {CAPABILITIES.map(({ icon: Icon, name, image }, i) => (
               <Reveal key={name} delay={(i % 4) * 0.05}>
-                <div className="group relative h-full rounded-2xl bg-card p-8 border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[var(--shadow-elegant)] hover:border-[var(--gold)]/40" data-cursor="hover">
-                  <div className="grid h-14 w-14 place-items-center rounded-xl border border-[var(--emerald-deep)]/30 bg-gradient-to-br from-[color-mix(in_oklab,var(--emerald-deep)_10%,transparent)] to-transparent text-[var(--emerald-deep)] transition-all duration-500 group-hover:bg-[var(--emerald-deep)] group-hover:text-white">
-                    <Icon className="h-6 w-6" strokeWidth={1.5} />
+                <div className="group relative h-full overflow-hidden rounded-2xl bg-card border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[var(--shadow-elegant)] hover:border-[var(--gold)]/40" data-cursor="hover">
+                  {/* Image */}
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    <img
+                      src={image}
+                      alt={name}
+                      loading="lazy"
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)]/85 via-[var(--navy-deep)]/25 to-transparent" />
+                    {/* Icon badge */}
+                    <div className="absolute left-5 top-5 grid h-12 w-12 place-items-center rounded-xl border border-white/25 bg-white/10 backdrop-blur-md text-white transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-[var(--navy)] group-hover:border-[var(--gold)]">
+                      <Icon className="h-5 w-5" strokeWidth={1.5} />
+                    </div>
                   </div>
-                  <h3 className="mt-7 text-base font-semibold text-[var(--navy)] tracking-tight">{name}</h3>
-                  <div className="mt-4 h-px w-8 bg-[var(--gold)] transition-all duration-500 group-hover:w-16" />
+                  {/* Caption */}
+                  <div className="p-5">
+                    <h3 className="text-base font-semibold text-[var(--navy)] tracking-tight">{name}</h3>
+                    <div className="mt-3 h-px w-8 bg-[var(--gold)] transition-all duration-500 group-hover:w-16" />
+                  </div>
                 </div>
               </Reveal>
             ))}
