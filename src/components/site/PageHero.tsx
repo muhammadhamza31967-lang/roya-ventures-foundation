@@ -89,13 +89,10 @@ export function PageHero({
         </div>
 
         {/* Bottom meta row */}
-        <div className="mt-20 hidden md:flex items-end justify-between gap-8 reveal-soft" style={{ animationDelay: "0.7s" }}>
+        <div className="mt-20 hidden md:flex items-end gap-8 reveal-soft" style={{ animationDelay: "0.7s" }}>
           <div className="flex items-center gap-4 text-white/55 text-xs tracking-[0.3em] uppercase">
             <span className="gold-divider" />
             <span>Technology · Infrastructure · Engineering</span>
-          </div>
-          <div className="text-white/55 text-xs tracking-[0.3em] uppercase">
-            Scroll to explore
           </div>
         </div>
       </div>
