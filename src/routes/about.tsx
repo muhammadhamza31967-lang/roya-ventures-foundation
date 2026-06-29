@@ -3,13 +3,13 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { CtaBanner } from "@/components/site/CtaBanner";
+import { PartnersMarquee } from "@/components/site/PartnersMarquee";
 import { Reveal } from "@/components/site/Reveal";
 import { Target, Eye, Gem, Users, Globe2, Scale, Lightbulb, Award } from "lucide-react";
 import heroAbout from "@/assets/hero-about.jpg";
 import aboutMission from "@/assets/about-mission.jpg";
 import aboutVision from "@/assets/about-vision.jpg";
 import featureLeadership from "@/assets/feature-leadership.jpg";
-import featureHQ from "@/assets/feature-headquarters.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
