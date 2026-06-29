@@ -37,9 +37,9 @@ export function PageHero({
       </div>
 
       {/* Layered overlays */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[var(--navy-deep)]/92 via-[var(--navy)]/75 to-[color-mix(in_oklab,var(--emerald-deep)_85%,var(--navy-deep))]/92" />
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklab,var(--gold)_22%,transparent),transparent_55%)]" />
-      <div className="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-[var(--navy-deep)]/80 to-transparent" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[var(--navy-deep)]/72 via-[var(--navy-deep)]/45 to-[color-mix(in_oklab,var(--emerald-deep)_70%,var(--navy-deep))]/65" />
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklab,var(--gold)_18%,transparent),transparent_55%)]" />
+      <div className="absolute inset-x-0 bottom-0 -z-10 h-2/3 bg-gradient-to-t from-[var(--navy-deep)]/85 via-[var(--navy-deep)]/35 to-transparent" />
 
       {/* Decorative shapes */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">

@@ -48,7 +48,7 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
           />
         </Link>
 
-        <nav aria-label="Primary" className="hidden lg:flex items-center justify-center gap-1">
+        <nav aria-label="Primary" className="hidden lg:flex items-center justify-center gap-2">
           {NAV.map((item) => {
             const active = location.pathname === item.to;
             return (
@@ -56,7 +56,7 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
                 key={item.to}
                 to={item.to}
                 className={[
-                  "relative px-4 py-2 text-[13px] font-medium tracking-[0.08em] uppercase transition-colors",
+                  "relative px-5 py-2 text-[15px] font-medium tracking-[0.08em] uppercase transition-colors",
                   active ? "text-[var(--gold)]" : "text-white/85 hover:text-[var(--gold)]",
                 ].join(" ")}
               >
@@ -73,7 +73,10 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
         </nav>
 
         <div className="hidden lg:flex justify-end">
-          <Link to="/contact" className="btn-primary !py-2.5 !px-5 text-xs">
+          <Link
+            to="/contact"
+            className="btn-primary !py-3.5 !px-8 text-[13px] tracking-[0.18em] uppercase font-semibold shadow-[0_10px_30px_-12px_color-mix(in_oklab,var(--gold)_55%,transparent)] hover:shadow-[0_14px_36px_-10px_color-mix(in_oklab,var(--gold)_70%,transparent)] hover:-translate-y-0.5 transition-all duration-300"
+          >
             Get in touch
           </Link>
         </div>
