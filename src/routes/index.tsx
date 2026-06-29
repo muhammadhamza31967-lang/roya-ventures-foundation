@@ -172,22 +172,22 @@ function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
             <Reveal className="md:col-span-7">
-              <ImageServiceCard {...HOME_SERVICES[0]} description={HOME_SERVICES[0].short} index={0} size="wide" />
+              <ImageServiceCard image={HOME_SERVICES[0].image} title={HOME_SERVICES[0].title} description={HOME_SERVICES[0].short} index={0} size="wide" />
             </Reveal>
             <Reveal delay={0.08} className="md:col-span-5">
-              <ImageServiceCard {...HOME_SERVICES[1]} description={HOME_SERVICES[1].short} index={1} />
+              <ImageServiceCard image={HOME_SERVICES[1].image} title={HOME_SERVICES[1].title} description={HOME_SERVICES[1].short} index={1} />
             </Reveal>
             <Reveal delay={0.15} className="md:col-span-4">
-              <ImageServiceCard {...HOME_SERVICES[2]} description={HOME_SERVICES[2].short} index={2} />
+              <ImageServiceCard image={HOME_SERVICES[2].image} title={HOME_SERVICES[2].title} description={HOME_SERVICES[2].short} index={2} />
             </Reveal>
             <Reveal delay={0.22} className="md:col-span-4">
-              <ImageServiceCard {...HOME_SERVICES[3]} description={HOME_SERVICES[3].short} index={3} />
+              <ImageServiceCard image={HOME_SERVICES[3].image} title={HOME_SERVICES[3].title} description={HOME_SERVICES[3].short} index={3} />
             </Reveal>
             <Reveal delay={0.29} className="md:col-span-4">
-              <ImageServiceCard {...HOME_SERVICES[4]} description={HOME_SERVICES[4].short} index={4} />
+              <ImageServiceCard image={HOME_SERVICES[4].image} title={HOME_SERVICES[4].title} description={HOME_SERVICES[4].short} index={4} />
             </Reveal>
             <Reveal delay={0.36} className="md:col-span-12">
-              <ImageServiceCard {...HOME_SERVICES[5]} description={HOME_SERVICES[5].short} index={5} size="wide" />
+              <ImageServiceCard image={HOME_SERVICES[5].image} title={HOME_SERVICES[5].title} description={HOME_SERVICES[5].short} index={5} size="wide" />
             </Reveal>
           </div>
         </div>
