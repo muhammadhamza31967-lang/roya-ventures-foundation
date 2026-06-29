@@ -10,7 +10,7 @@ export function StatGrid({
       className={[
         "grid grid-cols-2 md:grid-cols-4 rounded-2xl overflow-hidden",
         invert
-          ? "border border-white/10 bg-white/[0.03] backdrop-blur-sm"
+          ? "border border-[var(--gold)]/25 bg-gradient-to-br from-white/[0.08] via-white/[0.04] to-transparent backdrop-blur-md shadow-[0_30px_80px_-30px_rgba(0,0,0,0.55)]"
           : "border border-[color-mix(in_oklab,var(--navy)_10%,transparent)] bg-gradient-to-br from-white to-[var(--stone)] shadow-[var(--shadow-card)]",
       ].join(" ")}
     >

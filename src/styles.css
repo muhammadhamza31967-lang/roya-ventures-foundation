@@ -313,6 +313,11 @@
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
 }
+@keyframes scroll-wheel {
+  0% { transform: translateY(0); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(14px); opacity: 0; }
+}
 
 @utility hero-zoom {
   animation: slow-zoom 18s ease-out forwards;
@@ -321,6 +326,16 @@
 @utility float-shape {
   animation: float-shape 16s ease-in-out infinite;
 }
+
+@utility scroll-wheel {
+  animation: scroll-wheel 1.8s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+}
+
+/* Hide native cursor when our custom one is active */
+.has-custom-cursor,
+.has-custom-cursor *,
+.has-custom-cursor *::before,
+.has-custom-cursor *::after { cursor: none !important; }
 
 /* Premium textures and decorative patterns */
 @utility bg-noise {

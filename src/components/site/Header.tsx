@@ -37,14 +37,14 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
           : "bg-transparent",
       ].join(" ")}
     >
-      <div className="container-px mx-auto grid grid-cols-[auto_1fr_auto] items-center gap-6 py-4 md:py-5">
-        <Link to="/" className="flex items-center gap-3 shrink-0" aria-label="Roya Ventures — home">
+      <div className="container-px mx-auto grid grid-cols-[auto_1fr_auto] items-center gap-6 py-3 md:py-4">
+        <Link to="/" className="flex items-center gap-3 shrink-0" aria-label="Roya Ventures — home" data-cursor="hover">
           <img
             src={logo.url}
             alt="Roya Ventures"
-            width={170}
-            height={44}
-            className="h-9 w-auto md:h-10 brightness-0 invert"
+            width={240}
+            height={64}
+            className="h-12 w-auto md:h-14 lg:h-16 brightness-0 invert transition-transform duration-500"
           />
         </Link>
 
