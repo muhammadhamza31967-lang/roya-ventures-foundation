@@ -1,17 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * Subtle two-layer cursor:
- *  - dot: a small filled dot that follows the pointer precisely
- *  - ring: a larger ring that lags slightly behind, scales on hover
- *
- * Disabled on touch / coarse pointers and respects prefers-reduced-motion.
+ * Premium two-layer cursor — golden dot + lagging glowing ring.
+ * Hidden until the first pointer movement so nothing sits in the
+ * top-left corner on initial paint. Disabled on touch / reduced motion.
  */
 export function CustomCursor() {
   const dotRef = useRef<HTMLDivElement | null>(null);
   const ringRef = useRef<HTMLDivElement | null>(null);
   const [enabled, setEnabled] = useState(false);
   const [hovering, setHovering] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -24,15 +23,22 @@ export function CustomCursor() {
     const ring = ringRef.current;
     if (!dot || !ring) return;
 
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
+    let mouseX = -100;
+    let mouseY = -100;
     let ringX = mouseX;
     let ringY = mouseY;
     let raf = 0;
+    let first = true;
 
     const onMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
+      if (first) {
+        ringX = mouseX;
+        ringY = mouseY;
+        first = false;
+        setVisible(true);
+      }
       dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
     };
 
@@ -43,24 +49,20 @@ export function CustomCursor() {
       raf = requestAnimationFrame(animate);
     };
 
-    const isInteractive = (el: Element | null): boolean => {
-      if (!el) return false;
-      const tag = el.tagName;
-      if (tag === "A" || tag === "BUTTON" || tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return true;
-      if (el.getAttribute("role") === "button") return true;
-      if ((el as HTMLElement).dataset?.cursor === "hover") return true;
-      return false;
-    };
-
     const onOver = (e: MouseEvent) => {
       const target = (e.target as Element)?.closest(
         "a, button, input, textarea, select, [role=button], [data-cursor='hover']",
       );
-      setHovering(Boolean(target && isInteractive(target)));
+      setHovering(Boolean(target));
     };
+
+    const onLeave = () => setVisible(false);
+    const onEnter = () => setVisible(true);
 
     window.addEventListener("mousemove", onMove, { passive: true });
     window.addEventListener("mouseover", onOver, { passive: true });
+    document.addEventListener("mouseleave", onLeave);
+    document.addEventListener("mouseenter", onEnter);
     raf = requestAnimationFrame(animate);
 
     document.documentElement.classList.add("has-custom-cursor");
@@ -68,6 +70,8 @@ export function CustomCursor() {
     return () => {
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseover", onOver);
+      document.removeEventListener("mouseleave", onLeave);
+      document.removeEventListener("mouseenter", onEnter);
       cancelAnimationFrame(raf);
       document.documentElement.classList.remove("has-custom-cursor");
     };
@@ -82,10 +86,11 @@ export function CustomCursor() {
         aria-hidden
         className={[
           "pointer-events-none fixed left-0 top-0 z-[9999] rounded-full border",
-          "transition-[width,height,background-color,border-color,opacity] duration-300 ease-out",
+          "transition-[width,height,background-color,border-color,opacity,box-shadow] duration-300 ease-out",
+          visible ? "opacity-100" : "opacity-0",
           hovering
-            ? "h-14 w-14 border-[var(--gold)]/80 bg-[color-mix(in_oklab,var(--gold)_15%,transparent)]"
-            : "h-9 w-9 border-[var(--gold)]/55 bg-transparent",
+            ? "h-14 w-14 border-[var(--gold)]/85 bg-[color-mix(in_oklab,var(--gold)_14%,transparent)] shadow-[0_0_28px_color-mix(in_oklab,var(--gold)_45%,transparent)]"
+            : "h-9 w-9 border-[var(--gold)]/60 bg-transparent shadow-[0_0_18px_color-mix(in_oklab,var(--gold)_25%,transparent)]",
         ].join(" ")}
         style={{ willChange: "transform" }}
       />
@@ -94,7 +99,9 @@ export function CustomCursor() {
         aria-hidden
         className={[
           "pointer-events-none fixed left-0 top-0 z-[9999] rounded-full bg-[var(--gold)] transition-[width,height,opacity] duration-200",
-          hovering ? "h-1 w-1 opacity-50" : "h-1.5 w-1.5 opacity-90",
+          visible ? (hovering ? "opacity-60" : "opacity-95") : "opacity-0",
+          hovering ? "h-1 w-1" : "h-1.5 w-1.5",
+          "shadow-[0_0_12px_color-mix(in_oklab,var(--gold)_70%,transparent)]",
         ].join(" ")}
         style={{ willChange: "transform" }}
       />
