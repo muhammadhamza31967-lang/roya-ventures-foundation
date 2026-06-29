@@ -189,32 +189,6 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* Timeline — over HQ background */}
-      <section className="relative section-y overflow-hidden text-white bg-noise">
-        <div className="absolute inset-0 -z-20">
-          <img src={featureHQ} alt="" loading="lazy" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-br from-[var(--navy-deep)]/96 via-[var(--navy-deep)]/92 to-[color-mix(in_oklab,var(--emerald-deep)_80%,var(--navy-deep))]/96" />
-        </div>
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklab,var(--gold)_18%,transparent),transparent_55%)]" />
-        <div className="container-px mx-auto">
-          <SectionHeading
-            eyebrow="Our journey"
-            title={<>Sixteen years of <em className="not-italic text-[var(--gold)]">measured progress.</em></>}
-            description="A firm built one mandate at a time — each chapter compounding the depth and reach of our practice."
-            invert
-          />
-          <ol className="mt-20 relative border-l border-white/15 pl-10 md:pl-14 space-y-14">
-            {TIMELINE.map(([year, title, text], i) => (
-              <Reveal as="li" key={year} delay={i * 0.06} className="relative">
-                <span className="absolute -left-[49px] md:-left-[63px] top-2 grid h-5 w-5 place-items-center rounded-full bg-[var(--gold)] ring-4 ring-[var(--navy-deep)] shadow-[0_0_0_1px_color-mix(in_oklab,var(--gold)_60%,transparent)]" />
-                <p className="font-display text-4xl md:text-5xl font-light text-[var(--gold)] tracking-[-0.03em]">{year}</p>
-                <h3 className="mt-4 text-2xl font-semibold text-white tracking-tight">{title}</h3>
-                <p className="mt-3 max-w-2xl text-white/70 leading-relaxed">{text}</p>
-              </Reveal>
-            ))}
-          </ol>
-        </div>
-      </section>
 
       <CtaBanner
         eyebrow="Begin a conversation"
