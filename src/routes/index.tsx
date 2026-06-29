@@ -6,6 +6,7 @@ import { SectionHeading } from "@/components/site/SectionHeading";
 import { ImageServiceCard } from "@/components/site/ImageServiceCard";
 import { StatGrid } from "@/components/site/StatGrid";
 import { CtaBanner } from "@/components/site/CtaBanner";
+import { PartnersMarquee } from "@/components/site/PartnersMarquee";
 import { Reveal } from "@/components/site/Reveal";
 import { SERVICES } from "@/lib/services-data";
 import heroTech1 from "@/assets/hero-tech-1.jpg";
