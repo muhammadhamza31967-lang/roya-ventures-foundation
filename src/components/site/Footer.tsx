@@ -31,23 +31,8 @@ export function Footer() {
       <div aria-hidden className="pointer-events-none absolute -bottom-32 -left-32 -z-10 h-[22rem] w-[22rem] rounded-full border border-[var(--gold)]/10" />
 
       <div className="container-px mx-auto relative">
-        {/* Top CTA-like band */}
-        <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-center pt-20 pb-16 border-b border-white/10">
-          <div>
-            <p className="gold-rule">Get in touch</p>
-            <h3 className="mt-5 font-display text-3xl md:text-4xl font-semibold leading-[1.1] tracking-[-0.025em] text-white max-w-xl">
-              Build, secure and support — with <span className="text-[var(--gold)]">one accountable partner.</span>
-            </h3>
-          </div>
-          <div className="flex lg:justify-end">
-            <Link to="/contact" className="btn-primary" data-cursor="hover">
-              Start a conversation <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-
         {/* Main grid */}
-        <div className="grid gap-14 lg:gap-12 lg:grid-cols-12 pt-20 pb-12">
+        <div className="grid gap-14 lg:gap-12 lg:grid-cols-12 pt-24 pb-12">
           <div className="lg:col-span-4">
             <img
               src={logo.url}

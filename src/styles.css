@@ -318,6 +318,18 @@
   30% { opacity: 1; }
   100% { transform: translateY(14px); opacity: 0; }
 }
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  animation: marquee-x 40s linear infinite;
+}
+.group:hover .marquee-track,
+.marquee-track:hover {
+  animation-play-state: paused;
+}
 
 @utility hero-zoom {
   animation: slow-zoom 18s ease-out forwards;
