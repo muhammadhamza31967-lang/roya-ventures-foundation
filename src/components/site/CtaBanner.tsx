@@ -19,17 +19,21 @@ export function CtaBanner({
 
       {/* Decorative shapes */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute -top-40 -right-40 h-[34rem] w-[34rem] rounded-full border border-[var(--gold)]/12 float-shape" />
-        <div className="absolute -bottom-32 -left-32 h-[26rem] w-[26rem] rounded-full border border-[var(--gold)]/10" />
+        <div className="absolute -top-24 -right-24 h-[20rem] w-[20rem] rounded-full border border-[var(--gold)]/15 float-shape" />
+        <div className="absolute -bottom-20 -left-20 h-[16rem] w-[16rem] rounded-full border border-[var(--gold)]/10" />
+        <div className="absolute left-1/3 top-1/2 h-px w-40 bg-gradient-to-r from-transparent via-[var(--gold)]/60 to-transparent" />
       </div>
 
-      <div className="container-px mx-auto py-28 md:py-40 relative">
-        <div className="grid items-end gap-14 lg:grid-cols-[1.4fr_1fr]">
+      <div className="container-px mx-auto py-16 md:py-20 relative">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
           <div>
             <p className="gold-rule">{eyebrow}</p>
-            <h2 className="heading-lg mt-7 text-white max-w-2xl">{title}</h2>
-            <p className="mt-7 max-w-xl text-white/75 text-lg leading-relaxed font-light">{description}</p>
-            <div className="mt-10 hairline max-w-xs opacity-40" />
+            <h2 className="mt-5 font-display text-3xl md:text-4xl lg:text-5xl font-semibold leading-[1.08] tracking-[-0.03em] text-white max-w-2xl">
+              {title}
+            </h2>
+            <p className="mt-5 max-w-xl text-white/75 text-base md:text-lg leading-relaxed font-light">
+              {description}
+            </p>
           </div>
           <div className="flex lg:justify-end gap-4 flex-wrap">
             <Link to="/contact" className="btn-primary">
