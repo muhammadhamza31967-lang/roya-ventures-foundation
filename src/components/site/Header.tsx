@@ -48,24 +48,33 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
           />
         </Link>
 
-        <nav aria-label="Primary" className="hidden lg:flex items-center justify-center gap-2">
+        <nav aria-label="Primary" className="hidden lg:flex items-center justify-center gap-1">
           {NAV.map((item) => {
             const active = location.pathname === item.to;
             return (
               <Link
                 key={item.to}
                 to={item.to}
+                style={{ fontFamily: "'Sora', ui-sans-serif, system-ui, sans-serif" }}
                 className={[
-                  "relative px-5 py-2 text-[15px] font-medium tracking-[0.08em] uppercase transition-colors",
-                  active ? "text-[var(--gold)]" : "text-white/85 hover:text-[var(--gold)]",
+                  "group relative px-5 py-2 text-[13px] md:text-[14px] font-medium tracking-[0.22em] uppercase transition-all duration-500 ease-out",
+                  active ? "text-[var(--gold)]" : "text-white/80 hover:text-[var(--gold)]",
                 ].join(" ")}
+                data-cursor="hover"
               >
-                {item.label}
+                <span className="relative inline-block transition-transform duration-500 ease-out group-hover:-translate-y-px">
+                  {item.label}
+                </span>
                 <span
+                  aria-hidden
                   className={[
-                    "pointer-events-none absolute left-1/2 -bottom-0.5 h-px -translate-x-1/2 bg-[var(--gold)] transition-all duration-300",
-                    active ? "w-6 opacity-100" : "w-0 opacity-0 group-hover:w-4",
+                    "pointer-events-none absolute left-1/2 -bottom-0.5 h-px -translate-x-1/2 bg-[var(--gold)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
+                    active ? "w-7 opacity-100" : "w-0 opacity-0 group-hover:w-7 group-hover:opacity-100",
                   ].join(" ")}
+                />
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute left-1/2 -bottom-0.5 h-px w-0 -translate-x-1/2 bg-[var(--gold)]/30 blur-[2px] transition-all duration-700 ease-out group-hover:w-12"
                 />
               </Link>
             );
@@ -105,8 +114,9 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
               <Link
                 key={item.to}
                 to={item.to}
+                style={{ fontFamily: "'Sora', ui-sans-serif, system-ui, sans-serif" }}
                 className={[
-                  "py-3 text-sm tracking-[0.12em] uppercase border-b border-white/5",
+                  "py-3 text-[13px] font-medium tracking-[0.2em] uppercase border-b border-white/5",
                   active ? "text-[var(--gold)]" : "text-white/85",
                 ].join(" ")}
               >
