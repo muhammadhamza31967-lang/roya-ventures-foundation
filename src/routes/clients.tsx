@@ -136,34 +136,46 @@ function ClientsPage() {
               </ul>
             </div>
 
-            {/* RIGHT — Editorial 3-image collage, asymmetric */}
+            {/* RIGHT — Single premium hero image */}
             <div className="lg:col-span-6">
               <Reveal delay={0.1}>
-                <div className="relative mx-auto w-full max-w-[560px] aspect-[4/5]">
+                <div className="relative mx-auto w-full max-w-[600px]">
                   {/* Decorative backdrops */}
-                  <div className="absolute -top-8 -right-8 h-44 w-44 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_22%,transparent),transparent_70%)]" />
-                  <div className="absolute -bottom-10 -left-10 h-56 w-56 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--emerald-deep)_18%,transparent),transparent_70%)]" />
-                  {/* Subtle gold frame accent */}
-                  <div className="absolute top-6 right-6 bottom-6 left-6 border border-[var(--gold)]/15 rounded-2xl pointer-events-none" />
+                  <div className="absolute -top-10 -right-10 h-48 w-48 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_22%,transparent),transparent_70%)] pointer-events-none" />
+                  <div className="absolute -bottom-12 -left-12 h-60 w-60 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--emerald-deep)_18%,transparent),transparent_70%)] pointer-events-none" />
 
-                  {/* Tile 1 — Hero, large top-right */}
-                  <CollageTile
-                    src={collageDatacenter}
-                    label="Data Centers"
-                    className="absolute top-0 right-0 w-[78%] h-[62%] z-20"
-                  />
-                  {/* Tile 2 — Overlapping bottom-left */}
-                  <CollageTile
-                    src={collageNetworking}
-                    label="Networking"
-                    className="absolute bottom-0 left-0 w-[62%] h-[48%] z-30"
-                  />
-                  {/* Tile 3 — Accent, mid-right overlap */}
-                  <CollageTile
-                    src={collageFiber}
-                    label="Fiber Optics"
-                    className="absolute bottom-[6%] right-[4%] w-[40%] h-[34%] z-40 ring-1 ring-[var(--gold)]/30"
-                  />
+                  {/* Layered frame accent */}
+                  <div className="absolute -top-4 -right-4 h-full w-full rounded-[2rem] border border-[var(--gold)]/25 pointer-events-none" />
+                  <div className="absolute -bottom-4 -left-4 h-full w-full rounded-[2rem] border border-[color-mix(in_oklab,var(--navy)_18%,transparent)] pointer-events-none" />
+
+                  {/* Image card */}
+                  <div
+                    data-cursor="hover"
+                    className="group relative overflow-hidden rounded-[2rem] bg-white ring-1 ring-black/5 shadow-[0_40px_100px_-30px_color-mix(in_oklab,var(--navy)_55%,transparent)] transition-all duration-700 hover:-translate-y-1.5 hover:shadow-[0_50px_120px_-30px_color-mix(in_oklab,var(--navy)_65%,transparent)]"
+                  >
+                    <div className="relative aspect-[4/5]">
+                      <img
+                        src={featureImage}
+                        alt="Premium infrastructure expertise — Roya Ventures"
+                        loading="lazy"
+                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.06]"
+                      />
+                      {/* Subtle navy gradient for depth */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)]/55 via-transparent to-transparent" />
+                      {/* Bottom caption */}
+                      <div className="absolute inset-x-0 bottom-0 p-8">
+                        <div className="h-px w-10 bg-[var(--gold)] mb-3 transition-all duration-500 group-hover:w-16" />
+                        <p className="font-display text-[11px] tracking-[0.28em] uppercase text-[var(--gold)]">
+                          Infrastructure · Engineering
+                        </p>
+                        <p className="mt-1.5 font-display text-white text-xl leading-tight">
+                          Mission-critical environments, delivered with precision.
+                        </p>
+                      </div>
+                      {/* Gold corner accent */}
+                      <div className="absolute top-6 right-6 h-12 w-12 border-t border-r border-[var(--gold)]/60 rounded-tr-lg" />
+                    </div>
+                  </div>
                 </div>
               </Reveal>
             </div>
