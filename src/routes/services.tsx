@@ -59,9 +59,15 @@ function ServicesPage() {
 
       {/* Engagement model — dark layered band */}
       <section className="relative section-y overflow-hidden bg-noise text-white">
-        <div className="absolute inset-0 -z-20" style={{ background: "var(--grad-navy)" }} />
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklab,var(--gold)_18%,transparent),transparent_55%)]" />
+        <div className="absolute inset-0 -z-20" style={{ background: "linear-gradient(135deg, #0B1F36 0%, #0E2440 45%, #0F3A30 100%)" }} />
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklab,var(--gold)_22%,transparent),transparent_55%)]" />
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_bottom_left,color-mix(in_oklab,var(--emerald-deep)_60%,transparent),transparent_55%)]" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/70 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/40 to-transparent" />
         <div aria-hidden className="pointer-events-none absolute -top-40 -left-40 h-[34rem] w-[34rem] rounded-full border border-[var(--gold)]/12 float-shape -z-10" />
+        <div aria-hidden className="pointer-events-none absolute -bottom-32 -right-32 h-[28rem] w-[28rem] rounded-full border border-[var(--gold)]/10 -z-10" />
+
+
 
         <div className="container-px mx-auto">
           <SectionHeading
@@ -93,6 +99,7 @@ function ServicesPage() {
       <CtaBanner
         eyebrow="Define your project"
         title="Tell us what you need to build, secure or support."
+        showSecondary={false}
       />
     </SiteLayout>
   );

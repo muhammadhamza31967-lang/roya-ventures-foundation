@@ -120,13 +120,6 @@ function HomePage() {
               <span className="gold-divider" />
               <span>Infrastructure · Networks · Security · IT</span>
             </div>
-            {/* Animated scroll indicator */}
-            <a href="#firm" aria-label="Scroll to next section" className="group flex flex-col items-center gap-3" data-cursor="hover">
-              <span className="text-[10px] tracking-[0.3em] uppercase text-white/65 group-hover:text-[var(--gold)] transition-colors">Scroll</span>
-              <span className="relative grid h-10 w-6 place-items-start rounded-full border border-[var(--gold)]/70 pt-1.5">
-                <span className="block h-1.5 w-px bg-[var(--gold)] scroll-wheel" />
-              </span>
-            </a>
           </div>
         </div>
       </section>
