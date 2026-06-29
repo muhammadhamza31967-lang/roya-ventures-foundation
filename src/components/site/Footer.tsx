@@ -95,12 +95,6 @@ export function Footer() {
             networks, security and IT under a single accountable mandate.
           </p>
         </div>
-          </div>
-          <p className="mt-8 max-w-2xl text-[15px] leading-[1.85] text-white/70 font-light">
-            A multidisciplinary technology and engineering firm — delivering data centers,
-            networks, security and IT under a single accountable mandate.
-          </p>
-        </div>
 
         <div aria-hidden className="hairline opacity-40" />
 
