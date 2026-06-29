@@ -288,3 +288,28 @@ function ClientsPage() {
     </SiteLayout>
   );
 }
+
+function CollageTile({ src, label, className = "" }: { src: string; label: string; className?: string }) {
+  return (
+    <div
+      data-cursor="hover"
+      className={`group overflow-hidden rounded-2xl bg-white shadow-[0_20px_60px_-20px_color-mix(in_oklab,var(--navy)_45%,transparent)] ring-1 ring-black/5 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_30px_80px_-20px_color-mix(in_oklab,var(--navy)_55%,transparent)] ${className}`}
+    >
+      <div className="relative h-full w-full">
+        <img
+          src={src}
+          alt={label}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)]/85 via-[var(--navy-deep)]/10 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
+        <div className="absolute inset-x-0 bottom-0 p-3 md:p-4">
+          <div className="h-px w-6 bg-[var(--gold)] mb-2 transition-all duration-500 group-hover:w-10" />
+          <p className="font-display text-[10px] md:text-[11px] tracking-[0.24em] uppercase text-white">
+            {label}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
