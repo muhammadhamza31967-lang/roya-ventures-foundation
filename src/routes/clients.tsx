@@ -94,45 +94,45 @@ function ClientsPage() {
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/40 to-transparent" />
 
         <div className="container-px mx-auto">
-          <div className="grid gap-16 lg:gap-20 lg:grid-cols-12 items-center">
-            {/* LEFT — Heading + principles list */}
+          <div className="grid gap-14 lg:gap-20 lg:grid-cols-12 items-center">
+            {/* LEFT — Heading + concise principles list */}
             <div className="lg:col-span-6">
               <Reveal>
                 <p className="gold-rule">Why choose Roya Ventures</p>
-                <h2 className="heading-lg mt-6 text-[var(--navy)]">
+                <h2 className="heading-lg mt-5 text-[var(--navy)]">
                   The qualities that <em className="not-italic text-[var(--gold)]">define our practice.</em>
                 </h2>
-                <p className="mt-6 text-lg leading-relaxed font-light text-muted-foreground">
-                  Six commitments that distinguish how we work, who we serve, and the standard we hold ourselves to on every mandate.
+                <p className="mt-5 text-[17px] leading-relaxed font-light text-muted-foreground max-w-xl">
+                  Four commitments that shape every mandate — and the standard we hold ourselves to.
                 </p>
-                <div className="mt-8 gold-divider" />
+                <div className="mt-6 h-px w-16 bg-[var(--gold)]" />
               </Reveal>
 
-              <ul className="mt-12 space-y-7">
+              <ul className="mt-10 space-y-5">
                 {DIFFERENTIATORS.map((d, i) => {
                   const Icon = d.icon;
                   return (
                     <Reveal key={d.title} delay={i * 0.05}>
                       <li
                         data-cursor="hover"
-                        className="group relative flex items-start gap-5 pb-7 border-b border-[color-mix(in_oklab,var(--navy)_10%,transparent)] last:border-0 last:pb-0"
+                        className="group relative flex items-start gap-5 pb-5 border-b border-[color-mix(in_oklab,var(--navy)_10%,transparent)] last:border-0 last:pb-0"
                       >
                         <div className="shrink-0 relative">
                           <div className="absolute inset-0 rounded-xl bg-[var(--gold)]/15 blur-md opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                          <div className="relative h-12 w-12 rounded-xl border border-[color-mix(in_oklab,var(--navy)_15%,transparent)] bg-white flex items-center justify-center transition-all duration-500 group-hover:border-[var(--gold)]/70 group-hover:bg-[var(--gold)]/10">
-                            <Icon className="h-5 w-5 text-[var(--gold)]" strokeWidth={1.5} />
+                          <div className="relative h-11 w-11 rounded-xl border border-[color-mix(in_oklab,var(--navy)_15%,transparent)] bg-white flex items-center justify-center transition-all duration-500 group-hover:border-[var(--gold)]/70 group-hover:bg-[var(--gold)]/10">
+                            <Icon className="h-[18px] w-[18px] text-[var(--gold)]" strokeWidth={1.5} />
                           </div>
                         </div>
-                        <div className="flex-1 pt-0.5">
+                        <div className="flex-1 pt-1">
                           <div className="flex items-baseline gap-3">
                             <span className="font-display text-[10px] tracking-[0.32em] uppercase text-[var(--gold)]/80">
                               {String(i + 1).padStart(2, "0")}
                             </span>
-                            <h3 className="font-display text-xl leading-tight text-[var(--navy)]">
+                            <h3 className="font-display text-lg leading-tight text-[var(--navy)]">
                               {d.title}
                             </h3>
                           </div>
-                          <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground">
+                          <p className="mt-1.5 text-[14.5px] leading-relaxed text-muted-foreground">
                             {d.body}
                           </p>
                         </div>
@@ -143,68 +143,40 @@ function ClientsPage() {
               </ul>
             </div>
 
-            {/* RIGHT — Editorial image collage */}
+            {/* RIGHT — Editorial 3-image collage, asymmetric */}
             <div className="lg:col-span-6">
               <Reveal delay={0.1}>
-                <div className="relative mx-auto w-full max-w-[620px] aspect-[5/6]">
-                  {/* Decorative backdrop */}
-                  <div className="absolute -top-6 -right-6 h-40 w-40 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_22%,transparent),transparent_70%)]" />
-                  <div className="absolute -bottom-8 -left-8 h-48 w-48 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--emerald-deep)_18%,transparent),transparent_70%)]" />
-                  <div className="absolute inset-y-10 left-1/2 -translate-x-1/2 w-px bg-gradient-to-b from-transparent via-[var(--gold)]/25 to-transparent" />
+                <div className="relative mx-auto w-full max-w-[560px] aspect-[4/5]">
+                  {/* Decorative backdrops */}
+                  <div className="absolute -top-8 -right-8 h-44 w-44 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_22%,transparent),transparent_70%)]" />
+                  <div className="absolute -bottom-10 -left-10 h-56 w-56 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--emerald-deep)_18%,transparent),transparent_70%)]" />
+                  {/* Subtle gold frame accent */}
+                  <div className="absolute top-6 right-6 bottom-6 left-6 border border-[var(--gold)]/15 rounded-2xl pointer-events-none" />
 
-                  {/* Tile 1 — Data center (large, top-left) */}
+                  {/* Tile 1 — Hero, large top-right */}
                   <CollageTile
                     src={collageDatacenter}
                     label="Data Centers"
-                    className="absolute top-0 left-0 w-[58%] h-[42%] z-20"
+                    className="absolute top-0 right-0 w-[78%] h-[62%] z-20"
                   />
-                  {/* Tile 2 — Networking (top-right, smaller) */}
+                  {/* Tile 2 — Overlapping bottom-left */}
                   <CollageTile
                     src={collageNetworking}
                     label="Networking"
-                    className="absolute top-[6%] right-0 w-[44%] h-[28%] z-10"
+                    className="absolute bottom-0 left-0 w-[62%] h-[48%] z-30"
                   />
-                  {/* Tile 3 — Fiber optics (mid-right tall) */}
+                  {/* Tile 3 — Accent, mid-right overlap */}
                   <CollageTile
                     src={collageFiber}
                     label="Fiber Optics"
-                    className="absolute top-[38%] right-[2%] w-[42%] h-[34%] z-30"
-                  />
-                  {/* Tile 4 — Electrical (mid-left) */}
-                  <CollageTile
-                    src={collageElectrical}
-                    label="Electrical"
-                    className="absolute top-[45%] left-[4%] w-[40%] h-[26%] z-10"
-                  />
-                  {/* Tile 5 — Surveillance (bottom-left wide) */}
-                  <CollageTile
-                    src={collageSurveillance}
-                    label="Surveillance"
-                    className="absolute bottom-0 left-0 w-[50%] h-[30%] z-20"
-                  />
-                  {/* Tile 6 — Fire protection (bottom-mid small) */}
-                  <CollageTile
-                    src={collageFire}
-                    label="Fire Protection"
-                    className="absolute bottom-[6%] left-[46%] w-[28%] h-[22%] z-30"
-                  />
-                  {/* Tile 7 — IT infra (bottom-right) */}
-                  <CollageTile
-                    src={collageIt}
-                    label="IT Infrastructure"
-                    className="absolute bottom-0 right-0 w-[32%] h-[26%] z-20"
-                  />
-                  {/* Tile 8 — Smart buildings (floating accent top-right corner) */}
-                  <CollageTile
-                    src={collageDigital}
-                    label="Smart Buildings"
-                    className="absolute top-[34%] left-[34%] w-[24%] h-[18%] z-40 ring-1 ring-[var(--gold)]/40"
+                    className="absolute bottom-[6%] right-[4%] w-[40%] h-[34%] z-40 ring-1 ring-[var(--gold)]/30"
                   />
                 </div>
               </Reveal>
             </div>
           </div>
         </div>
+
 
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/40 to-transparent" />
       </section>
