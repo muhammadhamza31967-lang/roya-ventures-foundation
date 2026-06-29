@@ -11,20 +11,27 @@ export function ImageServiceCard({
   title: string;
   description: string;
   index?: number;
-  size?: "default" | "tall" | "wide";
+  size?: "default" | "tall" | "wide" | "banner";
 }) {
   const aspect =
-    size === "tall" ? "aspect-[4/5]" : size === "wide" ? "aspect-[16/10]" : "aspect-[4/3]";
+    size === "tall"
+      ? "aspect-[4/5]"
+      : size === "wide"
+      ? "aspect-[16/10]"
+      : size === "banner"
+      ? "aspect-[24/9]"
+      : "aspect-[4/5]";
 
   return (
     <article
       className={[
-        "group relative overflow-hidden rounded-2xl bg-[var(--navy-deep)] cursor-pointer",
+        "group relative h-full overflow-hidden rounded-2xl bg-[var(--navy-deep)] cursor-pointer",
         "shadow-[var(--shadow-card)] transition-all duration-700 hover:shadow-[var(--shadow-elegant)] hover:-translate-y-1.5",
       ].join(" ")}
+      data-cursor="hover"
     >
       {/* Image */}
-      <div className={["relative w-full overflow-hidden", aspect].join(" ")}>
+      <div className={["relative w-full overflow-hidden h-full", aspect].join(" ")}>
         <img
           src={image}
           alt={title}
@@ -32,7 +39,7 @@ export function ImageServiceCard({
           className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-110"
         />
         {/* Overlay base */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)] via-[var(--navy-deep)]/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)] via-[var(--navy-deep)]/55 to-transparent" />
         {/* Hover deepen */}
         <div className="absolute inset-0 bg-[color-mix(in_oklab,var(--navy-deep)_55%,transparent)] opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
         {/* Top gold accent */}
@@ -46,13 +53,13 @@ export function ImageServiceCard({
             {String(index + 1).padStart(2, "0")} · Practice
           </p>
         )}
-        <h3 className="font-display text-2xl md:text-3xl font-semibold leading-tight tracking-[-0.02em]">
+        <h3 className="font-display text-2xl md:text-3xl font-semibold leading-tight tracking-[-0.02em] text-[var(--gold)]">
           {title}
         </h3>
 
         {/* Description: collapsed by default, expands on hover */}
         <div className="grid grid-rows-[0fr] opacity-0 transition-all duration-700 group-hover:grid-rows-[1fr] group-hover:opacity-100 group-hover:mt-4">
-          <p className="overflow-hidden text-white/80 text-[15px] leading-relaxed">
+          <p className="overflow-hidden text-white/85 text-[15px] leading-relaxed">
             {description}
           </p>
         </div>
