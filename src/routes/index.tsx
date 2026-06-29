@@ -68,16 +68,16 @@ function HomePage() {
       <section className="relative isolate min-h-[100vh] overflow-hidden bg-noise text-white flex items-end">
         <HeroSlider images={HERO_SLIDES} />
 
-        {/* Layered overlays */}
-        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[var(--navy-deep)]/92 via-[var(--navy-deep)]/72 to-[color-mix(in_oklab,var(--emerald-deep)_82%,var(--navy-deep))]/90" />
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklab,var(--gold)_22%,transparent),transparent_55%)]" />
-        <div className="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-[var(--navy-deep)]/85 to-transparent" />
+        {/* Layered overlays — lighter so imagery breathes through */}
+        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[var(--navy-deep)]/72 via-[var(--navy-deep)]/45 to-[color-mix(in_oklab,var(--emerald-deep)_70%,var(--navy-deep))]/65" />
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklab,var(--gold)_18%,transparent),transparent_55%)]" />
+        <div className="absolute inset-x-0 bottom-0 -z-10 h-2/3 bg-gradient-to-t from-[var(--navy-deep)]/85 via-[var(--navy-deep)]/35 to-transparent" />
 
         {/* Decorative shapes */}
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute -top-32 -right-32 h-[40rem] w-[40rem] rounded-full border border-[var(--gold)]/15 float-shape" />
-          <div className="absolute top-1/4 -right-20 h-[24rem] w-[24rem] rounded-full border border-[var(--gold)]/10" />
-          <div className="absolute -bottom-24 -left-24 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--emerald-deep)_50%,transparent),transparent_65%)] blur-2xl" />
+          <div className="absolute -top-32 -right-32 h-[40rem] w-[40rem] rounded-full border border-[var(--gold)]/12 float-shape" />
+          <div className="absolute top-1/4 -right-20 h-[24rem] w-[24rem] rounded-full border border-[var(--gold)]/08" />
+          <div className="absolute -bottom-24 -left-24 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--emerald-deep)_45%,transparent),transparent_65%)] blur-2xl" />
           <div className="absolute right-12 top-24 hidden md:block h-[60%] w-px bg-gradient-to-b from-transparent via-[var(--gold)]/40 to-transparent" />
         </div>
 
@@ -90,7 +90,7 @@ function HomePage() {
               Technology infrastructure, <span className="text-[var(--gold)]">engineered end to end.</span>
             </h1>
             <p
-              className="mt-10 max-w-2xl text-lg md:text-xl leading-relaxed text-white/85 reveal font-light"
+              className="mt-10 max-w-2xl text-lg md:text-xl leading-relaxed text-white/90 reveal font-light"
               style={{ animationDelay: "0.3s" }}
             >
               From data centers and enterprise networks to surveillance, electrical and IT systems —
@@ -110,48 +110,69 @@ function HomePage() {
           </div>
 
           <div className="mt-20 hidden md:flex items-end justify-between gap-8 reveal-soft" style={{ animationDelay: "0.7s" }}>
-            <div className="flex items-center gap-4 text-white/55 text-xs tracking-[0.3em] uppercase">
+            <div className="flex items-center gap-4 text-white/65 text-xs tracking-[0.3em] uppercase">
               <span className="gold-divider" />
               <span>Infrastructure · Networks · Security · IT</span>
             </div>
-            <div className="text-white/55 text-xs tracking-[0.3em] uppercase">
-              Scroll to explore
-            </div>
+            {/* Animated scroll indicator */}
+            <a href="#firm" aria-label="Scroll to next section" className="group flex flex-col items-center gap-3" data-cursor="hover">
+              <span className="text-[10px] tracking-[0.3em] uppercase text-white/65 group-hover:text-[var(--gold)] transition-colors">Scroll</span>
+              <span className="relative grid h-10 w-6 place-items-start rounded-full border border-[var(--gold)]/70 pt-1.5">
+                <span className="block h-1.5 w-px bg-[var(--gold)] scroll-wheel" />
+              </span>
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Introduction */}
-      <section className="section-y relative overflow-hidden">
+      {/* Introduction — The Firm */}
+      <section id="firm" className="section-y relative overflow-hidden">
         <div className="absolute inset-0 -z-10 bg-radial-gold" />
-        <div className="container-px mx-auto grid gap-16 lg:grid-cols-12 lg:gap-20">
-          <div className="lg:col-span-5">
-            <Reveal>
-              <p className="gold-rule">The Firm</p>
-              <h2 className="heading-lg mt-6">
-                One partner for the technology systems that power your business.
-              </h2>
-              <div className="mt-8 gold-divider" />
-            </Reveal>
-          </div>
-          <div className="lg:col-span-7 lg:pt-3">
-            <Reveal delay={0.1}>
-              <p className="text-xl leading-[1.7] text-[var(--navy)]/85 font-light">
-                Roya Ventures is a multidisciplinary technology and engineering solutions firm —
-                delivering data centers, networks, security, electrical and IT infrastructure
-                under a single, accountable mandate.
-              </p>
-              <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-                We work with enterprises, retailers, public institutions and developers to plan,
-                deploy and operate the physical and digital systems modern operations depend on.
-                Every engagement is delivered by senior engineers with full ownership of the
-                outcome — from initial design through commissioning and long-term support.
-              </p>
-              <div className="mt-10 flex flex-wrap gap-4">
-                <Link to="/about" className="btn-ghost" data-cursor="hover">About the firm <ArrowRight className="h-4 w-4" /></Link>
-                <Link to="/team" className="btn-ghost" data-cursor="hover">Meet our people <ArrowRight className="h-4 w-4" /></Link>
-              </div>
-            </Reveal>
+        <div aria-hidden className="pointer-events-none absolute -top-32 right-10 h-72 w-72 rounded-full border border-[var(--gold)]/15" />
+        <div aria-hidden className="pointer-events-none absolute bottom-10 -left-24 h-72 w-72 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--emerald-deep)_18%,transparent),transparent_65%)] blur-3xl" />
+
+        <div className="container-px mx-auto">
+          <div className="grid gap-16 lg:grid-cols-12 lg:gap-24 items-start">
+            <div className="lg:col-span-5 lg:sticky lg:top-32">
+              <Reveal>
+                <p className="gold-rule">The Firm</p>
+                <h2 className="heading-lg mt-8 leading-[1.05]">
+                  One partner for the technology systems that <em className="not-italic text-[var(--gold)]">power your business.</em>
+                </h2>
+                <div className="mt-10 hairline max-w-[10rem]" />
+                <div className="mt-10 grid grid-cols-3 gap-6 max-w-md">
+                  {[
+                    { k: "15+", v: "Years" },
+                    { k: "400+", v: "Projects" },
+                    { k: "11", v: "Practices" },
+                  ].map((s) => (
+                    <div key={s.v}>
+                      <div className="font-display text-3xl font-semibold text-[var(--navy)] tracking-[-0.03em]">{s.k}</div>
+                      <div className="mt-1 text-[11px] tracking-[0.22em] uppercase text-muted-foreground">{s.v}</div>
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+            </div>
+            <div className="lg:col-span-7 lg:pt-2">
+              <Reveal delay={0.1}>
+                <p className="text-xl md:text-2xl leading-[1.55] text-[var(--navy)] font-light text-justify hyphens-auto">
+                  Roya Ventures is a multidisciplinary technology and engineering solutions firm —
+                  delivering data centers, networks, security, electrical and IT infrastructure
+                  under a single, accountable mandate.
+                </p>
+                <p className="mt-8 text-base md:text-[17px] leading-[1.85] text-muted-foreground text-justify hyphens-auto">
+                  We work with enterprises, retailers, public institutions and developers to plan,
+                  deploy and operate the physical and digital systems modern operations depend on.
+                  Every engagement is delivered by senior engineers with full ownership of the
+                  outcome — from initial design through commissioning and long-term support.
+                </p>
+                <div className="mt-12 flex flex-wrap gap-4">
+                  <Link to="/about" className="btn-ghost" data-cursor="hover">About the firm <ArrowRight className="h-4 w-4" /></Link>
+                  <Link to="/team" className="btn-ghost" data-cursor="hover">Meet our people <ArrowRight className="h-4 w-4" /></Link>
+                </div>
+              </Reveal>
+            </div>
           </div>
         </div>
       </section>
