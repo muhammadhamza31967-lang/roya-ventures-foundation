@@ -266,13 +266,18 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Stats — dark band */}
+      {/* Stats — premium dark band */}
       <section className="relative section-y overflow-hidden text-white bg-noise">
         <div className="absolute inset-0 -z-20">
-          <img src={heroTech1} alt="" loading="lazy" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-br from-[var(--navy-deep)]/95 via-[var(--navy-deep)]/90 to-[color-mix(in_oklab,var(--emerald-deep)_80%,var(--navy-deep))]/95" />
+          <img src={heroTech1} alt="" loading="lazy" className="h-full w-full object-cover scale-105" />
+          <div className="absolute inset-0 bg-[var(--navy-deep)]/85" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[var(--navy-deep)] via-[var(--navy-deep)]/92 to-[color-mix(in_oklab,var(--emerald-deep)_75%,var(--navy-deep))]" style={{ opacity: 0.95 }} />
         </div>
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklab,var(--gold)_18%,transparent),transparent_55%)]" />
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklab,var(--gold)_28%,transparent),transparent_55%)]" />
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_bottom_left,color-mix(in_oklab,var(--emerald-deep)_55%,transparent),transparent_60%)]" />
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute -top-40 -left-32 h-[28rem] w-[28rem] rounded-full border border-[var(--gold)]/15 float-shape" />
+        </div>
 
         <div className="container-px mx-auto">
           <div className="max-w-3xl mb-16">
@@ -295,41 +300,59 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Team preview */}
-      <section className="section-y">
-        <div className="container-px mx-auto grid gap-14 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-7">
-            <SectionHeading
-              eyebrow="Our people"
-              title={<>Senior engineers, network architects and <em className="not-italic text-[var(--gold)]">technology specialists.</em></>}
-              description="Roya Ventures is built around hands-on practitioners with decades of experience across infrastructure, networks and IT."
-            />
+      {/* Our People — premium executive cards */}
+      <section className="section-y relative overflow-hidden" style={{ background: "var(--grad-ivory)" }}>
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-radial-gold opacity-70" />
+        <div className="container-px mx-auto">
+          <div className="grid gap-14 lg:grid-cols-12 lg:items-end mb-20">
+            <div className="lg:col-span-8">
+              <SectionHeading
+                eyebrow="Our people"
+                title={<>Senior engineers, architects and <em className="not-italic text-[var(--gold)]">technology specialists.</em></>}
+                description="Roya Ventures is built around hands-on practitioners with decades of experience across infrastructure, networks and IT."
+              />
+            </div>
+            <div className="lg:col-span-4 flex lg:justify-end">
+              <Link to="/team" className="btn-ghost" data-cursor="hover">Meet the team <ArrowRight className="h-4 w-4" /></Link>
+            </div>
           </div>
-          <div className="lg:col-span-5 flex lg:justify-end">
-            <Link to="/team" className="btn-ghost" data-cursor="hover">Meet the team <ArrowRight className="h-4 w-4" /></Link>
+
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {TEAM_PREVIEW.map((p, i) => (
+              <Reveal key={p.name} delay={i * 0.08}>
+                <article className="group relative h-full rounded-[1.25rem] overflow-hidden bg-card border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] shadow-[var(--shadow-card)] transition-all duration-700 hover:shadow-[var(--shadow-elegant)] hover:-translate-y-2" data-cursor="hover">
+                  <div className="relative aspect-[3/4] w-full overflow-hidden bg-[var(--navy)]">
+                    <img
+                      src={p.img}
+                      alt={p.name}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)]/80 via-[var(--navy-deep)]/10 to-transparent" />
+                    <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent scale-x-0 origin-left transition-transform duration-700 group-hover:scale-x-100" />
+                    <div className="absolute right-5 top-5 flex flex-col gap-2.5 opacity-0 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
+                      {[Linkedin, Mail].map((Icon, j) => (
+                        <a
+                          key={j}
+                          href="#"
+                          aria-label="Contact"
+                          className="grid h-9 w-9 place-items-center rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white hover:bg-[var(--gold)] hover:text-[var(--navy)] hover:border-[var(--gold)] transition-all"
+                          data-cursor="hover"
+                        >
+                          <Icon className="h-3.5 w-3.5" strokeWidth={1.5} />
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="relative p-7 md:p-8">
+                    <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] font-semibold">{p.role}</p>
+                    <h3 className="mt-3 font-display text-xl md:text-2xl font-semibold text-[var(--navy)] tracking-[-0.02em] leading-tight">{p.name}</h3>
+                    <div className="mt-5 h-px w-10 bg-[var(--gold)] transition-all duration-500 group-hover:w-20" />
+                  </div>
+                </article>
+              </Reveal>
+            ))}
           </div>
-        </div>
-        <div className="container-px mx-auto mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {TEAM_PREVIEW.map((p, i) => (
-            <Reveal key={p.name} delay={i * 0.06}>
-              <article className="group relative overflow-hidden rounded-2xl bg-[var(--navy)] shadow-[var(--shadow-card)] transition-all duration-500 hover:shadow-[var(--shadow-elegant)] hover:-translate-y-1" data-cursor="hover">
-                <div className="aspect-[4/5] w-full overflow-hidden">
-                  <img
-                    src={p.img}
-                    alt={p.name}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)] via-[var(--navy-deep)]/30 to-transparent" />
-                </div>
-                <div className="absolute inset-x-0 bottom-0 p-6 text-white">
-                  <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)]">{p.role}</p>
-                  <h3 className="mt-2 text-lg font-semibold tracking-tight">{p.name}</h3>
-                  <div className="mt-3 h-px w-8 bg-[var(--gold)] transition-all duration-500 group-hover:w-16" />
-                </div>
-              </article>
-            </Reveal>
-          ))}
         </div>
       </section>
 
