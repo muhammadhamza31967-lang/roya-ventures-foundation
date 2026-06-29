@@ -267,17 +267,19 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Stats — premium dark band */}
-      <section className="relative section-y overflow-hidden text-white bg-noise">
-        <div className="absolute inset-0 -z-20">
-          <img src={heroTech1} alt="" loading="lazy" className="h-full w-full object-cover scale-105" />
-          <div className="absolute inset-0 bg-[var(--navy-deep)]/85" />
-          <div className="absolute inset-0 bg-gradient-to-br from-[var(--navy-deep)] via-[var(--navy-deep)]/92 to-[color-mix(in_oklab,var(--emerald-deep)_75%,var(--navy-deep))]" style={{ opacity: 0.95 }} />
-        </div>
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklab,var(--gold)_28%,transparent),transparent_55%)]" />
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_bottom_left,color-mix(in_oklab,var(--emerald-deep)_55%,transparent),transparent_60%)]" />
+      {/* Stats — premium dark navy band */}
+      <section
+        className="relative section-y overflow-hidden text-white bg-noise"
+        style={{
+          background:
+            "linear-gradient(135deg, #0E2440 0%, #18314E 45%, #0F3A30 100%)",
+        }}
+      >
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklab,var(--gold)_30%,transparent),transparent_55%)]" />
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_bottom_left,color-mix(in_oklab,var(--emerald-deep)_60%,transparent),transparent_60%)]" />
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
           <div className="absolute -top-40 -left-32 h-[28rem] w-[28rem] rounded-full border border-[var(--gold)]/15 float-shape" />
+          <div className="absolute -bottom-32 -right-24 h-[24rem] w-[24rem] rounded-full border border-[var(--gold)]/10" />
         </div>
 
         <div className="container-px mx-auto">
