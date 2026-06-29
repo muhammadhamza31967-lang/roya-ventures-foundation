@@ -6,14 +6,32 @@ export function StatGrid({
   invert?: boolean;
 }) {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-y md:divide-y-0 divide-[color-mix(in_oklab,var(--navy)_14%,transparent)] border-y border-[color-mix(in_oklab,var(--navy)_14%,transparent)]">
-      {stats.map((s) => (
-        <div key={s.label} className="p-8 md:p-10 first:border-l-0">
-          <div className={["font-display flex items-baseline gap-1 text-4xl md:text-5xl font-semibold tracking-tight", invert ? "text-white" : "text-[var(--navy)]"].join(" ")}>
+    <div
+      className={[
+        "grid grid-cols-2 md:grid-cols-4 rounded-2xl overflow-hidden",
+        invert
+          ? "border border-white/10 bg-white/[0.03] backdrop-blur-sm"
+          : "border border-[color-mix(in_oklab,var(--navy)_10%,transparent)] bg-gradient-to-br from-white to-[var(--stone)] shadow-[var(--shadow-card)]",
+      ].join(" ")}
+    >
+      {stats.map((s, i) => (
+        <div
+          key={s.label}
+          className={[
+            "relative p-8 md:p-12 group transition-colors duration-500",
+            i > 0 ? "md:border-l" : "",
+            i >= 2 ? "border-t md:border-t-0" : "",
+            i === 1 ? "border-l md:border-l" : "",
+            i === 3 ? "border-l" : "",
+            invert ? "border-white/10 hover:bg-white/[0.04]" : "border-[color-mix(in_oklab,var(--navy)_8%,transparent)] hover:bg-white",
+          ].join(" ")}
+        >
+          <div className="absolute left-8 md:left-12 top-8 md:top-10 gold-divider opacity-60" />
+          <div className={["font-display flex items-baseline gap-1 text-5xl md:text-6xl font-semibold tracking-[-0.04em] mt-10", invert ? "text-white" : "text-[var(--navy)]"].join(" ")}>
             <span>{s.value}</span>
             {s.suffix && <span className="text-[var(--gold)]">{s.suffix}</span>}
           </div>
-          <p className={["mt-3 text-sm tracking-wide", invert ? "text-white/65" : "text-muted-foreground"].join(" ")}>{s.label}</p>
+          <p className={["mt-4 text-sm tracking-wide leading-relaxed", invert ? "text-white/65" : "text-muted-foreground"].join(" ")}>{s.label}</p>
         </div>
       ))}
     </div>
