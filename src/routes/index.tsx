@@ -50,14 +50,14 @@ const HERO_SLIDES = [
 const HOME_SERVICES = SERVICES.slice(0, 6);
 
 const CAPABILITIES = [
-  { icon: Cpu, name: "Data Centers" },
-  { icon: Network, name: "Enterprise Networks" },
-  { icon: Cable, name: "Fiber & Structured Cabling" },
-  { icon: ShieldCheck, name: "Access Control & EMS" },
-  { icon: Activity, name: "Surveillance & CCTV" },
-  { icon: Flame, name: "Fire Protection" },
-  { icon: Building2, name: "Electrical Contracts" },
-  { icon: Code2, name: "Web & IT Services" },
+  { icon: Cpu, name: "Data Centers", image: svcDatacenter },
+  { icon: Network, name: "Enterprise Networks", image: svcNetworking },
+  { icon: Cable, name: "Fiber & Structured Cabling", image: svcFiber },
+  { icon: ShieldCheck, name: "Access Control & EMS", image: svcEms },
+  { icon: Activity, name: "Surveillance & CCTV", image: svcSurveillance },
+  { icon: Flame, name: "Fire Protection", image: svcFirefighting },
+  { icon: Building2, name: "Electrical Contracts", image: svcElectrical },
+  { icon: Code2, name: "Web & IT Services", image: svcIt },
 ];
 
 const TEAM_PREVIEW = [
