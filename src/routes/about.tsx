@@ -156,25 +156,52 @@ function AboutPage() {
         </div>
       </section>
 
-      {/* Values — premium card grid */}
-      <section className="section-y">
-        <div className="container-px mx-auto">
+      {/* Values — premium image-led card grid */}
+      <section className="section-y relative overflow-hidden" style={{ background: "var(--grad-ivory)" }}>
+        <div className="absolute inset-0 -z-10 bg-radial-gold opacity-60" />
+        <div aria-hidden className="pointer-events-none absolute -top-32 -right-20 h-80 w-80 rounded-full border border-[var(--gold)]/15" />
+        <div aria-hidden className="pointer-events-none absolute -bottom-24 -left-20 h-80 w-80 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--emerald-deep)_15%,transparent),transparent_65%)] blur-3xl" />
+        <div className="container-px mx-auto relative">
           <SectionHeading
             eyebrow="Core values"
             title={<>Six principles. <em className="not-italic text-[var(--gold)]">One standard.</em></>}
             description="The values that anchor every engagement, every conversation and every recommendation."
           />
-          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-16 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
             {VALUES.map(({ icon: Icon, title, text }, i) => (
-              <Reveal key={title} delay={(i % 3) * 0.06}>
-                <div className="group relative h-full rounded-2xl bg-card p-9 md:p-10 border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[var(--shadow-elegant)] hover:border-[var(--gold)]/40 overflow-hidden">
-                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/60 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                  <div className="grid h-14 w-14 place-items-center rounded-xl border border-[var(--emerald-deep)]/30 bg-gradient-to-br from-[color-mix(in_oklab,var(--emerald-deep)_10%,transparent)] to-transparent text-[var(--emerald-deep)] transition-all duration-500 group-hover:bg-[var(--emerald-deep)] group-hover:text-white">
-                    <Icon className="h-6 w-6" strokeWidth={1.5} />
+              <Reveal key={title} delay={(i % 3) * 0.08}>
+                <div
+                  className="group relative h-full rounded-2xl bg-card border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[var(--shadow-elegant)] hover:border-[var(--gold)]/50 overflow-hidden"
+                  data-cursor="hover"
+                >
+                  {/* Decorative visual header */}
+                  <div className="relative h-32 overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[var(--navy-deep)] via-[var(--navy)] to-[color-mix(in_oklab,var(--emerald-deep)_70%,var(--navy-deep))]" />
+                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklab,var(--gold)_30%,transparent),transparent_60%)]" />
+                    <div className="absolute inset-0 bg-noise opacity-40" />
+                    {/* Large watermark icon */}
+                    <Icon
+                      aria-hidden
+                      strokeWidth={0.9}
+                      className="absolute -right-4 -bottom-6 h-40 w-40 text-[var(--gold)]/15 transition-transform duration-700 group-hover:scale-110 group-hover:rotate-3"
+                    />
+                    {/* Number marker */}
+                    <span className="absolute top-5 left-6 font-display text-xs tracking-[0.35em] uppercase text-white/60">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    {/* Gold hairline at bottom */}
+                    <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/70 to-transparent" />
                   </div>
-                  <h3 className="mt-7 text-xl font-semibold text-[var(--navy)] tracking-tight">{title}</h3>
-                  <p className="mt-4 text-muted-foreground leading-[1.75] text-[15px]">{text}</p>
-                  <div className="mt-7 h-px w-10 bg-[var(--gold)] transition-all duration-500 group-hover:w-24" />
+
+                  {/* Body */}
+                  <div className="relative p-9 md:p-10 -mt-9">
+                    <div className="grid h-16 w-16 place-items-center rounded-xl border border-[var(--gold)]/40 bg-white text-[var(--emerald-deep)] shadow-[var(--shadow-card)] transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-white group-hover:border-[var(--gold)]">
+                      <Icon className="h-7 w-7" strokeWidth={1.5} />
+                    </div>
+                    <h3 className="mt-7 text-xl font-semibold text-[var(--navy)] tracking-tight">{title}</h3>
+                    <p className="mt-4 text-muted-foreground leading-[1.75] text-[15px]">{text}</p>
+                    <div className="mt-7 h-px w-10 bg-[var(--gold)] transition-all duration-500 group-hover:w-24" />
+                  </div>
                 </div>
               </Reveal>
             ))}
@@ -182,11 +209,12 @@ function AboutPage() {
         </div>
       </section>
 
-
       <CtaBanner
         eyebrow="Begin a conversation"
         title="Partner with a firm that takes the long view."
       />
+
+      <PartnersMarquee />
     </SiteLayout>
   );
 }
