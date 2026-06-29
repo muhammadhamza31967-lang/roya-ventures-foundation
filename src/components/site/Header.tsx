@@ -114,8 +114,9 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
               <Link
                 key={item.to}
                 to={item.to}
+                style={{ fontFamily: "'Sora', ui-sans-serif, system-ui, sans-serif" }}
                 className={[
-                  "py-3 text-sm tracking-[0.12em] uppercase border-b border-white/5",
+                  "py-3 text-[13px] font-medium tracking-[0.2em] uppercase border-b border-white/5",
                   active ? "text-[var(--gold)]" : "text-white/85",
                 ].join(" ")}
               >
