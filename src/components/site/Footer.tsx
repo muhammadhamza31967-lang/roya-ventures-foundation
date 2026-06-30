@@ -19,12 +19,8 @@ const SERVICES = [
   "Ethernet & Fiber Cabling",
   "Fire Fighting",
   "EMS System & Access Control",
-  "Surveillance System",
-  "Digital Signage & Footfall",
-  "POS Hardware & Software",
-  "Website Development & AMCs",
-  "IT Services",
 ];
+
 
 const PHONES = ["+966-509600042", "+966-502879339"];
 const EMAILS = [
@@ -121,7 +117,7 @@ export function Footer() {
           </div>
 
           {/* Services (single column) */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-2">
             <ColumnHeading>Services</ColumnHeading>
             <ul className="space-y-3.5 text-sm">
               {SERVICES.map((s) => (
@@ -139,7 +135,7 @@ export function Footer() {
           </div>
 
           {/* Contact */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-4">
             <ColumnHeading>Contact</ColumnHeading>
             <ul className="space-y-5 text-sm">
               <li className="flex items-start gap-4">
@@ -178,14 +174,14 @@ export function Footer() {
                 <span className="grid h-10 w-10 place-items-center rounded-full border border-[var(--gold)]/40 bg-[var(--gold)]/5 text-[var(--gold)] shrink-0">
                   <Mail className="h-4 w-4" strokeWidth={1.5} />
                 </span>
-                <div className="pt-0.5">
+                <div className="pt-0.5 min-w-0 flex-1">
                   <div className="text-[11px] tracking-[0.22em] uppercase text-white/45 mb-1">Email</div>
                   <div className="space-y-1">
                     {EMAILS.map((e) => (
                       <a
                         key={e}
                         href={`mailto:${e}`}
-                        className="block text-white/85 hover:text-[var(--gold)] transition-colors break-all"
+                        className="block whitespace-nowrap text-[13px] text-white/85 hover:text-[var(--gold)] transition-colors"
                         data-cursor="hover"
                       >
                         {e}
@@ -196,6 +192,7 @@ export function Footer() {
               </li>
             </ul>
           </div>
+
         </div>
 
         <div aria-hidden className="hairline opacity-30" />

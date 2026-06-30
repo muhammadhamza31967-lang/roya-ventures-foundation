@@ -167,11 +167,8 @@ function ContactPage() {
                     </InfoItem>
                   </ul>
 
-                  <div className="hairline mt-12 opacity-40" />
-                  <p className="mt-6 text-sm text-white/65 leading-relaxed">
-                    Business hours: Sunday – Thursday, 09:00 – 18:00 local time. We respond to every enquiry within one business day.
-                  </p>
                 </div>
+
               </div>
             </Reveal>
           </div>
