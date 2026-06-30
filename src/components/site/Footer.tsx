@@ -118,7 +118,8 @@ export function Footer() {
           </div>
 
           {/* Services (single column) */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-2">
+
 
             <ColumnHeading>Services</ColumnHeading>
             <ul className="space-y-3.5 text-sm">
@@ -137,7 +138,7 @@ export function Footer() {
           </div>
 
           {/* Contact */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-4 lg:-ml-4 xl:-ml-8">
 
             <ColumnHeading>Contact</ColumnHeading>
             <ul className="space-y-5 text-sm">
@@ -184,7 +185,7 @@ export function Footer() {
                       <a
                         key={e}
                         href={`mailto:${e}`}
-                        className="block break-all text-[13px] text-white/85 hover:text-[var(--gold)] transition-colors"
+                        className="block whitespace-nowrap text-[13px] text-white/85 hover:text-[var(--gold)] transition-colors"
                         data-cursor="hover"
                       >
                         {e}
