@@ -94,7 +94,8 @@ export function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-2">
+
             <ColumnHeading>Quick Links</ColumnHeading>
             <ul className="space-y-3.5 text-sm">
               {QUICK.map((q) => (
