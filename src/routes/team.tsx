@@ -115,24 +115,18 @@ function TeamPage() {
           <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {ADVISORS.map(([name, role], i) => (
               <Reveal key={name} delay={i * 0.06}>
-                <div className="group rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm p-8 h-full transition-all duration-500 hover:bg-white/[0.08] hover:border-[var(--gold)]/40 hover:-translate-y-1">
-                  <div className="grid h-12 w-12 place-items-center rounded-xl border border-[var(--gold)]/40 text-[var(--gold)] font-display text-lg font-light">
+                <div className="group rounded-2xl border border-[color-mix(in_oklab,var(--navy)_10%,transparent)] bg-white shadow-[var(--shadow-card)] p-8 h-full transition-all duration-500 hover:shadow-[var(--shadow-elegant)] hover:border-[var(--gold)]/40 hover:-translate-y-1">
+                  <div className="grid h-12 w-12 place-items-center rounded-xl border border-[var(--gold)]/40 bg-[var(--gold)]/5 text-[var(--gold)] font-display text-lg font-light">
                     {name.split(" ").map((n) => n[0]).join("")}
                   </div>
-                  <h3 className="mt-7 text-lg font-semibold text-white tracking-tight">{name}</h3>
-                  <p className="mt-2 text-sm text-white/65 leading-relaxed">{role}</p>
+                  <h3 className="mt-7 text-lg font-semibold text-[var(--navy)] tracking-tight">{name}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{role}</p>
                 </div>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
-
-      <CtaBanner
-        eyebrow="Join the firm"
-        title="We're always interested in exceptional people."
-        description="Roya Ventures recruits selectively from the worlds of consulting, banking, technology and enterprise leadership."
-      />
     </SiteLayout>
   );
 }
