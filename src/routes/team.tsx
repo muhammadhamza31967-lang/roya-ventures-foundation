@@ -103,15 +103,14 @@ function TeamPage() {
         </div>
       </section>
 
-      {/* Senior advisors — dark band with cards */}
-      <section className="relative section-y overflow-hidden text-white bg-noise">
-        <div className="absolute inset-0 -z-20" style={{ background: "var(--grad-navy)" }} />
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_left,color-mix(in_oklab,var(--gold)_18%,transparent),transparent_55%)]" />
+      {/* Senior advisors — light band with cards */}
+      <section className="relative section-y overflow-hidden bg-[var(--ivory)]">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_left,color-mix(in_oklab,var(--gold)_10%,transparent),transparent_55%)]" />
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_bottom_right,color-mix(in_oklab,var(--navy)_8%,transparent),transparent_60%)]" />
         <div className="container-px mx-auto">
           <SectionHeading
             eyebrow="Senior advisors"
             title={<>A council of industry leaders who <em className="not-italic text-[var(--gold)]">deepen our perspective.</em></>}
-            invert
           />
           <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {ADVISORS.map(([name, role], i) => (

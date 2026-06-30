@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/site/SectionHeading";
 import { ImageServiceCard } from "@/components/site/ImageServiceCard";
 import { CtaBanner } from "@/components/site/CtaBanner";
 import { Reveal } from "@/components/site/Reveal";
+import { ClientsMarquee } from "@/components/site/ClientsMarquee";
 import { SERVICES } from "@/lib/services-data";
 import heroServices from "@/assets/hero-services.jpg";
 
@@ -97,6 +98,8 @@ function ServicesPage() {
           </div>
         </div>
       </section>
+
+      <ClientsMarquee />
 
       <CtaBanner
         eyebrow="Define your project"
