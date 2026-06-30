@@ -118,7 +118,8 @@ export function Footer() {
           </div>
 
           {/* Services (single column) */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3">
+
             <ColumnHeading>Services</ColumnHeading>
             <ul className="space-y-3.5 text-sm">
               {SERVICES.map((s) => (
