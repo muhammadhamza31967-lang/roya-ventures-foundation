@@ -201,3 +201,28 @@ function Field({
     </div>
   );
 }
+
+function InfoItem({
+  icon: Icon,
+  label,
+  children,
+}: {
+  icon: typeof Mail;
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <li className="group grid grid-cols-[auto_1fr] gap-5">
+      <div className="relative shrink-0">
+        <div className="absolute inset-0 rounded-xl bg-[var(--gold)]/20 blur-md opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        <div className="relative h-12 w-12 rounded-xl border border-white/15 bg-white/5 flex items-center justify-center transition-all duration-500 group-hover:border-[var(--gold)]/60 group-hover:bg-[var(--gold)]/10">
+          <Icon className="h-[18px] w-[18px] text-[var(--gold)]" strokeWidth={1.5} />
+        </div>
+      </div>
+      <div className="pt-1">
+        <p className="eyebrow text-[var(--gold)]">{label}</p>
+        {children}
+      </div>
+    </li>
+  );
+}
