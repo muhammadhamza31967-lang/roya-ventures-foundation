@@ -18,24 +18,11 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
-const CONTACT_DETAILS = [
-  {
-    icon: MapPin,
-    label: "Location",
-    value: "Al Nasirah, West Naseem Dist.\nRiyadh",
-  },
-  {
-    icon: Mail,
-    label: "Email",
-    value: "info@royaventure.com",
-    href: "mailto:info@royaventure.com",
-  },
-  {
-    icon: PhoneCall,
-    label: "National Number",
-    value: "7054175695",
-    href: "tel:7054175695",
-  },
+const PHONES = ["+966-509600042", "+966-502879339"];
+const EMAILS = [
+  "admin@royaventure.com",
+  "info@royaventure.com",
+  "raza.saudagar@royaventure.com",
 ];
 
 function ContactPage() {
