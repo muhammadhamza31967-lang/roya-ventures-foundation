@@ -157,9 +157,9 @@
 }
 
 @utility section-y {
-  padding-block: 6rem;
-  @media (min-width: 768px) { padding-block: 8.5rem; }
-  @media (min-width: 1280px) { padding-block: 11rem; }
+  padding-block: 4rem;
+  @media (min-width: 768px) { padding-block: 5.5rem; }
+  @media (min-width: 1280px) { padding-block: 7rem; }
 }
 
 @utility heading-xl {

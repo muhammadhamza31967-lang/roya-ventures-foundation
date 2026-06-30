@@ -55,9 +55,10 @@ export function Footer() {
 
       <div className="container-px mx-auto relative">
         {/* Main grid */}
-        <div className="grid gap-12 lg:gap-10 md:grid-cols-2 lg:grid-cols-12 pt-20 pb-14">
+        <div className="grid gap-12 md:gap-x-10 lg:gap-x-16 xl:gap-x-20 md:grid-cols-2 lg:grid-cols-12 pt-16 pb-12">
           {/* Brand column — logos + description */}
           <div className="lg:col-span-4">
+
             <div className="flex items-center gap-5">
               <img
                 src={logo.url}
@@ -117,7 +118,8 @@ export function Footer() {
           </div>
 
           {/* Services (single column) */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3">
+
             <ColumnHeading>Services</ColumnHeading>
             <ul className="space-y-3.5 text-sm">
               {SERVICES.map((s) => (
@@ -135,7 +137,8 @@ export function Footer() {
           </div>
 
           {/* Contact */}
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-3">
+
             <ColumnHeading>Contact</ColumnHeading>
             <ul className="space-y-5 text-sm">
               <li className="flex items-start gap-4">
@@ -181,7 +184,7 @@ export function Footer() {
                       <a
                         key={e}
                         href={`mailto:${e}`}
-                        className="block whitespace-nowrap text-[13px] text-white/85 hover:text-[var(--gold)] transition-colors"
+                        className="block break-all text-[13px] text-white/85 hover:text-[var(--gold)] transition-colors"
                         data-cursor="hover"
                       >
                         {e}
