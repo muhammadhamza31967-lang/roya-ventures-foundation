@@ -129,7 +129,7 @@ function ContactPage() {
                   <h3 className="heading-md mt-5 text-white">Reach a partner.</h3>
                   <div className="mt-5 h-px w-12 bg-[var(--gold)]" />
 
-                  <ul className="mt-10 space-y-7">
+                  <ul className="mt-8 space-y-5">
                     <InfoItem icon={MapPin} label="Address">
                       <p className="mt-1.5 text-white/90 leading-relaxed">
                         12744, Riyadh-8718
