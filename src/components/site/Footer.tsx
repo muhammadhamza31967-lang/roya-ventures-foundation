@@ -58,6 +58,7 @@ export function Footer() {
         <div className="grid gap-12 md:gap-x-10 lg:gap-x-16 xl:gap-x-20 md:grid-cols-2 lg:grid-cols-12 pt-16 pb-12">
           {/* Brand column — logos + description */}
           <div className="lg:col-span-4">
+
             <div className="flex items-center gap-5">
               <img
                 src={logo.url}
