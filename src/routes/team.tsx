@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
-import { CtaBanner } from "@/components/site/CtaBanner";
+
 import { Reveal } from "@/components/site/Reveal";
 import { Linkedin, Mail } from "lucide-react";
 import heroTeam from "@/assets/hero-team.jpg";
