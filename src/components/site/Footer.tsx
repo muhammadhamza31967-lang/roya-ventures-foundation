@@ -94,7 +94,7 @@ export function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3">
             <ColumnHeading>Quick Links</ColumnHeading>
             <ul className="space-y-3.5 text-sm">
               {QUICK.map((q) => (
@@ -113,7 +113,8 @@ export function Footer() {
           </div>
 
           {/* Services (single column) */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3">
+
 
 
             <ColumnHeading>Services</ColumnHeading>
@@ -133,7 +134,7 @@ export function Footer() {
           </div>
 
           {/* Contact */}
-          <div className="lg:col-span-4 lg:-ml-4 xl:-ml-8">
+          <div className="lg:col-span-3">
 
             <ColumnHeading>Contact</ColumnHeading>
             <ul className="space-y-5 text-sm">
