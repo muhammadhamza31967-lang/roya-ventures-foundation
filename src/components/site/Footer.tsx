@@ -137,7 +137,8 @@ export function Footer() {
           </div>
 
           {/* Contact */}
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-3">
+
             <ColumnHeading>Contact</ColumnHeading>
             <ul className="space-y-5 text-sm">
               <li className="flex items-start gap-4">
