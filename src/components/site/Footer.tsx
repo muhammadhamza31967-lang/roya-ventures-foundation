@@ -19,12 +19,8 @@ const SERVICES = [
   "Ethernet & Fiber Cabling",
   "Fire Fighting",
   "EMS System & Access Control",
-  "Surveillance System",
-  "Digital Signage & Footfall",
-  "POS Hardware & Software",
-  "Website Development & AMCs",
-  "IT Services",
 ];
+
 
 const PHONES = ["+966-509600042", "+966-502879339"];
 const EMAILS = [
