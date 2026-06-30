@@ -7,7 +7,6 @@ const QUICK = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About Us" },
   { to: "/services", label: "Services" },
-  { to: "/team", label: "Team" },
   { to: "/clients", label: "Clients" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -22,18 +21,14 @@ const SERVICES = [
 ];
 
 
-const PHONES = ["+966-509600042", "+966-502879339"];
-const EMAILS = [
-  "admin@royaventure.com",
-  "info@royaventure.com",
-  "raza.saudagar@royaventure.com",
-];
+const PHONES = ["+966-509600042"];
+const EMAILS = ["info@royaventure.com"];
 
 function ColumnHeading({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-6 flex items-center gap-3">
-      <span className="h-px w-6 bg-[var(--gold)]" />
-      <h4 className="eyebrow text-[var(--gold)]">{children}</h4>
+      <span className="h-px w-6 bg-[var(--gold)] shrink-0" />
+      <h4 className="eyebrow text-[var(--gold)] whitespace-nowrap">{children}</h4>
     </div>
   );
 }
