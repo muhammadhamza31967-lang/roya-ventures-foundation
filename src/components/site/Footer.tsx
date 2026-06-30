@@ -184,7 +184,7 @@ export function Footer() {
                       <a
                         key={e}
                         href={`mailto:${e}`}
-                        className="block whitespace-nowrap text-[13px] text-white/85 hover:text-[var(--gold)] transition-colors"
+                        className="block break-all text-[13px] text-white/85 hover:text-[var(--gold)] transition-colors"
                         data-cursor="hover"
                       >
                         {e}
