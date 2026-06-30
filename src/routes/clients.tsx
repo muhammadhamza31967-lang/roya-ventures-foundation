@@ -4,7 +4,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { CtaBanner } from "@/components/site/CtaBanner";
 import { Reveal } from "@/components/site/Reveal";
-import { Quote, ShieldCheck, Gauge, Globe2, Sparkles, Handshake, Layers } from "lucide-react";
+import { Quote } from "lucide-react";
 import heroClients from "@/assets/hero-clients.jpg";
 import featureImage from "@/assets/svc-datacenter.jpg";
 
@@ -47,22 +47,18 @@ const TESTIMONIALS = [
 
 const DIFFERENTIATORS = [
   {
-    icon: ShieldCheck,
     title: "Uncompromising Discretion",
     body: "Strict confidentiality on every engagement — the foundation of leader-to-leader trust.",
   },
   {
-    icon: Layers,
     title: "Integrated Expertise",
     body: "From electrical to data centers and networking — one team, end-to-end accountability.",
   },
   {
-    icon: Globe2,
     title: "Global Reach, Local Insight",
     body: "Forty markets, embedded regional knowledge — fluent across jurisdictions and cultures.",
   },
   {
-    icon: Gauge,
     title: "Engineering-Grade Rigor",
     body: "Measurable standards for uptime, performance and cost — delivered on schedule, on budget.",
   },
@@ -102,37 +98,31 @@ function ClientsPage() {
               </Reveal>
 
               <ul className="mt-10 space-y-5">
-                {DIFFERENTIATORS.map((d, i) => {
-                  const Icon = d.icon;
-                  return (
-                    <Reveal key={d.title} delay={i * 0.05}>
-                      <li
-                        data-cursor="hover"
-                        className="group relative flex items-start gap-5 pb-5 border-b border-[color-mix(in_oklab,var(--navy)_10%,transparent)] last:border-0 last:pb-0"
-                      >
-                        <div className="shrink-0 relative">
-                          <div className="absolute inset-0 rounded-xl bg-[var(--gold)]/15 blur-md opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                          <div className="relative h-11 w-11 rounded-xl border border-[color-mix(in_oklab,var(--navy)_15%,transparent)] bg-white flex items-center justify-center transition-all duration-500 group-hover:border-[var(--gold)]/70 group-hover:bg-[var(--gold)]/10">
-                            <Icon className="h-[18px] w-[18px] text-[var(--gold)]" strokeWidth={1.5} />
-                          </div>
+                {DIFFERENTIATORS.map((d, i) => (
+                  <Reveal key={d.title} delay={i * 0.05}>
+                    <li
+                      data-cursor="hover"
+                      className="group relative flex items-start gap-5 pb-5 border-b border-[color-mix(in_oklab,var(--navy)_10%,transparent)] last:border-0 last:pb-0"
+                    >
+                      <div className="shrink-0 relative">
+                        <div className="absolute inset-0 rounded-xl bg-[var(--gold)]/15 blur-md opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                        <div className="relative h-12 w-12 rounded-xl border border-[color-mix(in_oklab,var(--gold)_45%,transparent)] bg-white flex items-center justify-center transition-all duration-500 group-hover:border-[var(--gold)] group-hover:bg-[var(--gold)]/10">
+                          <span className="font-display text-[15px] font-semibold tracking-[0.05em] text-[var(--gold)]">
+                            {String(i + 1).padStart(2, "0")}
+                          </span>
                         </div>
-                        <div className="flex-1 pt-1">
-                          <div className="flex items-baseline gap-3">
-                            <span className="font-display text-[10px] tracking-[0.32em] uppercase text-[var(--gold)]/80">
-                              {String(i + 1).padStart(2, "0")}
-                            </span>
-                            <h3 className="font-display text-lg leading-tight text-[var(--navy)]">
-                              {d.title}
-                            </h3>
-                          </div>
-                          <p className="mt-1.5 text-[14.5px] leading-relaxed text-muted-foreground">
-                            {d.body}
-                          </p>
-                        </div>
-                      </li>
-                    </Reveal>
-                  );
-                })}
+                      </div>
+                      <div className="flex-1 pt-1.5">
+                        <h3 className="font-display text-lg leading-tight text-[var(--navy)]">
+                          {d.title}
+                        </h3>
+                        <p className="mt-1.5 text-[14.5px] leading-relaxed text-muted-foreground">
+                          {d.body}
+                        </p>
+                      </div>
+                    </li>
+                  </Reveal>
+                ))}
               </ul>
             </div>
 

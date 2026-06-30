@@ -18,24 +18,11 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
-const CONTACT_DETAILS = [
-  {
-    icon: MapPin,
-    label: "Location",
-    value: "Al Nasirah, West Naseem Dist.\nRiyadh",
-  },
-  {
-    icon: Mail,
-    label: "Email",
-    value: "info@royaventure.com",
-    href: "mailto:info@royaventure.com",
-  },
-  {
-    icon: PhoneCall,
-    label: "National Number",
-    value: "7054175695",
-    href: "tel:7054175695",
-  },
+const PHONES = ["+966-509600042", "+966-502879339"];
+const EMAILS = [
+  "admin@royaventure.com",
+  "info@royaventure.com",
+  "raza.saudagar@royaventure.com",
 ];
 
 function ContactPage() {
@@ -142,33 +129,42 @@ function ContactPage() {
                   <h3 className="heading-md mt-5 text-white">Reach a partner.</h3>
                   <div className="mt-5 h-px w-12 bg-[var(--gold)]" />
 
-                  <ul className="mt-10 space-y-8">
-                    {CONTACT_DETAILS.map((d) => {
-                      const Icon = d.icon;
-                      const content = (
-                        <p className="mt-1.5 text-white/90 leading-relaxed whitespace-pre-line">
-                          {d.value}
-                        </p>
-                      );
-                      return (
-                        <li key={d.label} className="group grid grid-cols-[auto_1fr] gap-5">
-                          <div className="relative shrink-0">
-                            <div className="absolute inset-0 rounded-xl bg-[var(--gold)]/20 blur-md opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                            <div className="relative h-12 w-12 rounded-xl border border-white/15 bg-white/5 flex items-center justify-center transition-all duration-500 group-hover:border-[var(--gold)]/60 group-hover:bg-[var(--gold)]/10">
-                              <Icon className="h-[18px] w-[18px] text-[var(--gold)]" strokeWidth={1.5} />
-                            </div>
-                          </div>
-                          <div className="pt-1">
-                            <p className="eyebrow text-[var(--gold)]">{d.label}</p>
-                            {d.href ? (
-                              <a href={d.href} className="block text-white/90 hover:text-[var(--gold)] transition-colors mt-1.5 leading-relaxed">
-                                {d.value}
-                              </a>
-                            ) : content}
-                          </div>
-                        </li>
-                      );
-                    })}
+                  <ul className="mt-10 space-y-7">
+                    <InfoItem icon={MapPin} label="Address">
+                      <p className="mt-1.5 text-white/90 leading-relaxed">
+                        12744, Riyadh-8718
+                        <br />
+                        <span className="text-white/60 text-sm">CR: 1010674528</span>
+                      </p>
+                    </InfoItem>
+
+                    <InfoItem icon={PhoneCall} label="Phone">
+                      <div className="mt-1.5 space-y-1">
+                        {PHONES.map((p) => (
+                          <a
+                            key={p}
+                            href={`tel:${p.replace(/[^+\d]/g, "")}`}
+                            className="block text-white/90 hover:text-[var(--gold)] transition-colors leading-relaxed"
+                          >
+                            {p}
+                          </a>
+                        ))}
+                      </div>
+                    </InfoItem>
+
+                    <InfoItem icon={Mail} label="Email">
+                      <div className="mt-1.5 space-y-1">
+                        {EMAILS.map((e) => (
+                          <a
+                            key={e}
+                            href={`mailto:${e}`}
+                            className="block text-white/90 hover:text-[var(--gold)] transition-colors leading-relaxed break-all"
+                          >
+                            {e}
+                          </a>
+                        ))}
+                      </div>
+                    </InfoItem>
                   </ul>
 
                   <div className="hairline mt-12 opacity-40" />
@@ -203,5 +199,30 @@ function Field({
         className="w-full rounded-xl border border-[color-mix(in_oklab,var(--navy)_12%,transparent)] bg-[var(--ivory)]/40 px-4 py-3.5 text-[15px] text-[var(--navy)] placeholder:text-muted-foreground/60 transition-all duration-300 hover:border-[color-mix(in_oklab,var(--navy)_22%,transparent)] focus:border-[var(--gold)] focus:bg-white focus:outline-none focus:ring-4 focus:ring-[var(--gold)]/10"
       />
     </div>
+  );
+}
+
+function InfoItem({
+  icon: Icon,
+  label,
+  children,
+}: {
+  icon: typeof Mail;
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <li className="group grid grid-cols-[auto_1fr] gap-5">
+      <div className="relative shrink-0">
+        <div className="absolute inset-0 rounded-xl bg-[var(--gold)]/20 blur-md opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        <div className="relative h-12 w-12 rounded-xl border border-white/15 bg-white/5 flex items-center justify-center transition-all duration-500 group-hover:border-[var(--gold)]/60 group-hover:bg-[var(--gold)]/10">
+          <Icon className="h-[18px] w-[18px] text-[var(--gold)]" strokeWidth={1.5} />
+        </div>
+      </div>
+      <div className="pt-1">
+        <p className="eyebrow text-[var(--gold)]">{label}</p>
+        {children}
+      </div>
+    </li>
   );
 }
