@@ -105,6 +105,7 @@ function ServicesPage() {
         eyebrow="Define your project"
         title="Tell us what you need to build, secure or support."
         showSecondary={false}
+        floating
       />
     </SiteLayout>
   );

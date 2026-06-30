@@ -242,6 +242,7 @@ function ClientsPage() {
         eyebrow="Confidential by design"
         title="Speak with us about your mandate."
         description="Every conversation begins under confidentiality. Tell us what's at stake — we will respond personally."
+        floating
       />
     </SiteLayout>
   );
