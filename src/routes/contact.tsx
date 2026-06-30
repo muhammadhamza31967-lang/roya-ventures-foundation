@@ -18,12 +18,8 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
-const PHONES = ["+966-509600042", "+966-502879339"];
-const EMAILS = [
-  "admin@royaventure.com",
-  "info@royaventure.com",
-  "raza.saudagar@royaventure.com",
-];
+const PHONES = ["+966-509600042"];
+const EMAILS = ["info@royaventure.com"];
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
@@ -130,11 +126,9 @@ function ContactPage() {
                   <div className="mt-5 h-px w-12 bg-[var(--gold)]" />
 
                   <ul className="mt-8 space-y-5">
-                    <InfoItem icon={MapPin} label="Address">
+                    <InfoItem icon={MapPin} label="Location">
                       <p className="mt-1.5 text-white/90 leading-relaxed">
-                        12744, Riyadh-8718
-                        <br />
-                        <span className="text-white/60 text-sm">CR: 1010674528</span>
+                        Riyadh, KSA
                       </p>
                     </InfoItem>
 
