@@ -177,26 +177,9 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Services — compact interactive journey */}
-      <section className="section-y relative overflow-hidden" style={{ background: "var(--grad-ivory)" }}>
-        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-grid-soft opacity-[0.35]" />
-        <div aria-hidden className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_10%,transparent),transparent_65%)] blur-2xl" />
+      {/* What We Do — editorial capability index */}
+      <WhatWeDo />
 
-        <div className="container-px mx-auto">
-          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between mb-12">
-            <SectionHeading
-              eyebrow="What we do — the journey"
-              title={<>A guided path through our <em className="not-italic text-[var(--gold)]">core practices.</em></>}
-              description="Follow the line — each milestone is a discipline we design, install and support end to end."
-            />
-            <Link to="/services" className="btn-ghost shrink-0" data-cursor="hover">
-              All services <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-
-          <ServicesJourney />
-        </div>
-      </section>
 
 
       {/* Full-width feature image with floating quote panel */}
