@@ -322,6 +322,21 @@
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
+@keyframes path-draw {
+  from { stroke-dashoffset: var(--path-len, 2000); }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes path-travel {
+  from { offset-distance: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  to { offset-distance: 100%; opacity: 0; }
+}
+@keyframes gold-pulse {
+  0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--gold) 55%, transparent); }
+  70% { box-shadow: 0 0 0 14px color-mix(in oklab, var(--gold) 0%, transparent); }
+  100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--gold) 0%, transparent); }
+}
 
 .marquee-track {
   animation: marquee-x 40s linear infinite;
