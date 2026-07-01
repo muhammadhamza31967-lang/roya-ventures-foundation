@@ -481,7 +481,8 @@ function ServicesJourney() {
                   >
                     <path
                       d={isRight ? "M80 0 C 40 32, 120 64, 80 96" : "M80 0 C 120 32, 40 64, 80 96"}
-                      stroke="color-mix(in oklab, var(--gold) 55%, transparent)"
+                      stroke="#B3955A"
+                      strokeOpacity={0.55}
                       strokeWidth="1"
                       strokeDasharray="3 5"
                     />
