@@ -253,7 +253,8 @@ function HomePage() {
               </div>
 
               {/* Right — capability list */}
-              <div className="lg:col-span-7">
+              <div className="lg:col-span-7 lg:self-center lg:pt-10">
+
                 <ul className="grid gap-3 sm:grid-cols-2">
                   {CAPABILITIES.map(({ icon: Icon, name, desc }, i) => (
                     <Reveal key={name} delay={(i % 4) * 0.05}>
