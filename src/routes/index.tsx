@@ -351,226 +351,214 @@ function HomePage() {
 }
 
 // ============================================================
-// Services Journey — a compact interactive curved path
-// A single flowing SVG curve with six milestone nodes. The path
-// draws in on mount, a gold pulse travels along it, and each node
-// activates on hover with a ripple + title/description reveal.
-// On mobile it collapses into a clean vertical animated path.
+// What We Do — editorial capability index
+//
+// A compact, magazine-style two-column module: a large featured
+// image on the left (which swaps as the active service changes),
+// and a slim, numbered index of all 11 practices on the right.
+// Rows are icon-led with a gold underline that animates on hover
+// and drives the featured image / caption on the left.
+// Collapses to a single-column list on mobile.
 // ============================================================
 
-const JOURNEY_ICONS = [Zap, Server, Network, Cable, Siren, KeyRound];
+const CAPABILITY_ICONS: Record<string, typeof Zap> = {
+  "electrical-contracts": Zap,
+  "data-center-setup": Server,
+  "networking": Network,
+  "ethernet-fiber-cabling": Cable,
+  "fire-fighting": Flame,
+  "ems-access-control": ShieldCheck,
+  "surveillance-system": ScanEye,
+  "digital-signage-footfall": MonitorPlay,
+  "pos-hardware-software": ScanBarcode,
+  "website-development-amcs": Code2,
+  "it-services": HardDrive,
+};
 
-function ServicesJourney() {
-  const stops = HOME_SERVICES.map((svc, i) => ({
-    ...svc,
-    Icon: JOURNEY_ICONS[i] ?? Cpu,
+function WhatWeDo() {
+  const items = SERVICES.map((s, i) => ({
+    ...s,
+    n: String(i + 1).padStart(2, "0"),
+    Icon: CAPABILITY_ICONS[s.slug] ?? Cpu,
   }));
-
-  // Node positions along a 1200x260 viewBox curve (percent of width).
-  // The path: gentle S-curve across the section.
-  const NODES_X = [6, 24, 42, 58, 76, 94];
-  // Y positions matching the curve at each x (approx sampled from path d).
-  const NODES_Y = [130, 78, 165, 95, 178, 110];
-  const PATH_D = "M 72,130 C 200,20 300,220 504,165 C 660,120 780,215 912,110 C 1000,40 1100,120 1128,110";
+  const [active, setActive] = useState(0);
+  const current = items[active];
 
   return (
-    <div className="relative mx-auto max-w-7xl">
-      {/* ---------- Desktop / tablet: horizontal curved path ---------- */}
-      <div className="hidden md:block relative">
-        <div className="relative h-[380px] lg:h-[420px]">
-          {/* SVG path */}
-          <svg
-            aria-hidden
-            viewBox="0 0 1200 260"
-            preserveAspectRatio="none"
-            className="absolute inset-0 h-full w-full overflow-visible"
-          >
-            <defs>
-              <linearGradient id="journey-line" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="#B3955A" stopOpacity="0.1" />
-                <stop offset="50%" stopColor="#B3955A" stopOpacity="0.9" />
-                <stop offset="100%" stopColor="#B3955A" stopOpacity="0.1" />
-              </linearGradient>
-              <filter id="journey-glow" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur stdDeviation="3" result="b" />
-                <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
-              </filter>
-            </defs>
+    <section className="section-y relative overflow-hidden" style={{ background: "var(--grad-ivory)" }}>
+      {/* branded decorative backdrop */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-grid-soft opacity-[0.35]" />
+      <div aria-hidden className="pointer-events-none absolute -top-40 -left-40 h-[32rem] w-[32rem] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_10%,transparent),transparent_65%)] blur-2xl" />
+      <div aria-hidden className="pointer-events-none absolute -bottom-40 -right-32 h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--emerald-deep)_18%,transparent),transparent_65%)] blur-3xl" />
 
-            {/* Ghost / background path */}
-            <path
-              d={PATH_D}
-              stroke="#18314E"
-              strokeOpacity="0.08"
-              strokeWidth="1.5"
-              fill="none"
-            />
-            {/* Animated drawn path */}
-            <path
-              d={PATH_D}
-              stroke="url(#journey-line)"
-              strokeWidth="1.6"
-              fill="none"
-              filter="url(#journey-glow)"
-              style={{
-                strokeDasharray: 2600,
-                strokeDashoffset: 2600,
-                animation: "path-draw 2.4s cubic-bezier(0.65,0,0.35,1) 0.15s forwards",
-                ["--path-len" as string]: 2600,
-              }}
-            />
-            {/* Dashed overlay for premium hairline texture */}
-            <path
-              d={PATH_D}
-              stroke="#B3955A"
-              strokeOpacity="0.35"
-              strokeWidth="0.8"
-              strokeDasharray="2 6"
-              fill="none"
-            />
-          </svg>
-
-          {/* Traveling gold pulse along the path */}
-          <div
-            aria-hidden
-            className="absolute inset-0 pointer-events-none"
-          >
-            <div
-              className="absolute h-2.5 w-2.5 rounded-full bg-[var(--gold)]"
-              style={{
-                boxShadow: "0 0 12px 3px color-mix(in oklab, var(--gold) 60%, transparent)",
-                offsetPath: `path("${PATH_D}")`,
-                ["offsetRotate" as string]: "0deg",
-                animation: "path-travel 6s cubic-bezier(0.6,0,0.4,1) 0.4s infinite",
-                // Match the SVG viewBox → container scaling.
-                // We render this inside the same box but the path is in a 1200x260
-                // coordinate system; the browser scales offset-path with its own
-                // container. To match, we place the dot inside a matching sized svg.
-              }}
-            />
+      <div className="container-px mx-auto">
+        {/* Editorial header row */}
+        <div className="grid gap-6 md:grid-cols-12 md:items-end mb-10 md:mb-14">
+          <div className="md:col-span-8">
+            <p className="eyebrow text-[var(--gold)]">What we do</p>
+            <h2 className="mt-4 font-display text-3xl md:text-5xl font-light tracking-[-0.025em] leading-[1.05] text-[var(--navy)]">
+              End-to-end engineering, technology and{" "}
+              <em className="not-italic text-[var(--gold)]">infrastructure</em>{" "}
+              — delivered as one practice.
+            </h2>
           </div>
+          <div className="md:col-span-4 md:text-right">
+            <p className="text-[15px] leading-[1.7] text-muted-foreground max-w-md md:ml-auto">
+              Eleven disciplines. One accountable team. From power and cabling to
+              networks, security and software — designed, installed and supported end to end.
+            </p>
+          </div>
+        </div>
 
-          {/* Nodes overlaid using percentage positions */}
-          <ol className="absolute inset-0 list-none">
-            {stops.map((s, i) => {
-              const above = i % 2 === 0; // alternate content above / below
-              const leftPct = NODES_X[i];
-              const topPct = (NODES_Y[i] / 260) * 100;
-              return (
-                <li
-                  key={s.slug}
-                  className="group absolute"
-                  style={{
-                    left: `${leftPct}%`,
-                    top: `${topPct}%`,
-                    transform: "translate(-50%, -50%)",
-                    animation: `reveal-in 0.7s ease-out ${0.6 + i * 0.12}s both`,
-                    opacity: 0,
-                  }}
-                >
-                  {/* Content bubble — alternates above/below the node */}
-                  <div
-                    className={[
-                      "absolute left-1/2 -translate-x-1/2 w-56 lg:w-64 text-center pointer-events-none",
-                      above ? "bottom-[calc(100%+18px)]" : "top-[calc(100%+18px)]",
-                    ].join(" ")}
-                  >
-                    <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] font-semibold">
-                      {String(i + 1).padStart(2, "0")} · Milestone
-                    </p>
-                    <h3 className="mt-1.5 font-display text-[15px] lg:text-base font-semibold text-[var(--navy)] tracking-[-0.01em] leading-snug">
-                      {s.title}
-                    </h3>
-                    <p className="mt-1.5 text-[12px] leading-relaxed text-muted-foreground line-clamp-2 opacity-0 translate-y-1 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
-                      {s.short}
-                    </p>
-                  </div>
+        {/* Two-column editorial: feature image ↔ capability index */}
+        <div className="grid gap-10 lg:gap-14 lg:grid-cols-12 items-start">
+          {/* LEFT — featured image / editorial caption */}
+          <div className="lg:col-span-5 lg:sticky lg:top-28">
+            <div className="relative">
+              {/* Gold hairline corner accents */}
+              <span aria-hidden className="absolute -top-3 -left-3 h-7 w-7 border-t border-l border-[var(--gold)]/70" />
+              <span aria-hidden className="absolute -bottom-3 -right-3 h-7 w-7 border-b border-r border-[var(--gold)]/70" />
 
-                  {/* Connector tick from node to content */}
-                  <div
-                    aria-hidden
+              {/* Image frame */}
+              <div className="relative overflow-hidden rounded-[1.25rem] border border-[color-mix(in_oklab,var(--navy)_10%,transparent)] shadow-[var(--shadow-elegant)] aspect-[4/5] bg-[var(--navy)]">
+                {items.map((it, i) => (
+                  <img
+                    key={it.slug}
+                    src={it.image}
+                    alt={it.title}
+                    loading={i === 0 ? "eager" : "lazy"}
                     className={[
-                      "absolute left-1/2 -translate-x-1/2 w-px bg-gradient-to-b from-transparent via-[var(--gold)]/40 to-transparent",
-                      above ? "bottom-full h-4" : "top-full h-4",
+                      "absolute inset-0 h-full w-full object-cover transition-all duration-[900ms] ease-out",
+                      i === active ? "opacity-100 scale-100" : "opacity-0 scale-[1.04]",
                     ].join(" ")}
                   />
-
-                  {/* Node marker */}
-                  <Link
-                    to="/services"
-                    aria-label={s.title}
-                    data-cursor="hover"
-                    className="relative grid h-12 w-12 lg:h-14 lg:w-14 place-items-center rounded-full bg-white border border-[var(--gold)]/50 shadow-[0_10px_28px_-14px_color-mix(in_oklab,var(--navy)_50%,transparent)] transition-all duration-500 hover:scale-110 hover:border-[var(--gold)]"
-                    style={{ animation: `gold-pulse 3.4s ease-out ${1.2 + i * 0.35}s infinite` }}
-                  >
-                    <s.Icon className="h-[18px] w-[18px] lg:h-5 lg:w-5 text-[var(--gold)] transition-transform duration-500 group-hover:scale-110" strokeWidth={1.6} />
-                    <span className="absolute -top-1.5 -right-1.5 grid h-5 w-5 place-items-center rounded-full bg-[var(--navy)] text-[9px] font-semibold tracking-wider text-[var(--gold)] border border-[var(--gold)]/50">
-                      {String(i + 1).padStart(2, "0")}
+                ))}
+                {/* navy wash for legibility */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)]/85 via-[var(--navy-deep)]/25 to-transparent" />
+                {/* caption */}
+                <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+                  <div className="flex items-center gap-3">
+                    <span className="text-[var(--gold)] font-display text-2xl md:text-3xl font-light tracking-tight">
+                      {current.n}
                     </span>
-                    {/* Hover ripple */}
-                    <span
-                      aria-hidden
-                      className="absolute inset-0 rounded-full border border-[var(--gold)]/60 opacity-0 scale-100 group-hover:opacity-100 group-hover:scale-[1.6] transition-all duration-700"
-                    />
-                  </Link>
-                </li>
-              );
-            })}
-          </ol>
-        </div>
+                    <span className="h-px flex-1 bg-[var(--gold)]/60" />
+                    <span className="text-[10px] tracking-[0.28em] uppercase text-white/70">Practice</span>
+                  </div>
+                  <h3
+                    key={`title-${current.slug}`}
+                    className="mt-4 font-display text-2xl md:text-[28px] font-semibold text-white tracking-[-0.02em] leading-tight animate-fade-in"
+                  >
+                    {current.title}
+                  </h3>
+                  <p
+                    key={`desc-${current.slug}`}
+                    className="mt-3 text-[13px] md:text-sm leading-relaxed text-white/80 max-w-md animate-fade-in"
+                  >
+                    {current.short}
+                  </p>
+                </div>
+              </div>
 
-        {/* End cap */}
-        <div className="mt-6 flex justify-center">
-          <div className="flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] text-[var(--navy)]/55">
-            <span className="h-px w-8 bg-[var(--gold)]" />
-            <span>Six flagship practices — eleven in total</span>
-            <span className="h-px w-8 bg-[var(--gold)]" />
+              {/* Footnote strip */}
+              <div className="mt-5 flex items-center gap-3 text-[10px] tracking-[0.3em] uppercase text-[var(--navy)]/55">
+                <span className="h-px w-8 bg-[var(--gold)]" />
+                <span>Hover the index — the story updates</span>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT — numbered capability index */}
+          <div className="lg:col-span-7">
+            <ul
+              className="relative divide-y divide-[color-mix(in_oklab,var(--navy)_10%,transparent)] border-y border-[color-mix(in_oklab,var(--navy)_10%,transparent)]"
+              onMouseLeave={() => setActive(0)}
+            >
+              {items.map((it, i) => {
+                const isActive = i === active;
+                return (
+                  <li key={it.slug}>
+                    <Link
+                      to="/services"
+                      data-cursor="hover"
+                      onMouseEnter={() => setActive(i)}
+                      onFocus={() => setActive(i)}
+                      className="group relative flex items-center gap-4 md:gap-6 py-4 md:py-[18px] px-1 md:px-3 transition-colors"
+                    >
+                      {/* Left gold rail on active */}
+                      <span
+                        aria-hidden
+                        className={[
+                          "absolute left-0 top-0 bottom-0 w-[2px] bg-[var(--gold)] origin-top transition-transform duration-500",
+                          isActive ? "scale-y-100" : "scale-y-0",
+                        ].join(" ")}
+                      />
+                      {/* Number */}
+                      <span
+                        className={[
+                          "font-display text-lg md:text-xl tracking-tight w-9 md:w-11 shrink-0 transition-colors duration-300",
+                          isActive ? "text-[var(--gold)]" : "text-[var(--navy)]/35",
+                        ].join(" ")}
+                      >
+                        {it.n}
+                      </span>
+                      {/* Icon chip */}
+                      <span
+                        className={[
+                          "grid h-10 w-10 md:h-11 md:w-11 place-items-center rounded-full border shrink-0 transition-all duration-500",
+                          isActive
+                            ? "bg-[var(--navy)] border-[var(--gold)] text-[var(--gold)]"
+                            : "bg-white border-[color-mix(in_oklab,var(--navy)_12%,transparent)] text-[var(--navy)] group-hover:border-[var(--gold)]/60",
+                        ].join(" ")}
+                      >
+                        <it.Icon className="h-[18px] w-[18px]" strokeWidth={1.6} />
+                      </span>
+                      {/* Title + subtitle */}
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-baseline gap-3">
+                          <h3
+                            className={[
+                              "font-display text-[17px] md:text-[19px] font-semibold tracking-[-0.01em] leading-tight transition-colors duration-300",
+                              isActive ? "text-[var(--navy)]" : "text-[var(--navy)]/85 group-hover:text-[var(--navy)]",
+                            ].join(" ")}
+                          >
+                            {it.title}
+                          </h3>
+                        </div>
+                        <p className="mt-1 hidden md:block text-[13px] leading-snug text-muted-foreground truncate">
+                          {it.short}
+                        </p>
+                      </div>
+                      {/* Arrow / underline indicator */}
+                      <span
+                        aria-hidden
+                        className={[
+                          "hidden md:inline-flex items-center gap-2 text-[11px] tracking-[0.28em] uppercase text-[var(--gold)] transition-all duration-500",
+                          isActive ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2",
+                        ].join(" ")}
+                      >
+                        <span className="h-px w-8 bg-[var(--gold)]" />
+                        <ArrowRight className="h-3.5 w-3.5" />
+                      </span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+
+            <div className="mt-8 flex items-center justify-between gap-6">
+              <p className="text-[13px] text-muted-foreground max-w-sm">
+                A single accountable partner for the systems that keep modern
+                organisations powered, connected and secure.
+              </p>
+              <Link to="/services" className="btn-ghost shrink-0" data-cursor="hover">
+                All services <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
-
-      {/* ---------- Mobile: compact vertical animated path ---------- */}
-      <div className="md:hidden relative">
-        <div
-          aria-hidden
-          className="absolute top-2 bottom-2 left-6 w-px bg-gradient-to-b from-transparent via-[var(--gold)]/60 to-transparent"
-        />
-        <ol className="relative space-y-5">
-          {stops.map((s, i) => (
-            <li
-              key={s.slug}
-              className="group relative pl-16"
-              style={{ animation: `reveal-in 0.6s ease-out ${0.15 + i * 0.08}s both`, opacity: 0 }}
-            >
-              <Link
-                to="/services"
-                data-cursor="hover"
-                className="relative grid h-11 w-11 place-items-center rounded-full bg-white border border-[var(--gold)]/50 shadow-[0_8px_20px_-10px_color-mix(in_oklab,var(--navy)_50%,transparent)] absolute left-0 top-0"
-                style={{
-                  position: "absolute",
-                  animation: `gold-pulse 3.4s ease-out ${0.6 + i * 0.3}s infinite`,
-                }}
-                aria-label={s.title}
-              >
-                <s.Icon className="h-4 w-4 text-[var(--gold)]" strokeWidth={1.6} />
-                <span className="absolute -top-1.5 -right-1.5 grid h-4.5 w-4.5 min-w-[18px] h-[18px] place-items-center rounded-full bg-[var(--navy)] text-[8px] font-semibold tracking-wider text-[var(--gold)] border border-[var(--gold)]/50">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-              </Link>
-              <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--gold)] font-semibold">
-                Milestone {String(i + 1).padStart(2, "0")}
-              </p>
-              <h3 className="mt-1 font-display text-base font-semibold text-[var(--navy)] tracking-[-0.01em] leading-snug">
-                {s.title}
-              </h3>
-              <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
-                {s.short}
-              </p>
-            </li>
-          ))}
-        </ol>
-      </div>
-    </div>
+    </section>
   );
 }
+
 
