@@ -54,18 +54,18 @@ export function Footer() {
           {/* Brand column — logos + description */}
           <div className="lg:col-span-4">
 
-            <div className="flex items-center gap-5">
+            <div className="inline-flex items-center gap-5 rounded-2xl bg-white/95 px-5 py-3 shadow-lg ring-1 ring-white/20">
               <img
                 src={logo.url}
                 alt="Roya Ventures"
-                className="h-14 md:h-16 w-auto brightness-0 invert"
+                className="h-12 md:h-14 w-auto"
                 loading="lazy"
               />
-              <span aria-hidden className="h-12 w-px bg-gradient-to-b from-transparent via-[var(--gold)]/50 to-transparent" />
+              <span aria-hidden className="h-10 w-px bg-[var(--navy)]/15" />
               <img
                 src={visionLogo.url}
                 alt="Saudi Vision 2030"
-                className="h-14 md:h-16 w-auto"
+                className="h-12 md:h-14 w-auto"
                 loading="lazy"
               />
             </div>
