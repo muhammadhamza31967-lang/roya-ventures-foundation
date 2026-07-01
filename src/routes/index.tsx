@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Cable, Cpu, Network, ShieldCheck, Building2, Flame, Code2, Activity, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, Cable, Cpu, Network, ShieldCheck, Building2, Flame, Code2, Activity, Linkedin, Mail, Zap, Server, Radio, Siren, KeyRound } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { HeroSlider } from "@/components/site/HeroSlider";
 import { SectionHeading } from "@/components/site/SectionHeading";
@@ -176,40 +176,26 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Services — image-led masonry */}
+      {/* Services — interactive journey / milestone path */}
       <section className="section-y relative overflow-hidden" style={{ background: "var(--grad-ivory)" }}>
+        {/* decorative branded backdrop — visually distinct from other sections */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-grid-soft opacity-[0.35]" />
+        <div aria-hidden className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[36rem] w-[36rem] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_10%,transparent),transparent_65%)] blur-2xl" />
+        <div aria-hidden className="pointer-events-none absolute -bottom-40 right-0 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--emerald-deep)_20%,transparent),transparent_65%)] blur-3xl" />
+
         <div className="container-px mx-auto">
-          <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between mb-16">
+          <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between mb-20">
             <SectionHeading
-              eyebrow="What we do"
-              title={<>Eleven specialised practices for <em className="not-italic text-[var(--gold)]">modern infrastructure.</em></>}
-              description="From the cabling in your walls to the software on your screens — engineered, installed and supported by a single accountable team."
+              eyebrow="What we do — the journey"
+              title={<>A guided path through our <em className="not-italic text-[var(--gold)]">core practices.</em></>}
+              description="Follow the line — each milestone is a discipline we design, install and support end to end."
             />
             <Link to="/services" className="btn-ghost shrink-0" data-cursor="hover">
               All services <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 auto-rows-fr">
-            <Reveal className="md:col-span-7">
-              <ImageServiceCard image={HOME_SERVICES[0].image} title={HOME_SERVICES[0].title} description={HOME_SERVICES[0].short} index={0} size="wide" />
-            </Reveal>
-            <Reveal delay={0.08} className="md:col-span-5">
-              <ImageServiceCard image={HOME_SERVICES[1].image} title={HOME_SERVICES[1].title} description={HOME_SERVICES[1].short} index={1} size="tall" />
-            </Reveal>
-            <Reveal delay={0.15} className="md:col-span-4">
-              <ImageServiceCard image={HOME_SERVICES[2].image} title={HOME_SERVICES[2].title} description={HOME_SERVICES[2].short} index={2} />
-            </Reveal>
-            <Reveal delay={0.22} className="md:col-span-4">
-              <ImageServiceCard image={HOME_SERVICES[3].image} title={HOME_SERVICES[3].title} description={HOME_SERVICES[3].short} index={3} />
-            </Reveal>
-            <Reveal delay={0.29} className="md:col-span-4">
-              <ImageServiceCard image={HOME_SERVICES[4].image} title={HOME_SERVICES[4].title} description={HOME_SERVICES[4].short} index={4} />
-            </Reveal>
-            <Reveal delay={0.36} className="md:col-span-12">
-              <ImageServiceCard image={HOME_SERVICES[5].image} title={HOME_SERVICES[5].title} description={HOME_SERVICES[5].short} index={5} size="banner" />
-            </Reveal>
-          </div>
+          <ServicesJourney />
         </div>
       </section>
 
@@ -378,5 +364,144 @@ function HomePage() {
 
       <PartnersMarquee />
     </SiteLayout>
+  );
+}
+
+// ============================================================
+// Services Journey — an alternating milestone path along a gold spine.
+// Distinct visual language (no cards / no grid) that reads as a route
+// through Roya Ventures' six flagship practices.
+// ============================================================
+
+const JOURNEY_ICONS = [Zap, Server, Network, Cable, Siren, KeyRound];
+
+function ServicesJourney() {
+  const stops = HOME_SERVICES.map((svc, i) => ({
+    ...svc,
+    Icon: JOURNEY_ICONS[i] ?? Cpu,
+  }));
+
+  return (
+    <div className="relative mx-auto max-w-6xl">
+      {/* Vertical spine — mobile left, desktop centered */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute top-0 bottom-0 left-6 md:left-1/2 md:-translate-x-1/2 w-px bg-gradient-to-b from-transparent via-[var(--gold)]/55 to-transparent"
+      />
+      {/* Soft glow behind spine */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute top-0 bottom-0 left-6 md:left-1/2 md:-translate-x-1/2 w-16 -ml-8 bg-gradient-to-b from-transparent via-[color-mix(in_oklab,var(--gold)_8%,transparent)] to-transparent blur-2xl"
+      />
+
+      <ol className="relative space-y-16 md:space-y-24">
+        {stops.map((s, i) => {
+          const isRight = i % 2 === 1; // alternate on desktop
+          return (
+            <li key={s.slug} className="relative">
+              <Reveal delay={i * 0.06}>
+                <div className="grid md:grid-cols-2 md:gap-16 items-center">
+                  {/* Content — sits opposite the image on desktop */}
+                  <div
+                    className={[
+                      "pl-20 md:pl-0",
+                      isRight ? "md:order-2 md:pl-16 md:text-left" : "md:order-1 md:pr-16 md:text-right",
+                    ].join(" ")}
+                  >
+                    <p className="eyebrow text-[var(--gold)]">
+                      Milestone {String(i + 1).padStart(2, "0")}
+                    </p>
+                    <h3 className="heading-md mt-3 text-[var(--navy)]">{s.title}</h3>
+                    <div
+                      className={[
+                        "mt-4 h-px w-14 bg-[var(--gold)]/70",
+                        isRight ? "md:mr-auto" : "md:ml-auto",
+                      ].join(" ")}
+                    />
+                    <p className="mt-5 text-[15px] md:text-base leading-[1.75] text-muted-foreground">
+                      {s.short}
+                    </p>
+                    <div
+                      className={[
+                        "mt-6 flex items-center gap-3 text-xs uppercase tracking-[0.28em] text-[var(--navy)]/55",
+                        isRight ? "md:justify-start" : "md:justify-end",
+                      ].join(" ")}
+                    >
+                      <Link
+                        to="/services"
+                        className="inline-flex items-center gap-2 text-[var(--navy)] hover:text-[var(--gold)] transition-colors"
+                        data-cursor="hover"
+                      >
+                        Explore practice <ArrowRight className="h-3.5 w-3.5" />
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* Image panel — opposite side on desktop */}
+                  <div className={["pl-20 md:pl-0 mt-8 md:mt-0", isRight ? "md:order-1" : "md:order-2"].join(" ")}>
+                    <div className="group relative overflow-hidden rounded-2xl border border-[color-mix(in_oklab,var(--navy)_10%,transparent)] shadow-[var(--shadow-card)] transition-all duration-700 hover:shadow-[var(--shadow-elegant)] hover:-translate-y-1">
+                      <div className="relative aspect-[16/10] overflow-hidden">
+                        <img
+                          src={s.image}
+                          alt={s.title}
+                          loading="lazy"
+                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)]/70 via-[var(--navy-deep)]/10 to-transparent" />
+                        {/* Gold hairline on hover */}
+                        <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent scale-x-0 origin-center transition-transform duration-700 group-hover:scale-x-100" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Milestone marker on the spine */}
+                <div
+                  aria-hidden
+                  className="absolute top-6 md:top-1/2 md:-translate-y-1/2 left-6 md:left-1/2 -translate-x-1/2 z-10"
+                >
+                  {/* Outer soft glow */}
+                  <div className="absolute inset-0 -m-4 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_40%,transparent),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  {/* Marker chip */}
+                  <div className="relative grid h-14 w-14 md:h-16 md:w-16 place-items-center rounded-full bg-white border border-[var(--gold)]/50 shadow-[0_10px_30px_-12px_color-mix(in_oklab,var(--navy)_35%,transparent)] transition-all duration-500 hover:border-[var(--gold)] hover:shadow-[0_16px_40px_-14px_color-mix(in_oklab,var(--gold)_70%,transparent)]">
+                    <s.Icon className="h-5 w-5 md:h-6 md:w-6 text-[var(--gold)]" strokeWidth={1.5} />
+                    <span className="absolute -bottom-2 -right-2 grid h-7 w-7 place-items-center rounded-full bg-[var(--navy)] text-[10px] font-semibold tracking-wider text-[var(--gold)] border border-[var(--gold)]/40">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Curved connector to next stop (desktop) */}
+                {i < stops.length - 1 && (
+                  <svg
+                    aria-hidden
+                    className="hidden md:block absolute left-1/2 -translate-x-1/2 -bottom-24 h-24 w-40 pointer-events-none"
+                    viewBox="0 0 160 96"
+                    fill="none"
+                  >
+                    <path
+                      d={isRight ? "M80 0 C 40 32, 120 64, 80 96" : "M80 0 C 120 32, 40 64, 80 96"}
+                      stroke="#B3955A"
+                      strokeOpacity={0.55}
+                      strokeWidth="1"
+                      strokeDasharray="3 5"
+                    />
+                  </svg>
+                )}
+              </Reveal>
+            </li>
+          );
+        })}
+      </ol>
+
+      {/* End cap */}
+      <div className="relative mt-16 flex justify-center">
+        <div className="flex items-center gap-4 text-xs uppercase tracking-[0.3em] text-[var(--navy)]/55">
+          <span className="h-px w-10 bg-[var(--gold)]" />
+          <span>End of the journey — eleven practices in total</span>
+          <span className="h-px w-10 bg-[var(--gold)]" />
+        </div>
+      </div>
+    </div>
   );
 }
