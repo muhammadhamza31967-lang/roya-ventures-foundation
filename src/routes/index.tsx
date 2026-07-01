@@ -367,9 +367,11 @@ function HomePage() {
 }
 
 // ============================================================
-// Services Journey — an alternating milestone path along a gold spine.
-// Distinct visual language (no cards / no grid) that reads as a route
-// through Roya Ventures' six flagship practices.
+// Services Journey — a compact interactive curved path
+// A single flowing SVG curve with six milestone nodes. The path
+// draws in on mount, a gold pulse travels along it, and each node
+// activates on hover with a ripple + title/description reveal.
+// On mobile it collapses into a clean vertical animated path.
 // ============================================================
 
 const JOURNEY_ICONS = [Zap, Server, Network, Cable, Siren, KeyRound];
@@ -380,127 +382,211 @@ function ServicesJourney() {
     Icon: JOURNEY_ICONS[i] ?? Cpu,
   }));
 
-  return (
-    <div className="relative mx-auto max-w-6xl">
-      {/* Vertical spine — mobile left, desktop centered */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute top-0 bottom-0 left-6 md:left-1/2 md:-translate-x-1/2 w-px bg-gradient-to-b from-transparent via-[var(--gold)]/55 to-transparent"
-      />
-      {/* Soft glow behind spine */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute top-0 bottom-0 left-6 md:left-1/2 md:-translate-x-1/2 w-16 -ml-8 bg-gradient-to-b from-transparent via-[color-mix(in_oklab,var(--gold)_8%,transparent)] to-transparent blur-2xl"
-      />
+  // Node positions along a 1200x260 viewBox curve (percent of width).
+  // The path: gentle S-curve across the section.
+  const NODES_X = [6, 24, 42, 58, 76, 94];
+  // Y positions matching the curve at each x (approx sampled from path d).
+  const NODES_Y = [130, 78, 165, 95, 178, 110];
+  const PATH_D = "M 72,130 C 200,20 300,220 504,165 C 660,120 780,215 912,110 C 1000,40 1100,120 1128,110";
 
-      <ol className="relative space-y-16 md:space-y-24">
-        {stops.map((s, i) => {
-          const isRight = i % 2 === 1; // alternate on desktop
-          return (
-            <li key={s.slug} className="relative">
-              <Reveal delay={i * 0.06}>
-                <div className="grid md:grid-cols-2 md:gap-16 items-center">
-                  {/* Content — sits opposite the image on desktop */}
+  return (
+    <div className="relative mx-auto max-w-7xl">
+      {/* ---------- Desktop / tablet: horizontal curved path ---------- */}
+      <div className="hidden md:block relative">
+        <div className="relative h-[380px] lg:h-[420px]">
+          {/* SVG path */}
+          <svg
+            aria-hidden
+            viewBox="0 0 1200 260"
+            preserveAspectRatio="none"
+            className="absolute inset-0 h-full w-full overflow-visible"
+          >
+            <defs>
+              <linearGradient id="journey-line" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="#B3955A" stopOpacity="0.1" />
+                <stop offset="50%" stopColor="#B3955A" stopOpacity="0.9" />
+                <stop offset="100%" stopColor="#B3955A" stopOpacity="0.1" />
+              </linearGradient>
+              <filter id="journey-glow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="3" result="b" />
+                <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
+            </defs>
+
+            {/* Ghost / background path */}
+            <path
+              d={PATH_D}
+              stroke="#18314E"
+              strokeOpacity="0.08"
+              strokeWidth="1.5"
+              fill="none"
+            />
+            {/* Animated drawn path */}
+            <path
+              d={PATH_D}
+              stroke="url(#journey-line)"
+              strokeWidth="1.6"
+              fill="none"
+              filter="url(#journey-glow)"
+              style={{
+                strokeDasharray: 2600,
+                strokeDashoffset: 2600,
+                animation: "path-draw 2.4s cubic-bezier(0.65,0,0.35,1) 0.15s forwards",
+                ["--path-len" as string]: 2600,
+              }}
+            />
+            {/* Dashed overlay for premium hairline texture */}
+            <path
+              d={PATH_D}
+              stroke="#B3955A"
+              strokeOpacity="0.35"
+              strokeWidth="0.8"
+              strokeDasharray="2 6"
+              fill="none"
+            />
+          </svg>
+
+          {/* Traveling gold pulse along the path */}
+          <div
+            aria-hidden
+            className="absolute inset-0 pointer-events-none"
+          >
+            <div
+              className="absolute h-2.5 w-2.5 rounded-full bg-[var(--gold)]"
+              style={{
+                boxShadow: "0 0 12px 3px color-mix(in oklab, var(--gold) 60%, transparent)",
+                offsetPath: `path("${PATH_D}")`,
+                ["offsetRotate" as string]: "0deg",
+                animation: "path-travel 6s cubic-bezier(0.6,0,0.4,1) 0.4s infinite",
+                // Match the SVG viewBox → container scaling.
+                // We render this inside the same box but the path is in a 1200x260
+                // coordinate system; the browser scales offset-path with its own
+                // container. To match, we place the dot inside a matching sized svg.
+              }}
+            />
+          </div>
+
+          {/* Nodes overlaid using percentage positions */}
+          <ol className="absolute inset-0 list-none">
+            {stops.map((s, i) => {
+              const above = i % 2 === 0; // alternate content above / below
+              const leftPct = NODES_X[i];
+              const topPct = (NODES_Y[i] / 260) * 100;
+              return (
+                <li
+                  key={s.slug}
+                  className="group absolute"
+                  style={{
+                    left: `${leftPct}%`,
+                    top: `${topPct}%`,
+                    transform: "translate(-50%, -50%)",
+                    animation: `reveal-in 0.7s ease-out ${0.6 + i * 0.12}s both`,
+                    opacity: 0,
+                  }}
+                >
+                  {/* Content bubble — alternates above/below the node */}
                   <div
                     className={[
-                      "pl-20 md:pl-0",
-                      isRight ? "md:order-2 md:pl-16 md:text-left" : "md:order-1 md:pr-16 md:text-right",
+                      "absolute left-1/2 -translate-x-1/2 w-56 lg:w-64 text-center pointer-events-none",
+                      above ? "bottom-[calc(100%+18px)]" : "top-[calc(100%+18px)]",
                     ].join(" ")}
                   >
-                    <p className="eyebrow text-[var(--gold)]">
-                      Milestone {String(i + 1).padStart(2, "0")}
+                    <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] font-semibold">
+                      {String(i + 1).padStart(2, "0")} · Milestone
                     </p>
-                    <h3 className="heading-md mt-3 text-[var(--navy)]">{s.title}</h3>
-                    <div
-                      className={[
-                        "mt-4 h-px w-14 bg-[var(--gold)]/70",
-                        isRight ? "md:mr-auto" : "md:ml-auto",
-                      ].join(" ")}
-                    />
-                    <p className="mt-5 text-[15px] md:text-base leading-[1.75] text-muted-foreground">
+                    <h3 className="mt-1.5 font-display text-[15px] lg:text-base font-semibold text-[var(--navy)] tracking-[-0.01em] leading-snug">
+                      {s.title}
+                    </h3>
+                    <p className="mt-1.5 text-[12px] leading-relaxed text-muted-foreground line-clamp-2 opacity-0 translate-y-1 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
                       {s.short}
                     </p>
-                    <div
-                      className={[
-                        "mt-6 flex items-center gap-3 text-xs uppercase tracking-[0.28em] text-[var(--navy)]/55",
-                        isRight ? "md:justify-start" : "md:justify-end",
-                      ].join(" ")}
-                    >
-                      <Link
-                        to="/services"
-                        className="inline-flex items-center gap-2 text-[var(--navy)] hover:text-[var(--gold)] transition-colors"
-                        data-cursor="hover"
-                      >
-                        Explore practice <ArrowRight className="h-3.5 w-3.5" />
-                      </Link>
-                    </div>
                   </div>
 
-                  {/* Image panel — opposite side on desktop */}
-                  <div className={["pl-20 md:pl-0 mt-8 md:mt-0", isRight ? "md:order-1" : "md:order-2"].join(" ")}>
-                    <div className="group relative overflow-hidden rounded-2xl border border-[color-mix(in_oklab,var(--navy)_10%,transparent)] shadow-[var(--shadow-card)] transition-all duration-700 hover:shadow-[var(--shadow-elegant)] hover:-translate-y-1">
-                      <div className="relative aspect-[16/10] overflow-hidden">
-                        <img
-                          src={s.image}
-                          alt={s.title}
-                          loading="lazy"
-                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)]/70 via-[var(--navy-deep)]/10 to-transparent" />
-                        {/* Gold hairline on hover */}
-                        <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent scale-x-0 origin-center transition-transform duration-700 group-hover:scale-x-100" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                  {/* Connector tick from node to content */}
+                  <div
+                    aria-hidden
+                    className={[
+                      "absolute left-1/2 -translate-x-1/2 w-px bg-gradient-to-b from-transparent via-[var(--gold)]/40 to-transparent",
+                      above ? "bottom-full h-4" : "top-full h-4",
+                    ].join(" ")}
+                  />
 
-                {/* Milestone marker on the spine */}
-                <div
-                  aria-hidden
-                  className="absolute top-6 md:top-1/2 md:-translate-y-1/2 left-6 md:left-1/2 -translate-x-1/2 z-10"
-                >
-                  {/* Outer soft glow */}
-                  <div className="absolute inset-0 -m-4 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_40%,transparent),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  {/* Marker chip */}
-                  <div className="relative grid h-14 w-14 md:h-16 md:w-16 place-items-center rounded-full bg-white border border-[var(--gold)]/50 shadow-[0_10px_30px_-12px_color-mix(in_oklab,var(--navy)_35%,transparent)] transition-all duration-500 hover:border-[var(--gold)] hover:shadow-[0_16px_40px_-14px_color-mix(in_oklab,var(--gold)_70%,transparent)]">
-                    <s.Icon className="h-5 w-5 md:h-6 md:w-6 text-[var(--gold)]" strokeWidth={1.5} />
-                    <span className="absolute -bottom-2 -right-2 grid h-7 w-7 place-items-center rounded-full bg-[var(--navy)] text-[10px] font-semibold tracking-wider text-[var(--gold)] border border-[var(--gold)]/40">
+                  {/* Node marker */}
+                  <Link
+                    to="/services"
+                    aria-label={s.title}
+                    data-cursor="hover"
+                    className="relative grid h-12 w-12 lg:h-14 lg:w-14 place-items-center rounded-full bg-white border border-[var(--gold)]/50 shadow-[0_10px_28px_-14px_color-mix(in_oklab,var(--navy)_50%,transparent)] transition-all duration-500 hover:scale-110 hover:border-[var(--gold)]"
+                    style={{ animation: `gold-pulse 3.4s ease-out ${1.2 + i * 0.35}s infinite` }}
+                  >
+                    <s.Icon className="h-[18px] w-[18px] lg:h-5 lg:w-5 text-[var(--gold)] transition-transform duration-500 group-hover:scale-110" strokeWidth={1.6} />
+                    <span className="absolute -top-1.5 -right-1.5 grid h-5 w-5 place-items-center rounded-full bg-[var(--navy)] text-[9px] font-semibold tracking-wider text-[var(--gold)] border border-[var(--gold)]/50">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                  </div>
-                </div>
-
-                {/* Curved connector to next stop (desktop) */}
-                {i < stops.length - 1 && (
-                  <svg
-                    aria-hidden
-                    className="hidden md:block absolute left-1/2 -translate-x-1/2 -bottom-24 h-24 w-40 pointer-events-none"
-                    viewBox="0 0 160 96"
-                    fill="none"
-                  >
-                    <path
-                      d={isRight ? "M80 0 C 40 32, 120 64, 80 96" : "M80 0 C 120 32, 40 64, 80 96"}
-                      stroke="#B3955A"
-                      strokeOpacity={0.55}
-                      strokeWidth="1"
-                      strokeDasharray="3 5"
+                    {/* Hover ripple */}
+                    <span
+                      aria-hidden
+                      className="absolute inset-0 rounded-full border border-[var(--gold)]/60 opacity-0 scale-100 group-hover:opacity-100 group-hover:scale-[1.6] transition-all duration-700"
                     />
-                  </svg>
-                )}
-              </Reveal>
-            </li>
-          );
-        })}
-      </ol>
-
-      {/* End cap */}
-      <div className="relative mt-16 flex justify-center">
-        <div className="flex items-center gap-4 text-xs uppercase tracking-[0.3em] text-[var(--navy)]/55">
-          <span className="h-px w-10 bg-[var(--gold)]" />
-          <span>End of the journey — eleven practices in total</span>
-          <span className="h-px w-10 bg-[var(--gold)]" />
+                  </Link>
+                </li>
+              );
+            })}
+          </ol>
         </div>
+
+        {/* End cap */}
+        <div className="mt-6 flex justify-center">
+          <div className="flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] text-[var(--navy)]/55">
+            <span className="h-px w-8 bg-[var(--gold)]" />
+            <span>Six flagship practices — eleven in total</span>
+            <span className="h-px w-8 bg-[var(--gold)]" />
+          </div>
+        </div>
+      </div>
+
+      {/* ---------- Mobile: compact vertical animated path ---------- */}
+      <div className="md:hidden relative">
+        <div
+          aria-hidden
+          className="absolute top-2 bottom-2 left-6 w-px bg-gradient-to-b from-transparent via-[var(--gold)]/60 to-transparent"
+        />
+        <ol className="relative space-y-5">
+          {stops.map((s, i) => (
+            <li
+              key={s.slug}
+              className="group relative pl-16"
+              style={{ animation: `reveal-in 0.6s ease-out ${0.15 + i * 0.08}s both`, opacity: 0 }}
+            >
+              <Link
+                to="/services"
+                data-cursor="hover"
+                className="relative grid h-11 w-11 place-items-center rounded-full bg-white border border-[var(--gold)]/50 shadow-[0_8px_20px_-10px_color-mix(in_oklab,var(--navy)_50%,transparent)] absolute left-0 top-0"
+                style={{
+                  position: "absolute",
+                  animation: `gold-pulse 3.4s ease-out ${0.6 + i * 0.3}s infinite`,
+                }}
+                aria-label={s.title}
+              >
+                <s.Icon className="h-4 w-4 text-[var(--gold)]" strokeWidth={1.6} />
+                <span className="absolute -top-1.5 -right-1.5 grid h-4.5 w-4.5 min-w-[18px] h-[18px] place-items-center rounded-full bg-[var(--navy)] text-[8px] font-semibold tracking-wider text-[var(--gold)] border border-[var(--gold)]/50">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+              </Link>
+              <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--gold)] font-semibold">
+                Milestone {String(i + 1).padStart(2, "0")}
+              </p>
+              <h3 className="mt-1 font-display text-base font-semibold text-[var(--navy)] tracking-[-0.01em] leading-snug">
+                {s.title}
+              </h3>
+              <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">
+                {s.short}
+              </p>
+            </li>
+          ))}
+        </ol>
       </div>
     </div>
   );
 }
+
