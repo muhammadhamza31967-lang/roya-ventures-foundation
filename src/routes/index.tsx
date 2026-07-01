@@ -176,40 +176,26 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Services — image-led masonry */}
+      {/* Services — interactive journey / milestone path */}
       <section className="section-y relative overflow-hidden" style={{ background: "var(--grad-ivory)" }}>
+        {/* decorative branded backdrop — visually distinct from other sections */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-grid-soft opacity-[0.35]" />
+        <div aria-hidden className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[36rem] w-[36rem] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_10%,transparent),transparent_65%)] blur-2xl" />
+        <div aria-hidden className="pointer-events-none absolute -bottom-40 right-0 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--emerald-deep)_20%,transparent),transparent_65%)] blur-3xl" />
+
         <div className="container-px mx-auto">
-          <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between mb-16">
+          <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between mb-20">
             <SectionHeading
-              eyebrow="What we do"
-              title={<>Eleven specialised practices for <em className="not-italic text-[var(--gold)]">modern infrastructure.</em></>}
-              description="From the cabling in your walls to the software on your screens — engineered, installed and supported by a single accountable team."
+              eyebrow="What we do — the journey"
+              title={<>A guided path through our <em className="not-italic text-[var(--gold)]">core practices.</em></>}
+              description="Follow the line — each milestone is a discipline we design, install and support end to end."
             />
             <Link to="/services" className="btn-ghost shrink-0" data-cursor="hover">
               All services <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 auto-rows-fr">
-            <Reveal className="md:col-span-7">
-              <ImageServiceCard image={HOME_SERVICES[0].image} title={HOME_SERVICES[0].title} description={HOME_SERVICES[0].short} index={0} size="wide" />
-            </Reveal>
-            <Reveal delay={0.08} className="md:col-span-5">
-              <ImageServiceCard image={HOME_SERVICES[1].image} title={HOME_SERVICES[1].title} description={HOME_SERVICES[1].short} index={1} size="tall" />
-            </Reveal>
-            <Reveal delay={0.15} className="md:col-span-4">
-              <ImageServiceCard image={HOME_SERVICES[2].image} title={HOME_SERVICES[2].title} description={HOME_SERVICES[2].short} index={2} />
-            </Reveal>
-            <Reveal delay={0.22} className="md:col-span-4">
-              <ImageServiceCard image={HOME_SERVICES[3].image} title={HOME_SERVICES[3].title} description={HOME_SERVICES[3].short} index={3} />
-            </Reveal>
-            <Reveal delay={0.29} className="md:col-span-4">
-              <ImageServiceCard image={HOME_SERVICES[4].image} title={HOME_SERVICES[4].title} description={HOME_SERVICES[4].short} index={4} />
-            </Reveal>
-            <Reveal delay={0.36} className="md:col-span-12">
-              <ImageServiceCard image={HOME_SERVICES[5].image} title={HOME_SERVICES[5].title} description={HOME_SERVICES[5].short} index={5} size="banner" />
-            </Reveal>
-          </div>
+          <ServicesJourney />
         </div>
       </section>
 
