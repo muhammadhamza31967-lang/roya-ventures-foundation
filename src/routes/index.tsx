@@ -52,15 +52,11 @@ const HOME_SERVICES = SERVICES.slice(0, 6);
 
 const CAPABILITIES = [
   { icon: Network, name: "End-to-End Project Execution", desc: "From design through commissioning — one accountable partner across every discipline." },
-  { icon: Building2, name: "Industry Expertise", desc: "Sector-fluent teams for enterprise, retail, public sector and mission-critical operations." },
   { icon: ShieldCheck, name: "Certified Professionals", desc: "Senior engineers with international certifications and decades of on-site delivery." },
   { icon: Activity, name: "Quality Assurance", desc: "Documented QA/QC processes, factory testing and full commissioning acceptance." },
   { icon: Cpu, name: "Innovative Engineering", desc: "Modern, standards-based designs — resilient, efficient and future-ready by intent." },
-  { icon: Cable, name: "Reliable Delivery", desc: "Predictable timelines, transparent reporting and disciplined project governance." },
   { icon: Server, name: "Scalable Infrastructure", desc: "Systems architected to grow with your business — modular, upgradable, non-disruptive." },
-  { icon: Code2, name: "Client-Focused Approach", desc: "A single point of contact and engineering ownership from kickoff through handover." },
   { icon: HardDrive, name: "Long-Term Support", desc: "AMCs, 24/7 monitoring and lifecycle maintenance that keep systems performing." },
-  { icon: Flame, name: "Safety & Compliance", desc: "NFPA, civil-defence and international standards embedded in every deployment." },
 ];
 
 const TEAM_PREVIEW = [
