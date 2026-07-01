@@ -51,14 +51,16 @@ const HERO_SLIDES = [
 const HOME_SERVICES = SERVICES.slice(0, 6);
 
 const CAPABILITIES = [
-  { icon: Cpu, name: "Data Centers", image: svcDatacenter },
-  { icon: Network, name: "Enterprise Networks", image: svcNetworking },
-  { icon: Cable, name: "Fiber & Structured Cabling", image: svcFiber },
-  { icon: ShieldCheck, name: "Access Control & EMS", image: svcEms },
-  { icon: Activity, name: "Surveillance & CCTV", image: svcSurveillance },
-  { icon: Flame, name: "Fire Protection", image: svcFirefighting },
-  { icon: Building2, name: "Electrical Contracts", image: svcElectrical },
-  { icon: Code2, name: "Web & IT Services", image: svcIt },
+  { icon: Network, name: "End-to-End Project Execution", desc: "From design through commissioning — one accountable partner across every discipline." },
+  { icon: Building2, name: "Industry Expertise", desc: "Sector-fluent teams for enterprise, retail, public sector and mission-critical operations." },
+  { icon: ShieldCheck, name: "Certified Professionals", desc: "Senior engineers with international certifications and decades of on-site delivery." },
+  { icon: Activity, name: "Quality Assurance", desc: "Documented QA/QC processes, factory testing and full commissioning acceptance." },
+  { icon: Cpu, name: "Innovative Engineering", desc: "Modern, standards-based designs — resilient, efficient and future-ready by intent." },
+  { icon: Cable, name: "Reliable Delivery", desc: "Predictable timelines, transparent reporting and disciplined project governance." },
+  { icon: Server, name: "Scalable Infrastructure", desc: "Systems architected to grow with your business — modular, upgradable, non-disruptive." },
+  { icon: Code2, name: "Client-Focused Approach", desc: "A single point of contact and engineering ownership from kickoff through handover." },
+  { icon: HardDrive, name: "Long-Term Support", desc: "AMCs, 24/7 monitoring and lifecycle maintenance that keep systems performing." },
+  { icon: Flame, name: "Safety & Compliance", desc: "NFPA, civil-defence and international standards embedded in every deployment." },
 ];
 
 const TEAM_PREVIEW = [
@@ -210,40 +212,80 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Capabilities grid */}
-      <section className="section-y" style={{ background: "var(--grad-ivory)" }}>
+      {/* Capabilities — dark plaque, editorial capability manifesto */}
+      <section className="section-y relative overflow-hidden" style={{ background: "var(--grad-ivory)" }}>
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-radial-gold opacity-60" />
         <div className="container-px mx-auto">
-          <SectionHeading
-            eyebrow="Capabilities"
-            title={<>Depth across the systems shaping the <em className="not-italic text-[var(--gold)]">connected enterprise.</em></>}
-            description="A coordinated engineering practice — so your network, power, security and IT systems are designed to work as one."
-          />
-          <div className="mt-16 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
-            {CAPABILITIES.map(({ icon: Icon, name, image }, i) => (
-              <Reveal key={name} delay={(i % 4) * 0.05}>
-                <div className="group relative h-full overflow-hidden rounded-2xl bg-card border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[var(--shadow-elegant)] hover:border-[var(--gold)]/40" data-cursor="hover">
-                  {/* Image */}
-                  <div className="relative aspect-[4/3] w-full overflow-hidden">
-                    <img
-                      src={image}
-                      alt={name}
-                      loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)]/85 via-[var(--navy-deep)]/25 to-transparent" />
-                    {/* Icon badge */}
-                    <div className="absolute left-5 top-5 grid h-12 w-12 place-items-center rounded-xl border border-white/25 bg-white/10 backdrop-blur-md text-white transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-[var(--navy)] group-hover:border-[var(--gold)]">
-                      <Icon className="h-5 w-5" strokeWidth={1.5} />
-                    </div>
+          <div className="relative isolate overflow-hidden rounded-[2rem] bg-noise text-white shadow-[0_50px_120px_-40px_rgba(14,36,64,0.55)]"
+            style={{ background: "linear-gradient(135deg, #0E2440 0%, #18314E 55%, #0F3A30 100%)" }}
+          >
+            {/* Ambient glows */}
+            <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+              <div className="absolute -top-32 -right-24 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_28%,transparent),transparent_65%)] blur-2xl" />
+              <div className="absolute -bottom-40 -left-32 h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--emerald-deep)_55%,transparent),transparent_65%)] blur-3xl" />
+              <div className="absolute inset-0 opacity-[0.08] bg-grid-soft" />
+              <div className="absolute top-10 right-10 h-40 w-40 rounded-full border border-[var(--gold)]/20" />
+              <div className="absolute top-16 right-16 h-28 w-28 rounded-full border border-[var(--gold)]/10" />
+            </div>
+            {/* Gold hairline corner accents */}
+            <span aria-hidden className="absolute top-6 left-6 h-6 w-6 border-t border-l border-[var(--gold)]/70" />
+            <span aria-hidden className="absolute top-6 right-6 h-6 w-6 border-t border-r border-[var(--gold)]/70" />
+            <span aria-hidden className="absolute bottom-6 left-6 h-6 w-6 border-b border-l border-[var(--gold)]/70" />
+            <span aria-hidden className="absolute bottom-6 right-6 h-6 w-6 border-b border-r border-[var(--gold)]/70" />
+
+            <div className="grid gap-14 lg:grid-cols-12 lg:gap-16 p-8 md:p-14 lg:p-20">
+              {/* Left — manifesto */}
+              <div className="lg:col-span-5 lg:sticky lg:top-32 self-start">
+                <Reveal>
+                  <p className="gold-rule text-[var(--gold)]">Capabilities</p>
+                  <h2 className="heading-lg mt-8 text-white leading-[1.05]">
+                    Why enterprises choose <em className="not-italic text-[var(--gold)]">Roya Ventures.</em>
+                  </h2>
+                  <div className="mt-8 h-px w-16 bg-[var(--gold)]" />
+                  <p className="mt-8 text-[17px] leading-[1.85] text-white/75 font-light">
+                    Beyond the disciplines we practice, our value is in how we execute — with senior
+                    ownership, engineering rigour and a long-term commitment to the systems we deliver.
+                  </p>
+                  <div className="mt-10 flex flex-wrap gap-3">
+                    {["Senior-led", "Standards-driven", "Vendor-neutral", "Lifecycle support"].map((t) => (
+                      <span key={t} className="text-[11px] tracking-[0.22em] uppercase px-3.5 py-2 rounded-full border border-[var(--gold)]/30 bg-white/[0.03] text-white/80">
+                        {t}
+                      </span>
+                    ))}
                   </div>
-                  {/* Caption */}
-                  <div className="p-5">
-                    <h3 className="text-base font-semibold text-[var(--navy)] tracking-tight">{name}</h3>
-                    <div className="mt-3 h-px w-8 bg-[var(--gold)] transition-all duration-500 group-hover:w-16" />
-                  </div>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              </div>
+
+              {/* Right — capability list */}
+              <div className="lg:col-span-7">
+                <ul className="grid gap-3 sm:grid-cols-2">
+                  {CAPABILITIES.map(({ icon: Icon, name, desc }, i) => (
+                    <Reveal key={name} delay={(i % 4) * 0.05}>
+                      <li
+                        className="group relative h-full rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-5 transition-all duration-500 hover:-translate-y-0.5 hover:border-[var(--gold)]/50 hover:bg-white/[0.06]"
+                        data-cursor="hover"
+                      >
+                        <span aria-hidden className="absolute left-0 top-5 bottom-5 w-[2px] bg-[var(--gold)] scale-y-0 origin-top transition-transform duration-500 group-hover:scale-y-100 rounded-r" />
+                        <div className="flex items-start gap-4">
+                          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-[var(--gold)]/30 bg-[var(--gold)]/[0.06] text-[var(--gold)] transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-[var(--navy)] group-hover:rotate-[-4deg]">
+                            <Icon className="h-4 w-4" strokeWidth={1.5} />
+                          </span>
+                          <div className="min-w-0">
+                            <div className="flex items-baseline gap-2">
+                              <span className="font-display text-[11px] tracking-[0.2em] text-[var(--gold)]/80">
+                                {String(i + 1).padStart(2, "0")}
+                              </span>
+                              <h3 className="text-[15px] font-semibold text-white tracking-tight leading-snug">{name}</h3>
+                            </div>
+                            <p className="mt-2 text-[13px] leading-[1.7] text-white/65 font-light">{desc}</p>
+                          </div>
+                        </div>
+                      </li>
+                    </Reveal>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
