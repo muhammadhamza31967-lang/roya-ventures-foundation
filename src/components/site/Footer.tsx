@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUp, Linkedin, Facebook, Instagram, Mail, Phone, MapPin } from "lucide-react";
 import logo from "@/assets/roya-logo-new.png.asset.json";
-import visionLogo from "@/assets/vision-2030-new.png.asset.json";
+import visionLogo from "@/assets/vision-2030-v2.png.asset.json";
 
 const QUICK = [
   { to: "/", label: "Home" },
@@ -54,18 +54,18 @@ export function Footer() {
           {/* Brand column — logos + description */}
           <div className="lg:col-span-4">
 
-            <div className="inline-flex items-center gap-5 rounded-2xl bg-white/95 px-5 py-3 shadow-lg ring-1 ring-white/20">
+            <div className="inline-flex items-center gap-6 md:gap-8 rounded-2xl bg-white/95 px-6 py-4 shadow-lg ring-1 ring-white/20">
               <img
                 src={logo.url}
                 alt="Roya Ventures"
-                className="h-12 md:h-14 w-auto"
+                className="h-16 md:h-20 lg:h-24 w-auto"
                 loading="lazy"
               />
-              <span aria-hidden className="h-10 w-px bg-[var(--navy)]/15" />
+              <span aria-hidden className="h-14 md:h-16 w-px bg-[var(--navy)]/15" />
               <img
                 src={visionLogo.url}
                 alt="Saudi Vision 2030"
-                className="h-12 md:h-14 w-auto"
+                className="h-16 md:h-20 lg:h-24 w-auto"
                 loading="lazy"
               />
             </div>
