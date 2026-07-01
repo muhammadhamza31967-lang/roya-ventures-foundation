@@ -376,7 +376,7 @@ const CAPABILITY_ICONS: Record<string, typeof Zap> = {
 };
 
 function WhatWeDo() {
-  const items = SERVICES.map((s, i) => ({
+  const items = SERVICES.slice(0, 6).map((s, i) => ({
     ...s,
     n: String(i + 1).padStart(2, "0"),
     Icon: CAPABILITY_ICONS[s.slug] ?? Cpu,
