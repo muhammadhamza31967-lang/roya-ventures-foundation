@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Cable, Cpu, Network, ShieldCheck, Building2, Flame, Code2, Activity, Linkedin, Mail, Zap, Server, Radio, Siren, KeyRound } from "lucide-react";
+import { useState } from "react";
+import { ArrowRight, Cable, Cpu, Network, ShieldCheck, Building2, Flame, Code2, Activity, Linkedin, Mail, Zap, Server, Radio, Siren, KeyRound, MonitorPlay, ScanBarcode, ScanEye, HardDrive } from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { HeroSlider } from "@/components/site/HeroSlider";
 import { SectionHeading } from "@/components/site/SectionHeading";
