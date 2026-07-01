@@ -268,7 +268,7 @@ function HomePage() {
                         <span aria-hidden className="absolute left-0 top-5 bottom-5 w-[2px] bg-[var(--gold)] scale-y-0 origin-top transition-transform duration-500 group-hover:scale-y-100 rounded-r" />
                         <div className="flex items-start gap-4">
                           <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-[var(--gold)]/30 bg-[var(--gold)]/[0.06] text-[var(--gold)] transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-[var(--navy)] group-hover:rotate-[-4deg]">
-                            <Icon className="h-4.5 w-4.5" strokeWidth={1.5} />
+                            <Icon className="h-4 w-4" strokeWidth={1.5} />
                           </span>
                           <div className="min-w-0">
                             <div className="flex items-baseline gap-2">
