@@ -176,15 +176,13 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Services — interactive journey / milestone path */}
+      {/* Services — compact interactive journey */}
       <section className="section-y relative overflow-hidden" style={{ background: "var(--grad-ivory)" }}>
-        {/* decorative branded backdrop — visually distinct from other sections */}
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-grid-soft opacity-[0.35]" />
-        <div aria-hidden className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[36rem] w-[36rem] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_10%,transparent),transparent_65%)] blur-2xl" />
-        <div aria-hidden className="pointer-events-none absolute -bottom-40 right-0 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--emerald-deep)_20%,transparent),transparent_65%)] blur-3xl" />
+        <div aria-hidden className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_10%,transparent),transparent_65%)] blur-2xl" />
 
         <div className="container-px mx-auto">
-          <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between mb-20">
+          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between mb-12">
             <SectionHeading
               eyebrow="What we do — the journey"
               title={<>A guided path through our <em className="not-italic text-[var(--gold)]">core practices.</em></>}
@@ -198,6 +196,7 @@ function HomePage() {
           <ServicesJourney />
         </div>
       </section>
+
 
       {/* Full-width feature image with floating quote panel */}
       <section className="relative isolate overflow-hidden">
