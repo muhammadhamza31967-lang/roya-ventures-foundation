@@ -8,10 +8,10 @@ import { Linkedin, Mail } from "lucide-react";
 import heroTeam from "@/assets/hero-team.jpg";
 import team1 from "@/assets/team-1.jpg";
 import team2 from "@/assets/team-2.jpg";
-import team3 from "@/assets/team-3.jpg";
 import team4 from "@/assets/team-4.jpg";
 import team5 from "@/assets/team-5.jpg";
 import team6 from "@/assets/team-6.jpg";
+import soudagarNaveed from "@/assets/soudagar-naveed.jpeg.asset.json";
 
 export const Route = createFileRoute("/team")({
   head: () => ({
@@ -28,7 +28,7 @@ export const Route = createFileRoute("/team")({
 const PARTNERS = [
   { img: team1, name: "Alexander Hart", role: "Managing Partner", bio: "Twenty-five years across consulting and enterprise leadership, with a focus on corporate strategy and capital allocation." },
   { img: team2, name: "Selma Ardıç", role: "Partner, Strategy", bio: "Former operating executive in industrial technology; advises boards on growth strategy and portfolio choices." },
-  { img: team3, name: "Daniel Okafor", role: "Partner, Corporate Finance", bio: "Investment banker turned advisor; leads the firm's capital and transactions practice across EMEA." },
+  { img: soudagarNaveed.url, name: "Soudagar Naveed", role: "Project Engineer", bio: "Proud to contribute to Roya Ventures by delivering reliable IT and ELV solutions through quality workmanship, teamwork, and a commitment to excellence on every project." },
   { img: team4, name: "Noor El-Hashem", role: "Partner, Transformation", bio: "Specialises in enterprise transformation, operating model redesign and digital programme leadership." },
   { img: team5, name: "Helena Voss", role: "Partner, Risk & Governance", bio: "Board director and former chief risk officer; advises on governance, controls and resilience programmes." },
   { img: team6, name: "Rohan Mehta", role: "Partner, Technology", bio: "Brings two decades of CTO experience to engagements at the intersection of strategy and engineering." },
