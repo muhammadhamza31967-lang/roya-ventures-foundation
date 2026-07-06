@@ -61,12 +61,16 @@ function TeamPage() {
             title={<>The people accountable for <em className="not-italic text-[var(--gold)]">every mandate.</em></>}
             description="Our partners lead engagements personally — bringing decades of operating, financial and strategic expertise to each client relationship."
           />
-          <div className="mt-20 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7 max-w-6xl mx-auto">
             {PARTNERS.map((p, i) => (
               <Reveal key={p.name} delay={(i % 3) * 0.07}>
-                <article className="group relative overflow-hidden rounded-2xl bg-card shadow-[var(--shadow-card)] transition-all duration-500 hover:shadow-[var(--shadow-elegant)] hover:-translate-y-2 h-full">
+                <article className="group relative h-full overflow-hidden rounded-[18px] bg-card border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] shadow-[0_1px_2px_rgba(24,49,78,0.04),0_12px_32px_-16px_rgba(24,49,78,0.18)] transition-all duration-500 hover:shadow-[0_2px_4px_rgba(24,49,78,0.06),0_28px_60px_-20px_rgba(24,49,78,0.28)] hover:-translate-y-1.5 hover:border-[color-mix(in_oklab,var(--gold)_30%,transparent)]">
+                  {/* Corner gold accents */}
+                  <span aria-hidden className="pointer-events-none absolute top-3 left-3 h-4 w-4 border-l border-t border-[var(--gold)]/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <span aria-hidden className="pointer-events-none absolute bottom-3 right-3 h-4 w-4 border-r border-b border-[var(--gold)]/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
                   {/* Portrait */}
-                  <div className="relative aspect-[4/5] w-full overflow-hidden bg-[var(--navy)]">
+                  <div className="relative m-3 mb-0 overflow-hidden rounded-[12px] aspect-[4/5] bg-[var(--navy)]">
                     <img
                       src={p.img}
                       alt={p.name}
@@ -75,26 +79,29 @@ function TeamPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)]/70 via-transparent to-transparent" />
                     {/* Gold top accent */}
-                    <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent scale-x-0 origin-left transition-transform duration-700 group-hover:scale-x-100" />
-                    {/* Social icons */}
-                    <div className="absolute right-5 top-5 flex flex-col gap-3 opacity-0 translate-x-3 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
+                    <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent scale-x-0 origin-left transition-transform duration-700 group-hover:scale-x-100" />
+                    {/* Social icons — preserved hover */}
+                    <div className="absolute right-4 top-4 flex flex-col gap-2.5 opacity-0 translate-x-3 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
                       {[Linkedin, Mail].map((Icon, j) => (
                         <a
                           key={j}
                           href="#"
                           aria-label="Contact"
-                          className="grid h-10 w-10 place-items-center rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white hover:bg-[var(--gold)] hover:text-[var(--navy)] hover:border-[var(--gold)] transition-all"
+                          className="grid h-9 w-9 place-items-center rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white hover:bg-[var(--gold)] hover:text-[var(--navy)] hover:border-[var(--gold)] transition-all"
                         >
-                          <Icon className="h-4 w-4" strokeWidth={1.5} />
+                          <Icon className="h-3.5 w-3.5" strokeWidth={1.5} />
                         </a>
                       ))}
                     </div>
                   </div>
-                  <div className="p-8 md:p-9">
-                    <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)]">{p.role}</p>
-                    <h3 className="mt-3 font-display text-2xl font-semibold text-[var(--navy)] tracking-[-0.02em]">{p.name}</h3>
-                    <div className="mt-4 h-px w-10 bg-[var(--gold)] transition-all duration-500 group-hover:w-20" />
-                    <p className="mt-5 text-[15px] text-muted-foreground leading-[1.75]">{p.bio}</p>
+
+                  <div className="px-6 pt-5 pb-6">
+                    <div className="flex items-center gap-2">
+                      <span className="h-px w-5 bg-[var(--gold)]" />
+                      <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--gold)] font-semibold">{p.role}</p>
+                    </div>
+                    <h3 className="mt-2.5 font-display text-[1.35rem] font-semibold text-[var(--navy)] tracking-[-0.02em] leading-tight">{p.name}</h3>
+                    <p className="mt-3.5 text-[13.5px] text-muted-foreground leading-[1.7]">{p.bio}</p>
                   </div>
                 </article>
               </Reveal>
