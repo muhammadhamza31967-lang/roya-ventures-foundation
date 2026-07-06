@@ -74,7 +74,7 @@ function TeamPage() {
 
                   <div className="p-5 pb-6">
                     {/* Portrait — reduced, framed */}
-                    <div className="relative mx-auto overflow-hidden rounded-[14px] aspect-[4/3.6] bg-[var(--navy)] ring-1 ring-[color-mix(in_oklab,var(--navy)_10%,transparent)] shadow-[0_10px_24px_-14px_rgba(24,49,78,0.35)]">
+                    <div className="relative mx-auto overflow-hidden rounded-[14px] aspect-[4/4.2] bg-[var(--navy)] ring-1 ring-[color-mix(in_oklab,var(--navy)_10%,transparent)] shadow-[0_10px_24px_-14px_rgba(24,49,78,0.35)]">
                       <img
                         src={p.img}
                         alt={p.name}
