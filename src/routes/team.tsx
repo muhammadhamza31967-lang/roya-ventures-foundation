@@ -8,10 +8,10 @@ import { Linkedin, Mail } from "lucide-react";
 import heroTeam from "@/assets/hero-team.jpg";
 import team1 from "@/assets/team-1.jpg";
 import team2 from "@/assets/team-2.jpg";
-import team3 from "@/assets/team-3.jpg";
 import team4 from "@/assets/team-4.jpg";
 import team5 from "@/assets/team-5.jpg";
 import team6 from "@/assets/team-6.jpg";
+import soudagarNaveed from "@/assets/soudagar-naveed.jpeg.asset.json";
 
 export const Route = createFileRoute("/team")({
   head: () => ({
