@@ -61,47 +61,60 @@ function TeamPage() {
             title={<>The people accountable for <em className="not-italic text-[var(--gold)]">every mandate.</em></>}
             description="Our partners lead engagements personally — bringing decades of operating, financial and strategic expertise to each client relationship."
           />
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7 max-w-6xl mx-auto">
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8 max-w-6xl mx-auto">
             {PARTNERS.map((p, i) => (
               <Reveal key={p.name} delay={(i % 3) * 0.07}>
-                <article className="group relative h-full overflow-hidden rounded-[18px] bg-card border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] shadow-[0_1px_2px_rgba(24,49,78,0.04),0_12px_32px_-16px_rgba(24,49,78,0.18)] transition-all duration-500 hover:shadow-[0_2px_4px_rgba(24,49,78,0.06),0_28px_60px_-20px_rgba(24,49,78,0.28)] hover:-translate-y-1.5 hover:border-[color-mix(in_oklab,var(--gold)_30%,transparent)]">
+                <article className="group relative h-full rounded-[20px] bg-gradient-to-b from-white to-[color-mix(in_oklab,var(--stone)_50%,white)] border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] shadow-[0_1px_0_rgba(255,255,255,0.7)_inset,0_1px_2px_rgba(24,49,78,0.04),0_10px_28px_-14px_rgba(24,49,78,0.18)] transition-all duration-[600ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] hover:shadow-[0_1px_0_rgba(255,255,255,0.8)_inset,0_2px_4px_rgba(24,49,78,0.06),0_28px_60px_-22px_rgba(24,49,78,0.32)] hover:-translate-y-1.5 hover:border-[color-mix(in_oklab,var(--gold)_35%,transparent)]">
+                  {/* Top gold hairline */}
+                  <span aria-hidden className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/60 to-transparent" />
+
                   {/* Corner gold accents */}
-                  <span aria-hidden className="pointer-events-none absolute top-3 left-3 h-4 w-4 border-l border-t border-[var(--gold)]/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <span aria-hidden className="pointer-events-none absolute bottom-3 right-3 h-4 w-4 border-r border-b border-[var(--gold)]/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <span aria-hidden className="pointer-events-none absolute top-2.5 left-2.5 h-3.5 w-3.5 border-l border-t border-[var(--gold)]/60 rounded-tl-[6px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <span aria-hidden className="pointer-events-none absolute bottom-2.5 right-2.5 h-3.5 w-3.5 border-r border-b border-[var(--gold)]/60 rounded-br-[6px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                  {/* Portrait */}
-                  <div className="relative m-3 mb-0 overflow-hidden rounded-[12px] aspect-[4/5] bg-[var(--navy)]">
-                    <img
-                      src={p.img}
-                      alt={p.name}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)]/70 via-transparent to-transparent" />
-                    {/* Gold top accent */}
-                    <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent scale-x-0 origin-left transition-transform duration-700 group-hover:scale-x-100" />
-                    {/* Social icons — preserved hover */}
-                    <div className="absolute right-4 top-4 flex flex-col gap-2.5 opacity-0 translate-x-3 transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
-                      {[Linkedin, Mail].map((Icon, j) => (
-                        <a
-                          key={j}
-                          href="#"
-                          aria-label="Contact"
-                          className="grid h-9 w-9 place-items-center rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white hover:bg-[var(--gold)] hover:text-[var(--navy)] hover:border-[var(--gold)] transition-all"
-                        >
-                          <Icon className="h-3.5 w-3.5" strokeWidth={1.5} />
-                        </a>
-                      ))}
+                  <div className="p-5 pb-6">
+                    {/* Portrait — reduced, framed */}
+                    <div className="relative mx-auto overflow-hidden rounded-[14px] aspect-[5/4] bg-[var(--navy)] ring-1 ring-[color-mix(in_oklab,var(--navy)_10%,transparent)] shadow-[0_10px_24px_-14px_rgba(24,49,78,0.35)]">
+                      <img
+                        src={p.img}
+                        alt={p.name}
+                        loading="lazy"
+                        className="h-full w-full object-cover object-top transition-transform duration-[1600ms] ease-out group-hover:scale-[1.06]"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)]/60 via-transparent to-transparent" />
+                      {/* Gold sweeping accent on hover */}
+                      <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent scale-x-0 origin-left transition-transform duration-[700ms] ease-out group-hover:scale-x-100" />
+                      {/* Social icons — preserved hover */}
+                      <div className="absolute right-3 top-3 flex flex-col gap-2 opacity-0 translate-x-2 transition-all duration-[600ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:opacity-100 group-hover:translate-x-0">
+                        {[Linkedin, Mail].map((Icon, j) => (
+                          <a
+                            key={j}
+                            href="#"
+                            aria-label="Contact"
+                            style={{ transitionDelay: `${j * 60}ms` }}
+                            className="grid h-8 w-8 place-items-center rounded-full bg-white/15 backdrop-blur-md border border-white/30 text-white hover:bg-[var(--gold)] hover:text-[var(--navy)] hover:border-[var(--gold)] transition-all duration-300"
+                          >
+                            <Icon className="h-3.5 w-3.5" strokeWidth={1.5} />
+                          </a>
+                        ))}
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="px-6 pt-5 pb-6">
-                    <div className="flex items-center gap-2">
-                      <span className="h-px w-5 bg-[var(--gold)]" />
-                      <p className="text-[10px] tracking-[0.28em] uppercase text-[var(--gold)] font-semibold">{p.role}</p>
+                    {/* Content */}
+                    <div className="mt-6 px-1">
+                      <h3 className="font-display text-[1.4rem] leading-[1.15] font-semibold text-[var(--navy)] tracking-[-0.025em]">
+                        {p.name}
+                      </h3>
+                      <div className="mt-2.5 flex items-center gap-2.5">
+                        <span className="h-px w-6 bg-[var(--gold)] transition-all duration-500 group-hover:w-10" />
+                        <p className="text-[10.5px] tracking-[0.24em] uppercase text-[var(--gold)] font-semibold">
+                          {p.role}
+                        </p>
+                      </div>
+                      <p className="mt-4 text-[13.5px] text-muted-foreground leading-[1.7]">
+                        {p.bio}
+                      </p>
                     </div>
-                    <h3 className="mt-2.5 font-display text-[1.35rem] font-semibold text-[var(--navy)] tracking-[-0.02em] leading-tight">{p.name}</h3>
-                    <p className="mt-3.5 text-[13.5px] text-muted-foreground leading-[1.7]">{p.bio}</p>
                   </div>
                 </article>
               </Reveal>
