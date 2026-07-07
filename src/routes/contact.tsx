@@ -58,7 +58,7 @@ function ContactPage() {
         <div className="container-px mx-auto">
           <div className="grid gap-12 lg:gap-16 lg:grid-cols-12">
             {/* FORM — primary focal point */}
-            <Reveal as="div" className="lg:col-span-8">
+            <Reveal as="div" className="lg:col-span-7">
               <div className="relative">
                 {/* Decorative corner frames */}
                 <div className="absolute -top-3 -left-3 h-16 w-16 border-t border-l border-[var(--gold)]/50 rounded-tl-2xl pointer-events-none" />
