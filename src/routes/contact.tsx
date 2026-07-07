@@ -18,19 +18,13 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
-const CONTACTS = [
-  { name: "Raza Saudagar", phone: "+966 5096 00042" },
-  { name: "Khazi Zafar", phone: "+966 5013 59647" },
-  { name: "Naveed Saudagar", phone: "+966 5376 81985" },
-  { name: "Anas Saudagar", phone: "+966 5028 79339" },
-];
-const EMAILS = [
-  "info@royaventure.com",
-  "raza.saudagar@royaventure.com",
-  "khazi.zafar@royaventure.com",
-  "naveed.saudagar@royaventure.com",
-  "anas.saudagar@royaventure.com",
-  "zaid@royaventure.com",
+const DIRECTORY: { name: string; phone?: string; email: string }[] = [
+  { name: "Info", email: "info@royaventure.com" },
+  { name: "Raza Saudagar", phone: "+966 5096 00042", email: "raza.saudagar@royaventure.com" },
+  { name: "Khazi Zafar", phone: "+966 5013 59647", email: "khazi.zafar@royaventure.com" },
+  { name: "Naveed Saudagar", phone: "+966 5376 81985", email: "naveed.saudagar@royaventure.com" },
+  { name: "Anas Saudagar", phone: "+966 5028 79339", email: "anas.saudagar@royaventure.com" },
+  { name: "Zaid", email: "zaid@royaventure.com" },
 ];
 
 
