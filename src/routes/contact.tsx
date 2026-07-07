@@ -117,7 +117,7 @@ function ContactPage() {
             </Reveal>
 
             {/* CONTACT INFO — premium aside */}
-            <Reveal as="aside" delay={0.1} className="lg:col-span-4">
+            <Reveal as="aside" delay={0.1} className="lg:col-span-5">
               <div className="relative overflow-hidden rounded-2xl bg-[var(--navy)] text-white p-8 md:p-10 shadow-[0_30px_80px_-30px_color-mix(in_oklab,var(--navy)_60%,transparent)]">
                 {/* Layered backdrop */}
                 <div
