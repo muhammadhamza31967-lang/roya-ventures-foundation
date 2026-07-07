@@ -146,18 +146,21 @@ function ContactPage() {
                     </InfoItem>
 
                     <InfoItem icon={PhoneCall} label="Phone">
-                      <div className="mt-1.5 space-y-1">
-                        {PHONES.map((p) => (
-                          <a
-                            key={p}
-                            href={`tel:${p.replace(/[^+\d]/g, "")}`}
-                            className="block text-white/90 hover:text-[var(--gold)] transition-colors leading-relaxed"
-                          >
-                            {p}
-                          </a>
+                      <div className="mt-1.5 space-y-2.5">
+                        {CONTACTS.map((c) => (
+                          <div key={c.name}>
+                            <div className="text-[11px] tracking-[0.18em] uppercase text-white/55">{c.name}</div>
+                            <a
+                              href={`tel:${c.phone.replace(/[^+\d]/g, "")}`}
+                              className="block text-white/90 hover:text-[var(--gold)] transition-colors leading-relaxed"
+                            >
+                              {c.phone}
+                            </a>
+                          </div>
                         ))}
                       </div>
                     </InfoItem>
+
 
                     <InfoItem icon={Mail} label="Email">
                       <div className="mt-1.5 space-y-1">
