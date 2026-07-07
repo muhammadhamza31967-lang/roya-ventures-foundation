@@ -21,8 +21,9 @@ const SERVICES = [
 ];
 
 
-const PHONES = ["+966-509600042"];
+const PHONES = ["+966 509600042", "+966 50 287 9339"];
 const EMAILS = ["info@royaventure.com"];
+
 
 function ColumnHeading({ children }: { children: React.ReactNode }) {
   return (
