@@ -56,8 +56,9 @@ function AboutPage() {
           </div>
           <Reveal as="div" delay={0.1} className="lg:col-span-7 space-y-7">
             <p className="text-xl leading-[1.7] text-[var(--navy)]/85 font-light">
-              For more than fifteen years, Roya Ventures has worked alongside boards, founders and
+              For more than 8 Years, Roya Ventures has worked alongside boards, founders and
               institutional investors to address the questions that define long-term value.
+
             </p>
             <p className="text-base text-muted-foreground leading-relaxed">
               Our partners have led mandates across more than forty markets, advising on transactions

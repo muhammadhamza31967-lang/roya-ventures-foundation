@@ -21,8 +21,9 @@ const SERVICES = [
 ];
 
 
-const PHONES = ["+966-509600042"];
+const PHONES = ["+966 509600042", "+966 50 287 9339"];
 const EMAILS = ["info@royaventure.com"];
+
 
 function ColumnHeading({ children }: { children: React.ReactNode }) {
   return (
@@ -146,9 +147,10 @@ export function Footer() {
                 <div className="pt-0.5">
                   <div className="text-[11px] tracking-[0.22em] uppercase text-white/45 mb-1">Address</div>
                   <div className="text-white/85 leading-relaxed">
-                    12744, Riyadh-8718<br />
+                    Riyadh, KSA<br />
                     <span className="text-white/55 text-xs">CR: 1010674528</span>
                   </div>
+
                 </div>
               </li>
               <li className="flex items-start gap-4">

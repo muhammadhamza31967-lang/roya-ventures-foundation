@@ -18,8 +18,21 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
-const PHONES = ["+966-509600042"];
-const EMAILS = ["info@royaventure.com"];
+const CONTACTS = [
+  { name: "Raza Saudagar", phone: "+966 5096 00042" },
+  { name: "Khazi Zafar", phone: "+966 5013 59647" },
+  { name: "Naveed Saudagar", phone: "+966 5376 81985" },
+  { name: "Anas Saudagar", phone: "+966 5028 79339" },
+];
+const EMAILS = [
+  "info@royaventure.com",
+  "raza.saudagar@royaventure.com",
+  "khazi.zafar@royaventure.com",
+  "naveed.saudagar@royaventure.com",
+  "anas.saudagar@royaventure.com",
+  "zaid@royaventure.com",
+];
+
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
@@ -133,18 +146,21 @@ function ContactPage() {
                     </InfoItem>
 
                     <InfoItem icon={PhoneCall} label="Phone">
-                      <div className="mt-1.5 space-y-1">
-                        {PHONES.map((p) => (
-                          <a
-                            key={p}
-                            href={`tel:${p.replace(/[^+\d]/g, "")}`}
-                            className="block text-white/90 hover:text-[var(--gold)] transition-colors leading-relaxed"
-                          >
-                            {p}
-                          </a>
+                      <div className="mt-1.5 space-y-2.5">
+                        {CONTACTS.map((c) => (
+                          <div key={c.name}>
+                            <div className="text-[11px] tracking-[0.18em] uppercase text-white/55">{c.name}</div>
+                            <a
+                              href={`tel:${c.phone.replace(/[^+\d]/g, "")}`}
+                              className="block text-white/90 hover:text-[var(--gold)] transition-colors leading-relaxed"
+                            >
+                              {c.phone}
+                            </a>
+                          </div>
                         ))}
                       </div>
                     </InfoItem>
+
 
                     <InfoItem icon={Mail} label="Email">
                       <div className="mt-1.5 space-y-1">
