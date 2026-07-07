@@ -18,8 +18,21 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
-const PHONES = ["+966-509600042"];
-const EMAILS = ["info@royaventure.com"];
+const CONTACTS = [
+  { name: "Raza Saudagar", phone: "+966 5096 00042" },
+  { name: "Khazi Zafar", phone: "+966 5013 59647" },
+  { name: "Naveed Saudagar", phone: "+966 5376 81985" },
+  { name: "Anas Saudagar", phone: "+966 5028 79339" },
+];
+const EMAILS = [
+  "info@royaventure.com",
+  "raza.saudagar@royaventure.com",
+  "khazi.zafar@royaventure.com",
+  "naveed.saudagar@royaventure.com",
+  "anas.saudagar@royaventure.com",
+  "zaid@royaventure.com",
+];
+
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
