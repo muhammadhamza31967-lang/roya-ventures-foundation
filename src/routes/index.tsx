@@ -441,12 +441,8 @@ function WhatWeDo() {
               — delivered as one practice.
             </h2>
           </div>
-          <div className="md:col-span-4 md:text-right">
-            <p className="text-[15px] leading-[1.7] text-muted-foreground max-w-md md:ml-auto">
-              Eleven disciplines. One accountable team. From power and cabling to
-              networks, security and software — designed, installed and supported end to end.
-            </p>
-          </div>
+          <div className="md:col-span-4 md:text-right" />
+
         </div>
 
         {/* Two-column editorial: feature image ↔ capability index */}
