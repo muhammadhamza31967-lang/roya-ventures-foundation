@@ -3,7 +3,7 @@ import { useState, type FormEvent } from "react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
-import { Mail, MapPin, Send, Check, PhoneCall } from "lucide-react";
+import { Mail, MapPin, Send, Check } from "lucide-react";
 import heroContact from "@/assets/hero-contact.jpg";
 
 export const Route = createFileRoute("/contact")({
