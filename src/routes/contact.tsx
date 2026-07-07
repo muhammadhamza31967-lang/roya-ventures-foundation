@@ -3,7 +3,7 @@ import { useState, type FormEvent } from "react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
-import { Mail, MapPin, Send, Check, PhoneCall } from "lucide-react";
+import { Mail, MapPin, Send, Check } from "lucide-react";
 import heroContact from "@/assets/hero-contact.jpg";
 
 export const Route = createFileRoute("/contact")({
@@ -18,19 +18,13 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
-const CONTACTS = [
-  { name: "Raza Saudagar", phone: "+966 5096 00042" },
-  { name: "Khazi Zafar", phone: "+966 5013 59647" },
-  { name: "Naveed Saudagar", phone: "+966 5376 81985" },
-  { name: "Anas Saudagar", phone: "+966 5028 79339" },
-];
-const EMAILS = [
-  "info@royaventure.com",
-  "raza.saudagar@royaventure.com",
-  "khazi.zafar@royaventure.com",
-  "naveed.saudagar@royaventure.com",
-  "anas.saudagar@royaventure.com",
-  "zaid@royaventure.com",
+const DIRECTORY: { name: string; phone?: string; email: string }[] = [
+  { name: "Info", email: "info@royaventure.com" },
+  { name: "Raza Saudagar", phone: "+966 5096 00042", email: "raza.saudagar@royaventure.com" },
+  { name: "Khazi Zafar", phone: "+966 5013 59647", email: "khazi.zafar@royaventure.com" },
+  { name: "Naveed Saudagar", phone: "+966 5376 81985", email: "naveed.saudagar@royaventure.com" },
+  { name: "Anas Saudagar", phone: "+966 5028 79339", email: "anas.saudagar@royaventure.com" },
+  { name: "Zaid", email: "zaid@royaventure.com" },
 ];
 
 
@@ -64,7 +58,7 @@ function ContactPage() {
         <div className="container-px mx-auto">
           <div className="grid gap-12 lg:gap-16 lg:grid-cols-12">
             {/* FORM — primary focal point */}
-            <Reveal as="div" className="lg:col-span-8">
+            <Reveal as="div" className="lg:col-span-7">
               <div className="relative">
                 {/* Decorative corner frames */}
                 <div className="absolute -top-3 -left-3 h-16 w-16 border-t border-l border-[var(--gold)]/50 rounded-tl-2xl pointer-events-none" />
@@ -123,7 +117,7 @@ function ContactPage() {
             </Reveal>
 
             {/* CONTACT INFO — premium aside */}
-            <Reveal as="aside" delay={0.1} className="lg:col-span-4">
+            <Reveal as="aside" delay={0.1} className="lg:col-span-5">
               <div className="relative overflow-hidden rounded-2xl bg-[var(--navy)] text-white p-8 md:p-10 shadow-[0_30px_80px_-30px_color-mix(in_oklab,var(--navy)_60%,transparent)]">
                 {/* Layered backdrop */}
                 <div
@@ -145,37 +139,35 @@ function ContactPage() {
                       </p>
                     </InfoItem>
 
-                    <InfoItem icon={PhoneCall} label="Phone">
-                      <div className="mt-1.5 space-y-2.5">
-                        {CONTACTS.map((c) => (
-                          <div key={c.name}>
-                            <div className="text-[11px] tracking-[0.18em] uppercase text-white/55">{c.name}</div>
-                            <a
-                              href={`tel:${c.phone.replace(/[^+\d]/g, "")}`}
-                              className="block text-white/90 hover:text-[var(--gold)] transition-colors leading-relaxed"
-                            >
-                              {c.phone}
-                            </a>
-                          </div>
+                    <InfoItem icon={Mail} label="Official Contact Details">
+                      <ul className="mt-3 divide-y divide-white/10">
+                        {DIRECTORY.map((p) => (
+                          <li key={p.name} className="py-3.5 first:pt-2">
+                            <div className="text-[13px] font-semibold tracking-wide text-white">
+                              {p.name}
+                            </div>
+                            <div className="mt-1.5 space-y-1">
+                              {p.phone && (
+                                <a
+                                  href={`tel:${p.phone.replace(/[^+\d]/g, "")}`}
+                                  className="block text-[13px] text-white/75 hover:text-[var(--gold)] transition-colors tabular-nums"
+                                >
+                                  {p.phone}
+                                </a>
+                              )}
+                              <a
+                                href={`mailto:${p.email}`}
+                                className="block text-[12.5px] text-white/80 hover:text-[var(--gold)] transition-colors break-all"
+                              >
+                                {p.email}
+                              </a>
+                            </div>
+                          </li>
                         ))}
-                      </div>
-                    </InfoItem>
-
-
-                    <InfoItem icon={Mail} label="Email">
-                      <div className="mt-1.5 space-y-1">
-                        {EMAILS.map((e) => (
-                          <a
-                            key={e}
-                            href={`mailto:${e}`}
-                            className="block text-white/90 hover:text-[var(--gold)] transition-colors leading-relaxed break-all"
-                          >
-                            {e}
-                          </a>
-                        ))}
-                      </div>
+                      </ul>
                     </InfoItem>
                   </ul>
+
 
                 </div>
 
