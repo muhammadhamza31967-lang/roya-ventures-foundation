@@ -142,27 +142,28 @@ function ContactPage() {
                     <InfoItem icon={Mail} label="Official Contact Details">
                       <ul className="mt-3 divide-y divide-white/10">
                         {DIRECTORY.map((p) => (
-                          <li key={p.name} className="py-3.5 first:pt-2">
-                            <div className="text-[13px] font-semibold tracking-wide text-white">
+                          <li key={p.name} className="py-4 first:pt-2">
+                            <div className="text-[15px] font-semibold tracking-wide text-white">
                               {p.name}
                             </div>
-                            <div className="mt-1.5 space-y-1">
+                            <div className="mt-2 space-y-1.5">
                               {p.phone && (
                                 <a
                                   href={`tel:${p.phone.replace(/[^+\d]/g, "")}`}
-                                  className="block text-[13px] text-white/75 hover:text-[var(--gold)] transition-colors tabular-nums"
+                                  className="block text-[14px] text-white/80 hover:text-[var(--gold)] transition-colors tabular-nums"
                                 >
                                   {p.phone}
                                 </a>
                               )}
                               <a
                                 href={`mailto:${p.email}`}
-                                className="block text-[12.5px] text-white/80 hover:text-[var(--gold)] transition-colors break-all"
+                                className="block text-[13.5px] text-white/85 hover:text-[var(--gold)] transition-colors whitespace-nowrap"
                               >
                                 {p.email}
                               </a>
                             </div>
                           </li>
+
                         ))}
                       </ul>
                     </InfoItem>
