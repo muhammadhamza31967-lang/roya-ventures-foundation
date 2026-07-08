@@ -113,7 +113,7 @@ function TeamPage() {
             description="Accountable for project delivery, technical direction and client outcomes on the ground."
             align="center"
           />
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8 max-w-6xl mx-auto">
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7 max-w-[72rem] mx-auto">
             {ENGINEERING.map((p, i) => (
               <Reveal key={p.name} delay={(i % 3) * 0.07}>
                 <MemberCard member={p} />
