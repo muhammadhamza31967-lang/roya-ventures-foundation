@@ -85,7 +85,7 @@ function TeamPage() {
             align="center"
           />
 
-          <div className="mt-14 max-w-3xl mx-auto">
+          <div className="mt-14 max-w-2xl mx-auto">
             <Reveal>
               <FeaturedCard member={CEO} />
             </Reveal>
