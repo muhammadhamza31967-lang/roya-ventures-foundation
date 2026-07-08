@@ -167,23 +167,22 @@ function MemberCard({ member: p }: { member: Member }) {
       <div aria-hidden className="pointer-events-none absolute -top-16 -right-16 h-48 w-48 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_18%,transparent),transparent_65%)] blur-2xl" />
 
       <div className="grid gap-0 sm:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
-        {/* Portrait */}
+        {/* Placeholder (image area reserved for future portrait) */}
         <div className="p-4 sm:p-5">
-          <div className="relative overflow-hidden rounded-[14px] max-w-[9rem] mx-auto sm:max-w-none aspect-[4/5] bg-[var(--navy)] ring-1 ring-[color-mix(in_oklab,var(--navy)_12%,transparent)] shadow-[0_12px_28px_-16px_rgba(24,49,78,0.45)]">
-            <img
-              src={p.img}
-              alt={p.name}
-              loading="lazy"
-              className="h-full w-full object-cover object-top transition-transform duration-[1600ms] ease-out group-hover:scale-[1.06]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)]/65 via-transparent to-transparent" />
+          <div className="relative overflow-hidden rounded-[14px] max-w-[9rem] mx-auto sm:max-w-none aspect-[4/5] bg-gradient-to-b from-[var(--navy)] to-[var(--navy-deep)] ring-1 ring-[color-mix(in_oklab,var(--navy)_12%,transparent)] shadow-[0_12px_28px_-16px_rgba(24,49,78,0.45)]">
+            <div aria-hidden className="absolute inset-0 bg-[radial-gradient(circle_at_top,color-mix(in_oklab,var(--gold)_20%,transparent),transparent_65%)]" />
+            <div className="absolute inset-0 grid place-items-center">
+              <span className="font-display text-[2.25rem] sm:text-[2.5rem] font-semibold tracking-[-0.02em] text-[var(--gold)]/90">
+                {getInitials(p.name)}
+              </span>
+            </div>
             <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent scale-x-0 origin-left transition-transform duration-[700ms] ease-out group-hover:scale-x-100" />
           </div>
         </div>
 
         {/* Body */}
         <div className="flex flex-col justify-center p-4 sm:p-5 sm:pl-2">
-          <h3 className="font-display text-[1.15rem] sm:text-[1.25rem] leading-[1.1] font-semibold text-[var(--navy)] tracking-[-0.02em]">
+          <h3 className="font-display text-[1.25rem] sm:text-[1.4rem] leading-[1.1] font-semibold text-[var(--navy)] tracking-[-0.02em]">
             {p.name}
           </h3>
           <div className="mt-2.5 flex items-center gap-2">
@@ -197,20 +196,8 @@ function MemberCard({ member: p }: { member: Member }) {
               {p.bio}
             </p>
           )}
-
-          <div className="mt-auto ml-auto flex gap-2">
-            {[Linkedin, Mail].map((Icon, j) => (
-              <a
-                key={j}
-                href="#"
-                aria-label="Contact"
-                className="grid h-8 w-8 place-items-center rounded-full bg-[color-mix(in_oklab,var(--stone)_60%,white)] border border-[color-mix(in_oklab,var(--navy)_10%,transparent)] text-[var(--navy)] hover:bg-[var(--gold)] hover:text-[var(--navy)] hover:border-[var(--gold)] transition-all duration-300"
-              >
-                <Icon className="h-3.5 w-3.5" strokeWidth={1.5} />
-              </a>
-            ))}
-          </div>
         </div>
+
       </div>
     </article>
   );
