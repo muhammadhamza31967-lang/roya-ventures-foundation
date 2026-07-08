@@ -7,7 +7,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
 
 import { Reveal } from "@/components/site/Reveal";
-import { ChevronLeft, ChevronRight, Linkedin, Mail } from "lucide-react";
+import { Linkedin, Mail } from "lucide-react";
 import heroTeam from "@/assets/hero-team.jpg";
 import team1 from "@/assets/team-1.jpg";
 import team2 from "@/assets/team-2.jpg";
