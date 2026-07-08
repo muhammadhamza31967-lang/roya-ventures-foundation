@@ -297,7 +297,7 @@ function TeamCarousel({ members }: { members: Member[] }) {
 
   return (
     <div className="relative group/carousel">
-      <div className="overflow-hidden" ref={emblaRef}>
+      <div className="overflow-hidden py-8 -my-4" ref={emblaRef}>
         <div className="flex -ml-5 md:-ml-7">
           {members.map((p, i) => (
             <div
@@ -312,23 +312,6 @@ function TeamCarousel({ members }: { members: Member[] }) {
         </div>
       </div>
 
-      {/* Arrows */}
-      <button
-        type="button"
-        aria-label="Previous"
-        onClick={scrollPrev}
-        className="hidden sm:grid absolute top-1/2 -translate-y-1/2 -left-3 md:-left-6 h-11 w-11 place-items-center rounded-full bg-white/95 backdrop-blur border border-[color-mix(in_oklab,var(--navy)_12%,transparent)] text-[var(--navy)] shadow-[0_10px_30px_-12px_rgba(24,49,78,0.35)] hover:bg-[var(--gold)] hover:text-[var(--navy)] hover:border-[var(--gold)] transition-all duration-300 z-10"
-      >
-        <ChevronLeft className="h-5 w-5" strokeWidth={1.75} />
-      </button>
-      <button
-        type="button"
-        aria-label="Next"
-        onClick={scrollNext}
-        className="hidden sm:grid absolute top-1/2 -translate-y-1/2 -right-3 md:-right-6 h-11 w-11 place-items-center rounded-full bg-white/95 backdrop-blur border border-[color-mix(in_oklab,var(--navy)_12%,transparent)] text-[var(--navy)] shadow-[0_10px_30px_-12px_rgba(24,49,78,0.35)] hover:bg-[var(--gold)] hover:text-[var(--navy)] hover:border-[var(--gold)] transition-all duration-300 z-10"
-      >
-        <ChevronRight className="h-5 w-5" strokeWidth={1.75} />
-      </button>
 
       {/* Dots */}
       {snaps.length > 1 && (
