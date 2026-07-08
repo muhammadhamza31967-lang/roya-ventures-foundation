@@ -1,10 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useCallback, useEffect, useRef, useState } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
 
 import { Reveal } from "@/components/site/Reveal";
-import { Linkedin, Mail } from "lucide-react";
+import { ChevronLeft, ChevronRight, Linkedin, Mail } from "lucide-react";
 import heroTeam from "@/assets/hero-team.jpg";
 import team1 from "@/assets/team-1.jpg";
 import team2 from "@/assets/team-2.jpg";
@@ -113,12 +116,8 @@ function TeamPage() {
             description="Accountable for project delivery, technical direction and client outcomes on the ground."
             align="center"
           />
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-7 max-w-[72rem] mx-auto">
-            {ENGINEERING.map((p, i) => (
-              <Reveal key={p.name} delay={(i % 3) * 0.07}>
-                <MemberCard member={p} />
-              </Reveal>
-            ))}
+          <div className="mt-14 max-w-[68rem] mx-auto">
+            <TeamCarousel members={ENGINEERING} />
           </div>
         </div>
       </section>
@@ -267,5 +266,88 @@ function FeaturedCard({ member: p }: { member: Member }) {
         </div>
       </div>
     </article>
+  );
+}
+
+/* ---------- Premium carousel for sections with >2 members ---------- */
+
+function TeamCarousel({ members }: { members: Member[] }) {
+  const autoplayRef = useRef(
+    Autoplay({ delay: 4500, stopOnInteraction: false, stopOnMouseEnter: true }),
+  );
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: "start", slidesToScroll: 1, containScroll: "trimSnaps" },
+    [autoplayRef.current],
+  );
+  const [selected, setSelected] = useState(0);
+  const [snaps, setSnaps] = useState<number[]>([]);
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+  const scrollTo = useCallback((i: number) => emblaApi?.scrollTo(i), [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    const onSelect = () => setSelected(emblaApi.selectedScrollSnap());
+    setSnaps(emblaApi.scrollSnapList());
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+    onSelect();
+  }, [emblaApi]);
+
+  return (
+    <div className="relative group/carousel">
+      <div className="overflow-hidden" ref={emblaRef}>
+        <div className="flex -ml-5 md:-ml-7">
+          {members.map((p, i) => (
+            <div
+              key={`${p.name}-${i}`}
+              className="pl-5 md:pl-7 shrink-0 grow-0 basis-full md:basis-1/2"
+            >
+              <Reveal delay={(i % 3) * 0.07}>
+                <MemberCard member={p} />
+              </Reveal>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Arrows */}
+      <button
+        type="button"
+        aria-label="Previous"
+        onClick={scrollPrev}
+        className="hidden sm:grid absolute top-1/2 -translate-y-1/2 -left-3 md:-left-6 h-11 w-11 place-items-center rounded-full bg-white/95 backdrop-blur border border-[color-mix(in_oklab,var(--navy)_12%,transparent)] text-[var(--navy)] shadow-[0_10px_30px_-12px_rgba(24,49,78,0.35)] hover:bg-[var(--gold)] hover:text-[var(--navy)] hover:border-[var(--gold)] transition-all duration-300 z-10"
+      >
+        <ChevronLeft className="h-5 w-5" strokeWidth={1.75} />
+      </button>
+      <button
+        type="button"
+        aria-label="Next"
+        onClick={scrollNext}
+        className="hidden sm:grid absolute top-1/2 -translate-y-1/2 -right-3 md:-right-6 h-11 w-11 place-items-center rounded-full bg-white/95 backdrop-blur border border-[color-mix(in_oklab,var(--navy)_12%,transparent)] text-[var(--navy)] shadow-[0_10px_30px_-12px_rgba(24,49,78,0.35)] hover:bg-[var(--gold)] hover:text-[var(--navy)] hover:border-[var(--gold)] transition-all duration-300 z-10"
+      >
+        <ChevronRight className="h-5 w-5" strokeWidth={1.75} />
+      </button>
+
+      {/* Dots */}
+      {snaps.length > 1 && (
+        <div className="mt-8 flex items-center justify-center gap-2">
+          {snaps.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              aria-label={`Go to slide ${i + 1}`}
+              onClick={() => scrollTo(i)}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                i === selected
+                  ? "w-6 bg-[var(--gold)]"
+                  : "w-2 bg-[color-mix(in_oklab,var(--navy)_25%,transparent)] hover:bg-[color-mix(in_oklab,var(--navy)_45%,transparent)]"
+              }`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
