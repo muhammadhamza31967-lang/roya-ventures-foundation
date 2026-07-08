@@ -191,7 +191,7 @@ function MemberCard({ member: p }: { member: Member }) {
             </p>
           )}
 
-          <div className="mt-auto pt-4 flex justify-end gap-2">
+          <div className="mt-auto ml-auto flex gap-2">
             {[Linkedin, Mail].map((Icon, j) => (
               <a
                 key={j}
