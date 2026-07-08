@@ -353,19 +353,6 @@ function HomePage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)]/80 via-[var(--navy-deep)]/10 to-transparent" />
                     <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent scale-x-0 origin-left transition-transform duration-700 group-hover:scale-x-100" />
-                    <div className="absolute right-5 top-5 flex flex-col gap-2.5 opacity-0 translate-y-2 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
-                      {[Linkedin, Mail].map((Icon, j) => (
-                        <a
-                          key={j}
-                          href="#"
-                          aria-label="Contact"
-                          className="grid h-9 w-9 place-items-center rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white hover:bg-[var(--gold)] hover:text-[var(--navy)] hover:border-[var(--gold)] transition-all"
-                          data-cursor="hover"
-                        >
-                          <Icon className="h-3.5 w-3.5" strokeWidth={1.5} />
-                        </a>
-                      ))}
-                    </div>
                   </div>
                   <div className="relative p-7 md:p-8">
                     <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] font-semibold">{p.role}</p>
