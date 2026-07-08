@@ -149,7 +149,7 @@ function TeamPage() {
 
 function MemberCard({ member: p }: { member: Member }) {
   return (
-    <article className="group relative h-full rounded-[20px] bg-gradient-to-b from-white to-[color-mix(in_oklab,var(--stone)_55%,white)] border border-[color-mix(in_oklab,var(--navy)_10%,transparent)] shadow-[0_1px_0_rgba(255,255,255,0.8)_inset,0_2px_6px_rgba(24,49,78,0.06),0_20px_50px_-18px_rgba(24,49,78,0.25)] transition-all duration-[700ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] hover:shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_4px_10px_rgba(24,49,78,0.08),0_36px_80px_-28px_rgba(24,49,78,0.38)] hover:-translate-y-1.5 hover:border-[color-mix(in_oklab,var(--gold)_45%,transparent)]">
+    <article className="group relative h-full rounded-[20px] bg-gradient-to-b from-white to-[color-mix(in_oklab,var(--stone)_55%,white)] border border-[color-mix(in_oklab,var(--navy)_10%,transparent)] shadow-[0_1px_0_rgba(255,255,255,0.8)_inset,0_1px_2px_rgba(24,49,78,0.04),0_8px_24px_-16px_rgba(24,49,78,0.18)] transition-all duration-[700ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] hover:shadow-[0_1px_0_rgba(255,255,255,0.9)_inset,0_2px_6px_rgba(24,49,78,0.06),0_18px_44px_-24px_rgba(24,49,78,0.28)] hover:-translate-y-1.5 hover:border-[color-mix(in_oklab,var(--gold)_45%,transparent)]">
       {/* Gold accents */}
       <span aria-hidden className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/70 to-transparent" />
       <span aria-hidden className="pointer-events-none absolute top-2.5 left-2.5 h-3.5 w-3.5 border-l border-t border-[var(--gold)]/70 rounded-tl-[6px]" />
