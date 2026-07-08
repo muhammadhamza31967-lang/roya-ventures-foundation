@@ -132,7 +132,7 @@ function TeamPage() {
             description="Precise, disciplined execution — from installation through commissioning and handover."
             align="center"
           />
-          <div className="mt-14 grid gap-5 md:grid-cols-2 md:gap-7 max-w-3xl mx-auto">
+          <div className="mt-14 grid gap-5 md:grid-cols-2 md:gap-7 max-w-[68rem] mx-auto">
             {TECHNICAL.map((p, i) => (
               <Reveal key={p.name} delay={i * 0.08}>
                 <MemberCard member={p} />
