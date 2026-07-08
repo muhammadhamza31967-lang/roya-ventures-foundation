@@ -282,9 +282,8 @@ function TeamCarousel({ members }: { members: Member[] }) {
   const [selected, setSelected] = useState(0);
   const [snaps, setSnaps] = useState<number[]>([]);
 
-  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
   const scrollTo = useCallback((i: number) => emblaApi?.scrollTo(i), [emblaApi]);
+
 
   useEffect(() => {
     if (!emblaApi) return;
