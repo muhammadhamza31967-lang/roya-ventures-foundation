@@ -17,6 +17,17 @@ function getInitials(name: string) {
     .join("");
 }
 import heroTeam from "@/assets/hero-team.jpg";
+import razaImg from "@/assets/team/Saudagar_Raza_CEO.png.asset.json";
+import anasImg from "@/assets/team/Anas_COO.jpeg.asset.json";
+import maqboolImg from "@/assets/team/Maqbool_Pasha_CFO.png.asset.json";
+import naveedImg from "@/assets/team/Soudagar_Naveed_Procurement_Sales1.png.asset.json";
+import suhailImg from "@/assets/team/Suhail_Team_Leader.png.asset.json";
+import shuaibImg from "@/assets/team/Shoaib_Tech_Support_Remote.png.asset.json";
+import imranImg from "@/assets/team/Imran_Tech_Support_Remote.png.asset.json";
+import furkhanImg from "@/assets/team/Furkhan_Tech_Support.png.asset.json";
+import faizanImg from "@/assets/team/Faizan_Khazi_Tech_Support.png.asset.json";
+import mohsinImg from "@/assets/team/Mohsin_Sr_Tech_Support.png.asset.json";
+
 
 export const Route = createFileRoute("/team")({
   head: () => ({
