@@ -27,6 +27,8 @@ import imranImg from "@/assets/team/Imran_Tech_Support_Remote.png.asset.json";
 import furkhanImg from "@/assets/team/Furkhan_Tech_Support.png.asset.json";
 import faizanImg from "@/assets/team/Faizan_Khazi_Tech_Support.png.asset.json";
 import mohsinImg from "@/assets/team/Mohsin_Sr_Tech_Support.png.asset.json";
+import zafarImg from "@/assets/team/Khazi_Zafar_Chief_Strategic_Planning.jpeg.asset.json";
+import zeeshanImg from "@/assets/team/Zeeshan_Tech_Support_Remote.png.asset.json";
 
 
 export const Route = createFileRoute("/team")({
