@@ -17,6 +17,17 @@ function getInitials(name: string) {
     .join("");
 }
 import heroTeam from "@/assets/hero-team.jpg";
+import razaImg from "@/assets/team/Saudagar_Raza_CEO.png.asset.json";
+import anasImg from "@/assets/team/Anas_COO.jpeg.asset.json";
+import maqboolImg from "@/assets/team/Maqbool_Pasha_CFO.png.asset.json";
+import naveedImg from "@/assets/team/Soudagar_Naveed_Procurement_Sales1.png.asset.json";
+import suhailImg from "@/assets/team/Suhail_Team_Leader.png.asset.json";
+import shuaibImg from "@/assets/team/Shoaib_Tech_Support_Remote.png.asset.json";
+import imranImg from "@/assets/team/Imran_Tech_Support_Remote.png.asset.json";
+import furkhanImg from "@/assets/team/Furkhan_Tech_Support.png.asset.json";
+import faizanImg from "@/assets/team/Faizan_Khazi_Tech_Support.png.asset.json";
+import mohsinImg from "@/assets/team/Mohsin_Sr_Tech_Support.png.asset.json";
+
 
 export const Route = createFileRoute("/team")({
   head: () => ({
@@ -33,7 +44,7 @@ export const Route = createFileRoute("/team")({
 type Member = { img: string; name: string; role: string; bio?: string };
 
 const CEO: Member = {
-  img: "",
+  img: razaImg.url,
   name: "Raza",
   role: "CEO",
   bio: "Sets the strategic direction of Roya Ventures — steering the firm's engineering, technology and infrastructure practice with a founder's discipline and an operator's rigour.",
@@ -45,23 +56,24 @@ const STRATEGY_ADMIN: Member[] = [
 ];
 
 const OPERATIONS_FINANCE: Member[] = [
-  { img: "", name: "Anas", role: "Chief of Operations", bio: "Directs delivery across the project portfolio — accountable for scope, schedule and quality on every engagement." },
-  { img: "", name: "Maqbool Pasha", role: "Chief Accountant", bio: "Oversees financial controls, reporting and accounting — safeguarding the firm's fiscal integrity and operational transparency." },
+  { img: anasImg.url, name: "Anas", role: "Chief of Operations", bio: "Directs delivery across the project portfolio — accountable for scope, schedule and quality on every engagement." },
+  { img: maqboolImg.url, name: "Maqbool Pasha", role: "Chief Accountant", bio: "Oversees financial controls, reporting and accounting — safeguarding the firm's fiscal integrity and operational transparency." },
 ];
 
 const PROCUREMENT_TECHNICAL: Member[] = [
-  { img: "", name: "Naveed", role: "Procurement & Sales", bio: "Bridges procurement, sales and client development — bringing technical depth to new opportunities and mandates." },
-  { img: "", name: "Suhail Shaik", role: "Technical Lead", bio: "Leads the technical team on the ground — coordinating design, deployment and commissioning across projects." },
+  { img: naveedImg.url, name: "Naveed", role: "Procurement & Sales", bio: "Bridges procurement, sales and client development — bringing technical depth to new opportunities and mandates." },
+  { img: suhailImg.url, name: "Suhail Shaik", role: "Technical Lead", bio: "Leads the technical team on the ground — coordinating design, deployment and commissioning across projects." },
 ];
 
 const TECHNICAL_SUPPORT: Member[] = [
-  { img: "", name: "Shuaib", role: "Tech Support Remote", bio: "Provides remote technical support — resolving issues with precision and maintaining client uptime." },
-  { img: "", name: "Imran", role: "Tech Support Remote", bio: "Delivers remote technical assistance — ensuring systems stay operational and clients receive timely support." },
+  { img: shuaibImg.url, name: "Shuaib", role: "Tech Support Remote", bio: "Provides remote technical support — resolving issues with precision and maintaining client uptime." },
+  { img: imranImg.url, name: "Imran", role: "Tech Support Remote", bio: "Delivers remote technical assistance — ensuring systems stay operational and clients receive timely support." },
   { img: "", name: "Zeeshan", role: "Tech Support Remote", bio: "Supports clients and systems remotely — combining technical skill with responsive, clear communication." },
-  { img: "", name: "Furkhan", role: "Tech Support", bio: "Executes on-site technical support with a focus on quality workmanship and reliable, standards-based delivery." },
-  { img: "", name: "Faizan", role: "Tech Support", bio: "Delivers hands-on technical support across IT and ELV systems — from installation through configuration and handover." },
-  { img: "", name: "Mohsin", role: "Sr. Tech Support", bio: "Leads the technical support function — mentoring the team and ensuring complex issues are resolved efficiently." },
+  { img: furkhanImg.url, name: "Furkhan", role: "Tech Support", bio: "Executes on-site technical support with a focus on quality workmanship and reliable, standards-based delivery." },
+  { img: faizanImg.url, name: "Faizan", role: "Tech Support", bio: "Delivers hands-on technical support across IT and ELV systems — from installation through configuration and handover." },
+  { img: mohsinImg.url, name: "Mohsin", role: "Sr. Tech Support", bio: "Leads the technical support function — mentoring the team and ensuring complex issues are resolved efficiently." },
 ];
+
 
 function TeamPage() {
   return (
@@ -192,11 +204,21 @@ function MemberCard({ member: p }: { member: Member }) {
         <div className="p-4 sm:p-5">
           <div className="relative overflow-hidden rounded-[14px] max-w-[9rem] mx-auto sm:max-w-none aspect-[4/5] bg-gradient-to-b from-[var(--navy)] to-[var(--navy-deep)] ring-1 ring-[color-mix(in_oklab,var(--navy)_12%,transparent)] shadow-[0_12px_28px_-16px_rgba(24,49,78,0.45)]">
             <div aria-hidden className="absolute inset-0 bg-[radial-gradient(circle_at_top,color-mix(in_oklab,var(--gold)_20%,transparent),transparent_65%)]" />
-            <div className="absolute inset-0 grid place-items-center">
-              <span className="font-display text-[2.25rem] sm:text-[2.5rem] font-semibold tracking-[-0.02em] text-[var(--gold)]/90">
-                {getInitials(p.name)}
-              </span>
-            </div>
+            {p.img ? (
+              <img
+                src={p.img}
+                alt={p.name}
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[900ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:scale-[1.04]"
+              />
+            ) : (
+              <div className="absolute inset-0 grid place-items-center">
+                <span className="font-display text-[2.25rem] sm:text-[2.5rem] font-semibold tracking-[-0.02em] text-[var(--gold)]/90">
+                  {getInitials(p.name)}
+                </span>
+              </div>
+            )}
+
             <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent scale-x-0 origin-left transition-transform duration-[700ms] ease-out group-hover:scale-x-100" />
           </div>
         </div>
@@ -240,11 +262,21 @@ function FeaturedCard({ member: p }: { member: Member }) {
         <div className="p-4 md:p-5">
           <div className="relative overflow-hidden rounded-[16px] max-w-[12rem] mx-auto md:max-w-none aspect-[4/5] bg-gradient-to-b from-[var(--navy)] to-[var(--navy-deep)] ring-1 ring-[color-mix(in_oklab,var(--navy)_12%,transparent)] shadow-[0_16px_32px_-18px_rgba(24,49,78,0.45)]">
             <div aria-hidden className="absolute inset-0 bg-[radial-gradient(circle_at_top,color-mix(in_oklab,var(--gold)_22%,transparent),transparent_65%)]" />
-            <div className="absolute inset-0 grid place-items-center">
-              <span className="font-display text-[3rem] md:text-[3.5rem] font-semibold tracking-[-0.02em] text-[var(--gold)]/90">
-                {getInitials(p.name)}
-              </span>
-            </div>
+            {p.img ? (
+              <img
+                src={p.img}
+                alt={p.name}
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[900ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:scale-[1.04]"
+              />
+            ) : (
+              <div className="absolute inset-0 grid place-items-center">
+                <span className="font-display text-[3rem] md:text-[3.5rem] font-semibold tracking-[-0.02em] text-[var(--gold)]/90">
+                  {getInitials(p.name)}
+                </span>
+              </div>
+            )}
+
             <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent scale-x-0 origin-left transition-transform duration-[800ms] ease-out group-hover:scale-x-100" />
           </div>
         </div>
