@@ -27,6 +27,8 @@ import imranImg from "@/assets/team/Imran_Tech_Support_Remote.png.asset.json";
 import furkhanImg from "@/assets/team/Furkhan_Tech_Support.png.asset.json";
 import faizanImg from "@/assets/team/Faizan_Khazi_Tech_Support.png.asset.json";
 import mohsinImg from "@/assets/team/Mohsin_Sr_Tech_Support.png.asset.json";
+import zafarImg from "@/assets/team/Khazi_Zafar_Chief_Strategic_Planning.jpeg.asset.json";
+import zeeshanImg from "@/assets/team/Zeeshan_Tech_Support_Remote.png.asset.json";
 
 
 export const Route = createFileRoute("/team")({
@@ -51,7 +53,7 @@ const CEO: Member = {
 };
 
 const STRATEGY_ADMIN: Member[] = [
-  { img: "", name: "Zafar", role: "Chief Strategic & Planning", bio: "Leads strategic planning and business direction — aligning long-term objectives with operational execution across the group." },
+  { img: zafarImg.url, name: "Khazi Zafar", role: "Chief Strategic & Planning", bio: "Leads strategic planning and business direction — aligning long-term objectives with operational execution across the group." },
   { img: "", name: "Sameena", role: "HR & Admin", bio: "Oversees people, culture and administrative operations — ensuring the firm runs with care, clarity and operational discipline." },
 ];
 
@@ -68,7 +70,7 @@ const PROCUREMENT_TECHNICAL: Member[] = [
 const TECHNICAL_SUPPORT: Member[] = [
   { img: shuaibImg.url, name: "Shuaib", role: "Tech Support Remote", bio: "Provides remote technical support — resolving issues with precision and maintaining client uptime." },
   { img: imranImg.url, name: "Imran", role: "Tech Support Remote", bio: "Delivers remote technical assistance — ensuring systems stay operational and clients receive timely support." },
-  { img: "", name: "Zeeshan", role: "Tech Support Remote", bio: "Supports clients and systems remotely — combining technical skill with responsive, clear communication." },
+  { img: zeeshanImg.url, name: "Zeeshan", role: "Tech Support Remote", bio: "Supports clients and systems remotely — combining technical skill with responsive, clear communication." },
   { img: furkhanImg.url, name: "Furkhan", role: "Tech Support", bio: "Executes on-site technical support with a focus on quality workmanship and reliable, standards-based delivery." },
   { img: faizanImg.url, name: "Faizan", role: "Tech Support", bio: "Delivers hands-on technical support across IT and ELV systems — from installation through configuration and handover." },
   { img: mohsinImg.url, name: "Mohsin", role: "Sr. Tech Support", bio: "Leads the technical support function — mentoring the team and ensuring complex issues are resolved efficiently." },
