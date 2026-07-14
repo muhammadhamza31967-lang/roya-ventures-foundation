@@ -17,19 +17,12 @@ function getInitials(name: string) {
     .join("");
 }
 import heroTeam from "@/assets/hero-team.jpg";
-import team1 from "@/assets/team-1.jpg";
-import team2 from "@/assets/team-2.jpg";
-import team3 from "@/assets/team-3.jpg";
-import team4 from "@/assets/team-4.jpg";
-import team5 from "@/assets/team-5.jpg";
-import team6 from "@/assets/team-6.jpg";
-import soudagarNaveed from "@/assets/soudagar-naveed.jpeg.asset.json";
 
 export const Route = createFileRoute("/team")({
   head: () => ({
     meta: [
       { title: "Team — Roya Ventures" },
-      { name: "description", content: "Meet the leadership, executive management and engineering team behind Roya Ventures." },
+      { name: "description", content: "Meet the leadership, strategy, operations and technical team behind Roya Ventures." },
       { property: "og:title", content: "Team — Roya Ventures" },
       { property: "og:description", content: "A senior team built around partnership and discretion." },
     ],
@@ -40,26 +33,34 @@ export const Route = createFileRoute("/team")({
 type Member = { img: string; name: string; role: string; bio?: string };
 
 const CEO: Member = {
-  img: team1,
-  name: "Raza Saudagar",
-  role: "Chief Executive Officer",
+  img: "",
+  name: "Raza",
+  role: "CEO",
   bio: "Sets the strategic direction of Roya Ventures — steering the firm's engineering, technology and infrastructure practice with a founder's discipline and an operator's rigour.",
 };
 
-const EXECUTIVE: Member[] = [
-  { img: team2, name: "Zafar Khazi", role: "Chief Marketing Officer", bio: "Leads brand, positioning and client development across the group's technology and infrastructure lines of business." },
-  { img: team4, name: "Maqbool Pasha", role: "Chief Financial Officer", bio: "Oversees capital, controls and financial strategy — safeguarding the firm's long-term financial resilience." },
+const STRATEGY_ADMIN: Member[] = [
+  { img: "", name: "Zafar", role: "Chief Strategic & Planning", bio: "Leads strategic planning and business direction — aligning long-term objectives with operational execution across the group." },
+  { img: "", name: "Sameena", role: "HR & Admin", bio: "Oversees people, culture and administrative operations — ensuring the firm runs with care, clarity and operational discipline." },
 ];
 
-const ENGINEERING: Member[] = [
-  { img: team5, name: "Anas Saudagar", role: "Project Manager", bio: "Directs delivery across the project portfolio — accountable for scope, schedule and quality on every engagement." },
-  { img: soudagarNaveed.url, name: "Naveed Saudagar", role: "Project & Business Development Engineer", bio: "Bridges engineering delivery and client development — bringing technical depth to new opportunities and mandates." },
-  { img: team6, name: "Suhail Shaik", role: "Technical Team Leader", bio: "Leads the technical team on the ground — coordinating design, deployment and commissioning across projects." },
+const OPERATIONS_FINANCE: Member[] = [
+  { img: "", name: "Anas", role: "Chief of Operations", bio: "Directs delivery across the project portfolio — accountable for scope, schedule and quality on every engagement." },
+  { img: "", name: "Maqbool Pasha", role: "Chief Accountant", bio: "Oversees financial controls, reporting and accounting — safeguarding the firm's fiscal integrity and operational transparency." },
 ];
 
-const TECHNICAL: Member[] = [
-  { img: team3, name: "Faizan Khazi", role: "Technical Engineer", bio: "Delivers hands-on engineering across IT and ELV systems — from installation through configuration and handover." },
-  { img: team3, name: "Furkhan Khazi", role: "Technical Engineer", bio: "Executes on-site engineering with a focus on quality workmanship and reliable, standards-based delivery." },
+const PROCUREMENT_TECHNICAL: Member[] = [
+  { img: "", name: "Naveed", role: "Procurement & Sales", bio: "Bridges procurement, sales and client development — bringing technical depth to new opportunities and mandates." },
+  { img: "", name: "Suhail Shaik", role: "Technical Lead", bio: "Leads the technical team on the ground — coordinating design, deployment and commissioning across projects." },
+];
+
+const TECHNICAL_SUPPORT: Member[] = [
+  { img: "", name: "Shuaib", role: "Tech Support Remote", bio: "Provides remote technical support — resolving issues with precision and maintaining client uptime." },
+  { img: "", name: "Imran", role: "Tech Support Remote", bio: "Delivers remote technical assistance — ensuring systems stay operational and clients receive timely support." },
+  { img: "", name: "Zeeshan", role: "Tech Support Remote", bio: "Supports clients and systems remotely — combining technical skill with responsive, clear communication." },
+  { img: "", name: "Furkhan", role: "Tech Support", bio: "Executes on-site technical support with a focus on quality workmanship and reliable, standards-based delivery." },
+  { img: "", name: "Faizan", role: "Tech Support", bio: "Delivers hands-on technical support across IT and ELV systems — from installation through configuration and handover." },
+  { img: "", name: "Mohsin", role: "Sr. Tech Support", bio: "Leads the technical support function — mentoring the team and ensuring complex issues are resolved efficiently." },
 ];
 
 function TeamPage() {
@@ -93,19 +94,19 @@ function TeamPage() {
         </div>
       </section>
 
-      {/* Executive Management */}
+      {/* Strategy & Administration */}
       <section className="relative section-y overflow-hidden bg-[var(--ivory)]">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_left,color-mix(in_oklab,var(--gold)_10%,transparent),transparent_55%)]" />
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_bottom_right,color-mix(in_oklab,var(--navy)_8%,transparent),transparent_60%)]" />
         <div className="container-px mx-auto">
           <SectionHeading
-            eyebrow="Executive Management"
-            title={<>Stewards of <em className="not-italic text-[var(--gold)]">growth</em> and governance.</>}
-            description="The executives responsible for the firm's commercial trajectory and financial integrity."
+            eyebrow="Strategy & Administration"
+            title={<>Stewards of <em className="not-italic text-[var(--gold)]">direction</em> and culture.</>}
+            description="The team that sets priorities, nurtures talent, and keeps the firm running with purpose."
             align="center"
           />
           <div className="mt-14 grid gap-5 sm:gap-7 md:grid-cols-2 max-w-[68rem] mx-auto">
-            {EXECUTIVE.map((p, i) => (
+            {STRATEGY_ADMIN.map((p, i) => (
               <Reveal key={p.name} delay={i * 0.08}>
                 <MemberCard member={p} />
               </Reveal>
@@ -114,38 +115,58 @@ function TeamPage() {
         </div>
       </section>
 
-      {/* Engineering & Technical Leadership */}
+      {/* Operations & Finance */}
       <section className="relative section-y overflow-hidden">
         <div className="absolute inset-0 -z-10 bg-radial-gold" />
         <div className="container-px mx-auto">
           <SectionHeading
-            eyebrow="Engineering & Technical Leadership"
-            title={<>The leaders who <em className="not-italic text-[var(--gold)]">deliver</em> every mandate.</>}
-            description="Accountable for project delivery, technical direction and client outcomes on the ground."
+            eyebrow="Operations & Finance"
+            title={<>The discipline that <em className="not-italic text-[var(--gold)]">delivers</em> every mandate.</>}
+            description="Accountable for project delivery, financial integrity and operational excellence on the ground."
             align="center"
           />
-          <div className="mt-14 max-w-[68rem] mx-auto">
-            <TeamCarousel members={ENGINEERING} />
-          </div>
-        </div>
-      </section>
-
-      {/* Technical Team */}
-      <section className="relative section-y overflow-hidden bg-[var(--ivory)]">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_bottom_left,color-mix(in_oklab,var(--gold)_8%,transparent),transparent_55%)]" />
-        <div className="container-px mx-auto">
-          <SectionHeading
-            eyebrow="Technical Team"
-            title={<>The engineers behind the <em className="not-italic text-[var(--gold)]">craft.</em></>}
-            description="Precise, disciplined execution — from installation through commissioning and handover."
-            align="center"
-          />
-          <div className="mt-14 grid gap-5 md:grid-cols-2 md:gap-7 max-w-[68rem] mx-auto">
-            {TECHNICAL.map((p, i) => (
+          <div className="mt-14 grid gap-5 sm:gap-7 md:grid-cols-2 max-w-[68rem] mx-auto">
+            {OPERATIONS_FINANCE.map((p, i) => (
               <Reveal key={p.name} delay={i * 0.08}>
                 <MemberCard member={p} />
               </Reveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Procurement & Technical Leadership */}
+      <section className="relative section-y overflow-hidden bg-[var(--ivory)]">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_bottom_left,color-mix(in_oklab,var(--gold)_8%,transparent),transparent_55%)]" />
+        <div className="container-px mx-auto">
+          <SectionHeading
+            eyebrow="Procurement & Technical Leadership"
+            title={<>The bridge between <em className="not-italic text-[var(--gold)]">opportunity</em> and execution.</>}
+            description="Technical leadership and commercial focus combined to source, scope and deliver complex engagements."
+            align="center"
+          />
+          <div className="mt-14 grid gap-5 sm:gap-7 md:grid-cols-2 max-w-[68rem] mx-auto">
+            {PROCUREMENT_TECHNICAL.map((p, i) => (
+              <Reveal key={p.name} delay={i * 0.08}>
+                <MemberCard member={p} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Technical Support Team */}
+      <section className="relative section-y overflow-hidden">
+        <div className="absolute inset-0 -z-10 bg-radial-gold" />
+        <div className="container-px mx-auto">
+          <SectionHeading
+            eyebrow="Technical Support Team"
+            title={<>The engineers behind the <em className="not-italic text-[var(--gold)]">craft.</em></>}
+            description="Precise, disciplined support — from remote assistance through on-site resolution and handover."
+            align="center"
+          />
+          <div className="mt-14 max-w-[68rem] mx-auto">
+            <TeamCarousel members={TECHNICAL_SUPPORT} />
           </div>
         </div>
       </section>
