@@ -70,7 +70,7 @@ const PROCUREMENT_TECHNICAL: Member[] = [
 const TECHNICAL_SUPPORT: Member[] = [
   { img: shuaibImg.url, name: "Shuaib", role: "Tech Support Remote", bio: "Provides remote technical support — resolving issues with precision and maintaining client uptime." },
   { img: imranImg.url, name: "Imran", role: "Tech Support Remote", bio: "Delivers remote technical assistance — ensuring systems stay operational and clients receive timely support." },
-  { img: "", name: "Zeeshan", role: "Tech Support Remote", bio: "Supports clients and systems remotely — combining technical skill with responsive, clear communication." },
+  { img: zeeshanImg.url, name: "Zeeshan", role: "Tech Support Remote", bio: "Supports clients and systems remotely — combining technical skill with responsive, clear communication." },
   { img: furkhanImg.url, name: "Furkhan", role: "Tech Support", bio: "Executes on-site technical support with a focus on quality workmanship and reliable, standards-based delivery." },
   { img: faizanImg.url, name: "Faizan", role: "Tech Support", bio: "Delivers hands-on technical support across IT and ELV systems — from installation through configuration and handover." },
   { img: mohsinImg.url, name: "Mohsin", role: "Sr. Tech Support", bio: "Leads the technical support function — mentoring the team and ensuring complex issues are resolved efficiently." },
