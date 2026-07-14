@@ -262,11 +262,21 @@ function FeaturedCard({ member: p }: { member: Member }) {
         <div className="p-4 md:p-5">
           <div className="relative overflow-hidden rounded-[16px] max-w-[12rem] mx-auto md:max-w-none aspect-[4/5] bg-gradient-to-b from-[var(--navy)] to-[var(--navy-deep)] ring-1 ring-[color-mix(in_oklab,var(--navy)_12%,transparent)] shadow-[0_16px_32px_-18px_rgba(24,49,78,0.45)]">
             <div aria-hidden className="absolute inset-0 bg-[radial-gradient(circle_at_top,color-mix(in_oklab,var(--gold)_22%,transparent),transparent_65%)]" />
-            <div className="absolute inset-0 grid place-items-center">
-              <span className="font-display text-[3rem] md:text-[3.5rem] font-semibold tracking-[-0.02em] text-[var(--gold)]/90">
-                {getInitials(p.name)}
-              </span>
-            </div>
+            {p.img ? (
+              <img
+                src={p.img}
+                alt={p.name}
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[900ms] ease-[cubic-bezier(0.2,0.8,0.2,1)] group-hover:scale-[1.04]"
+              />
+            ) : (
+              <div className="absolute inset-0 grid place-items-center">
+                <span className="font-display text-[3rem] md:text-[3.5rem] font-semibold tracking-[-0.02em] text-[var(--gold)]/90">
+                  {getInitials(p.name)}
+                </span>
+              </div>
+            )}
+
             <div className="absolute inset-x-0 bottom-0 h-[2px] bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent scale-x-0 origin-left transition-transform duration-[800ms] ease-out group-hover:scale-x-100" />
           </div>
         </div>
