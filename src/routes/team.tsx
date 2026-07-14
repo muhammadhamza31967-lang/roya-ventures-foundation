@@ -53,7 +53,7 @@ const CEO: Member = {
 };
 
 const STRATEGY_ADMIN: Member[] = [
-  { img: "", name: "Zafar", role: "Chief Strategic & Planning", bio: "Leads strategic planning and business direction — aligning long-term objectives with operational execution across the group." },
+  { img: zafarImg.url, name: "Khazi Zafar", role: "Chief Strategic & Planning", bio: "Leads strategic planning and business direction — aligning long-term objectives with operational execution across the group." },
   { img: "", name: "Sameena", role: "HR & Admin", bio: "Oversees people, culture and administrative operations — ensuring the firm runs with care, clarity and operational discipline." },
 ];
 
