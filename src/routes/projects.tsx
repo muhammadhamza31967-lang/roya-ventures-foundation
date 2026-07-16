@@ -179,160 +179,82 @@ function StatusBadge({ status }: { status: Project["status"] }) {
   );
 }
 
-/* --------- Reusable image tile with consistent radius, shadow & hover zoom --------- */
-function Tile({
-  src,
-  alt,
-  className = "",
-  shadow = "card",
+/* --------- Unified premium gallery: 1 large + 2 stacked right + 1 full-width bottom --------- */
+function Gallery({
+  project,
+  onOpen,
 }: {
-  src: string;
-  alt: string;
-  className?: string;
-  shadow?: "card" | "elegant";
+  project: Project;
+  onOpen: (index: number) => void;
 }) {
-  const shadowClass =
-    shadow === "elegant" ? "shadow-[var(--shadow-elegant)]" : "shadow-[var(--shadow-card)]";
+  const [a, b, c, d] = project.images;
+  const alt = (i: number) => `${project.company} — image ${i + 1}`;
+
+  const tileBase =
+    "group relative overflow-hidden rounded-2xl shadow-[var(--shadow-card)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]";
+  const imgBase =
+    "h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.06]";
+
   return (
-    <div className={`group relative overflow-hidden rounded-2xl ${shadowClass} ${className}`}>
-      <img
-        src={src}
-        alt={alt}
-        loading="lazy"
-        className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.06]"
-      />
+    <div className="relative before:absolute before:-inset-3 md:before:-inset-4 before:rounded-[1.75rem] before:border before:border-[var(--gold)]/25 before:-z-10">
+      <div className="grid gap-4 md:gap-5">
+        {/* Top row: large hero + two stacked right */}
+        <div className="grid gap-4 md:gap-5 grid-cols-1 sm:grid-cols-3 h-auto sm:h-[26rem] md:h-[30rem]">
+          <button
+            type="button"
+            onClick={() => onOpen(0)}
+            aria-label={`Open ${project.company} gallery`}
+            className={`${tileBase} sm:col-span-2 sm:row-span-2 h-64 sm:h-full shadow-[var(--shadow-elegant)]`}
+          >
+            <img src={a} alt={alt(0)} loading="lazy" className={imgBase} />
+          </button>
+          <button
+            type="button"
+            onClick={() => onOpen(1)}
+            aria-label={`Open ${project.company} gallery`}
+            className={`${tileBase} h-40 sm:h-full`}
+          >
+            <img src={b} alt={alt(1)} loading="lazy" className={imgBase} />
+          </button>
+          <button
+            type="button"
+            onClick={() => onOpen(2)}
+            aria-label={`Open ${project.company} gallery`}
+            className={`${tileBase} h-40 sm:h-full`}
+          >
+            <img src={c} alt={alt(2)} loading="lazy" className={imgBase} />
+          </button>
+        </div>
+
+        {/* Bottom: full-width image */}
+        <button
+          type="button"
+          onClick={() => onOpen(3)}
+          aria-label={`Open ${project.company} gallery`}
+          className={`${tileBase} h-48 sm:h-56 md:h-64 w-full shadow-[var(--shadow-elegant)]`}
+        >
+          <img src={d} alt={alt(3)} loading="lazy" className={imgBase} />
+        </button>
+      </div>
     </div>
   );
 }
 
-/* --------- Gallery compositions — one per layout variant --------- */
-function Gallery({ project }: { project: Project }) {
-  const [a, b, c, d] = project.images;
-  const alt = (i: number) => `${project.company} — image ${i + 1}`;
-
-  const wrapper =
-    "relative before:absolute before:-inset-3 md:before:-inset-4 before:rounded-[1.75rem] before:border before:border-[var(--gold)]/25 before:-z-10";
-
-  switch (project.layout) {
-    /* 1. Large hero + three supporting images (right column) */
-    case "hero-trio":
-      return (
-        <div className={wrapper}>
-          <div className="grid gap-3 md:gap-4 grid-cols-1 sm:grid-cols-3 h-auto sm:h-[32rem] md:h-[36rem]">
-            <Tile src={a} alt={alt(0)} className="sm:col-span-2 sm:row-span-3 h-64 sm:h-full" shadow="elegant" />
-            <Tile src={b} alt={alt(1)} className="h-40 sm:h-full" />
-            <Tile src={c} alt={alt(2)} className="h-40 sm:h-full" />
-            <Tile src={d} alt={alt(3)} className="h-40 sm:h-full" />
-          </div>
-        </div>
-      );
-
-    /* 2. Asymmetrical masonry */
-    case "masonry":
-      return (
-        <div className={wrapper}>
-          <div className="grid grid-cols-2 sm:grid-cols-6 gap-3 md:gap-4 auto-rows-[7rem] sm:auto-rows-[6rem] md:auto-rows-[7rem]">
-            <Tile src={a} alt={alt(0)} className="col-span-2 sm:col-span-4 row-span-3" shadow="elegant" />
-            <Tile src={b} alt={alt(1)} className="col-span-2 sm:col-span-2 row-span-2" />
-            <Tile src={c} alt={alt(2)} className="col-span-1 sm:col-span-3 row-span-2" />
-            <Tile src={d} alt={alt(3)} className="col-span-1 sm:col-span-3 row-span-2" />
-          </div>
-        </div>
-      );
-
-    /* 3. Editorial collage — tall lead + horizontal strip */
-    case "editorial":
-      return (
-        <div className={wrapper}>
-          <div className="grid gap-3 md:gap-4 grid-cols-1 sm:grid-cols-12 auto-rows-[8rem] sm:auto-rows-[6rem] md:auto-rows-[7rem]">
-            <Tile src={a} alt={alt(0)} className="sm:col-span-7 row-span-3" shadow="elegant" />
-            <Tile src={b} alt={alt(1)} className="sm:col-span-5 row-span-2" />
-            <Tile src={c} alt={alt(2)} className="sm:col-span-5 row-span-1" />
-            <Tile src={d} alt={alt(3)} className="sm:col-span-12 row-span-2" />
-          </div>
-        </div>
-      );
-
-    /* 4. Two large stacked + two smaller supporting */
-    case "stacked-pair":
-      return (
-        <div className={wrapper}>
-          <div className="grid gap-3 md:gap-4 grid-cols-1 sm:grid-cols-5 h-auto sm:h-[34rem]">
-            <div className="sm:col-span-3 flex flex-col gap-3 md:gap-4">
-              <Tile src={a} alt={alt(0)} className="h-56 sm:h-1/2" shadow="elegant" />
-              <Tile src={b} alt={alt(1)} className="h-56 sm:h-1/2" shadow="elegant" />
-            </div>
-            <div className="sm:col-span-2 flex flex-col gap-3 md:gap-4">
-              <Tile src={c} alt={alt(2)} className="h-40 sm:flex-1" />
-              <Tile src={d} alt={alt(3)} className="h-40 sm:flex-1" />
-            </div>
-          </div>
-        </div>
-      );
-
-    /* 5. Offset overlapping composition */
-    case "offset-overlap":
-      return (
-        <div className="relative">
-          <div aria-hidden className="absolute -inset-3 md:-inset-4 rounded-[1.75rem] border border-[var(--gold)]/25 -z-10" />
-          {/* Mobile: simple 2x2. Desktop: overlapping stack */}
-          <div className="grid grid-cols-2 gap-3 sm:hidden">
-            <Tile src={a} alt={alt(0)} className="col-span-2 h-56" shadow="elegant" />
-            <Tile src={b} alt={alt(1)} className="h-40" />
-            <Tile src={c} alt={alt(2)} className="h-40" />
-            <Tile src={d} alt={alt(3)} className="col-span-2 h-48" />
-          </div>
-          <div className="hidden sm:block relative h-[34rem]">
-            <Tile
-              src={a}
-              alt={alt(0)}
-              className="absolute top-0 left-0 w-[62%] h-[62%]"
-              shadow="elegant"
-            />
-            <Tile
-              src={b}
-              alt={alt(1)}
-              className="absolute top-[14%] right-0 w-[44%] h-[52%] ring-4 ring-white"
-              shadow="elegant"
-            />
-            <Tile
-              src={c}
-              alt={alt(2)}
-              className="absolute bottom-0 left-[10%] w-[42%] h-[46%] ring-4 ring-white"
-            />
-            <Tile
-              src={d}
-              alt={alt(3)}
-              className="absolute bottom-[6%] right-[6%] w-[38%] h-[40%] ring-4 ring-white"
-              shadow="elegant"
-            />
-          </div>
-        </div>
-      );
-
-    /* 6. Premium varied grid */
-    case "varied-grid":
-    default:
-      return (
-        <div className={wrapper}>
-          <div className="grid gap-3 md:gap-4 grid-cols-2 sm:grid-cols-4 auto-rows-[7rem] sm:auto-rows-[8rem] md:auto-rows-[9rem]">
-            <Tile src={a} alt={alt(0)} className="col-span-2 row-span-2" shadow="elegant" />
-            <Tile src={b} alt={alt(1)} className="col-span-2 row-span-1" />
-            <Tile src={c} alt={alt(2)} className="col-span-1 row-span-2" />
-            <Tile src={d} alt={alt(3)} className="col-span-1 row-span-2" />
-          </div>
-        </div>
-      );
-  }
-}
-
 function ProjectBlock({ project, index }: { project: Project; index: number }) {
   const reverse = index % 2 === 1;
+  const [open, setOpen] = useState(false);
+  const [startIndex, setStartIndex] = useState(0);
+
+  const openAt = (i: number) => {
+    setStartIndex(i);
+    setOpen(true);
+  };
+
   return (
     <div className="grid gap-10 lg:gap-16 items-center lg:grid-cols-12">
       {/* Gallery */}
       <Reveal className={["lg:col-span-7", reverse ? "lg:order-2" : ""].join(" ")}>
-        <Gallery project={project} />
+        <Gallery project={project} onOpen={openAt} />
       </Reveal>
 
       {/* Details */}
@@ -372,10 +294,31 @@ function ProjectBlock({ project, index }: { project: Project; index: number }) {
           </span>
           <StatusBadge status={project.status} />
         </div>
+
+        <div className="mt-9">
+          <button
+            type="button"
+            onClick={() => openAt(0)}
+            className="group inline-flex items-center gap-3 rounded-full border border-[var(--gold)]/60 bg-[var(--navy)] px-7 py-3 text-sm font-semibold tracking-[0.14em] uppercase text-white shadow-[var(--shadow-card)] transition-all duration-300 hover:bg-[var(--gold)] hover:text-[var(--navy)] hover:border-[var(--gold)] hover:-translate-y-0.5 hover:shadow-[var(--shadow-elegant)]"
+            data-cursor="hover"
+          >
+            Explore More
+            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2} />
+          </button>
+        </div>
       </Reveal>
+
+      <ProjectLightbox
+        open={open}
+        images={project.images}
+        title={project.company}
+        initialIndex={startIndex}
+        onClose={() => setOpen(false)}
+      />
     </div>
   );
 }
+
 
 function ProjectsPage() {
   return (
