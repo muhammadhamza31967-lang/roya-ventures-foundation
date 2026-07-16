@@ -1,11 +1,14 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { CtaBanner } from "@/components/site/CtaBanner";
 import { Reveal } from "@/components/site/Reveal";
+import { ProjectLightbox } from "@/components/site/ProjectLightbox";
 import {
   MapPin,
+  ArrowRight,
   CheckCircle2,
   ShieldCheck,
   Users,
