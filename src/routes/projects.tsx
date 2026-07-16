@@ -52,7 +52,6 @@ const PROJECTS: Project[] = [
     category: "Industrial Facility",
     location: "Riyadh, KSA",
     status: "Successfully Delivered",
-    layout: "hero-trio",
     images: [
       img("photo-1581093588401-fbb62a02f120"),
       img("photo-1565043666747-69f6646db940"),
@@ -68,7 +67,6 @@ const PROJECTS: Project[] = [
     category: "Data Centre",
     location: "Jeddah, KSA",
     status: "Completed",
-    layout: "masonry",
     images: [
       img("photo-1558494949-ef010cbdcc31"),
       img("photo-1580894908361-967195033215"),
@@ -84,7 +82,6 @@ const PROJECTS: Project[] = [
     category: "Commercial Building",
     location: "Dubai, UAE",
     status: "Successfully Delivered",
-    layout: "editorial",
     images: [
       img("photo-1497366216548-37526070297c"),
       img("photo-1519389950473-47ba0277781c"),
@@ -100,7 +97,6 @@ const PROJECTS: Project[] = [
     category: "Logistics & Warehousing",
     location: "Dammam, KSA",
     status: "Completed",
-    layout: "stacked-pair",
     images: [
       img("photo-1586528116311-ad8dd3c8310d"),
       img("photo-1601599561213-832382fd07ba"),
@@ -116,7 +112,6 @@ const PROJECTS: Project[] = [
     category: "Healthcare",
     location: "Doha, Qatar",
     status: "Successfully Delivered",
-    layout: "offset-overlap",
     images: [
       img("photo-1519494026892-80bbd2d6fd0d"),
       img("photo-1504384308090-c894fdcc538d"),
@@ -132,7 +127,6 @@ const PROJECTS: Project[] = [
     category: "Retail",
     location: "Multi-city, GCC",
     status: "Completed",
-    layout: "varied-grid",
     images: [
       img("photo-1441986300917-64674bd600d8"),
       img("photo-1481437156560-3205f6a55735"),
