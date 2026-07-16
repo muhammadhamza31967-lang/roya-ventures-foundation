@@ -58,7 +58,7 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
                 to={item.to}
                 style={{ fontFamily: "'Sora', ui-sans-serif, system-ui, sans-serif" }}
                 className={[
-                  "group relative px-5 py-2 text-[13px] md:text-[14px] font-medium tracking-[0.22em] uppercase transition-all duration-500 ease-out",
+                  "group relative px-3.5 xl:px-5 py-2 text-[12px] xl:text-[13px] font-medium tracking-[0.2em] uppercase transition-all duration-500 ease-out",
                   active ? "text-[var(--gold)]" : "text-white/80 hover:text-[var(--gold)]",
                 ].join(" ")}
                 data-cursor="hover"
