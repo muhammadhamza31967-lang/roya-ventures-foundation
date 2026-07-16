@@ -1,11 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { CtaBanner } from "@/components/site/CtaBanner";
 import { Reveal } from "@/components/site/Reveal";
 import {
-  ArrowRight,
   MapPin,
   CheckCircle2,
   ShieldCheck,
@@ -30,6 +29,14 @@ const img = (id: string, w = 1600) =>
 
 const HERO_IMAGE = img("photo-1581091226825-a6a2a5aee158");
 
+type GalleryLayout =
+  | "hero-trio"
+  | "masonry"
+  | "editorial"
+  | "stacked-pair"
+  | "offset-overlap"
+  | "varied-grid";
+
 type Project = {
   company: string;
   overview: string;
@@ -37,8 +44,8 @@ type Project = {
   category: string;
   location: string;
   status: "Completed" | "Successfully Delivered";
-  featured: string;
-  gallery: [string, string];
+  layout: GalleryLayout;
+  images: string[]; // at least 4
 };
 
 const PROJECTS: Project[] = [
@@ -50,8 +57,13 @@ const PROJECTS: Project[] = [
     category: "Industrial Facility",
     location: "Riyadh, KSA",
     status: "Successfully Delivered",
-    featured: img("photo-1581093588401-fbb62a02f120"),
-    gallery: [img("photo-1565043666747-69f6646db940"), img("photo-1581093588401-16f5a6a1b1e8")],
+    layout: "hero-trio",
+    images: [
+      img("photo-1581093588401-fbb62a02f120"),
+      img("photo-1565043666747-69f6646db940"),
+      img("photo-1504917595217-d4dc5ebe6122"),
+      img("photo-1591696205602-2f950c417cb9"),
+    ],
   },
   {
     company: "Northgate Data Systems",
@@ -61,8 +73,13 @@ const PROJECTS: Project[] = [
     category: "Data Centre",
     location: "Jeddah, KSA",
     status: "Completed",
-    featured: img("photo-1558494949-ef010cbdcc31"),
-    gallery: [img("photo-1580894908361-967195033215"), img("photo-1562408590-e32931084e23")],
+    layout: "masonry",
+    images: [
+      img("photo-1558494949-ef010cbdcc31"),
+      img("photo-1580894908361-967195033215"),
+      img("photo-1562408590-e32931084e23"),
+      img("photo-1518770660439-4636190af475"),
+    ],
   },
   {
     company: "Ascend Financial Tower",
@@ -72,8 +89,13 @@ const PROJECTS: Project[] = [
     category: "Commercial Building",
     location: "Dubai, UAE",
     status: "Successfully Delivered",
-    featured: img("photo-1497366216548-37526070297c"),
-    gallery: [img("photo-1519389950473-47ba0277781c"), img("photo-1518770660439-4636190af475")],
+    layout: "editorial",
+    images: [
+      img("photo-1497366216548-37526070297c"),
+      img("photo-1519389950473-47ba0277781c"),
+      img("photo-1518770660439-4636190af475"),
+      img("photo-1486406146926-c627a92ad1ab"),
+    ],
   },
   {
     company: "Harborline Logistics",
@@ -83,8 +105,13 @@ const PROJECTS: Project[] = [
     category: "Logistics & Warehousing",
     location: "Dammam, KSA",
     status: "Completed",
-    featured: img("photo-1586528116311-ad8dd3c8310d"),
-    gallery: [img("photo-1601599561213-832382fd07ba"), img("photo-1581091012184-5c8f76ee1c65")],
+    layout: "stacked-pair",
+    images: [
+      img("photo-1586528116311-ad8dd3c8310d"),
+      img("photo-1601599561213-832382fd07ba"),
+      img("photo-1581091012184-5c8f76ee1c65"),
+      img("photo-1553413077-190dd305871c"),
+    ],
   },
   {
     company: "Crescent Medical City",
@@ -94,8 +121,13 @@ const PROJECTS: Project[] = [
     category: "Healthcare",
     location: "Doha, Qatar",
     status: "Successfully Delivered",
-    featured: img("photo-1519494026892-80bbd2d6fd0d"),
-    gallery: [img("photo-1504384308090-c894fdcc538d"), img("photo-1516549655169-df83a0774514")],
+    layout: "offset-overlap",
+    images: [
+      img("photo-1519494026892-80bbd2d6fd0d"),
+      img("photo-1504384308090-c894fdcc538d"),
+      img("photo-1516549655169-df83a0774514"),
+      img("photo-1580281658626-ee379f3cce93"),
+    ],
   },
   {
     company: "Aurelia Retail Collection",
@@ -105,8 +137,13 @@ const PROJECTS: Project[] = [
     category: "Retail",
     location: "Multi-city, GCC",
     status: "Completed",
-    featured: img("photo-1441986300917-64674bd600d8"),
-    gallery: [img("photo-1481437156560-3205f6a55735"), img("photo-1555529771-7888783a18d3")],
+    layout: "varied-grid",
+    images: [
+      img("photo-1441986300917-64674bd600d8"),
+      img("photo-1481437156560-3205f6a55735"),
+      img("photo-1555529771-7888783a18d3"),
+      img("photo-1519567241046-7f570eee3ce6"),
+    ],
   },
 ];
 
@@ -153,41 +190,160 @@ function StatusBadge({ status }: { status: Project["status"] }) {
   );
 }
 
+/* --------- Reusable image tile with consistent radius, shadow & hover zoom --------- */
+function Tile({
+  src,
+  alt,
+  className = "",
+  shadow = "card",
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+  shadow?: "card" | "elegant";
+}) {
+  const shadowClass =
+    shadow === "elegant" ? "shadow-[var(--shadow-elegant)]" : "shadow-[var(--shadow-card)]";
+  return (
+    <div className={`group relative overflow-hidden rounded-2xl ${shadowClass} ${className}`}>
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        className="h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.06]"
+      />
+    </div>
+  );
+}
+
+/* --------- Gallery compositions — one per layout variant --------- */
+function Gallery({ project }: { project: Project }) {
+  const [a, b, c, d] = project.images;
+  const alt = (i: number) => `${project.company} — image ${i + 1}`;
+
+  const wrapper =
+    "relative before:absolute before:-inset-3 md:before:-inset-4 before:rounded-[1.75rem] before:border before:border-[var(--gold)]/25 before:-z-10";
+
+  switch (project.layout) {
+    /* 1. Large hero + three supporting images (right column) */
+    case "hero-trio":
+      return (
+        <div className={wrapper}>
+          <div className="grid gap-3 md:gap-4 grid-cols-1 sm:grid-cols-3 h-auto sm:h-[32rem] md:h-[36rem]">
+            <Tile src={a} alt={alt(0)} className="sm:col-span-2 sm:row-span-3 h-64 sm:h-full" shadow="elegant" />
+            <Tile src={b} alt={alt(1)} className="h-40 sm:h-full" />
+            <Tile src={c} alt={alt(2)} className="h-40 sm:h-full" />
+            <Tile src={d} alt={alt(3)} className="h-40 sm:h-full" />
+          </div>
+        </div>
+      );
+
+    /* 2. Asymmetrical masonry */
+    case "masonry":
+      return (
+        <div className={wrapper}>
+          <div className="grid grid-cols-2 sm:grid-cols-6 gap-3 md:gap-4 auto-rows-[7rem] sm:auto-rows-[6rem] md:auto-rows-[7rem]">
+            <Tile src={a} alt={alt(0)} className="col-span-2 sm:col-span-4 row-span-3" shadow="elegant" />
+            <Tile src={b} alt={alt(1)} className="col-span-2 sm:col-span-2 row-span-2" />
+            <Tile src={c} alt={alt(2)} className="col-span-1 sm:col-span-3 row-span-2" />
+            <Tile src={d} alt={alt(3)} className="col-span-1 sm:col-span-3 row-span-2" />
+          </div>
+        </div>
+      );
+
+    /* 3. Editorial collage — tall lead + horizontal strip */
+    case "editorial":
+      return (
+        <div className={wrapper}>
+          <div className="grid gap-3 md:gap-4 grid-cols-1 sm:grid-cols-12 auto-rows-[8rem] sm:auto-rows-[6rem] md:auto-rows-[7rem]">
+            <Tile src={a} alt={alt(0)} className="sm:col-span-7 row-span-3" shadow="elegant" />
+            <Tile src={b} alt={alt(1)} className="sm:col-span-5 row-span-2" />
+            <Tile src={c} alt={alt(2)} className="sm:col-span-5 row-span-1" />
+            <Tile src={d} alt={alt(3)} className="sm:col-span-12 row-span-2" />
+          </div>
+        </div>
+      );
+
+    /* 4. Two large stacked + two smaller supporting */
+    case "stacked-pair":
+      return (
+        <div className={wrapper}>
+          <div className="grid gap-3 md:gap-4 grid-cols-1 sm:grid-cols-5 h-auto sm:h-[34rem]">
+            <div className="sm:col-span-3 flex flex-col gap-3 md:gap-4">
+              <Tile src={a} alt={alt(0)} className="h-56 sm:h-1/2" shadow="elegant" />
+              <Tile src={b} alt={alt(1)} className="h-56 sm:h-1/2" shadow="elegant" />
+            </div>
+            <div className="sm:col-span-2 flex flex-col gap-3 md:gap-4">
+              <Tile src={c} alt={alt(2)} className="h-40 sm:flex-1" />
+              <Tile src={d} alt={alt(3)} className="h-40 sm:flex-1" />
+            </div>
+          </div>
+        </div>
+      );
+
+    /* 5. Offset overlapping composition */
+    case "offset-overlap":
+      return (
+        <div className="relative">
+          <div aria-hidden className="absolute -inset-3 md:-inset-4 rounded-[1.75rem] border border-[var(--gold)]/25 -z-10" />
+          {/* Mobile: simple 2x2. Desktop: overlapping stack */}
+          <div className="grid grid-cols-2 gap-3 sm:hidden">
+            <Tile src={a} alt={alt(0)} className="col-span-2 h-56" shadow="elegant" />
+            <Tile src={b} alt={alt(1)} className="h-40" />
+            <Tile src={c} alt={alt(2)} className="h-40" />
+            <Tile src={d} alt={alt(3)} className="col-span-2 h-48" />
+          </div>
+          <div className="hidden sm:block relative h-[34rem]">
+            <Tile
+              src={a}
+              alt={alt(0)}
+              className="absolute top-0 left-0 w-[62%] h-[62%]"
+              shadow="elegant"
+            />
+            <Tile
+              src={b}
+              alt={alt(1)}
+              className="absolute top-[14%] right-0 w-[44%] h-[52%] ring-4 ring-white"
+              shadow="elegant"
+            />
+            <Tile
+              src={c}
+              alt={alt(2)}
+              className="absolute bottom-0 left-[10%] w-[42%] h-[46%] ring-4 ring-white"
+            />
+            <Tile
+              src={d}
+              alt={alt(3)}
+              className="absolute bottom-[6%] right-[6%] w-[38%] h-[40%] ring-4 ring-white"
+              shadow="elegant"
+            />
+          </div>
+        </div>
+      );
+
+    /* 6. Premium varied grid */
+    case "varied-grid":
+    default:
+      return (
+        <div className={wrapper}>
+          <div className="grid gap-3 md:gap-4 grid-cols-2 sm:grid-cols-4 auto-rows-[7rem] sm:auto-rows-[8rem] md:auto-rows-[9rem]">
+            <Tile src={a} alt={alt(0)} className="col-span-2 row-span-2" shadow="elegant" />
+            <Tile src={b} alt={alt(1)} className="col-span-2 row-span-1" />
+            <Tile src={c} alt={alt(2)} className="col-span-1 row-span-2" />
+            <Tile src={d} alt={alt(3)} className="col-span-1 row-span-2" />
+          </div>
+        </div>
+      );
+  }
+}
+
 function ProjectBlock({ project, index }: { project: Project; index: number }) {
   const reverse = index % 2 === 1;
   return (
     <div className="grid gap-10 lg:gap-16 items-center lg:grid-cols-12">
       {/* Gallery */}
       <Reveal className={["lg:col-span-7", reverse ? "lg:order-2" : ""].join(" ")}>
-        <div className="relative">
-          <div aria-hidden className="absolute -inset-3 md:-inset-4 rounded-[1.75rem] border border-[var(--gold)]/25 -z-10" />
-          <div className="grid grid-cols-6 grid-rows-6 gap-3 md:gap-4 h-[26rem] md:h-[34rem]">
-            <div className="col-span-6 row-span-4 overflow-hidden rounded-2xl shadow-[var(--shadow-elegant)] group">
-              <img
-                src={project.featured}
-                alt={`${project.company} — featured`}
-                loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-105"
-              />
-            </div>
-            <div className="col-span-3 row-span-2 overflow-hidden rounded-2xl shadow-[var(--shadow-card)] group">
-              <img
-                src={project.gallery[0]}
-                alt={`${project.company} — supporting 1`}
-                loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-110"
-              />
-            </div>
-            <div className="col-span-3 row-span-2 overflow-hidden rounded-2xl shadow-[var(--shadow-card)] group">
-              <img
-                src={project.gallery[1]}
-                alt={`${project.company} — supporting 2`}
-                loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-110"
-              />
-            </div>
-          </div>
-        </div>
+        <Gallery project={project} />
       </Reveal>
 
       {/* Details */}
@@ -226,12 +382,6 @@ function ProjectBlock({ project, index }: { project: Project; index: number }) {
             {project.location}
           </span>
           <StatusBadge status={project.status} />
-        </div>
-
-        <div className="mt-10">
-          <Link to="/contact" className="btn-ghost">
-            View project <ArrowRight className="h-4 w-4" />
-          </Link>
         </div>
       </Reveal>
     </div>
