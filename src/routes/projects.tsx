@@ -1,0 +1,376 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { SiteLayout } from "@/components/site/SiteLayout";
+import { PageHero } from "@/components/site/PageHero";
+import { SectionHeading } from "@/components/site/SectionHeading";
+import { CtaBanner } from "@/components/site/CtaBanner";
+import { Reveal } from "@/components/site/Reveal";
+import {
+  ArrowRight,
+  MapPin,
+  CheckCircle2,
+  ShieldCheck,
+  Users,
+  Wrench,
+  BadgeCheck,
+  Award,
+  LifeBuoy,
+  Building2,
+  Landmark,
+  HeartPulse,
+  GraduationCap,
+  Server,
+  ShoppingBag,
+  Factory,
+  Hotel,
+} from "lucide-react";
+
+// Royalty-free placeholder imagery (Unsplash) — replace later with official project photos.
+const img = (id: string, w = 1600) =>
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
+
+const HERO_IMAGE = img("photo-1581091226825-a6a2a5aee158");
+
+type Project = {
+  company: string;
+  overview: string;
+  services: string[];
+  category: string;
+  location: string;
+  status: "Completed" | "Successfully Delivered";
+  featured: string;
+  gallery: [string, string];
+};
+
+const PROJECTS: Project[] = [
+  {
+    company: "Meridian Industrial Group",
+    overview:
+      "Turnkey LV/HV electrical infrastructure and switchgear commissioning for a 42,000 sqm manufacturing facility — engineered for continuous operation and future capacity growth.",
+    services: ["Electrical Contracts", "Switchgear & Distribution", "Power Monitoring"],
+    category: "Industrial Facility",
+    location: "Riyadh, KSA",
+    status: "Successfully Delivered",
+    featured: img("photo-1581093588401-fbb62a02f120"),
+    gallery: [img("photo-1565043666747-69f6646db940"), img("photo-1581093588401-16f5a6a1b1e8")],
+  },
+  {
+    company: "Northgate Data Systems",
+    overview:
+      "Tier-III grade data centre build-out with precision cooling, redundant power, structured cabling and white-space integration for enterprise workloads.",
+    services: ["Data Center Setup", "Structured Cabling", "Precision Cooling"],
+    category: "Data Centre",
+    location: "Jeddah, KSA",
+    status: "Completed",
+    featured: img("photo-1558494949-ef010cbdcc31"),
+    gallery: [img("photo-1580894908361-967195033215"), img("photo-1562408590-e32931084e23")],
+  },
+  {
+    company: "Ascend Financial Tower",
+    overview:
+      "Enterprise LAN, campus Wi-Fi and SD-WAN deployment across a 28-floor commercial tower, delivering secure, segmented connectivity for tenant operations.",
+    services: ["Networking", "Wi-Fi 6 Design", "SD-WAN Integration"],
+    category: "Commercial Building",
+    location: "Dubai, UAE",
+    status: "Successfully Delivered",
+    featured: img("photo-1497366216548-37526070297c"),
+    gallery: [img("photo-1519389950473-47ba0277781c"), img("photo-1518770660439-4636190af475")],
+  },
+  {
+    company: "Harborline Logistics",
+    overview:
+      "OS2/OM4 fibre backbone and Cat6A structured cabling across a multi-warehouse logistics hub — link-certified to international standards with full as-built documentation.",
+    services: ["Ethernet & Fibre Cabling", "Backbone Design", "Certification"],
+    category: "Logistics & Warehousing",
+    location: "Dammam, KSA",
+    status: "Completed",
+    featured: img("photo-1586528116311-ad8dd3c8310d"),
+    gallery: [img("photo-1601599561213-832382fd07ba"), img("photo-1581091012184-5c8f76ee1c65")],
+  },
+  {
+    company: "Crescent Medical City",
+    overview:
+      "Integrated IP surveillance, access control and EMS monitoring across a 600-bed healthcare campus — unified under a single command-centre dashboard.",
+    services: ["Surveillance", "Access Control", "EMS Integration"],
+    category: "Healthcare",
+    location: "Doha, Qatar",
+    status: "Successfully Delivered",
+    featured: img("photo-1519494026892-80bbd2d6fd0d"),
+    gallery: [img("photo-1504384308090-c894fdcc538d"), img("photo-1516549655169-df83a0774514")],
+  },
+  {
+    company: "Aurelia Retail Collection",
+    overview:
+      "POS hardware roll-out, digital signage networks and footfall analytics across 34 retail stores — centrally managed with real-time engagement reporting.",
+    services: ["POS Hardware & Software", "Digital Signage", "Footfall Analytics"],
+    category: "Retail",
+    location: "Multi-city, GCC",
+    status: "Completed",
+    featured: img("photo-1441986300917-64674bd600d8"),
+    gallery: [img("photo-1481437156560-3205f6a55735"), img("photo-1555529771-7888783a18d3")],
+  },
+];
+
+const TRUST = [
+  { icon: Users, title: "Experienced Engineering Team", text: "Senior practitioners leading every mandate — from survey to sign-off." },
+  { icon: Wrench, title: "Turnkey Project Delivery", text: "One accountable partner for design, supply, install and commissioning." },
+  { icon: ShieldCheck, title: "Safety & Compliance", text: "NFPA, civil-defence and international standards embedded in every phase." },
+  { icon: BadgeCheck, title: "Certified Professionals", text: "Manufacturer-certified engineers across electrical, networking and security." },
+  { icon: Award, title: "Quality Assurance", text: "Rigorous QA/QC controls, test reports and full as-built documentation." },
+  { icon: LifeBuoy, title: "Long-Term Support", text: "AMCs, monitoring and 24/7 response — well beyond project handover." },
+];
+
+const INDUSTRIES = [
+  { icon: Landmark, name: "Government" },
+  { icon: Building2, name: "Commercial" },
+  { icon: HeartPulse, name: "Healthcare" },
+  { icon: GraduationCap, name: "Education" },
+  { icon: Server, name: "Data Centres" },
+  { icon: ShoppingBag, name: "Retail" },
+  { icon: Factory, name: "Industrial" },
+  { icon: Hotel, name: "Hospitality" },
+];
+
+export const Route = createFileRoute("/projects")({
+  head: () => ({
+    meta: [
+      { title: "Projects — Roya Ventures" },
+      { name: "description", content: "Selected engineering and technology projects delivered by Roya Ventures — electrical infrastructure, data centres, networking, surveillance and enterprise IT across diverse industries." },
+      { property: "og:title", content: "Projects — Roya Ventures" },
+      { property: "og:description", content: "Proven delivery across every project — infrastructure, technology and integrated engineering solutions." },
+      { property: "og:image", content: HERO_IMAGE },
+      { name: "twitter:image", content: HERO_IMAGE },
+    ],
+  }),
+  component: ProjectsPage,
+});
+
+function StatusBadge({ status }: { status: Project["status"] }) {
+  return (
+    <span className="inline-flex items-center gap-2 rounded-full border border-[var(--gold)]/50 bg-[var(--gold)]/10 px-4 py-1.5 text-[11px] font-semibold tracking-[0.22em] uppercase text-[var(--gold)]">
+      <CheckCircle2 className="h-3.5 w-3.5" strokeWidth={2} />
+      {status}
+    </span>
+  );
+}
+
+function ProjectBlock({ project, index }: { project: Project; index: number }) {
+  const reverse = index % 2 === 1;
+  return (
+    <div className="grid gap-10 lg:gap-16 items-center lg:grid-cols-12">
+      {/* Gallery */}
+      <Reveal className={["lg:col-span-7", reverse ? "lg:order-2" : ""].join(" ")}>
+        <div className="relative">
+          <div aria-hidden className="absolute -inset-3 md:-inset-4 rounded-[1.75rem] border border-[var(--gold)]/25 -z-10" />
+          <div className="grid grid-cols-6 grid-rows-6 gap-3 md:gap-4 h-[26rem] md:h-[34rem]">
+            <div className="col-span-6 row-span-4 overflow-hidden rounded-2xl shadow-[var(--shadow-elegant)] group">
+              <img
+                src={project.featured}
+                alt={`${project.company} — featured`}
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-105"
+              />
+            </div>
+            <div className="col-span-3 row-span-2 overflow-hidden rounded-2xl shadow-[var(--shadow-card)] group">
+              <img
+                src={project.gallery[0]}
+                alt={`${project.company} — supporting 1`}
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-110"
+              />
+            </div>
+            <div className="col-span-3 row-span-2 overflow-hidden rounded-2xl shadow-[var(--shadow-card)] group">
+              <img
+                src={project.gallery[1]}
+                alt={`${project.company} — supporting 2`}
+                loading="lazy"
+                className="h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-110"
+              />
+            </div>
+          </div>
+        </div>
+      </Reveal>
+
+      {/* Details */}
+      <Reveal
+        delay={0.1}
+        className={["lg:col-span-5", reverse ? "lg:order-1" : ""].join(" ")}
+      >
+        <p className="gold-rule">
+          Project {String(index + 1).padStart(2, "0")} · {project.category}
+        </p>
+        <h3 className="heading-md mt-6 text-[var(--navy)]">{project.company}</h3>
+        <div className="mt-5 gold-divider" />
+        <p className="mt-6 text-base md:text-lg leading-relaxed text-muted-foreground font-light">
+          {project.overview}
+        </p>
+
+        <div className="mt-8">
+          <p className="text-[11px] tracking-[0.28em] uppercase text-[var(--navy)]/60 font-semibold">
+            Services delivered
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            {project.services.map((s) => (
+              <span
+                key={s}
+                className="rounded-full border border-[color-mix(in_oklab,var(--navy)_15%,transparent)] bg-white px-3.5 py-1.5 text-xs font-medium text-[var(--navy)]/85"
+              >
+                {s}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-[var(--navy)]/75">
+          <span className="inline-flex items-center gap-2">
+            <MapPin className="h-4 w-4 text-[var(--gold)]" strokeWidth={1.75} />
+            {project.location}
+          </span>
+          <StatusBadge status={project.status} />
+        </div>
+
+        <div className="mt-10">
+          <Link to="/contact" className="btn-ghost">
+            View project <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </Reveal>
+    </div>
+  );
+}
+
+function ProjectsPage() {
+  return (
+    <SiteLayout transparentHeader>
+      <PageHero
+        eyebrow="Selected work"
+        title={<>Projects</>}
+        subtitle="Delivering engineering excellence through complex infrastructure, technology and integrated solutions across diverse industries."
+        image={HERO_IMAGE}
+        height="compact"
+      />
+
+      {/* Introduction */}
+      <section className="section-y relative overflow-hidden">
+        <div className="absolute inset-0 -z-10 bg-radial-gold" />
+        <div aria-hidden className="pointer-events-none absolute -top-32 -right-24 h-[24rem] w-[24rem] rounded-full border border-[var(--gold)]/15" />
+        <div aria-hidden className="pointer-events-none absolute -bottom-24 -left-24 h-[22rem] w-[22rem] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--emerald-deep)_18%,transparent),transparent_65%)] blur-3xl" />
+        <div className="container-px mx-auto grid gap-14 lg:grid-cols-12 lg:gap-20">
+          <div className="lg:col-span-5">
+            <Reveal>
+              <p className="gold-rule">Our track record</p>
+              <h2 className="heading-lg mt-6">
+                Proven delivery <em className="not-italic text-[var(--gold)]">across every project.</em>
+              </h2>
+              <div className="mt-8 gold-divider" />
+            </Reveal>
+          </div>
+          <Reveal as="div" delay={0.1} className="lg:col-span-7 space-y-7">
+            <p className="text-xl leading-[1.7] text-[var(--navy)]/85 font-light">
+              Every project reflects our commitment to quality, precision, safety and long-term
+              client success.
+            </p>
+            <p className="text-base text-muted-foreground leading-relaxed">
+              From electrical infrastructure and data centres to ELV systems and enterprise IT
+              solutions, Roya Ventures delivers projects that create lasting value — engineered
+              by senior practitioners, supported well beyond handover.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Featured Projects Showcase */}
+      <section
+        className="relative section-y overflow-hidden"
+        style={{ background: "var(--grad-ivory)" }}
+      >
+        <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/50 to-transparent" />
+        <div className="container-px mx-auto">
+          <SectionHeading
+            eyebrow="Featured projects"
+            title={<>Engineering delivered <em className="not-italic text-[var(--gold)]">at every scale.</em></>}
+            description="A selection of mandates across infrastructure, technology and integrated systems."
+          />
+          <div className="mt-20 space-y-28 md:space-y-36">
+            {PROJECTS.map((project, i) => (
+              <ProjectBlock key={project.company} project={project} index={i} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why Clients Trust Roya Ventures */}
+      <section
+        className="relative section-y overflow-hidden bg-noise text-white"
+        style={{ background: "linear-gradient(135deg, #0B1F36 0%, #0E2440 45%, #0F3A30 100%)" }}
+      >
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklab,var(--gold)_22%,transparent),transparent_55%)]" />
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_bottom_left,color-mix(in_oklab,var(--emerald-deep)_60%,transparent),transparent_55%)]" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/70 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/40 to-transparent" />
+        <div aria-hidden className="pointer-events-none absolute -top-40 -left-40 h-[34rem] w-[34rem] rounded-full border border-[var(--gold)]/12 float-shape -z-10" />
+        <div aria-hidden className="pointer-events-none absolute -bottom-32 -right-32 h-[28rem] w-[28rem] rounded-full border border-[var(--gold)]/10 -z-10" />
+
+        <div className="container-px mx-auto">
+          <SectionHeading
+            eyebrow="Why clients choose us"
+            title={<>The reasons organisations <em className="not-italic text-[var(--gold)]">trust Roya Ventures.</em></>}
+            description="Six commitments that define how we work — and why clients return, project after project."
+            invert
+          />
+          <div className="mt-16 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+            {TRUST.map(({ icon: Icon, title, text }, i) => (
+              <Reveal key={title} delay={(i % 3) * 0.07}>
+                <div
+                  className="group relative h-full rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm p-8 transition-all duration-500 hover:bg-white/[0.07] hover:border-[var(--gold)]/40 hover:-translate-y-1"
+                  data-cursor="hover"
+                >
+                  <div className="grid h-14 w-14 place-items-center rounded-xl border border-[var(--gold)]/40 bg-[var(--gold)]/10 text-[var(--gold)] transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-[var(--navy)]">
+                    <Icon className="h-6 w-6" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="mt-7 text-xl font-semibold text-white tracking-tight">{title}</h3>
+                  <div className="mt-4 gold-divider" />
+                  <p className="mt-4 text-white/70 leading-relaxed text-sm">{text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Industries We Serve */}
+      <section className="section-y relative overflow-hidden">
+        <div className="absolute inset-0 -z-10 bg-radial-gold" />
+        <div className="container-px mx-auto">
+          <SectionHeading
+            eyebrow="Industries"
+            title={<>Sectors we <em className="not-italic text-[var(--gold)]">serve.</em></>}
+            description="Deep experience across the industries where infrastructure and technology have to work — every hour of every day."
+          />
+          <div className="mt-16 grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {INDUSTRIES.map(({ icon: Icon, name }, i) => (
+              <Reveal key={name} delay={(i % 4) * 0.06}>
+                <div
+                  className="group relative h-full rounded-2xl bg-white border border-[color-mix(in_oklab,var(--navy)_10%,transparent)] shadow-[var(--shadow-card)] p-8 text-center transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[var(--shadow-elegant)] hover:border-[var(--gold)]/60"
+                  data-cursor="hover"
+                >
+                  <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl border border-[var(--gold)]/40 bg-[var(--gold)]/10 text-[var(--emerald-deep)] transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-white group-hover:-rotate-6">
+                    <Icon className="h-7 w-7" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="mt-6 text-base font-semibold tracking-tight text-[var(--navy)]">{name}</h3>
+                  <div className="mt-4 mx-auto gold-divider" />
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CtaBanner
+        eyebrow="Start your project"
+        title="Let's build your next project."
+        description="Tell us about the infrastructure, technology or integrated systems you need delivered. Our senior engineers will respond within one business day."
+        floating
+      />
+    </SiteLayout>
+  );
+}
