@@ -32,14 +32,6 @@ const img = (id: string, w = 1600) =>
 
 const HERO_IMAGE = img("photo-1581091226825-a6a2a5aee158");
 
-type GalleryLayout =
-  | "hero-trio"
-  | "masonry"
-  | "editorial"
-  | "stacked-pair"
-  | "offset-overlap"
-  | "varied-grid";
-
 type Project = {
   company: string;
   overview: string;
@@ -47,9 +39,9 @@ type Project = {
   category: string;
   location: string;
   status: "Completed" | "Successfully Delivered";
-  layout: GalleryLayout;
-  images: string[]; // at least 4
+  images: string[]; // at least 4; additional images shown in the lightbox gallery
 };
+
 
 const PROJECTS: Project[] = [
   {
