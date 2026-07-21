@@ -22,12 +22,12 @@ const CLIENT_LOGOS = Object.entries(logoModules)
 
 // Global Luxury Brands — official logos
 const luxuryModules = import.meta.glob<{ default: { url: string } }>(
-  "@/assets/clients/luxury/*.jpg.asset.json",
+  "@/assets/clients/luxury/*.png.asset.json",
   { eager: true },
 );
 const LUXURY_LOGOS = Object.entries(luxuryModules)
   .map(([path, mod]) => {
-    const name = path.match(/luxury\/(.+)\.jpg\.asset\.json$/)?.[1] ?? "";
+    const name = path.match(/luxury\/(.+)\.png\.asset\.json$/)?.[1] ?? "";
     return { name, url: mod.default.url };
   })
   .sort((a, b) => a.name.localeCompare(b.name));
