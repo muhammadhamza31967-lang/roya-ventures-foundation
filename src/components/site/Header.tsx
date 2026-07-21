@@ -56,7 +56,7 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
   const isNetworkActive = location.pathname === "/clients" || location.pathname === "/partners";
 
   const navBaseClasses =
-    "group relative px-3.5 xl:px-5 py-2 text-[11px] xl:text-[12px] font-medium tracking-[0.2em] transition-all duration-500 ease-out";
+    "group relative px-3.5 xl:px-5 py-2 text-[12px] xl:text-[13px] font-medium tracking-[0.2em] transition-all duration-500 ease-out";
   const underlineClasses =
     "pointer-events-none absolute left-1/2 -bottom-0.5 h-px -translate-x-1/2 bg-[var(--gold)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]";
   const underlineGlowClasses =
@@ -188,9 +188,9 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
         <div className="hidden lg:flex justify-end">
           <Link
             to="/contact"
-            className="btn-primary !py-3.5 !px-8 text-[13px] tracking-[0.18em] uppercase font-semibold shadow-[0_10px_30px_-12px_color-mix(in_oklab,var(--gold)_55%,transparent)] hover:shadow-[0_14px_36px_-10px_color-mix(in_oklab,var(--gold)_70%,transparent)] hover:-translate-y-0.5 transition-all duration-300"
+            className="btn-primary !py-2.5 !px-6 text-[12px] tracking-[0.18em] font-semibold shadow-[0_10px_30px_-12px_color-mix(in_oklab,var(--gold)_55%,transparent)] hover:shadow-[0_14px_36px_-10px_color-mix(in_oklab,var(--gold)_70%,transparent)] hover:-translate-y-0.5 transition-all duration-300"
           >
-            Get in touch
+            Get in Touch
           </Link>
         </div>
 
@@ -278,7 +278,7 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
               </Link>
             );
           })}
-          <Link to="/contact" className="btn-primary mt-6 justify-center">Get in touch</Link>
+          <Link to="/contact" className="btn-primary mt-6 justify-center">Get in Touch</Link>
         </nav>
       </div>
     </header>
