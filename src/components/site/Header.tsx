@@ -278,7 +278,7 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
               </Link>
             );
           })}
-          <Link to="/contact" className="btn-primary mt-6 justify-center">Get in touch</Link>
+          <Link to="/contact" className="btn-primary mt-6 justify-center">Get in Touch</Link>
         </nav>
       </div>
     </header>
