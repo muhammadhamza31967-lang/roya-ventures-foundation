@@ -56,7 +56,7 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
   const isNetworkActive = location.pathname === "/clients" || location.pathname === "/partners";
 
   const navBaseClasses =
-    "group relative px-3.5 xl:px-5 py-2 text-[12px] xl:text-[13px] font-medium tracking-[0.2em] transition-all duration-500 ease-out";
+    "group relative whitespace-nowrap px-2 xl:px-3.5 py-2 text-[12px] xl:text-[13px] font-medium tracking-[0.16em] transition-all duration-500 ease-out";
   const underlineClasses =
     "pointer-events-none absolute left-1/2 -bottom-0.5 h-px -translate-x-1/2 bg-[var(--gold)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]";
   const underlineGlowClasses =
