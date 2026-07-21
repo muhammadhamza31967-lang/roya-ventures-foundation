@@ -20,6 +20,18 @@ const CLIENT_LOGOS = Object.entries(logoModules)
   })
   .sort((a, b) => a.n - b.n);
 
+// Global Luxury Brands — official logos
+const luxuryModules = import.meta.glob<{ default: { url: string } }>(
+  "@/assets/clients/luxury/*.jpg.asset.json",
+  { eager: true },
+);
+const LUXURY_LOGOS = Object.entries(luxuryModules)
+  .map(([path, mod]) => {
+    const name = path.match(/luxury\/(.+)\.jpg\.asset\.json$/)?.[1] ?? "";
+    return { name, url: mod.default.url };
+  })
+  .sort((a, b) => a.name.localeCompare(b.name));
+
 export const Route = createFileRoute("/clients")({
   head: () => ({
     meta: [
