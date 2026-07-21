@@ -286,7 +286,7 @@ function FeaturedCard({ member: p }: { member: Member }) {
         {/* Body */}
         <div className="flex flex-col justify-center p-4 md:p-6 md:pl-2">
           <p className="gold-rule">Chief Executive</p>
-          <h3 className="mt-4 font-display text-[1.5rem] md:text-[1.85rem] lg:text-[2.1rem] leading-[1.05] font-semibold text-[var(--navy)] tracking-[-0.02em]">
+          <h3 className="mt-4 font-display text-[1.35rem] md:text-[1.6rem] lg:text-[1.85rem] leading-[1.1] font-semibold text-[var(--navy)] tracking-[-0.02em]">
             {p.name}
           </h3>
           <div className="mt-3 flex items-center gap-3">
