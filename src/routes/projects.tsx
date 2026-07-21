@@ -25,6 +25,10 @@ import {
   Factory,
   Hotel,
 } from "lucide-react";
+import nesmaCrew from "@/assets/projects/nesma/nesma-crew.jpg.asset.json";
+import nesmaCrane from "@/assets/projects/nesma/nesma-crane.jpg.asset.json";
+import nesmaInspection from "@/assets/projects/nesma/nesma-inspection.png.asset.json";
+import nesmaStreet from "@/assets/projects/nesma/nesma-street.jpg.asset.json";
 
 // Royalty-free placeholder imagery (Unsplash) — replace later with official project photos.
 const img = (id: string, w = 1600) =>
@@ -39,7 +43,8 @@ type Project = {
   category: string;
   location: string;
   status: "Completed" | "Successfully Delivered";
-  images: string[]; // at least 4; additional images shown in the lightbox gallery
+  images: string[]; // at least 4; used for the visible gallery composition
+  galleryImages?: string[]; // optional override for the Explore More lightbox
 };
 
 
@@ -60,6 +65,12 @@ const PROJECTS: Project[] = [
     location: "Jeddah, KSA",
     status: "Successfully Delivered",
     images: [
+      nesmaStreet.url,
+      nesmaCrane.url,
+      nesmaCrew.url,
+      nesmaInspection.url,
+    ],
+    galleryImages: [
       img("photo-1581093588401-fbb62a02f120"),
       img("photo-1565043666747-69f6646db940"),
       img("photo-1504917595217-d4dc5ebe6122"),
@@ -317,11 +328,12 @@ function ProjectBlock({ project, index }: { project: Project; index: number }) {
 
       <ProjectLightbox
         open={open}
-        images={project.images}
+        images={project.galleryImages ?? project.images}
         title={project.company}
         initialIndex={startIndex}
         onClose={() => setOpen(false)}
       />
+
     </div>
   );
 }
