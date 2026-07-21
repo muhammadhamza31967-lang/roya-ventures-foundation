@@ -20,6 +20,18 @@ const CLIENT_LOGOS = Object.entries(logoModules)
   })
   .sort((a, b) => a.n - b.n);
 
+// Global Luxury Brands — official logos
+const luxuryModules = import.meta.glob<{ default: { url: string } }>(
+  "@/assets/clients/luxury/*.jpg.asset.json",
+  { eager: true },
+);
+const LUXURY_LOGOS = Object.entries(luxuryModules)
+  .map(([path, mod]) => {
+    const name = path.match(/luxury\/(.+)\.jpg\.asset\.json$/)?.[1] ?? "";
+    return { name, url: mod.default.url };
+  })
+  .sort((a, b) => a.name.localeCompare(b.name));
+
 export const Route = createFileRoute("/clients")({
   head: () => ({
     meta: [
@@ -66,8 +78,8 @@ const DIFFERENTIATORS = [
 
 // Client categories — assign logo numbers (1-32) to each category as they become available.
 // Leave `logoIds` empty to render a "coming soon" placeholder for that category.
-const CLIENT_CATEGORIES: { name: string; logoIds: number[] }[] = [
-  { name: "Global Luxury Brands", logoIds: [] },
+const CLIENT_CATEGORIES: { name: string; logoIds: number[]; logos?: { name: string; url: string }[] }[] = [
+  { name: "Global Luxury Brands", logoIds: [], logos: LUXURY_LOGOS },
   { name: "Premium Fashion", logoIds: [] },
   { name: "Beauty & Cosmetics", logoIds: [] },
   { name: "Fragrance & Lifestyle", logoIds: [] },
@@ -198,7 +210,14 @@ function ClientsPage() {
 
           <div className="mt-20 space-y-24">
             {CLIENT_CATEGORIES.map((category, catIndex) => {
-              const categoryLogos = CLIENT_LOGOS.filter((l) => category.logoIds.includes(l.n));
+              const categoryLogos = category.logos
+                ? category.logos.map((l, i) => ({ key: l.name, url: l.url, alt: `${category.name} — ${l.name}`, i }))
+                : CLIENT_LOGOS.filter((l) => category.logoIds.includes(l.n)).map((l, i) => ({
+                    key: String(l.n),
+                    url: l.url,
+                    alt: `${category.name} client ${l.n}`,
+                    i,
+                  }));
               return (
                 <Reveal key={category.name} delay={catIndex * 0.05}>
                   <div>
@@ -220,19 +239,19 @@ function ClientsPage() {
                     {/* Logo grid */}
                     {categoryLogos.length > 0 ? (
                       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">
-                        {categoryLogos.map((logo, i) => (
-                          <Reveal key={logo.n} delay={(i % 12) * 0.025}>
+                        {categoryLogos.map((logo) => (
+                          <Reveal key={logo.key} delay={(logo.i % 12) * 0.025}>
                             <div
                               data-cursor="hover"
-                              className="group relative aspect-square rounded-2xl bg-white border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] flex items-center justify-center shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[var(--gold)]/50 hover:shadow-[var(--shadow-elegant)] overflow-hidden"
+                              className="group relative aspect-square rounded-2xl bg-white border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] flex items-center justify-center p-6 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[var(--gold)]/50 hover:shadow-[var(--shadow-elegant)] overflow-hidden"
                             >
                               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,color-mix(in_oklab,var(--gold)_10%,transparent),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                               <img
                                 src={logo.url}
-                                alt={`${category.name} client ${logo.n}`}
+                                alt={logo.alt}
                                 loading="lazy"
-                                className="relative max-h-[68%] max-w-[78%] w-auto h-auto object-contain transition-transform duration-500 group-hover:scale-[1.04]"
+                                className="relative max-h-[70%] max-w-[80%] w-auto h-auto object-contain transition-transform duration-500 group-hover:scale-[1.04]"
                               />
                             </div>
                           </Reveal>
