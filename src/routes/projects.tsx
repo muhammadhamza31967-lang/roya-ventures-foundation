@@ -25,6 +25,10 @@ import {
   Factory,
   Hotel,
 } from "lucide-react";
+import nesmaCrew from "@/assets/projects/nesma/nesma-crew.jpg.asset.json";
+import nesmaCrane from "@/assets/projects/nesma/nesma-crane.jpg.asset.json";
+import nesmaInspection from "@/assets/projects/nesma/nesma-inspection.png.asset.json";
+import nesmaStreet from "@/assets/projects/nesma/nesma-street.jpg.asset.json";
 
 // Royalty-free placeholder imagery (Unsplash) — replace later with official project photos.
 const img = (id: string, w = 1600) =>
