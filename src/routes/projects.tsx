@@ -65,6 +65,12 @@ const PROJECTS: Project[] = [
     location: "Jeddah, KSA",
     status: "Successfully Delivered",
     images: [
+      nesmaStreet.url,
+      nesmaCrane.url,
+      nesmaCrew.url,
+      nesmaInspection.url,
+    ],
+    galleryImages: [
       img("photo-1581093588401-fbb62a02f120"),
       img("photo-1565043666747-69f6646db940"),
       img("photo-1504917595217-d4dc5ebe6122"),
