@@ -71,7 +71,7 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
           : "bg-transparent",
       ].join(" ")}
     >
-      <div className="container-px mx-auto grid grid-cols-[auto_1fr_auto] items-center gap-6 py-3 md:py-4">
+      <div className="container-px mx-auto grid grid-cols-[auto_1fr_auto] items-center gap-4 py-3 md:py-4">
         <Link to="/" className="flex items-center gap-3 shrink-0" aria-label="Roya Ventures — home" data-cursor="hover">
           <img
             src={logo.url}
