@@ -45,12 +45,19 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
-    company: "Meridian Industrial Group",
+    company: "Nesma LED Lighting Project",
     overview:
-      "Turnkey LV/HV electrical infrastructure and switchgear commissioning for a 42,000 sqm manufacturing facility — engineered for continuous operation and future capacity growth.",
-    services: ["Electrical Contracts", "Switchgear & Distribution", "Power Monitoring"],
-    category: "Industrial Facility",
-    location: "Riyadh, KSA",
+      "Delivered a large-scale government LED street lighting upgrade across Jeddah, replacing conventional luminaires with energy-efficient LED systems to improve public infrastructure, energy efficiency, and long-term operational performance. Project highlight: 10,000+ LED luminaires successfully replaced across Jeddah.",
+    services: [
+      "LED Lighting Upgrade",
+      "Electrical Infrastructure",
+      "Street Lighting Installation",
+      "Laser Measurement",
+      "Flux Meter Testing",
+      "GPS Site Tracking",
+    ],
+    category: "Government Infrastructure",
+    location: "Jeddah, KSA",
     status: "Successfully Delivered",
     images: [
       img("photo-1581093588401-fbb62a02f120"),
