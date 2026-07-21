@@ -5,6 +5,11 @@ import { SectionHeading } from "@/components/site/SectionHeading";
 import { Reveal } from "@/components/site/Reveal";
 import { Handshake } from "lucide-react";
 import heroImage from "@/assets/hero-clients.jpg";
+import avayaLogo from "@/assets/partners/core/avaya.png.asset.json";
+import ciscoLogo from "@/assets/partners/core/cisco.png.asset.json";
+import hikvisionLogo from "@/assets/partners/core/hikvision.png.asset.json";
+import nexenLogo from "@/assets/partners/core/nexenlogo.png.asset.json";
+import prestigeLogo from "@/assets/partners/core/prestige.png.asset.json";
 
 export const Route = createFileRoute("/partners")({
   head: () => ({
@@ -18,8 +23,17 @@ export const Route = createFileRoute("/partners")({
   component: PartnersPage,
 });
 
-const PARTNER_CATEGORIES: { name: string; placeholders: number }[] = [
-  { name: "Core Technology Partners", placeholders: 6 },
+type PartnerLogo = { name: string; src: string };
+const CORE_TECH_LOGOS: PartnerLogo[] = [
+  { name: "Avaya", src: avayaLogo.url },
+  { name: "Cisco", src: ciscoLogo.url },
+  { name: "Hikvision", src: hikvisionLogo.url },
+  { name: "Nexen Strategy", src: nexenLogo.url },
+  { name: "Prestige Saudi Co. Ltd.", src: prestigeLogo.url },
+];
+
+const PARTNER_CATEGORIES: { name: string; placeholders: number; logos?: PartnerLogo[] }[] = [
+  { name: "Core Technology Partners", placeholders: 0, logos: CORE_TECH_LOGOS },
   { name: "Software Platforms", placeholders: 6 },
   { name: "AI Video Analytics", placeholders: 6 },
   { name: "Smart Screens / Ink Displays", placeholders: 6 },
