@@ -56,7 +56,7 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
   const isNetworkActive = location.pathname === "/clients" || location.pathname === "/partners";
 
   const navBaseClasses =
-    "group relative px-3.5 xl:px-5 py-2 text-[12px] xl:text-[13px] font-medium tracking-[0.2em] transition-all duration-500 ease-out";
+    "group relative whitespace-nowrap px-2 xl:px-3.5 py-2 text-[12px] xl:text-[13px] font-medium tracking-[0.16em] transition-all duration-500 ease-out";
   const underlineClasses =
     "pointer-events-none absolute left-1/2 -bottom-0.5 h-px -translate-x-1/2 bg-[var(--gold)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]";
   const underlineGlowClasses =
@@ -71,7 +71,7 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
           : "bg-transparent",
       ].join(" ")}
     >
-      <div className="container-px mx-auto grid grid-cols-[auto_1fr_auto] items-center gap-6 py-3 md:py-4">
+      <div className="container-px mx-auto grid grid-cols-[auto_1fr_auto] items-center gap-4 py-3 md:py-4">
         <Link to="/" className="flex items-center gap-3 shrink-0" aria-label="Roya Ventures — home" data-cursor="hover">
           <img
             src={logo.url}
@@ -82,7 +82,7 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
           />
         </Link>
 
-        <nav aria-label="Primary" className="hidden lg:flex items-center justify-center gap-1">
+        <nav aria-label="Primary" className="hidden lg:flex items-center justify-center gap-0">
           {NAV.map((item) => {
             if ("type" in item) {
               const active = isNetworkActive;
@@ -142,7 +142,7 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
                               to={link.to}
                               role="menuitem"
                               className={[
-                                "block w-full px-5 py-3 text-left text-[12px] font-medium tracking-[0.18em] transition-colors duration-300",
+                                "block w-full whitespace-nowrap px-5 py-3 text-left text-[12px] font-medium tracking-[0.18em] transition-colors duration-300",
                                 linkActive
                                   ? "text-[var(--gold)] bg-white/5"
                                   : "text-white/85 hover:text-[var(--gold)] hover:bg-white/5",
