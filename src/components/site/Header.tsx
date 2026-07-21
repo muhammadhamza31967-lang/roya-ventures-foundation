@@ -10,12 +10,12 @@ const NETWORK_LINKS = [
 
 const NAV = [
   { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
+  { to: "/about", label: "About Us" },
   { to: "/services", label: "Services" },
   { to: "/projects", label: "Projects" },
   { to: "/team", label: "Team" },
   { type: "dropdown" as const, label: "Our Network", links: NETWORK_LINKS },
-  { to: "/contact", label: "Contact" },
+  { to: "/contact", label: "Contact Us" },
 ] as const;
 
 export function Header({ transparentOverHero = false }: { transparentOverHero?: boolean }) {
@@ -56,7 +56,7 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
   const isNetworkActive = location.pathname === "/clients" || location.pathname === "/partners";
 
   const navBaseClasses =
-    "group relative px-3.5 xl:px-5 py-2 text-[12px] xl:text-[13px] font-medium tracking-[0.2em] uppercase transition-all duration-500 ease-out";
+    "group relative px-3.5 xl:px-5 py-2 text-[11px] xl:text-[12px] font-medium tracking-[0.2em] transition-all duration-500 ease-out";
   const underlineClasses =
     "pointer-events-none absolute left-1/2 -bottom-0.5 h-px -translate-x-1/2 bg-[var(--gold)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]";
   const underlineGlowClasses =
@@ -142,7 +142,7 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
                               to={link.to}
                               role="menuitem"
                               className={[
-                                "block w-full px-5 py-3 text-left text-[12px] font-medium tracking-[0.18em] uppercase transition-colors duration-300",
+                                "block w-full px-5 py-3 text-left text-[12px] font-medium tracking-[0.18em] transition-colors duration-300",
                                 linkActive
                                   ? "text-[var(--gold)] bg-white/5"
                                   : "text-white/85 hover:text-[var(--gold)] hover:bg-white/5",
@@ -223,7 +223,7 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
                     aria-haspopup="menu"
                     onClick={() => setMobileNetworkOpen((v) => !v)}
                     className={[
-                      "w-full flex items-center justify-between py-3 text-[13px] font-medium tracking-[0.2em] uppercase transition-colors",
+                      "w-full flex items-center justify-between py-3 text-[13px] font-medium tracking-[0.2em] transition-colors",
                       active ? "text-[var(--gold)]" : "text-white/85",
                     ].join(" ")}
                   >
@@ -248,8 +248,8 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
                           <Link
                             key={link.to}
                             to={link.to}
-                            className={[
-                              "py-2.5 text-[12px] font-medium tracking-[0.18em] uppercase border-b border-white/5 last:border-0",
+                              className={[
+                                "py-2.5 text-[12px] font-medium tracking-[0.18em] border-b border-white/5 last:border-0",
                               linkActive ? "text-[var(--gold)]" : "text-white/75 hover:text-[var(--gold)]",
                             ].join(" ")}
                           >
@@ -270,7 +270,7 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
                 to={item.to}
                 style={{ fontFamily: "'Sora', ui-sans-serif, system-ui, sans-serif" }}
                 className={[
-                  "py-3 text-[13px] font-medium tracking-[0.2em] uppercase border-b border-white/5",
+                  "py-3 text-[13px] font-medium tracking-[0.2em] border-b border-white/5",
                   active ? "text-[var(--gold)]" : "text-white/85",
                 ].join(" ")}
               >
