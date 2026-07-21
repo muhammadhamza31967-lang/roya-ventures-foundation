@@ -82,7 +82,7 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
           />
         </Link>
 
-        <nav aria-label="Primary" className="hidden lg:flex items-center justify-center gap-1">
+        <nav aria-label="Primary" className="hidden lg:flex items-center justify-center gap-0">
           {NAV.map((item) => {
             if ("type" in item) {
               const active = isNetworkActive;
