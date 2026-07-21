@@ -43,7 +43,8 @@ type Project = {
   category: string;
   location: string;
   status: "Completed" | "Successfully Delivered";
-  images: string[]; // at least 4; additional images shown in the lightbox gallery
+  images: string[]; // at least 4; used for the visible gallery composition
+  galleryImages?: string[]; // optional override for the Explore More lightbox
 };
 
 
