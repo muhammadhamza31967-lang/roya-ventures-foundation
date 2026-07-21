@@ -142,7 +142,7 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
                               to={link.to}
                               role="menuitem"
                               className={[
-                                "block w-full px-5 py-3 text-left text-[12px] font-medium tracking-[0.18em] transition-colors duration-300",
+                                "block w-full whitespace-nowrap px-5 py-3 text-left text-[12px] font-medium tracking-[0.18em] transition-colors duration-300",
                                 linkActive
                                   ? "text-[var(--gold)] bg-white/5"
                                   : "text-white/85 hover:text-[var(--gold)] hover:bg-white/5",
