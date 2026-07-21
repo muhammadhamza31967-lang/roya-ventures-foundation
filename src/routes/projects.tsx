@@ -328,11 +328,12 @@ function ProjectBlock({ project, index }: { project: Project; index: number }) {
 
       <ProjectLightbox
         open={open}
-        images={project.images}
+        images={project.galleryImages ?? project.images}
         title={project.company}
         initialIndex={startIndex}
         onClose={() => setOpen(false)}
       />
+
     </div>
   );
 }
