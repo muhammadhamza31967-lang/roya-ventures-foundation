@@ -176,32 +176,71 @@ function ClientsPage() {
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/40 to-transparent" />
       </section>
 
-      {/* Premium logo showcase — real client logos */}
+      {/* Premium categorized logo showcase */}
       <section className="section-y relative overflow-hidden" style={{ background: "var(--grad-ivory)" }}>
         <div className="container-px mx-auto">
           <SectionHeading
-            eyebrow="A selection"
-            title={<>With permission, a selection of <em className="not-italic text-[var(--gold)]">those we have served.</em></>}
-            description="Many engagements remain confidential. A representative sample of public-facing relationships is shown below."
+            eyebrow="A Selection"
+            title={<>A selection of <em className="not-italic text-[var(--gold)]">those we have served.</em></>}
+            description="With permission, a selection of those we have served. Many engagements remain confidential. A representative sample of public-facing relationships is shown below."
           />
-          <div className="mt-16 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">
-            {CLIENT_LOGOS.map((logo, i) => (
-              <Reveal key={logo.n} delay={(i % 12) * 0.025}>
-                <div
-                  data-cursor="hover"
-                  className="group relative aspect-square rounded-2xl bg-white border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] flex items-center justify-center shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[var(--gold)]/50 hover:shadow-[var(--shadow-elegant)] overflow-hidden"
-                >
-                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,color-mix(in_oklab,var(--gold)_10%,transparent),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                  <img
-                    src={logo.url}
-                    alt={`Client ${logo.n}`}
-                    loading="lazy"
-                    className="relative max-h-[68%] max-w-[78%] w-auto h-auto object-contain transition-transform duration-500 group-hover:scale-[1.04]"
-                  />
-                </div>
-              </Reveal>
-            ))}
+
+          <div className="mt-20 space-y-24">
+            {CLIENT_CATEGORIES.map((category, catIndex) => {
+              const categoryLogos = CLIENT_LOGOS.filter((l) => category.logoIds.includes(l.n));
+              return (
+                <Reveal key={category.name} delay={catIndex * 0.05}>
+                  <div>
+                    {/* Category heading */}
+                    <div className="mb-10 flex flex-col items-center text-center">
+                      <p className="font-display text-[11px] tracking-[0.32em] uppercase text-[var(--gold)]">
+                        {String(catIndex + 1).padStart(2, "0")}
+                      </p>
+                      <h3 className="mt-3 font-display text-2xl md:text-3xl text-[var(--navy)] tracking-[-0.01em]">
+                        {category.name}
+                      </h3>
+                      <div className="mt-5 flex items-center gap-3">
+                        <span className="h-px w-8 bg-[color-mix(in_oklab,var(--gold)_40%,transparent)]" />
+                        <span className="h-1.5 w-1.5 rotate-45 bg-[var(--gold)]" />
+                        <span className="h-px w-8 bg-[color-mix(in_oklab,var(--gold)_40%,transparent)]" />
+                      </div>
+                    </div>
+
+                    {/* Logo grid */}
+                    {categoryLogos.length > 0 ? (
+                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">
+                        {categoryLogos.map((logo, i) => (
+                          <Reveal key={logo.n} delay={(i % 12) * 0.025}>
+                            <div
+                              data-cursor="hover"
+                              className="group relative aspect-square rounded-2xl bg-white border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] flex items-center justify-center shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[var(--gold)]/50 hover:shadow-[var(--shadow-elegant)] overflow-hidden"
+                            >
+                              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,color-mix(in_oklab,var(--gold)_10%,transparent),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                              <img
+                                src={logo.url}
+                                alt={`${category.name} client ${logo.n}`}
+                                loading="lazy"
+                                className="relative max-h-[68%] max-w-[78%] w-auto h-auto object-contain transition-transform duration-500 group-hover:scale-[1.04]"
+                              />
+                            </div>
+                          </Reveal>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="rounded-2xl border border-dashed border-[color-mix(in_oklab,var(--navy)_18%,transparent)] bg-white/50 py-16 px-6 text-center">
+                        <p className="font-display text-sm tracking-[0.14em] uppercase text-[var(--navy)]/60">
+                          Logos coming soon
+                        </p>
+                        <p className="mt-2 text-sm text-muted-foreground italic max-w-md mx-auto">
+                          Client logos for this category will be added in a future update.
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
