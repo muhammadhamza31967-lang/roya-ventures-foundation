@@ -227,7 +227,7 @@ function MemberCard({ member: p }: { member: Member }) {
 
         {/* Body */}
         <div className="flex flex-col justify-center p-4 sm:p-5 sm:pl-2">
-          <h3 className="font-display text-[1.25rem] sm:text-[1.4rem] leading-[1.1] font-semibold text-[var(--navy)] tracking-[-0.02em]">
+          <h3 className="font-display text-[1.15rem] sm:text-[1.25rem] leading-[1.15] font-semibold text-[var(--navy)] tracking-[-0.02em]">
             {p.name}
           </h3>
           <div className="mt-2.5 flex items-center gap-2">
@@ -237,7 +237,7 @@ function MemberCard({ member: p }: { member: Member }) {
             </p>
           </div>
           {p.bio && (
-            <p className="mt-3 text-[12.5px] sm:text-[13.5px] text-muted-foreground leading-[1.7]">
+            <p className="mt-3 text-[12px] sm:text-[13px] text-muted-foreground leading-[1.65]">
               {p.bio}
             </p>
           )}
