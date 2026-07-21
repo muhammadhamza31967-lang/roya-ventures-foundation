@@ -29,6 +29,10 @@ import nesmaCrew from "@/assets/projects/nesma/nesma-crew.jpg.asset.json";
 import nesmaCrane from "@/assets/projects/nesma/nesma-crane.jpg.asset.json";
 import nesmaInspection from "@/assets/projects/nesma/nesma-inspection.png.asset.json";
 import nesmaStreet from "@/assets/projects/nesma/nesma-street.jpg.asset.json";
+import dominosHikvision from "@/assets/projects/dominos/dominos-hikvision.jpg.asset.json";
+import dominosCashier from "@/assets/projects/dominos/dominos-cashier.jpg.asset.json";
+import dominosCeiling from "@/assets/projects/dominos/dominos-ceiling.jpg.asset.json";
+import dominosLadder from "@/assets/projects/dominos/dominos-ladder.jpg.asset.json";
 
 // Royalty-free placeholder imagery (Unsplash) — replace later with official project photos.
 const img = (id: string, w = 1600) =>
@@ -78,18 +82,25 @@ const PROJECTS: Project[] = [
     ],
   },
   {
-    company: "Northgate Data Systems",
+    company: "Domino's Pizza CCTV System Upgrade",
     overview:
-      "Tier-III grade data centre build-out with precision cooling, redundant power, structured cabling and white-space integration for enterprise workloads.",
-    services: ["Data Center Setup", "Structured Cabling", "Precision Cooling"],
-    category: "Data Centre",
-    location: "Jeddah, KSA",
-    status: "Completed",
+      "Upgraded the surveillance infrastructure across Domino's Pizza outlets in Saudi Arabia by replacing legacy analogue CCTV systems with modern IP-based surveillance solutions, enhancing security, monitoring, and operational reliability. Project highlight: successfully upgraded the CCTV infrastructure across Domino's Pizza stores throughout Saudi Arabia.",
+    services: [
+      "CCTV System Upgrade",
+      "IP Surveillance Installation",
+      "Cat 6 Cabling",
+      "SADP Configuration Tool",
+      "NVR Programming",
+      "IP Camera Integration",
+    ],
+    category: "Retail Surveillance",
+    location: "Kingdom of Saudi Arabia (KSA)",
+    status: "Successfully Delivered",
     images: [
-      img("photo-1558494949-ef010cbdcc31"),
-      img("photo-1580894908361-967195033215"),
-      img("photo-1562408590-e32931084e23"),
-      img("photo-1518770660439-4636190af475"),
+      dominosHikvision.url,
+      dominosCeiling.url,
+      dominosLadder.url,
+      dominosCashier.url,
     ],
   },
   {
