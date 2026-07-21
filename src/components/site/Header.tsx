@@ -188,9 +188,9 @@ export function Header({ transparentOverHero = false }: { transparentOverHero?: 
         <div className="hidden lg:flex justify-end">
           <Link
             to="/contact"
-            className="btn-primary !py-3.5 !px-8 text-[13px] tracking-[0.18em] uppercase font-semibold shadow-[0_10px_30px_-12px_color-mix(in_oklab,var(--gold)_55%,transparent)] hover:shadow-[0_14px_36px_-10px_color-mix(in_oklab,var(--gold)_70%,transparent)] hover:-translate-y-0.5 transition-all duration-300"
+            className="btn-primary !py-2.5 !px-6 text-[12px] tracking-[0.18em] font-semibold shadow-[0_10px_30px_-12px_color-mix(in_oklab,var(--gold)_55%,transparent)] hover:shadow-[0_14px_36px_-10px_color-mix(in_oklab,var(--gold)_70%,transparent)] hover:-translate-y-0.5 transition-all duration-300"
           >
-            Get in touch
+            Get in Touch
           </Link>
         </div>
 
