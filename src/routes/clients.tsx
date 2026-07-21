@@ -64,6 +64,17 @@ const DIFFERENTIATORS = [
   },
 ];
 
+// Client categories — assign logo numbers (1-32) to each category as they become available.
+// Leave `logoIds` empty to render a "coming soon" placeholder for that category.
+const CLIENT_CATEGORIES: { name: string; logoIds: number[] }[] = [
+  { name: "Global Luxury Brands", logoIds: [] },
+  { name: "Premium Fashion", logoIds: [] },
+  { name: "Beauty & Cosmetics", logoIds: [] },
+  { name: "Fragrance & Lifestyle", logoIds: [] },
+  { name: "Hospitality & Restaurants", logoIds: [] },
+  { name: "Corporate Clients", logoIds: [] },
+];
+
 
 function ClientsPage() {
   return (
