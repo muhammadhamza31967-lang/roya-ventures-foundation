@@ -22,12 +22,12 @@ const CLIENT_LOGOS = Object.entries(logoModules)
 
 // Global Luxury Brands — official logos
 const luxuryModules = import.meta.glob<{ default: { url: string } }>(
-  "@/assets/clients/luxury/*.jpg.asset.json",
+  "@/assets/clients/luxury/*.png.asset.json",
   { eager: true },
 );
 const LUXURY_LOGOS = Object.entries(luxuryModules)
   .map(([path, mod]) => {
-    const name = path.match(/luxury\/(.+)\.jpg\.asset\.json$/)?.[1] ?? "";
+    const name = path.match(/luxury\/(.+)\.png\.asset\.json$/)?.[1] ?? "";
     return { name, url: mod.default.url };
   })
   .sort((a, b) => a.name.localeCompare(b.name));
@@ -243,7 +243,7 @@ function ClientsPage() {
                           <Reveal key={logo.key} delay={(logo.i % 12) * 0.025}>
                             <div
                               data-cursor="hover"
-                              className="group relative aspect-square rounded-2xl bg-white border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] flex items-center justify-center p-6 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[var(--gold)]/50 hover:shadow-[var(--shadow-elegant)] overflow-hidden"
+                              className="group relative aspect-square rounded-2xl bg-white border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] flex items-center justify-center p-3 sm:p-4 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[var(--gold)]/50 hover:shadow-[var(--shadow-elegant)] overflow-hidden"
                             >
                               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,color-mix(in_oklab,var(--gold)_10%,transparent),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -251,7 +251,7 @@ function ClientsPage() {
                                 src={logo.url}
                                 alt={logo.alt}
                                 loading="lazy"
-                                className="relative max-h-[70%] max-w-[80%] w-auto h-auto object-contain transition-transform duration-500 group-hover:scale-[1.04]"
+                                className="relative max-h-[88%] max-w-[92%] w-auto h-auto object-contain transition-transform duration-500 group-hover:scale-[1.04]"
                               />
                             </div>
                           </Reveal>
