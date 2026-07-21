@@ -99,25 +99,43 @@ function PartnersPage() {
                     </div>
                   </div>
 
-                  {/* Placeholder logo grid */}
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">
-                    {Array.from({ length: category.placeholders }).map((_, i) => (
-                      <Reveal key={i} delay={(i % 12) * 0.025}>
-                        <div
-                          data-cursor="hover"
-                          className="group relative aspect-square rounded-2xl bg-white border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] flex flex-col items-center justify-center gap-3 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[var(--gold)]/50 hover:shadow-[var(--shadow-elegant)] overflow-hidden"
-                        >
-                          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,color-mix(in_oklab,var(--gold)_10%,transparent),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                          <div className="relative flex h-14 w-14 items-center justify-center rounded-full border border-[color-mix(in_oklab,var(--gold)_30%,transparent)] bg-[var(--gold)]/5 transition-colors duration-500 group-hover:bg-[var(--gold)]/10">
-                            <Handshake className="h-6 w-6 text-[var(--gold)]/70 transition-colors duration-500 group-hover:text-[var(--gold)]" strokeWidth={1.5} />
-                          </div>
-                          <span className="relative font-display text-[11px] tracking-[0.18em] uppercase text-[var(--navy)]/50 transition-colors duration-500 group-hover:text-[var(--navy)]/70">
-                            Logo Coming Soon
-                          </span>
-                        </div>
-                      </Reveal>
-                    ))}
+                  {/* Logo grid */}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+                    {category.logos && category.logos.length > 0
+                      ? category.logos.map((logo, i) => (
+                          <Reveal key={logo.name} delay={(i % 12) * 0.025}>
+                            <div
+                              data-cursor="hover"
+                              className="group relative aspect-square rounded-2xl bg-white border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] flex items-center justify-center p-6 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[var(--gold)]/50 hover:shadow-[var(--shadow-elegant)] overflow-hidden"
+                            >
+                              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,color-mix(in_oklab,var(--gold)_10%,transparent),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                              <img
+                                src={logo.src}
+                                alt={`${logo.name} logo`}
+                                loading="lazy"
+                                className="relative max-h-[70%] max-w-[80%] w-auto h-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                              />
+                            </div>
+                          </Reveal>
+                        ))
+                      : Array.from({ length: category.placeholders }).map((_, i) => (
+                          <Reveal key={i} delay={(i % 12) * 0.025}>
+                            <div
+                              data-cursor="hover"
+                              className="group relative aspect-square rounded-2xl bg-white border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] flex flex-col items-center justify-center gap-3 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[var(--gold)]/50 hover:shadow-[var(--shadow-elegant)] overflow-hidden"
+                            >
+                              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,color-mix(in_oklab,var(--gold)_10%,transparent),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                              <div className="relative flex h-14 w-14 items-center justify-center rounded-full border border-[color-mix(in_oklab,var(--gold)_30%,transparent)] bg-[var(--gold)]/5 transition-colors duration-500 group-hover:bg-[var(--gold)]/10">
+                                <Handshake className="h-6 w-6 text-[var(--gold)]/70 transition-colors duration-500 group-hover:text-[var(--gold)]" strokeWidth={1.5} />
+                              </div>
+                              <span className="relative font-display text-[11px] tracking-[0.18em] uppercase text-[var(--navy)]/50 transition-colors duration-500 group-hover:text-[var(--navy)]/70">
+                                Logo Coming Soon
+                              </span>
+                            </div>
+                          </Reveal>
+                        ))}
                   </div>
                 </div>
               </Reveal>
