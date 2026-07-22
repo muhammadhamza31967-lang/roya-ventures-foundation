@@ -32,6 +32,18 @@ const LUXURY_LOGOS = Object.entries(luxuryModules)
   })
   .sort((a, b) => a.name.localeCompare(b.name));
 
+// Premium Fashion — official logos
+const fashionModules = import.meta.glob<{ default: { url: string } }>(
+  "@/assets/clients/fashion/*.png.asset.json",
+  { eager: true },
+);
+const FASHION_LOGOS = Object.entries(fashionModules)
+  .map(([path, mod]) => {
+    const name = path.match(/fashion\/(.+)\.png\.asset\.json$/)?.[1] ?? "";
+    return { name, url: mod.default.url };
+  })
+  .sort((a, b) => a.name.localeCompare(b.name));
+
 export const Route = createFileRoute("/clients")({
   head: () => ({
     meta: [
