@@ -22,7 +22,7 @@ import svcSurveillance from "@/assets/svc-surveillance.jpg";
 import svcFirefighting from "@/assets/svc-firefighting.jpg";
 import svcElectrical from "@/assets/svc-electrical.jpg";
 import svcIt from "@/assets/svc-it.jpg";
-import team1 from "@/assets/team-1.jpg";
+import team1 from "@/assets/team/Saudagar_Raza_CEO.png.asset.json";
 import team2 from "@/assets/team-2.jpg";
 import team3 from "@/assets/team-3.jpg";
 import team4 from "@/assets/team-4.jpg";
