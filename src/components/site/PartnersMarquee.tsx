@@ -42,7 +42,7 @@ export function PartnersMarquee() {
           <SectionHeading
             eyebrow="Trusted Partners"
             title={<>Engineered alongside the world's leading <em className="not-italic text-[var(--gold)]">technology brands.</em></>}
-            description="We design and deploy with vendors trusted across enterprise infrastructure, networking, security and IT."
+            description="We design and deliver solutions using trusted enterprise vendors across infrastructure, networking, cybersecurity, IT, and digital technologies."
             align="center"
           />
         </div>
