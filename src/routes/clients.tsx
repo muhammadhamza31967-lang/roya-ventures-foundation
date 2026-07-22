@@ -44,6 +44,18 @@ const FASHION_LOGOS = Object.entries(fashionModules)
   })
   .sort((a, b) => a.name.localeCompare(b.name));
 
+// Beauty & Cosmetics — official logos
+const beautyModules = import.meta.glob<{ default: { url: string } }>(
+  "@/assets/clients/beauty/*.png.asset.json",
+  { eager: true },
+);
+const BEAUTY_LOGOS = Object.entries(beautyModules)
+  .map(([path, mod]) => {
+    const name = path.match(/beauty\/(.+)\.png\.asset\.json$/)?.[1] ?? "";
+    return { name, url: mod.default.url };
+  })
+  .sort((a, b) => a.name.localeCompare(b.name));
+
 export const Route = createFileRoute("/clients")({
   head: () => ({
     meta: [
