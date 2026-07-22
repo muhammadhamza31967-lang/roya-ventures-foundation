@@ -68,6 +68,19 @@ const FRAGRANCE_LOGOS = Object.entries(fragranceModules)
   })
   .sort((a, b) => a.name.localeCompare(b.name));
 
+// Hospitality & Restaurants — official logos
+const hospitalityModules = import.meta.glob<{ default: { url: string } }>(
+  "@/assets/clients/hospitality/*.png.asset.json",
+  { eager: true },
+);
+const HOSPITALITY_LOGOS = Object.entries(hospitalityModules)
+  .map(([path, mod]) => {
+    const name = path.match(/hospitality\/(.+)\.png\.asset\.json$/)?.[1] ?? "";
+    return { name, url: mod.default.url };
+  })
+  .sort((a, b) => a.name.localeCompare(b.name));
+
+
 
 export const Route = createFileRoute("/clients")({
   head: () => ({
