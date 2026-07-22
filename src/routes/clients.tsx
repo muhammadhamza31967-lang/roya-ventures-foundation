@@ -44,6 +44,18 @@ const FASHION_LOGOS = Object.entries(fashionModules)
   })
   .sort((a, b) => a.name.localeCompare(b.name));
 
+// Beauty & Cosmetics — official logos
+const beautyModules = import.meta.glob<{ default: { url: string } }>(
+  "@/assets/clients/beauty/*.png.asset.json",
+  { eager: true },
+);
+const BEAUTY_LOGOS = Object.entries(beautyModules)
+  .map(([path, mod]) => {
+    const name = path.match(/beauty\/(.+)\.png\.asset\.json$/)?.[1] ?? "";
+    return { name, url: mod.default.url };
+  })
+  .sort((a, b) => a.name.localeCompare(b.name));
+
 export const Route = createFileRoute("/clients")({
   head: () => ({
     meta: [
@@ -93,7 +105,7 @@ const DIFFERENTIATORS = [
 const CLIENT_CATEGORIES: { name: string; logoIds: number[]; logos?: { name: string; url: string }[] }[] = [
   { name: "Global Luxury Brands", logoIds: [], logos: LUXURY_LOGOS },
   { name: "Premium Fashion", logoIds: [], logos: FASHION_LOGOS },
-  { name: "Beauty & Cosmetics", logoIds: [] },
+  { name: "Beauty & Cosmetics", logoIds: [], logos: BEAUTY_LOGOS },
   { name: "Fragrance & Lifestyle", logoIds: [] },
   { name: "Hospitality & Restaurants", logoIds: [] },
   { name: "Corporate Clients", logoIds: [] },
