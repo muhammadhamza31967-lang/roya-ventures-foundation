@@ -99,7 +99,7 @@ function ContactPage() {
                       <button
                         type="submit"
                         data-cursor="hover"
-                        className="group inline-flex items-center gap-3 rounded-full bg-[var(--navy)] text-white px-9 py-4 text-[13px] font-bold uppercase tracking-[0.18em] transition-all duration-500 hover:bg-[var(--gold)] hover:text-[var(--navy)] shadow-[0_15px_40px_-15px_color-mix(in_oklab,var(--navy)_60%,transparent)] hover:shadow-[0_18px_45px_-12px_var(--gold)] hover:-translate-y-0.5"
+                        className="group inline-flex items-center gap-3 rounded-full bg-[var(--gold)] text-[var(--navy)] px-9 py-4 text-[13px] font-bold uppercase tracking-[0.18em] transition-all duration-300 hover:bg-[var(--navy)] hover:text-white shadow-[0_15px_40px_-15px_color-mix(in_oklab,var(--gold)_60%,transparent)] hover:shadow-[0_18px_45px_-12px_color-mix(in_oklab,var(--navy)_50%,transparent)] hover:-translate-y-0.5"
                       >
                         {sent ? (
                           <>Message sent <Check className="h-4 w-4 transition-transform duration-500 group-hover:scale-110" /></>
