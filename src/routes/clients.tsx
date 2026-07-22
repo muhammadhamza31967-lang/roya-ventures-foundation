@@ -105,7 +105,7 @@ const DIFFERENTIATORS = [
 const CLIENT_CATEGORIES: { name: string; logoIds: number[]; logos?: { name: string; url: string }[] }[] = [
   { name: "Global Luxury Brands", logoIds: [], logos: LUXURY_LOGOS },
   { name: "Premium Fashion", logoIds: [], logos: FASHION_LOGOS },
-  { name: "Beauty & Cosmetics", logoIds: [] },
+  { name: "Beauty & Cosmetics", logoIds: [], logos: BEAUTY_LOGOS },
   { name: "Fragrance & Lifestyle", logoIds: [] },
   { name: "Hospitality & Restaurants", logoIds: [] },
   { name: "Corporate Clients", logoIds: [] },
