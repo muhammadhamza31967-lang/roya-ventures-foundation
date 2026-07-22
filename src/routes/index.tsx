@@ -359,12 +359,20 @@ function HomePage() {
               <Reveal key={p.name} delay={i * 0.08}>
                 <article className="group relative h-full rounded-[1.25rem] overflow-hidden bg-card border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] shadow-[var(--shadow-card)] transition-all duration-700 hover:shadow-[var(--shadow-elegant)] hover:-translate-y-2" data-cursor="hover">
                   <div className="relative aspect-[3/4] w-full overflow-hidden bg-[var(--navy)]">
-                    <img
-                      src={p.img}
-                      alt={p.name}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-110"
-                    />
+                    {p.img ? (
+                      <img
+                        src={p.img}
+                        alt={p.name}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-[1600ms] ease-out group-hover:scale-110"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 grid place-items-center bg-gradient-to-b from-[var(--navy)] to-[var(--navy-deep)]">
+                        <span className="font-display text-4xl md:text-5xl font-semibold tracking-[-0.02em] text-[var(--gold)]/90 transition-transform duration-[1600ms] ease-out group-hover:scale-110">
+                          {getInitials(p.name)}
+                        </span>
+                      </div>
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)]/80 via-[var(--navy-deep)]/10 to-transparent" />
                     <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent scale-x-0 origin-left transition-transform duration-700 group-hover:scale-x-100" />
                   </div>
