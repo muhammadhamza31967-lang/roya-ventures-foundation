@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { Check } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
 import spidernetLogo from "@/assets/brand/spidernet-logo.jpeg.asset.json";
 import royaLogo from "@/assets/brand/roya-ventures-logo.jpeg.asset.json";
 
-function useInView<T extends HTMLElement>(threshold = 0.15) {
+function useInView<T extends HTMLElement>(threshold = 0.12) {
   const ref = useRef<T | null>(null);
   const [shown, setShown] = useState(false);
   useEffect(() => {
@@ -27,205 +27,271 @@ function useInView<T extends HTMLElement>(threshold = 0.15) {
   return { ref, shown };
 }
 
+const HEADING_WORDS = ["Spidernet", "is", "now", "Roya", "Ventures"];
+const TRUST = ["Same Leadership", "Same Expertise", "Stronger Brand"];
+const EASE = "cubic-bezier(0.2,0.8,0.2,1)";
+
 export function BrandEvolution() {
-  const { ref: sectionRef, shown } = useInView<HTMLElement>(0.1);
-
-  const easing = "cubic-bezier(0.2,0.8,0.2,1)";
-
-  const sectionStyle: React.CSSProperties = {
-    opacity: shown ? 1 : 0,
-    transform: shown ? "translateY(0)" : "translateY(36px)",
-    transition: `opacity 1s ${easing}, transform 1s ${easing}`,
-    background: "var(--grad-ivory)",
-  };
-
-  const spidernetStyle: React.CSSProperties = {
-    opacity: shown ? 1 : 0,
-    transform: shown
-      ? "translateX(0) scale(1)"
-      : "translateX(-40px) scale(0.95)",
-    transition: `opacity 650ms ${easing} 150ms, transform 650ms ${easing} 150ms`,
-  };
-
-  const royaStyle: React.CSSProperties = {
-    opacity: shown ? 1 : 0,
-    transform: shown
-      ? "translateX(0) scale(1)"
-      : "translateX(40px) scale(0.95)",
-    transition: `opacity 650ms ${easing} 400ms, transform 650ms ${easing} 400ms`,
-  };
-
-  const arrowStyle: React.CSSProperties = {
-    opacity: shown ? 1 : 0,
-    transform: shown ? "scale(1)" : "scale(0.6)",
-    transition: `opacity 500ms ${easing} 700ms, transform 500ms ${easing} 700ms`,
-  };
-
-  const lineLeftStyle: React.CSSProperties = {
-    transformOrigin: "left center",
-    transform: shown ? "scaleX(1)" : "scaleX(0)",
-    transition: `transform 700ms ${easing} 550ms`,
-  };
-  const lineRightStyle: React.CSSProperties = {
-    transformOrigin: "right center",
-    transform: shown ? "scaleX(1)" : "scaleX(0)",
-    transition: `transform 700ms ${easing} 550ms`,
-  };
+  const { ref, shown } = useInView<HTMLElement>(0.1);
 
   return (
     <section
-      ref={sectionRef}
+      ref={ref}
       aria-label="Company evolution announcement"
-      className="section-y relative overflow-hidden motion-reduce:!transform-none motion-reduce:!opacity-100"
-      style={sectionStyle}
+      className="relative isolate overflow-hidden py-24 md:py-32 lg:py-40"
     >
-      {/* Local animation keyframes */}
+      {/* Local keyframes + hover styles */}
       <style>{`
-        @keyframes be-drift-a {
-          0%, 100% { transform: translate3d(0,0,0) scale(1); }
-          50% { transform: translate3d(20px,-14px,0) scale(1.04); }
+        @keyframes be-grid-drift {
+          0% { background-position: 0 0, 0 0; }
+          100% { background-position: 120px 80px, 80px 120px; }
         }
-        @keyframes be-drift-b {
-          0%, 100% { transform: translate3d(0,0,0) scale(1); }
-          50% { transform: translate3d(-24px,18px,0) scale(1.06); }
+        @keyframes be-orb-a {
+          0%,100% { transform: translate3d(0,0,0) scale(1); }
+          50% { transform: translate3d(30px,-20px,0) scale(1.06); }
         }
-        @keyframes be-sweep {
-          0% { transform: translateX(-40%); opacity: 0; }
-          40% { opacity: 0.7; }
-          100% { transform: translateX(140%); opacity: 0; }
+        @keyframes be-orb-b {
+          0%,100% { transform: translate3d(0,0,0) scale(1); }
+          50% { transform: translate3d(-28px,22px,0) scale(1.08); }
         }
-        @keyframes be-arrow-pulse {
-          0%, 100% {
-            box-shadow: 0 0 0 6px color-mix(in oklab, var(--gold) 10%, transparent),
-                        0 0 0 0 color-mix(in oklab, var(--gold) 35%, transparent);
-          }
-          50% {
-            box-shadow: 0 0 0 6px color-mix(in oklab, var(--gold) 12%, transparent),
-                        0 0 0 12px color-mix(in oklab, var(--gold) 0%, transparent);
-          }
+        @keyframes be-flow {
+          0% { transform: translateX(-110%); opacity: 0; }
+          15% { opacity: 1; }
+          85% { opacity: 1; }
+          100% { transform: translateX(110%); opacity: 0; }
         }
-        @keyframes be-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-3px)} }
-        .be-arrow-pulse { animation: be-arrow-pulse 2.8s ease-in-out infinite; }
-        .be-arrow-float { animation: be-float 3.2s ease-in-out infinite; }
-        .be-drift-a { animation: be-drift-a 18s ease-in-out infinite; }
-        .be-drift-b { animation: be-drift-b 22s ease-in-out infinite; }
-        .be-sweep {
-          position: absolute; inset: 0; pointer-events: none;
-          background: linear-gradient(115deg, transparent 30%, color-mix(in oklab, var(--gold) 14%, transparent) 50%, transparent 70%);
-          animation: be-sweep 9s ease-in-out infinite;
+        @keyframes be-flow-v {
+          0% { transform: translateY(-110%); opacity: 0; }
+          15% { opacity: 1; }
+          85% { opacity: 1; }
+          100% { transform: translateY(110%); opacity: 0; }
         }
-        .be-logo { transition: transform 400ms ${easing}, filter 400ms ${easing}; }
-        .be-logo:hover { transform: scale(1.03); filter: drop-shadow(0 6px 18px color-mix(in oklab, var(--gold) 35%, transparent)); }
-        .be-arrow-wrap:hover .be-arrow-badge {
-          box-shadow: 0 0 0 6px color-mix(in oklab, var(--gold) 14%, transparent),
-                      0 0 22px 2px color-mix(in oklab, var(--gold) 45%, transparent);
+        @keyframes be-dot {
+          0%,100% { opacity: .35; transform: scale(1); }
+          50% { opacity: 1; transform: scale(1.25); }
         }
+        @keyframes be-halo {
+          0%,100% { opacity: .55; transform: scale(1); }
+          50% { opacity: .9; transform: scale(1.06); }
+        }
+        .be-bg-grid {
+          background-image:
+            linear-gradient(to right, color-mix(in oklab, var(--navy-deep) 8%, transparent) 1px, transparent 1px),
+            linear-gradient(to bottom, color-mix(in oklab, var(--navy-deep) 8%, transparent) 1px, transparent 1px);
+          background-size: 64px 64px, 64px 64px;
+          mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+          -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+          animation: be-grid-drift 40s linear infinite;
+        }
+        .be-orb-a { animation: be-orb-a 20s ease-in-out infinite; }
+        .be-orb-b { animation: be-orb-b 24s ease-in-out infinite; }
+        .be-halo { animation: be-halo 4.5s ease-in-out infinite; }
+        .be-dot { animation: be-dot 1.8s ease-in-out infinite; }
+        .be-connector-line {
+          background: linear-gradient(90deg,
+            color-mix(in oklab, var(--gold) 55%, transparent) 0%,
+            color-mix(in oklab, var(--gold) 90%, transparent) 50%,
+            color-mix(in oklab, var(--emerald-deep) 65%, transparent) 100%);
+        }
+        .be-connector-line-v {
+          background: linear-gradient(180deg,
+            color-mix(in oklab, var(--gold) 55%, transparent) 0%,
+            color-mix(in oklab, var(--gold) 90%, transparent) 50%,
+            color-mix(in oklab, var(--emerald-deep) 65%, transparent) 100%);
+        }
+        .be-flow-trail {
+          background: linear-gradient(90deg,
+            transparent 0%,
+            color-mix(in oklab, var(--gold) 40%, transparent) 40%,
+            #fff 50%,
+            color-mix(in oklab, var(--gold) 40%, transparent) 60%,
+            transparent 100%);
+          filter: blur(0.4px);
+          animation: be-flow 3.2s cubic-bezier(0.4,0,0.2,1) infinite;
+        }
+        .be-flow-trail-v {
+          background: linear-gradient(180deg,
+            transparent 0%,
+            color-mix(in oklab, var(--gold) 40%, transparent) 40%,
+            #fff 50%,
+            color-mix(in oklab, var(--gold) 40%, transparent) 60%,
+            transparent 100%);
+          filter: blur(0.4px);
+          animation: be-flow-v 3.2s cubic-bezier(0.4,0,0.2,1) infinite;
+        }
+        .be-logo { transition: transform 500ms ${EASE}, filter 500ms ${EASE}; }
+        .be-logo-past:hover { transform: scale(1.03); filter: brightness(1.05) drop-shadow(0 8px 24px color-mix(in oklab, var(--navy-deep) 25%, transparent)); }
+        .be-logo-new:hover { transform: scale(1.03); filter: brightness(1.06) drop-shadow(0 12px 32px color-mix(in oklab, var(--gold) 45%, transparent)); }
         @media (prefers-reduced-motion: reduce) {
-          .be-arrow-pulse, .be-arrow-float, .be-drift-a, .be-drift-b, .be-sweep { animation: none !important; }
+          .be-orb-a, .be-orb-b, .be-halo, .be-dot, .be-flow-trail, .be-flow-trail-v, .be-bg-grid { animation: none !important; }
         }
       `}</style>
 
-      {/* Ambient background accents */}
+      {/* Premium background */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklab,var(--gold)_10%,transparent),transparent_60%)]"
+        className="absolute inset-0 -z-30"
+        style={{
+          background:
+            "linear-gradient(180deg, color-mix(in oklab, var(--navy-deep) 3%, #fff) 0%, #fff 45%, color-mix(in oklab, var(--gold) 4%, #fff) 100%)",
+        }}
+      />
+      <div aria-hidden className="be-bg-grid absolute inset-0 -z-20 opacity-70" />
+      <div
+        aria-hidden
+        className="be-orb-a pointer-events-none absolute -top-40 -left-20 -z-10 h-[36rem] w-[36rem] rounded-full blur-3xl"
+        style={{
+          background:
+            "radial-gradient(circle, color-mix(in oklab, var(--emerald-deep) 18%, transparent), transparent 65%)",
+        }}
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -bottom-32 -left-24 -z-10 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--emerald-deep)_16%,transparent),transparent_65%)] blur-3xl be-drift-a"
+        className="be-orb-b pointer-events-none absolute -bottom-40 -right-20 -z-10 h-[40rem] w-[40rem] rounded-full blur-3xl"
+        style={{
+          background:
+            "radial-gradient(circle, color-mix(in oklab, var(--gold) 22%, transparent), transparent 65%)",
+        }}
       />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute top-10 right-10 -z-10 h-72 w-72 rounded-full border border-[var(--gold)]/15 be-drift-b"
-      />
-      {/* subtle light sweep */}
-      <div aria-hidden className="be-sweep -z-10 opacity-60" />
+      {/* Corner engineering marks */}
+      <div aria-hidden className="pointer-events-none absolute inset-6 -z-10 hidden md:block">
+        <span className="absolute top-0 left-0 h-6 w-6 border-t border-l border-[var(--gold)]/40" />
+        <span className="absolute top-0 right-0 h-6 w-6 border-t border-r border-[var(--gold)]/40" />
+        <span className="absolute bottom-0 left-0 h-6 w-6 border-b border-l border-[var(--gold)]/40" />
+        <span className="absolute bottom-0 right-0 h-6 w-6 border-b border-r border-[var(--gold)]/40" />
+      </div>
 
       <div className="container-px mx-auto">
-        <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-20">
-          {/* Left — Logos */}
-          <div className="relative rounded-3xl border border-[var(--gold)]/20 bg-white/70 p-8 shadow-sm backdrop-blur-sm md:p-12">
-            <div className="flex flex-col items-center justify-center gap-8 md:flex-row md:gap-6">
-              {/* Spidernet */}
-              <div className="flex flex-1 items-center justify-center" style={spidernetStyle}>
+        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-[45fr_55fr] lg:gap-24">
+          {/* LEFT — Brand transformation */}
+          <div className="relative">
+            <div className="flex flex-col items-center gap-10 md:gap-14">
+              {/* Spidernet (past) */}
+              <div
+                className="relative flex flex-col items-center"
+                style={{
+                  opacity: shown ? 1 : 0,
+                  transform: shown ? "translateY(0) scale(1)" : "translateY(-20px) scale(0.96)",
+                  transition: `opacity 800ms ${EASE} 100ms, transform 800ms ${EASE} 100ms`,
+                }}
+              >
+                <span className="mb-4 text-[10px] font-semibold uppercase tracking-[0.32em] text-[var(--navy-deep)]/50">
+                  Formerly
+                </span>
                 <img
                   src={spidernetLogo.url}
                   alt="SpiderNet — former company logo"
-                  className="be-logo h-24 w-auto max-w-[220px] object-contain md:h-28 cursor-pointer"
+                  className="be-logo be-logo-past h-16 w-auto max-w-[220px] object-contain opacity-80 md:h-20"
+                  style={{ filter: "grayscale(0.15)" }}
                   loading="lazy"
                 />
               </div>
 
-              {/* Transition indicator */}
+              {/* Premium connector */}
               <div
-                aria-hidden
-                className="be-arrow-wrap flex shrink-0 items-center justify-center md:mx-2"
+                className="relative flex w-full flex-col items-center"
+                style={{
+                  opacity: shown ? 1 : 0,
+                  transition: `opacity 700ms ${EASE} 500ms`,
+                }}
               >
-                <div className="relative flex items-center">
+                {/* Vertical connector (mobile & desktop stacked layout) */}
+                <div className="relative flex flex-col items-center">
+                  <span className="be-dot h-1.5 w-1.5 rounded-full bg-[var(--gold)]" />
+                  <div className="relative mt-2 h-24 w-px overflow-hidden md:h-28">
+                    <span className="be-connector-line-v absolute inset-0" />
+                    <span className="be-flow-trail-v absolute inset-x-[-6px] top-0 h-16" />
+                  </div>
                   <span
-                    className="hidden md:block h-px w-14 bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent"
-                    style={lineLeftStyle}
-                  />
-                  <span
-                    className="md:hidden h-14 w-px bg-gradient-to-b from-transparent via-[var(--gold)] to-transparent"
-                    style={lineLeftStyle}
-                  />
-                  <span
-                    className="be-arrow-badge be-arrow-pulse mx-2 grid h-10 w-10 place-items-center rounded-full border border-[var(--gold)]/40 bg-white transition-shadow"
-                    style={arrowStyle}
+                    className="my-3 inline-flex items-center gap-2 rounded-full border border-[var(--gold)]/40 bg-white/80 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--navy-deep)] shadow-[0_8px_28px_-12px_color-mix(in_oklab,var(--gold)_60%,transparent)] backdrop-blur"
                   >
-                    <ArrowRight
-                      className="be-arrow-float h-4 w-4 text-[var(--gold)] md:rotate-0 rotate-90"
-                      strokeWidth={2.25}
-                    />
+                    <span className="h-1 w-1 rounded-full bg-[var(--gold)]" />
+                    Brand Evolution
+                    <span className="h-1 w-1 rounded-full bg-[var(--emerald-deep)]" />
                   </span>
-                  <span
-                    className="hidden md:block h-px w-14 bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent"
-                    style={lineRightStyle}
-                  />
-                  <span
-                    className="md:hidden h-14 w-px bg-gradient-to-b from-transparent via-[var(--gold)] to-transparent"
-                    style={lineRightStyle}
-                  />
+                  <div className="relative h-24 w-px overflow-hidden md:h-28">
+                    <span className="be-connector-line-v absolute inset-0" />
+                    <span
+                      className="be-flow-trail-v absolute inset-x-[-6px] top-0 h-16"
+                      style={{ animationDelay: "1.6s" }}
+                    />
+                  </div>
+                  <span className="mt-2 h-2 w-2 rounded-full bg-[var(--emerald-deep)] shadow-[0_0_0_4px_color-mix(in_oklab,var(--emerald-deep)_18%,transparent)]" />
                 </div>
               </div>
 
-              {/* Roya Ventures with glow */}
-              <div className="relative flex flex-1 items-center justify-center" style={royaStyle}>
+              {/* Roya Ventures (destination) */}
+              <div
+                className="relative flex flex-col items-center"
+                style={{
+                  opacity: shown ? 1 : 0,
+                  transform: shown ? "translateY(0) scale(1)" : "translateY(24px) scale(0.94)",
+                  transition: `opacity 900ms ${EASE} 900ms, transform 900ms ${EASE} 900ms`,
+                }}
+              >
+                {/* halo/spotlight */}
                 <span
                   aria-hidden
-                  className="absolute inset-0 -z-10 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_22%,transparent),transparent_65%)] blur-2xl"
+                  className="be-halo pointer-events-none absolute -inset-8 -z-10 rounded-full blur-2xl"
+                  style={{
+                    background:
+                      "radial-gradient(circle, color-mix(in oklab, var(--gold) 28%, transparent), transparent 65%)",
+                  }}
                 />
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute inset-x-1/2 -bottom-6 h-px w-40 -translate-x-1/2 bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent"
+                />
+                <span className="mb-4 text-[10px] font-semibold uppercase tracking-[0.32em] text-[var(--emerald-deep)]">
+                  Now
+                </span>
                 <img
                   src={royaLogo.url}
                   alt="Roya Ventures — new company logo"
-                  className="be-logo h-24 w-auto max-w-[240px] object-contain md:h-28 cursor-pointer"
+                  className="be-logo be-logo-new h-24 w-auto max-w-[280px] object-contain md:h-28 lg:h-32"
                   loading="lazy"
                 />
               </div>
             </div>
-
-            {/* Corner accents */}
-            <span aria-hidden className="pointer-events-none absolute -top-px left-8 h-px w-16 bg-[var(--gold)]/60" />
-            <span aria-hidden className="pointer-events-none absolute -bottom-px right-8 h-px w-16 bg-[var(--gold)]/60" />
           </div>
 
-          {/* Right — Content */}
-          <div>
+          {/* RIGHT — Content */}
+          <div className="max-w-xl">
             <Reveal>
-              <p className="gold-rule">Company Evolution</p>
+              <div className="flex items-center gap-3">
+                <span className="h-px w-10 bg-[var(--gold)]" />
+                <p className="text-[11px] font-semibold uppercase tracking-[0.4em] text-[var(--navy-deep)]/70">
+                  Company Evolution
+                </p>
+              </div>
             </Reveal>
-            <Reveal delay={0.12}>
-              <h2 className="heading-lg mt-6">
-                Spidernet is now{" "}
-                <span className="text-[var(--emerald-deep)]">Roya Ventures</span>
-              </h2>
-            </Reveal>
-            <Reveal delay={0.24}>
-              <div className="mt-6 gold-divider" />
-            </Reveal>
-            <Reveal delay={0.36}>
-              <p className="mt-6 text-lg md:text-xl leading-relaxed font-light text-muted-foreground">
+
+            {/* Word-by-word heading reveal */}
+            <h2
+              className="mt-8 font-serif text-4xl leading-[1.05] tracking-tight text-[var(--navy-deep)] md:text-5xl lg:text-6xl"
+              aria-label="Spidernet is now Roya Ventures"
+            >
+              {HEADING_WORDS.map((word, i) => {
+                const isBrand = word === "Roya" || word === "Ventures";
+                return (
+                  <span
+                    key={`${word}-${i}`}
+                    className="mr-[0.28em] inline-block"
+                    style={{
+                      opacity: shown ? 1 : 0,
+                      transform: shown ? "translateY(0)" : "translateY(18px)",
+                      transition: `opacity 700ms ${EASE} ${300 + i * 110}ms, transform 700ms ${EASE} ${300 + i * 110}ms`,
+                      color: isBrand ? "var(--emerald-deep)" : undefined,
+                    }}
+                  >
+                    {word}
+                  </span>
+                );
+              })}
+            </h2>
+
+            <Reveal delay={0.9}>
+              <p className="mt-8 text-lg leading-relaxed font-light text-[var(--navy-deep)]/75 md:text-xl">
                 Spidernet is now part of Roya Ventures, reflecting our continued
                 commitment to delivering innovative technology solutions under a
                 stronger, unified brand. While our name has evolved, our
@@ -234,21 +300,26 @@ export function BrandEvolution() {
               </p>
             </Reveal>
 
-            {/* Trust indicators */}
-            <ul className="mt-10 flex flex-wrap items-center gap-3">
-              {["Same Leadership", "Same Expertise", "Stronger Brand"].map(
-                (label, i) => (
-                  <Reveal key={label} as="li" delay={0.5 + i * 0.13}>
-                    <span className="inline-flex items-center gap-2 rounded-full border border-[var(--gold)]/30 bg-white/80 px-4 py-2 text-xs md:text-sm font-medium tracking-wide text-[var(--navy-deep)] shadow-sm backdrop-blur-sm">
-                      <span
-                        aria-hidden
-                        className="h-1.5 w-1.5 rounded-full bg-[var(--gold)]"
-                      />
-                      {label}
-                    </span>
-                  </Reveal>
-                ),
-              )}
+            {/* Trust indicators — premium horizontal */}
+            <ul className="mt-10 flex flex-col divide-y divide-[var(--navy-deep)]/10 sm:flex-row sm:divide-y-0 sm:divide-x">
+              {TRUST.map((label, i) => (
+                <li
+                  key={label}
+                  className="flex items-center gap-3 py-3 pr-6 sm:py-0 sm:pl-6 sm:first:pl-0"
+                  style={{
+                    opacity: shown ? 1 : 0,
+                    transform: shown ? "translateY(0)" : "translateY(14px)",
+                    transition: `opacity 600ms ${EASE} ${1100 + i * 140}ms, transform 600ms ${EASE} ${1100 + i * 140}ms`,
+                  }}
+                >
+                  <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full border border-[var(--gold)]/50 bg-white text-[var(--gold)] shadow-[0_2px_10px_-4px_color-mix(in_oklab,var(--gold)_60%,transparent)]">
+                    <Check className="h-3.5 w-3.5" strokeWidth={2.75} />
+                  </span>
+                  <span className="text-sm font-medium tracking-wide text-[var(--navy-deep)] md:text-base">
+                    {label}
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
