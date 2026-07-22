@@ -40,11 +40,11 @@ export function CtaBanner({
             </p>
           </div>
           <div className="flex lg:justify-end gap-4 flex-wrap">
-            <Link to="/contact" className="btn-primary">
+            <Link to="/contact" className="btn-primary btn-on-dark">
               Schedule a consultation <ArrowRight className="h-4 w-4" />
             </Link>
             {showSecondary && (
-              <Link to="/services" className="btn-outline-light">
+              <Link to="/services" className="btn-outline-light btn-on-dark">
                 Explore services <ArrowRight className="h-4 w-4" />
               </Link>
             )}

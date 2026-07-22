@@ -320,6 +320,16 @@
   }
 }
 
+@utility btn-on-dark {
+  &:hover {
+    background: white;
+    color: var(--navy);
+  }
+  &:hover svg {
+    color: var(--navy);
+  }
+}
+
 @utility reveal {
   opacity: 0;
   transform: translateY(28px);
