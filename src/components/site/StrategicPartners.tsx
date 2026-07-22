@@ -80,7 +80,7 @@ export function StrategicPartners() {
         {/* Tabs */}
         <div className="mt-12 flex justify-center">
           <div
-            className="flex gap-3 overflow-x-auto no-scrollbar max-w-full px-2 pb-2"
+            className="flex gap-3 overflow-x-auto overflow-y-visible no-scrollbar max-w-full px-2 py-3"
             style={{ scrollbarWidth: "none" }}
           >
             {CATEGORIES.map((cat) => {
@@ -105,13 +105,13 @@ export function StrategicPartners() {
         </div>
 
         {/* Logos row — fixed min height to prevent layout shift */}
-        <div className="mt-12 min-h-[220px] sm:min-h-[240px]">
+        <div className="mt-12 min-h-[200px] sm:min-h-[220px]">
           <div
             key={activeCategory.key}
-            className="animate-fade-in overflow-x-auto no-scrollbar"
+            className="overflow-x-auto overflow-y-visible no-scrollbar"
             style={{ scrollbarWidth: "none" }}
           >
-            <div className="flex justify-center gap-5 px-2 min-w-max mx-auto">
+            <div className="flex justify-center gap-5 px-2 py-3 min-w-max mx-auto">
               {activeCategory.logos.map((logo, i) => (
                 <a
                   key={logo.name}
@@ -119,8 +119,8 @@ export function StrategicPartners() {
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cursor="hover"
-                  style={{ animationDelay: `${i * 60}ms` }}
-                  className="animate-fade-in group relative w-[160px] sm:w-[180px] md:w-[200px] aspect-square shrink-0 rounded-2xl bg-white border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] flex items-center justify-center p-3 sm:p-4 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[var(--gold)]/50 hover:shadow-[var(--shadow-elegant)] overflow-hidden"
+                  style={{ animationDelay: `${i * 90}ms`, animationFillMode: "both" }}
+                  className="animate-fade-in group relative w-[130px] sm:w-[150px] md:w-[165px] aspect-square shrink-0 rounded-2xl bg-white border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] flex items-center justify-center p-3 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[var(--gold)]/50 hover:shadow-[var(--shadow-elegant)] overflow-hidden"
                 >
                   <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,color-mix(in_oklab,var(--gold)_10%,transparent),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -128,13 +128,14 @@ export function StrategicPartners() {
                     src={logo.url}
                     alt={logo.name}
                     loading="lazy"
-                    className="relative max-h-[88%] max-w-[92%] w-auto h-auto object-contain transition-transform duration-500 group-hover:scale-[1.04]"
+                    className="relative max-h-[72%] max-w-[80%] w-auto h-auto object-contain transition-transform duration-500 group-hover:scale-[1.04]"
                   />
                 </a>
               ))}
             </div>
           </div>
         </div>
+
 
         {/* CTA */}
         <div className="mt-12 flex justify-center">
