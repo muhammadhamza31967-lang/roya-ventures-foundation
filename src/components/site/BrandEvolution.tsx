@@ -283,7 +283,7 @@ export function BrandEvolution() {
         {/* Unified brand evolution composition */}
         <div className="mx-auto max-w-6xl">
           {/* Desktop / tablet: horizontal single composition — mirrors mobile */}
-          <div className="relative hidden md:flex md:items-center md:justify-between md:gap-6 lg:gap-10">
+          <div className="relative hidden lg:flex lg:items-center lg:justify-between lg:gap-10">
             {/* Spidernet */}
             <div
               className="relative shrink-0"
