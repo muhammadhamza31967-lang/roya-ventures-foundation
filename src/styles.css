@@ -217,10 +217,10 @@
   border-radius: 999px;
   box-shadow: 0 10px 30px -12px color-mix(in oklab, var(--gold) 70%, transparent),
               inset 0 0 0 1px color-mix(in oklab, var(--gold) 50%, transparent);
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
-              box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
-              background 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
-              color 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              background 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              color 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
   overflow: hidden;
   isolation: isolate;
   &::before {
@@ -234,12 +234,18 @@
   }
   &:hover {
     transform: translateY(-3px);
-    box-shadow: 0 22px 50px -18px color-mix(in oklab, var(--gold) 80%, transparent),
-                inset 0 0 0 1px color-mix(in oklab, var(--gold) 65%, transparent);
+    background: var(--navy);
+    color: white;
+    box-shadow: 0 22px 50px -18px color-mix(in oklab, var(--navy) 50%, transparent),
+                inset 0 0 0 1px color-mix(in oklab, white 20%, transparent);
   }
   &:hover::before { transform: translateX(120%); }
-  & svg { transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  & svg { transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
   &:hover svg { transform: translateX(4px); }
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--gold);
+  }
 }
 
 @utility btn-outline-light {
