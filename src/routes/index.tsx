@@ -202,7 +202,7 @@ function HomePage() {
 
       {/* Full-width feature image with floating quote panel */}
       <section className="relative isolate overflow-hidden">
-        <div className="relative min-h-[560px] md:min-h-0 md:h-[80vh] w-full py-20 md:py-0">
+        <div className="relative md:h-[80vh] w-full py-16 md:py-0">
           <img
             src={heroTech2}
             alt="Engineered data center infrastructure"
