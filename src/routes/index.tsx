@@ -60,6 +60,15 @@ const CAPABILITIES = [
   { icon: HardDrive, name: "Long-Term Support", desc: "AMCs, 24/7 monitoring and lifecycle maintenance that keep systems performing." },
 ];
 
+function getInitials(name: string) {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((n) => n[0]?.toUpperCase() ?? "")
+    .join("");
+}
+
 const TEAM_PREVIEW = [
   { img: team1.url, name: "Raza Saudagar", role: "Chief Executive" },
   { img: team2.url, name: "Khazi Zafar", role: "Chief Strategic & Planning" },
