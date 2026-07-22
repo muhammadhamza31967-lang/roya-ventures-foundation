@@ -375,7 +375,7 @@ export function BrandEvolution() {
 
 
           {/* Mobile: vertical single composition */}
-          <div className="relative flex flex-col items-center md:hidden">
+          <div className="relative flex flex-col items-center lg:hidden">
             <div
               className="relative"
               style={{
