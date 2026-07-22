@@ -118,10 +118,10 @@ function HomePage() {
               className="mt-12 flex flex-wrap gap-5 reveal"
               style={{ animationDelay: "0.45s" }}
             >
-              <Link to="/services" className="btn-primary" data-cursor="hover">
+              <Link to="/services" className="btn-primary btn-on-dark" data-cursor="hover">
                 Explore our services <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link to="/contact" className="btn-outline-light" data-cursor="hover">
+              <Link to="/contact" className="btn-outline-light btn-on-dark" data-cursor="hover">
                 Request a consultation
               </Link>
             </div>
