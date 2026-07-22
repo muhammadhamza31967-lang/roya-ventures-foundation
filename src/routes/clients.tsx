@@ -68,6 +68,19 @@ const FRAGRANCE_LOGOS = Object.entries(fragranceModules)
   })
   .sort((a, b) => a.name.localeCompare(b.name));
 
+// Hospitality & Restaurants — official logos
+const hospitalityModules = import.meta.glob<{ default: { url: string } }>(
+  "@/assets/clients/hospitality/*.png.asset.json",
+  { eager: true },
+);
+const HOSPITALITY_LOGOS = Object.entries(hospitalityModules)
+  .map(([path, mod]) => {
+    const name = path.match(/hospitality\/(.+)\.png\.asset\.json$/)?.[1] ?? "";
+    return { name, url: mod.default.url };
+  })
+  .sort((a, b) => a.name.localeCompare(b.name));
+
+
 
 export const Route = createFileRoute("/clients")({
   head: () => ({
@@ -120,7 +133,7 @@ const CLIENT_CATEGORIES: { name: string; logoIds: number[]; logos?: { name: stri
   { name: "Premium Fashion", logoIds: [], logos: FASHION_LOGOS },
   { name: "Beauty & Cosmetics", logoIds: [], logos: BEAUTY_LOGOS },
   { name: "Fragrance & Lifestyle", logoIds: [], logos: FRAGRANCE_LOGOS },
-  { name: "Hospitality & Restaurants", logoIds: [] },
+  { name: "Hospitality & Restaurants", logoIds: [], logos: HOSPITALITY_LOGOS },
   { name: "Corporate Clients", logoIds: [] },
 ];
 
