@@ -229,39 +229,6 @@ export function BrandEvolution() {
         .be-logo-past:hover  { transform: translateY(-2px) scale(1.03); filter: grayscale(0) brightness(1.04) drop-shadow(0 12px 26px color-mix(in oklab, #C8102E 25%, transparent)); }
         .be-logo-new:hover   { transform: translateY(-2px) scale(1.03); filter: brightness(1.05) drop-shadow(0 16px 36px color-mix(in oklab, var(--gold) 55%, transparent)); }
 
-        /* Trust cards */
-        .be-trust-card {
-          position: relative;
-          background: linear-gradient(180deg, #fff 0%, color-mix(in oklab, var(--gold) 4%, #fff) 100%);
-          border: 1px solid color-mix(in oklab, var(--navy-deep) 10%, transparent);
-          transition: transform 400ms ${EASE}, box-shadow 400ms ${EASE}, border-color 400ms ${EASE};
-        }
-        .be-trust-card::before {
-          content: ""; position: absolute; inset: 0;
-          border-radius: inherit; padding: 1px;
-          background: linear-gradient(135deg, color-mix(in oklab, var(--gold) 55%, transparent), transparent 55%, color-mix(in oklab, var(--emerald-deep) 45%, transparent));
-          -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-          -webkit-mask-composite: xor; mask-composite: exclude;
-          opacity: 0; transition: opacity 400ms ${EASE};
-          pointer-events: none;
-        }
-        .be-trust-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 24px 50px -28px color-mix(in oklab, var(--navy-deep) 40%, transparent),
-                      0 10px 24px -14px color-mix(in oklab, var(--gold) 40%, transparent);
-          border-color: color-mix(in oklab, var(--gold) 45%, transparent);
-        }
-        .be-trust-card:hover::before { opacity: 1; }
-        .be-trust-icon {
-          background: linear-gradient(135deg, color-mix(in oklab, var(--gold) 18%, #fff), #fff);
-          border: 1px solid color-mix(in oklab, var(--gold) 45%, transparent);
-          color: var(--gold);
-          transition: transform 400ms ${EASE}, box-shadow 400ms ${EASE};
-        }
-        .be-trust-card:hover .be-trust-icon {
-          transform: scale(1.08) rotate(-4deg);
-          box-shadow: 0 8px 22px -6px color-mix(in oklab, var(--gold) 65%, transparent);
-        }
 
         @media (prefers-reduced-motion: reduce) {
           .be-orb-a, .be-orb-b, .be-halo, .be-bg-grid,
