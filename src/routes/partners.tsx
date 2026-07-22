@@ -9,6 +9,11 @@ import ciscoLogo from "@/assets/partners/core/cisco.png.asset.json";
 import hikvisionLogo from "@/assets/partners/core/hikvision.png.asset.json";
 import nexenLogo from "@/assets/partners/core/nexen.png.asset.json";
 import prestigeLogo from "@/assets/partners/core/prestige.png.asset.json";
+import entry2exitLogo from "@/assets/partners/software/entry2exit.png.asset.json";
+import fadelLogo from "@/assets/partners/software/fadel.png.asset.json";
+import odooLogo from "@/assets/partners/software/odoo.png.asset.json";
+import sapaadLogo from "@/assets/partners/software/sapaad.png.asset.json";
+
 
 export const Route = createFileRoute("/partners")({
   head: () => ({
@@ -31,12 +36,20 @@ const CORE_TECH_LOGOS: PartnerLogo[] = [
   { name: "Prestige Saudi Co. Ltd.", url: prestigeLogo.url },
 ];
 
+const SOFTWARE_LOGOS: PartnerLogo[] = [
+  { name: "Entry2Exit", url: entry2exitLogo.url },
+  { name: "Fadel Software Solutions", url: fadelLogo.url },
+  { name: "Odoo", url: odooLogo.url },
+  { name: "Sapaad", url: sapaadLogo.url },
+];
+
 const PARTNER_CATEGORIES: { name: string; logos?: PartnerLogo[] }[] = [
   { name: "Core Technology Partners", logos: CORE_TECH_LOGOS },
-  { name: "Software Platforms" },
+  { name: "Software Platforms", logos: SOFTWARE_LOGOS },
   { name: "AI Video Analytics" },
   { name: "Smart Screens / Ink Displays" },
 ];
+
 
 function PartnersPage() {
   return (
