@@ -471,44 +471,6 @@ export function BrandEvolution() {
           </div>
         </div>
 
-        {/* Trust indicators — premium feature cards */}
-        <div className="mx-auto mt-20 max-w-5xl md:mt-24">
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-6">
-            {TRUST.map(({ label, detail, Icon }, i) => (
-              <div
-                key={label}
-                className="be-trust-card group rounded-2xl p-6 md:p-7"
-                style={{
-                  opacity: shown ? 1 : 0,
-                  transform: shown ? "translateY(0)" : "translateY(16px)",
-                  transition: `opacity 700ms ${EASE} ${1200 + i * 150}ms, transform 700ms ${EASE} ${1200 + i * 150}ms`,
-                }}
-              >
-                <div className="flex items-start gap-4">
-                  <span className="be-trust-icon grid h-11 w-11 shrink-0 place-items-center rounded-xl">
-                    <Icon className="h-5 w-5" strokeWidth={1.75} />
-                  </span>
-                  <div className="min-w-0">
-                    <h3 className="text-base font-semibold tracking-tight text-[var(--navy-deep)] md:text-lg">
-                      {label}
-                    </h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-[var(--navy-deep)]/65">
-                      {detail}
-                    </p>
-                  </div>
-                </div>
-                <span
-                  aria-hidden
-                  className="mt-5 block h-px w-full"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, transparent, color-mix(in oklab, var(--gold) 55%, transparent), transparent)",
-                  }}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
