@@ -217,10 +217,10 @@
   border-radius: 999px;
   box-shadow: 0 10px 30px -12px color-mix(in oklab, var(--gold) 70%, transparent),
               inset 0 0 0 1px color-mix(in oklab, var(--gold) 50%, transparent);
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
-              box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
-              background 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
-              color 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              background 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              color 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
   overflow: hidden;
   isolation: isolate;
   &::before {
@@ -234,53 +234,89 @@
   }
   &:hover {
     transform: translateY(-3px);
-    box-shadow: 0 22px 50px -18px color-mix(in oklab, var(--gold) 80%, transparent),
-                inset 0 0 0 1px color-mix(in oklab, var(--gold) 65%, transparent);
+    background: var(--navy);
+    color: white;
+    box-shadow: 0 22px 50px -18px color-mix(in oklab, var(--navy) 50%, transparent),
+                inset 0 0 0 1px color-mix(in oklab, white 20%, transparent);
   }
   &:hover::before { transform: translateX(120%); }
-  & svg { transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  & svg { transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
   &:hover svg { transform: translateX(4px); }
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--gold);
+  }
 }
 
 @utility btn-outline-light {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
   padding: 1.05rem 1.85rem;
-  border: 1px solid color-mix(in oklab, var(--ivory) 50%, transparent);
-  background: color-mix(in oklab, white 8%, transparent);
-  backdrop-filter: blur(8px);
-  color: var(--ivory);
-  font-weight: 500;
+  background: var(--grad-gold);
+  color: var(--navy);
+  font-weight: 600;
   font-size: 0.875rem;
   letter-spacing: 0.05em;
+  border: 1px solid transparent;
   border-radius: 999px;
-  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 10px 30px -12px color-mix(in oklab, var(--gold) 60%, transparent);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              background 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              color 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              border-color 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  overflow: hidden;
+  isolation: isolate;
   &:hover {
-    background: var(--ivory);
-    color: var(--navy);
-    border-color: var(--ivory);
     transform: translateY(-3px);
+    background: var(--navy);
+    color: white;
+    border-color: color-mix(in oklab, white 20%, transparent);
+    box-shadow: 0 22px 50px -18px color-mix(in oklab, var(--navy) 50%, transparent);
   }
-  & svg { transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  & svg { transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
   &:hover svg { transform: translateX(4px); }
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--gold);
+  }
 }
 
 @utility btn-ghost {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.95rem 1.6rem;
+  background: var(--grad-gold);
   color: var(--navy);
   font-weight: 600;
   font-size: 0.875rem;
-  border: 1px solid color-mix(in oklab, var(--navy) 18%, transparent);
+  letter-spacing: 0.05em;
+  border: 1px solid transparent;
   border-radius: 999px;
-  transition: all 0.35s ease;
+  box-shadow: 0 10px 30px -12px color-mix(in oklab, var(--gold) 60%, transparent);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              background 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              color 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+              border-color 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  overflow: hidden;
+  isolation: isolate;
   &:hover {
-    border-color: var(--gold);
-    color: var(--gold);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    background: var(--navy);
+    color: white;
+    border-color: color-mix(in oklab, white 20%, transparent);
+    box-shadow: 0 22px 50px -18px color-mix(in oklab, var(--navy) 50%, transparent);
+  }
+  & svg { transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); }
+  &:hover svg { transform: translateX(4px); }
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--gold);
   }
 }
 
