@@ -68,53 +68,49 @@ export function BrandEvolution() {
         @keyframes be-orb-a { 0%,100%{transform:translate3d(0,0,0) scale(1)} 50%{transform:translate3d(28px,-18px,0) scale(1.05)} }
         @keyframes be-orb-b { 0%,100%{transform:translate3d(0,0,0) scale(1)} 50%{transform:translate3d(-26px,22px,0) scale(1.07)} }
 
-        /* Particle traveling left → center → right (horizontal) */
-        @keyframes be-particle-h {
-          0%   { left: 0%;   opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
-          10%  { opacity: 1; }
-          48%  { left: 50%;  opacity: 1; transform: translate(-50%, -50%) scale(1.35); }
-          52%  { left: 50%;  opacity: 1; transform: translate(-50%, -50%) scale(1.35); }
-          90%  { opacity: 1; }
-          100% { left: 100%; opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
+        /* Flowing color-morphing light band (red → gold → emerald) */
+        @keyframes be-flow-h {
+          0%   { background-position: -60% 0; }
+          100% { background-position: 160% 0; }
         }
-        /* Light trail traveling horizontally */
-        @keyframes be-trail-h {
-          0%   { transform: translateX(-120%); opacity: 0; }
-          15%  { opacity: 1; }
-          85%  { opacity: 1; }
-          100% { transform: translateX(120%); opacity: 0; }
+        @keyframes be-flow-v {
+          0%   { background-position: 0 -60%; }
+          100% { background-position: 0 160%; }
         }
-        /* Particle vertical (mobile) */
-        @keyframes be-particle-v {
-          0%   { top: 0%;   opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
-          10%  { opacity: 1; }
-          48%  { top: 50%;  opacity: 1; transform: translate(-50%, -50%) scale(1.35); }
-          52%  { top: 50%;  opacity: 1; transform: translate(-50%, -50%) scale(1.35); }
-          90%  { opacity: 1; }
-          100% { top: 100%; opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
+        /* Comet particle traveling along the rail */
+        @keyframes be-comet-h {
+          0%   { left: -4%;  opacity: 0; }
+          8%   { opacity: 1; }
+          92%  { opacity: 1; }
+          100% { left: 104%; opacity: 0; }
         }
-        @keyframes be-trail-v {
-          0%   { transform: translateY(-120%); opacity: 0; }
-          15%  { opacity: 1; }
-          85%  { opacity: 1; }
-          100% { transform: translateY(120%); opacity: 0; }
+        @keyframes be-comet-v {
+          0%   { top: -4%;  opacity: 0; }
+          8%   { opacity: 1; }
+          92%  { opacity: 1; }
+          100% { top: 104%; opacity: 0; }
         }
-        @keyframes be-badge-pulse {
-          0%,100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--gold) 45%, transparent), 0 12px 40px -14px color-mix(in oklab, var(--gold) 55%, transparent); }
-          50%     { box-shadow: 0 0 0 10px color-mix(in oklab, var(--gold) 0%, transparent), 0 16px 46px -14px color-mix(in oklab, var(--gold) 70%, transparent); }
+        /* Glass centerpiece: shimmer + soft pulse */
+        @keyframes be-glass-pulse {
+          0%,100% { box-shadow:
+            0 20px 60px -22px color-mix(in oklab, var(--navy-deep) 45%, transparent),
+            0 8px 26px -10px color-mix(in oklab, var(--gold) 40%, transparent),
+            inset 0 1px 0 color-mix(in oklab, #fff 85%, transparent); }
+          50%     { box-shadow:
+            0 24px 70px -22px color-mix(in oklab, var(--navy-deep) 55%, transparent),
+            0 10px 34px -10px color-mix(in oklab, var(--gold) 60%, transparent),
+            inset 0 1px 0 color-mix(in oklab, #fff 95%, transparent); }
         }
-        @keyframes be-ring-rotate {
-          0% { transform: translate(-50%, -50%) rotate(0deg); }
-          100% { transform: translate(-50%, -50%) rotate(360deg); }
+        @keyframes be-shimmer {
+          0%   { transform: translateX(-140%) skewX(-20deg); }
+          100% { transform: translateX(240%) skewX(-20deg); }
         }
-        @keyframes be-ring-rotate-rev {
-          0% { transform: translate(-50%, -50%) rotate(360deg); }
-          100% { transform: translate(-50%, -50%) rotate(0deg); }
-        }
+        @keyframes be-ring-rotate     { to { transform: translate(-50%, -50%) rotate(360deg); } }
+        @keyframes be-ring-rotate-rev { to { transform: translate(-50%, -50%) rotate(-360deg); } }
         @keyframes be-halo { 0%,100%{opacity:.55;transform:scale(1)} 50%{opacity:.9;transform:scale(1.06)} }
-        @keyframes be-underline-slide {
-          0%   { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
+        @keyframes be-dot-pulse {
+          0%,100% { transform: scale(1); opacity: 1; }
+          50%     { transform: scale(1.6); opacity: .55; }
         }
 
         .be-bg-grid {
@@ -130,88 +126,124 @@ export function BrandEvolution() {
         .be-orb-b { animation: be-orb-b 26s ease-in-out infinite; }
         .be-halo  { animation: be-halo 4.8s ease-in-out infinite; }
 
-        /* Connector rail */
+        /* Hairline base rail */
         .be-rail-h {
           background: linear-gradient(90deg,
-            color-mix(in oklab, var(--gold) 0%, transparent) 0%,
-            color-mix(in oklab, var(--gold) 55%, transparent) 15%,
-            color-mix(in oklab, var(--emerald-deep) 70%, transparent) 50%,
-            color-mix(in oklab, var(--gold) 55%, transparent) 85%,
-            color-mix(in oklab, var(--gold) 0%, transparent) 100%);
+            transparent 0%,
+            color-mix(in oklab, var(--navy-deep) 22%, transparent) 14%,
+            color-mix(in oklab, var(--navy-deep) 30%, transparent) 50%,
+            color-mix(in oklab, var(--navy-deep) 22%, transparent) 86%,
+            transparent 100%);
         }
         .be-rail-v {
           background: linear-gradient(180deg,
-            color-mix(in oklab, var(--gold) 0%, transparent) 0%,
-            color-mix(in oklab, var(--gold) 55%, transparent) 15%,
-            color-mix(in oklab, var(--emerald-deep) 70%, transparent) 50%,
-            color-mix(in oklab, var(--gold) 55%, transparent) 85%,
-            color-mix(in oklab, var(--gold) 0%, transparent) 100%);
+            transparent 0%,
+            color-mix(in oklab, var(--navy-deep) 22%, transparent) 14%,
+            color-mix(in oklab, var(--navy-deep) 30%, transparent) 50%,
+            color-mix(in oklab, var(--navy-deep) 22%, transparent) 86%,
+            transparent 100%);
         }
 
-        /* Traveling light trail on rail */
-        .be-trail-h {
+        /* Flowing morphing color band */
+        .be-flow-h {
           background: linear-gradient(90deg,
             transparent 0%,
-            color-mix(in oklab, var(--gold) 40%, transparent) 35%,
-            #fff 50%,
-            color-mix(in oklab, var(--gold) 40%, transparent) 65%,
+            color-mix(in oklab, #C8102E 55%, transparent) 22%,
+            color-mix(in oklab, var(--gold) 85%, transparent) 44%,
+            #ffffff 50%,
+            color-mix(in oklab, var(--gold) 85%, transparent) 56%,
+            color-mix(in oklab, var(--emerald-deep) 70%, transparent) 78%,
             transparent 100%);
+          background-size: 220% 100%;
           filter: blur(0.6px);
-          animation: be-trail-h 4.2s cubic-bezier(0.45,0,0.2,1) infinite;
+          animation: be-flow-h 6.5s cubic-bezier(0.65,0,0.35,1) infinite;
+          mix-blend-mode: screen;
         }
-        .be-trail-v {
+        .be-flow-v {
           background: linear-gradient(180deg,
             transparent 0%,
-            color-mix(in oklab, var(--gold) 40%, transparent) 35%,
-            #fff 50%,
-            color-mix(in oklab, var(--gold) 40%, transparent) 65%,
+            color-mix(in oklab, #C8102E 55%, transparent) 22%,
+            color-mix(in oklab, var(--gold) 85%, transparent) 44%,
+            #ffffff 50%,
+            color-mix(in oklab, var(--gold) 85%, transparent) 56%,
+            color-mix(in oklab, var(--emerald-deep) 70%, transparent) 78%,
             transparent 100%);
+          background-size: 100% 220%;
           filter: blur(0.6px);
-          animation: be-trail-v 4.2s cubic-bezier(0.45,0,0.2,1) infinite;
+          animation: be-flow-v 6.5s cubic-bezier(0.65,0,0.35,1) infinite;
+          mix-blend-mode: screen;
         }
 
-        /* Traveling glowing particle */
-        .be-particle {
-          width: 10px; height: 10px; border-radius: 9999px;
-          background: radial-gradient(circle, #fff 0%, color-mix(in oklab, var(--gold) 90%, transparent) 45%, transparent 70%);
+        /* Comet particle */
+        .be-comet {
+          width: 9px; height: 9px; border-radius: 9999px;
+          background: radial-gradient(circle, #fff 0%, color-mix(in oklab, var(--gold) 90%, transparent) 50%, transparent 75%);
           box-shadow:
-            0 0 12px color-mix(in oklab, var(--gold) 85%, transparent),
-            0 0 28px color-mix(in oklab, var(--gold) 55%, transparent);
+            0 0 10px color-mix(in oklab, var(--gold) 90%, transparent),
+            0 0 24px color-mix(in oklab, var(--gold) 60%, transparent),
+            0 0 40px color-mix(in oklab, var(--gold) 35%, transparent);
         }
-        .be-particle-h { top: 50%; animation: be-particle-h 4.2s cubic-bezier(0.45,0,0.2,1) infinite; }
-        .be-particle-v { left: 50%; animation: be-particle-v 4.2s cubic-bezier(0.45,0,0.2,1) infinite; }
+        .be-comet-h { top: 50%; margin-top: -4.5px; animation: be-comet-h 6.5s cubic-bezier(0.5,0,0.5,1) infinite; }
+        .be-comet-v { left: 50%; margin-left: -4.5px; animation: be-comet-v 6.5s cubic-bezier(0.5,0,0.5,1) infinite; }
 
-        /* Center badge */
-        .be-badge {
+        /* Origin & destination endpoints on the rail */
+        .be-endpoint {
+          width: 10px; height: 10px; border-radius: 9999px;
+          box-shadow: 0 0 0 4px color-mix(in oklab, #fff 90%, transparent),
+                      0 0 14px color-mix(in oklab, var(--gold) 55%, transparent);
+        }
+        .be-endpoint-a { background: color-mix(in oklab, #C8102E 85%, #fff); animation: be-dot-pulse 3.2s ease-in-out infinite; }
+        .be-endpoint-b { background: var(--emerald-deep); animation: be-dot-pulse 3.2s ease-in-out infinite 1.6s; }
+
+        /* Glass centerpiece */
+        .be-glass {
+          position: relative;
           background: linear-gradient(135deg,
-            color-mix(in oklab, #fff 90%, transparent) 0%,
-            color-mix(in oklab, var(--gold) 8%, #fff) 100%);
-          backdrop-filter: blur(14px);
-          -webkit-backdrop-filter: blur(14px);
-          border: 1px solid color-mix(in oklab, var(--gold) 45%, transparent);
-          animation: be-badge-pulse 4.4s ease-in-out infinite;
+            color-mix(in oklab, #fff 82%, transparent) 0%,
+            color-mix(in oklab, #fff 55%, transparent) 100%);
+          border: 1px solid color-mix(in oklab, #fff 70%, transparent);
+          backdrop-filter: blur(18px) saturate(150%);
+          animation: be-glass-pulse 5s ease-in-out infinite;
+          overflow: hidden;
+        }
+        .be-glass::before {
+          content: ""; position: absolute; inset: 0;
+          border-radius: inherit; padding: 1px;
+          background: linear-gradient(135deg,
+            color-mix(in oklab, var(--gold) 80%, transparent),
+            transparent 45%,
+            color-mix(in oklab, var(--emerald-deep) 65%, transparent));
+          -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          -webkit-mask-composite: xor; mask-composite: exclude;
+          pointer-events: none;
+        }
+        .be-glass-shimmer {
+          position: absolute; top: 0; bottom: 0; width: 45%;
+          background: linear-gradient(90deg, transparent, color-mix(in oklab, #fff 90%, transparent), transparent);
+          animation: be-shimmer 4.8s ease-in-out infinite;
+          pointer-events: none;
         }
         .be-ring {
           position: absolute; top: 50%; left: 50%;
-          border-radius: 9999px;
-          border: 1px dashed color-mix(in oklab, var(--gold) 55%, transparent);
+          border-radius: 9999px; pointer-events: none;
+        }
+        .be-ring-outer { width: 260px; height: 260px; border: 1px dashed color-mix(in oklab, var(--gold) 45%, transparent); animation: be-ring-rotate 26s linear infinite; }
+        .be-ring-inner { width: 190px; height: 190px; border: 1px dotted color-mix(in oklab, var(--emerald-deep) 45%, transparent); animation: be-ring-rotate-rev 20s linear infinite; }
+
+        /* Soft ground shadow beneath each logo (no card) */
+        .be-pedestal {
+          position: absolute; left: 50%; bottom: -18px;
+          width: 78%; height: 22px; transform: translateX(-50%);
+          background: radial-gradient(ellipse at center,
+            color-mix(in oklab, var(--navy-deep) 22%, transparent) 0%,
+            transparent 70%);
+          filter: blur(6px);
           pointer-events: none;
         }
-        .be-ring-outer { width: 220px; height: 220px; animation: be-ring-rotate 22s linear infinite; }
-        .be-ring-inner { width: 168px; height: 168px; border-style: dotted; border-color: color-mix(in oklab, var(--emerald-deep) 50%, transparent); animation: be-ring-rotate-rev 18s linear infinite; }
-        .be-badge-underline {
-          position: absolute; left: 0; right: 0; bottom: -6px;
-          height: 2px; overflow: hidden; border-radius: 2px;
-        }
-        .be-badge-underline::before {
-          content: ""; position: absolute; inset: 0;
-          background: linear-gradient(90deg, transparent, var(--gold), transparent);
-          animation: be-underline-slide 3.2s ${EASE} infinite;
-        }
-
-        .be-logo { transition: transform 500ms ${EASE}, filter 500ms ${EASE}; }
-        .be-logo-past:hover { transform: scale(1.04); filter: brightness(1.05) drop-shadow(0 10px 26px color-mix(in oklab, var(--navy-deep) 25%, transparent)); }
-        .be-logo-new:hover  { transform: scale(1.04); filter: brightness(1.06) drop-shadow(0 14px 34px color-mix(in oklab, var(--gold) 50%, transparent)); }
+        .be-logo { transition: transform 600ms ${EASE}, filter 600ms ${EASE}; }
+        .be-logo-past  { filter: grayscale(0.2) brightness(0.98); }
+        .be-logo-past:hover  { transform: translateY(-2px) scale(1.03); filter: grayscale(0) brightness(1.04) drop-shadow(0 12px 26px color-mix(in oklab, #C8102E 25%, transparent)); }
+        .be-logo-new:hover   { transform: translateY(-2px) scale(1.03); filter: brightness(1.05) drop-shadow(0 16px 36px color-mix(in oklab, var(--gold) 55%, transparent)); }
 
         /* Trust cards */
         .be-trust-card {
@@ -249,9 +281,9 @@ export function BrandEvolution() {
 
         @media (prefers-reduced-motion: reduce) {
           .be-orb-a, .be-orb-b, .be-halo, .be-bg-grid,
-          .be-trail-h, .be-trail-v, .be-particle-h, .be-particle-v,
-          .be-badge, .be-ring-outer, .be-ring-inner,
-          .be-badge-underline::before { animation: none !important; }
+          .be-flow-h, .be-flow-v, .be-comet-h, .be-comet-v,
+          .be-glass, .be-glass-shimmer, .be-ring-outer, .be-ring-inner,
+          .be-endpoint-a, .be-endpoint-b { animation: none !important; }
         }
       `}</style>
 
@@ -339,118 +371,181 @@ export function BrandEvolution() {
           </p>
         </div>
 
-        {/* Horizontal brand transformation */}
-        <div className="mx-auto mt-20 max-w-6xl md:mt-24">
-          <div className="grid grid-cols-1 items-center gap-14 md:grid-cols-[1fr_auto_1fr] md:gap-16 lg:gap-24">
-            {/* Spidernet (no label) */}
+        {/* Unified brand evolution composition */}
+        <div className="mx-auto mt-24 max-w-6xl md:mt-28">
+          {/* Desktop / tablet: horizontal, single continuous composition */}
+          <div className="relative hidden md:block">
+            {/* Full-width connector layer, vertically centered on shared baseline */}
+            <div className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2">
+              <div className="relative mx-auto h-px w-full">
+                <span className="be-rail-h absolute inset-0" />
+                <span className="be-flow-h absolute -inset-y-[3px] inset-x-0" />
+                <span
+                  className="be-endpoint be-endpoint-a absolute top-1/2 -translate-y-1/2"
+                  style={{ left: "calc(16% - 5px)" }}
+                />
+                <span
+                  className="be-endpoint be-endpoint-b absolute top-1/2 -translate-y-1/2"
+                  style={{ left: "calc(84% - 5px)" }}
+                />
+                <span className="be-comet be-comet-h absolute" />
+                <span
+                  className="be-comet be-comet-h absolute"
+                  style={{ animationDelay: "3.25s" }}
+                />
+              </div>
+            </div>
+
+            {/* Row: Logo — Centerpiece — Logo, baseline aligned */}
+            <div className="relative grid grid-cols-[1fr_auto_1fr] items-center gap-16 lg:gap-28">
+              {/* Spidernet */}
+              <div
+                className="relative flex justify-end pr-4 lg:pr-8"
+                style={{
+                  opacity: shown ? 1 : 0,
+                  transform: shown ? "translateX(0)" : "translateX(-36px)",
+                  transition: `opacity 900ms ${EASE} 380ms, transform 900ms ${EASE} 380ms`,
+                }}
+              >
+                <div className="relative">
+                  <img
+                    src={spidernetLogo.url}
+                    alt="SpiderNet — former company logo"
+                    className="be-logo be-logo-past h-20 w-auto max-w-[260px] object-contain lg:h-24"
+                    loading="lazy"
+                  />
+                  <span aria-hidden className="be-pedestal" />
+                </div>
+              </div>
+
+              {/* Centerpiece: glass badge with dashed/dotted rings */}
+              <div
+                className="relative flex items-center justify-center"
+                style={{
+                  opacity: shown ? 1 : 0,
+                  transform: shown ? "scale(1)" : "scale(0.9)",
+                  transition: `opacity 800ms ${EASE} 700ms, transform 800ms ${EASE} 700ms`,
+                }}
+              >
+                <span className="be-ring be-ring-outer" />
+                <span className="be-ring be-ring-inner" />
+                <div className="be-glass relative flex items-center gap-3 rounded-full px-6 py-3">
+                  <span className="be-glass-shimmer" />
+                  <span
+                    className="h-1.5 w-1.5 rounded-full"
+                    style={{ background: "color-mix(in oklab, #C8102E 85%, #fff)" }}
+                  />
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.36em] text-[var(--navy-deep)]">
+                    Brand Evolution
+                  </span>
+                  <span
+                    className="h-1.5 w-1.5 rounded-full"
+                    style={{ background: "var(--emerald-deep)" }}
+                  />
+                </div>
+              </div>
+
+              {/* Roya Ventures */}
+              <div
+                className="relative flex justify-start pl-4 lg:pl-8"
+                style={{
+                  opacity: shown ? 1 : 0,
+                  transform: shown ? "translateX(0)" : "translateX(36px)",
+                  transition: `opacity 900ms ${EASE} 900ms, transform 900ms ${EASE} 900ms`,
+                }}
+              >
+                <div className="relative">
+                  <span
+                    aria-hidden
+                    className="be-halo pointer-events-none absolute left-1/2 top-1/2 -z-10 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl"
+                    style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--gold) 32%, transparent), transparent 65%)" }}
+                  />
+                  <img
+                    src={royaLogo.url}
+                    alt="Roya Ventures — new company logo"
+                    className="be-logo be-logo-new h-20 w-auto max-w-[280px] object-contain lg:h-24"
+                    loading="lazy"
+                  />
+                  <span aria-hidden className="be-pedestal" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile: vertical single composition */}
+          <div className="relative flex flex-col items-center md:hidden">
             <div
-              className="flex justify-center md:justify-end"
+              className="relative"
               style={{
                 opacity: shown ? 1 : 0,
-                transform: shown ? "translateX(0) scale(1)" : "translateX(-32px) scale(0.96)",
-                transition: `opacity 850ms ${EASE} 380ms, transform 850ms ${EASE} 380ms`,
+                transform: shown ? "translateY(0)" : "translateY(-16px)",
+                transition: `opacity 800ms ${EASE} 380ms, transform 800ms ${EASE} 380ms`,
               }}
             >
               <img
                 src={spidernetLogo.url}
                 alt="SpiderNet — former company logo"
-                className="be-logo be-logo-past h-16 w-auto max-w-[240px] object-contain opacity-85 md:h-20 lg:h-24"
-                style={{ filter: "grayscale(0.15)" }}
+                className="be-logo be-logo-past h-16 w-auto max-w-[220px] object-contain"
                 loading="lazy"
               />
+              <span aria-hidden className="be-pedestal" />
             </div>
 
-            {/* Center — animated transformation */}
-            <div
-              className="relative flex w-full flex-col items-center justify-center md:w-auto md:min-w-[260px] lg:min-w-[340px]"
-              style={{
-                opacity: shown ? 1 : 0,
-                transition: `opacity 700ms ${EASE} 640ms`,
-              }}
-            >
-              {/* Desktop horizontal transformation */}
-              <div className="relative hidden w-full items-center justify-center md:flex">
-                {/* Full-width rail with particle behind the badge */}
-                <div className="absolute inset-x-0 top-1/2 -translate-y-1/2">
-                  <div className="relative mx-auto h-px w-full overflow-visible">
-                    <span className="be-rail-h absolute inset-0" />
-                    <span className="be-trail-h absolute inset-y-[-6px] left-0 w-32" />
-                    <span
-                      className="be-trail-h absolute inset-y-[-6px] left-0 w-32"
-                      style={{ animationDelay: "2.1s" }}
-                    />
-                    <span className="be-particle be-particle-h absolute" />
-                    <span
-                      className="be-particle be-particle-h absolute"
-                      style={{ animationDelay: "2.1s" }}
-                    />
-                  </div>
-                </div>
-
-                {/* Rotating dashed rings behind badge */}
-                <span className="be-ring be-ring-outer" />
-                <span className="be-ring be-ring-inner" />
-
-                {/* Premium badge */}
-                <div className="relative">
-                  <span className="be-badge relative inline-flex items-center gap-2.5 rounded-full px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.32em] text-[var(--navy-deep)]">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--gold)]" />
-                    Brand Evolution
-                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--emerald-deep)]" />
-                    <span className="be-badge-underline" />
-                  </span>
-                </div>
-              </div>
-
-              {/* Mobile vertical transformation */}
-              <div className="relative flex flex-col items-center md:hidden">
-                <div className="relative h-20 w-px overflow-visible">
-                  <span className="be-rail-v absolute inset-0" />
-                  <span className="be-trail-v absolute inset-x-[-6px] top-0 h-12" />
-                  <span className="be-particle be-particle-v absolute" />
-                </div>
-                <div className="relative my-4">
-                  <span className="be-badge relative inline-flex items-center gap-2.5 rounded-full px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.32em] text-[var(--navy-deep)]">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--gold)]" />
-                    Brand Evolution
-                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--emerald-deep)]" />
-                    <span className="be-badge-underline" />
-                  </span>
-                </div>
-                <div className="relative h-20 w-px overflow-visible">
-                  <span className="be-rail-v absolute inset-0" />
+            <div className="relative my-10 h-40 w-px">
+              <span className="be-rail-v absolute inset-0" />
+              <span className="be-flow-v absolute -inset-x-[3px] inset-y-0" />
+              <span
+                className="be-endpoint absolute left-1/2 -translate-x-1/2"
+                style={{ top: "-5px", background: "color-mix(in oklab, #C8102E 85%, #fff)" }}
+              />
+              <span
+                className="be-endpoint absolute left-1/2 -translate-x-1/2"
+                style={{ bottom: "-5px", background: "var(--emerald-deep)" }}
+              />
+              <span className="be-comet be-comet-v absolute" />
+              <span
+                className="be-comet be-comet-v absolute"
+                style={{ animationDelay: "3.25s" }}
+              />
+              {/* Centerpiece badge on the line */}
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                <div className="be-glass relative flex items-center gap-2 rounded-full px-4 py-2 whitespace-nowrap">
+                  <span className="be-glass-shimmer" />
                   <span
-                    className="be-trail-v absolute inset-x-[-6px] top-0 h-12"
-                    style={{ animationDelay: "2.1s" }}
+                    className="h-1.5 w-1.5 rounded-full"
+                    style={{ background: "color-mix(in oklab, #C8102E 85%, #fff)" }}
                   />
+                  <span className="text-[9px] font-semibold uppercase tracking-[0.32em] text-[var(--navy-deep)]">
+                    Brand Evolution
+                  </span>
                   <span
-                    className="be-particle be-particle-v absolute"
-                    style={{ animationDelay: "2.1s" }}
+                    className="h-1.5 w-1.5 rounded-full"
+                    style={{ background: "var(--emerald-deep)" }}
                   />
                 </div>
               </div>
             </div>
 
-            {/* Roya Ventures (no label) */}
             <div
-              className="relative flex justify-center md:justify-start"
+              className="relative"
               style={{
                 opacity: shown ? 1 : 0,
-                transform: shown ? "translateX(0) scale(1)" : "translateX(32px) scale(0.94)",
+                transform: shown ? "translateY(0)" : "translateY(16px)",
                 transition: `opacity 900ms ${EASE} 900ms, transform 900ms ${EASE} 900ms`,
               }}
             >
               <span
                 aria-hidden
-                className="be-halo pointer-events-none absolute left-1/2 top-1/2 -z-10 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl md:left-[35%]"
-                style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--gold) 30%, transparent), transparent 65%)" }}
+                className="be-halo pointer-events-none absolute left-1/2 top-1/2 -z-10 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl"
+                style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--gold) 32%, transparent), transparent 65%)" }}
               />
               <img
                 src={royaLogo.url}
                 alt="Roya Ventures — new company logo"
-                className="be-logo be-logo-new h-24 w-auto max-w-[320px] object-contain md:h-28 lg:h-32"
+                className="be-logo be-logo-new h-20 w-auto max-w-[260px] object-contain"
                 loading="lazy"
               />
+              <span aria-hidden className="be-pedestal" />
             </div>
           </div>
         </div>
