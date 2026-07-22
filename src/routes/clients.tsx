@@ -56,6 +56,19 @@ const BEAUTY_LOGOS = Object.entries(beautyModules)
   })
   .sort((a, b) => a.name.localeCompare(b.name));
 
+// Fragrance & Lifestyle — official logos
+const fragranceModules = import.meta.glob<{ default: { url: string } }>(
+  "@/assets/clients/fragrance/*.png.asset.json",
+  { eager: true },
+);
+const FRAGRANCE_LOGOS = Object.entries(fragranceModules)
+  .map(([path, mod]) => {
+    const name = path.match(/fragrance\/(.+)\.png\.asset\.json$/)?.[1] ?? "";
+    return { name, url: mod.default.url };
+  })
+  .sort((a, b) => a.name.localeCompare(b.name));
+
+
 export const Route = createFileRoute("/clients")({
   head: () => ({
     meta: [
