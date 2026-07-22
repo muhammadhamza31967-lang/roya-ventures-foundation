@@ -134,6 +134,10 @@ function HomePage() {
         </div>
       </section>
 
+      {/* Brand Evolution — Spidernet is now Roya Ventures */}
+      <BrandEvolution />
+
+
 
 
 
