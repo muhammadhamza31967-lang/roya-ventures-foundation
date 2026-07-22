@@ -80,6 +80,18 @@ const HOSPITALITY_LOGOS = Object.entries(hospitalityModules)
   })
   .sort((a, b) => a.name.localeCompare(b.name));
 
+// Corporate Clients — official logos
+const corporateModules = import.meta.glob<{ default: { url: string } }>(
+  "@/assets/clients/corporate/*.png.asset.json",
+  { eager: true },
+);
+const CORPORATE_LOGOS = Object.entries(corporateModules)
+  .map(([path, mod]) => {
+    const name = path.match(/corporate\/(.+)\.png\.asset\.json$/)?.[1] ?? "";
+    return { name, url: mod.default.url };
+  })
+  .sort((a, b) => a.name.localeCompare(b.name));
+
 
 
 export const Route = createFileRoute("/clients")({
