@@ -16,6 +16,8 @@ import sapaadLogo from "@/assets/partners/software/sapaad.png.asset.json";
 import coramLogo from "@/assets/partners/ai-video/coram.png.asset.json";
 import trassirLogo from "@/assets/partners/ai-video/trassir.png.asset.json";
 import vizo361Logo from "@/assets/partners/ai-video/vizo361.png.asset.json";
+import windroLogo from "@/assets/partners/smart-screens/windro.png.asset.json";
+import zhsunycoLogo from "@/assets/partners/smart-screens/zhsunyco.png.asset.json";
 
 
 export const Route = createFileRoute("/partners")({
@@ -52,11 +54,16 @@ const AI_VIDEO_LOGOS: PartnerLogo[] = [
   { name: "Vizo361", url: vizo361Logo.url },
 ];
 
+const SMART_SCREEN_LOGOS: PartnerLogo[] = [
+  { name: "Windro", url: windroLogo.url },
+  { name: "ZhSunyco", url: zhsunycoLogo.url },
+];
+
 const PARTNER_CATEGORIES: { name: string; logos?: PartnerLogo[] }[] = [
   { name: "Core Technology Partners", logos: CORE_TECH_LOGOS },
   { name: "Software Platforms", logos: SOFTWARE_LOGOS },
   { name: "AI Video Analytics", logos: AI_VIDEO_LOGOS },
-  { name: "Smart Screens / Ink Displays" },
+  { name: "Smart Screens / Ink Displays", logos: SMART_SCREEN_LOGOS },
 ];
 
 
