@@ -27,7 +27,7 @@ export function StatGrid({
           ].join(" ")}
         >
           <div className="absolute left-6 sm:left-8 md:left-12 top-6 sm:top-8 md:top-10 gold-divider opacity-60" />
-          <div className={["font-display flex items-baseline gap-1 text-3xl sm:text-4xl md:text-6xl font-semibold tracking-[-0.04em] mt-8 sm:mt-10 break-words", invert ? "text-white" : "text-[var(--navy)]"].join(" ")}>
+          <div className={["font-display flex items-baseline gap-1 text-3xl sm:text-4xl md:text-4xl lg:text-6xl font-semibold tracking-[-0.04em] mt-8 sm:mt-10 break-words", invert ? "text-white" : "text-[var(--navy)]"].join(" ")}>
             <span>{s.value}</span>
             {s.suffix && <span className="text-[var(--gold)]">{s.suffix}</span>}
           </div>
