@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { Users, Award, TrendingUp } from "lucide-react";
 import spidernetLogo from "@/assets/brand/spidernet-logo.png.asset.json";
 import royaLogo from "@/assets/brand/roya-ventures-logo.png.asset.json";
 
@@ -26,24 +25,6 @@ function useInView<T extends HTMLElement>(threshold = 0.12) {
   return { ref, shown };
 }
 
-const HEADING_WORDS = ["Spidernet", "is", "now", "Roya", "Ventures"];
-const TRUST = [
-  {
-    label: "Same Leadership",
-    detail: "Guided by the founders who built our reputation.",
-    Icon: Users,
-  },
-  {
-    label: "Same Expertise",
-    detail: "Two decades of engineering knowledge, preserved.",
-    Icon: Award,
-  },
-  {
-    label: "Stronger Brand",
-    detail: "A unified identity, built for the next chapter.",
-    Icon: TrendingUp,
-  },
-];
 const EASE = "cubic-bezier(0.2,0.8,0.2,1)";
 
 export function BrandEvolution() {
@@ -248,39 +229,6 @@ export function BrandEvolution() {
         .be-logo-past:hover  { transform: translateY(-2px) scale(1.03); filter: grayscale(0) brightness(1.04) drop-shadow(0 12px 26px color-mix(in oklab, #C8102E 25%, transparent)); }
         .be-logo-new:hover   { transform: translateY(-2px) scale(1.03); filter: brightness(1.05) drop-shadow(0 16px 36px color-mix(in oklab, var(--gold) 55%, transparent)); }
 
-        /* Trust cards */
-        .be-trust-card {
-          position: relative;
-          background: linear-gradient(180deg, #fff 0%, color-mix(in oklab, var(--gold) 4%, #fff) 100%);
-          border: 1px solid color-mix(in oklab, var(--navy-deep) 10%, transparent);
-          transition: transform 400ms ${EASE}, box-shadow 400ms ${EASE}, border-color 400ms ${EASE};
-        }
-        .be-trust-card::before {
-          content: ""; position: absolute; inset: 0;
-          border-radius: inherit; padding: 1px;
-          background: linear-gradient(135deg, color-mix(in oklab, var(--gold) 55%, transparent), transparent 55%, color-mix(in oklab, var(--emerald-deep) 45%, transparent));
-          -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-          -webkit-mask-composite: xor; mask-composite: exclude;
-          opacity: 0; transition: opacity 400ms ${EASE};
-          pointer-events: none;
-        }
-        .be-trust-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 24px 50px -28px color-mix(in oklab, var(--navy-deep) 40%, transparent),
-                      0 10px 24px -14px color-mix(in oklab, var(--gold) 40%, transparent);
-          border-color: color-mix(in oklab, var(--gold) 45%, transparent);
-        }
-        .be-trust-card:hover::before { opacity: 1; }
-        .be-trust-icon {
-          background: linear-gradient(135deg, color-mix(in oklab, var(--gold) 18%, #fff), #fff);
-          border: 1px solid color-mix(in oklab, var(--gold) 45%, transparent);
-          color: var(--gold);
-          transition: transform 400ms ${EASE}, box-shadow 400ms ${EASE};
-        }
-        .be-trust-card:hover .be-trust-icon {
-          transform: scale(1.08) rotate(-4deg);
-          box-shadow: 0 8px 22px -6px color-mix(in oklab, var(--gold) 65%, transparent);
-        }
 
         @media (prefers-reduced-motion: reduce) {
           .be-orb-a, .be-orb-b, .be-halo, .be-bg-grid,
@@ -318,64 +266,8 @@ export function BrandEvolution() {
       </div>
 
       <div className="container-px mx-auto">
-        {/* Header block */}
-        <div className="mx-auto max-w-3xl text-center">
-          <div
-            className="inline-flex items-center gap-3"
-            style={{
-              opacity: shown ? 1 : 0,
-              transform: shown ? "translateY(0)" : "translateY(12px)",
-              transition: `opacity 700ms ${EASE} 80ms, transform 700ms ${EASE} 80ms`,
-            }}
-          >
-            <span className="h-px w-10 bg-[var(--gold)]" />
-            <p className="text-[11px] font-semibold uppercase tracking-[0.4em] text-[var(--navy-deep)]/70">
-              Company Evolution
-            </p>
-            <span className="h-px w-10 bg-[var(--gold)]" />
-          </div>
-
-          <h2
-            className="mt-7 font-serif text-4xl leading-[1.05] tracking-tight text-[var(--navy-deep)] md:text-5xl lg:text-6xl"
-            aria-label="Spidernet is now Roya Ventures"
-          >
-            {HEADING_WORDS.map((word, i) => {
-              const isBrand = word === "Roya" || word === "Ventures";
-              return (
-                <span
-                  key={`${word}-${i}`}
-                  className="mr-[0.28em] inline-block"
-                  style={{
-                    opacity: shown ? 1 : 0,
-                    transform: shown ? "translateY(0)" : "translateY(18px)",
-                    transition: `opacity 700ms ${EASE} ${240 + i * 110}ms, transform 700ms ${EASE} ${240 + i * 110}ms`,
-                    color: isBrand ? "var(--emerald-deep)" : undefined,
-                  }}
-                >
-                  {word}
-                </span>
-              );
-            })}
-          </h2>
-
-          <p
-            className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed font-light text-[var(--navy-deep)]/75 md:text-xl"
-            style={{
-              opacity: shown ? 1 : 0,
-              transform: shown ? "translateY(0)" : "translateY(14px)",
-              transition: `opacity 800ms ${EASE} 880ms, transform 800ms ${EASE} 880ms`,
-            }}
-          >
-            Spidernet is now part of Roya Ventures, reflecting our continued
-            commitment to delivering innovative technology solutions under a
-            stronger, unified brand. While our name has evolved, our dedication
-            to excellence, reliability, engineering expertise, and customer
-            success remains unchanged.
-          </p>
-        </div>
-
         {/* Unified brand evolution composition */}
-        <div className="mx-auto mt-24 max-w-6xl md:mt-28">
+        <div className="mx-auto max-w-6xl">
           {/* Desktop / tablet: horizontal single composition — mirrors mobile */}
           <div className="relative hidden md:flex md:items-center md:justify-between md:gap-6 lg:gap-10">
             {/* Spidernet */}
@@ -546,44 +438,6 @@ export function BrandEvolution() {
           </div>
         </div>
 
-        {/* Trust indicators — premium feature cards */}
-        <div className="mx-auto mt-20 max-w-5xl md:mt-24">
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-6">
-            {TRUST.map(({ label, detail, Icon }, i) => (
-              <div
-                key={label}
-                className="be-trust-card group rounded-2xl p-6 md:p-7"
-                style={{
-                  opacity: shown ? 1 : 0,
-                  transform: shown ? "translateY(0)" : "translateY(16px)",
-                  transition: `opacity 700ms ${EASE} ${1200 + i * 150}ms, transform 700ms ${EASE} ${1200 + i * 150}ms`,
-                }}
-              >
-                <div className="flex items-start gap-4">
-                  <span className="be-trust-icon grid h-11 w-11 shrink-0 place-items-center rounded-xl">
-                    <Icon className="h-5 w-5" strokeWidth={1.75} />
-                  </span>
-                  <div className="min-w-0">
-                    <h3 className="text-base font-semibold tracking-tight text-[var(--navy-deep)] md:text-lg">
-                      {label}
-                    </h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-[var(--navy-deep)]/65">
-                      {detail}
-                    </p>
-                  </div>
-                </div>
-                <span
-                  aria-hidden
-                  className="mt-5 block h-px w-full"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, transparent, color-mix(in oklab, var(--gold) 55%, transparent), transparent)",
-                  }}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
