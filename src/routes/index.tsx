@@ -134,20 +134,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Brand Evolution heading */}
-      <section className="relative overflow-hidden pt-28 md:pt-36 pb-6 md:pb-10">
-        <div className="absolute inset-0 -z-10 bg-radial-gold opacity-60" />
-        <div className="container-px mx-auto">
-          <Reveal>
-            <SectionHeading
-              align="center"
-              eyebrow="Brand Evolution"
-              title={<>A New Identity. <em className="not-italic text-[var(--gold)]">The Same Vision.</em></>}
-            />
-          </Reveal>
-        </div>
-      </section>
-
       {/* Brand Evolution — Spidernet is now Roya Ventures */}
       <BrandEvolution />
 
