@@ -44,12 +44,11 @@ export const Route = createFileRoute("/")({
 });
 
 const HERO_SLIDES = [
-  { src: heroTech2, alt: "Enterprise data center hall with illuminated server racks" },
-  { src: svcFiber, alt: "Fiber optic cabling glowing blue" },
-  { src: svcSurveillance, alt: "Security operations centre with surveillance video wall" },
-  { src: heroTech1, alt: "Smart commercial building at dusk" },
-  { src: svcDatacenter, alt: "Modern data center corridor" },
-  { src: heroTech3, alt: "Abstract fiber light trails in navy and gold" },
+  { src: heroKafd.url, alt: "KAFD Riyadh skyline at dusk" },
+  { src: heroKafdResized.url, alt: "King Abdullah Financial District towers at twilight" },
+  { src: heroKingdom.url, alt: "Kingdom Centre tower rising above Riyadh" },
+  { src: heroKingdom2.url, alt: "Kingdom Centre illuminated against the evening sky" },
+  { src: heroRiyadh.url, alt: "Riyadh skyline panorama at sunset" },
 ];
 
 // Featured services on the homepage — first six from the master list
