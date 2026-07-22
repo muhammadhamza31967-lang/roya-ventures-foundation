@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import avayaLogo from "@/assets/partners/core/avaya.png.asset.json";
 import ciscoLogo from "@/assets/partners/core/cisco.png.asset.json";
