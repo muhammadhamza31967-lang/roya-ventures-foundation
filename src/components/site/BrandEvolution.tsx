@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Check } from "lucide-react";
+import { Users, Award, TrendingUp } from "lucide-react";
 import spidernetLogo from "@/assets/brand/spidernet-logo.jpeg.asset.json";
 import royaLogo from "@/assets/brand/roya-ventures-logo.jpeg.asset.json";
 
@@ -27,7 +27,23 @@ function useInView<T extends HTMLElement>(threshold = 0.12) {
 }
 
 const HEADING_WORDS = ["Spidernet", "is", "now", "Roya", "Ventures"];
-const TRUST = ["Same Leadership", "Same Expertise", "Stronger Brand"];
+const TRUST = [
+  {
+    label: "Same Leadership",
+    detail: "Guided by the founders who built our reputation.",
+    Icon: Users,
+  },
+  {
+    label: "Same Expertise",
+    detail: "Two decades of engineering knowledge, preserved.",
+    Icon: Award,
+  },
+  {
+    label: "Stronger Brand",
+    detail: "A unified identity, built for the next chapter.",
+    Icon: TrendingUp,
+  },
+];
 const EASE = "cubic-bezier(0.2,0.8,0.2,1)";
 
 export function BrandEvolution() {
@@ -51,29 +67,54 @@ export function BrandEvolution() {
         }
         @keyframes be-orb-a { 0%,100%{transform:translate3d(0,0,0) scale(1)} 50%{transform:translate3d(28px,-18px,0) scale(1.05)} }
         @keyframes be-orb-b { 0%,100%{transform:translate3d(0,0,0) scale(1)} 50%{transform:translate3d(-26px,22px,0) scale(1.07)} }
-        @keyframes be-flow {
-          0% { transform: translateX(-110%); opacity: 0; }
-          15% { opacity: 1; }
-          85% { opacity: 1; }
-          100% { transform: translateX(110%); opacity: 0; }
+
+        /* Particle traveling left → center → right (horizontal) */
+        @keyframes be-particle-h {
+          0%   { left: 0%;   opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
+          10%  { opacity: 1; }
+          48%  { left: 50%;  opacity: 1; transform: translate(-50%, -50%) scale(1.35); }
+          52%  { left: 50%;  opacity: 1; transform: translate(-50%, -50%) scale(1.35); }
+          90%  { opacity: 1; }
+          100% { left: 100%; opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
         }
-        @keyframes be-flow-v {
-          0% { transform: translateY(-110%); opacity: 0; }
-          15% { opacity: 1; }
-          85% { opacity: 1; }
-          100% { transform: translateY(110%); opacity: 0; }
+        /* Light trail traveling horizontally */
+        @keyframes be-trail-h {
+          0%   { transform: translateX(-120%); opacity: 0; }
+          15%  { opacity: 1; }
+          85%  { opacity: 1; }
+          100% { transform: translateX(120%); opacity: 0; }
         }
-        @keyframes be-shimmer {
-          0%,100% { opacity: 0.55; }
-          50% { opacity: 1; }
+        /* Particle vertical (mobile) */
+        @keyframes be-particle-v {
+          0%   { top: 0%;   opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
+          10%  { opacity: 1; }
+          48%  { top: 50%;  opacity: 1; transform: translate(-50%, -50%) scale(1.35); }
+          52%  { top: 50%;  opacity: 1; transform: translate(-50%, -50%) scale(1.35); }
+          90%  { opacity: 1; }
+          100% { top: 100%; opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
+        }
+        @keyframes be-trail-v {
+          0%   { transform: translateY(-120%); opacity: 0; }
+          15%  { opacity: 1; }
+          85%  { opacity: 1; }
+          100% { transform: translateY(120%); opacity: 0; }
+        }
+        @keyframes be-badge-pulse {
+          0%,100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--gold) 45%, transparent), 0 12px 40px -14px color-mix(in oklab, var(--gold) 55%, transparent); }
+          50%     { box-shadow: 0 0 0 10px color-mix(in oklab, var(--gold) 0%, transparent), 0 16px 46px -14px color-mix(in oklab, var(--gold) 70%, transparent); }
+        }
+        @keyframes be-ring-rotate {
+          0% { transform: translate(-50%, -50%) rotate(0deg); }
+          100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        @keyframes be-ring-rotate-rev {
+          0% { transform: translate(-50%, -50%) rotate(360deg); }
+          100% { transform: translate(-50%, -50%) rotate(0deg); }
         }
         @keyframes be-halo { 0%,100%{opacity:.55;transform:scale(1)} 50%{opacity:.9;transform:scale(1.06)} }
-        @keyframes be-dot { 0%,100%{opacity:.4;transform:scale(1)} 50%{opacity:1;transform:scale(1.35)} }
-        @keyframes be-arrow-glide {
-          0% { transform: translateX(-40%); opacity: 0; }
-          20% { opacity: 1; }
-          80% { opacity: 1; }
-          100% { transform: translateX(40%); opacity: 0; }
+        @keyframes be-underline-slide {
+          0%   { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
         }
 
         .be-bg-grid {
@@ -88,58 +129,129 @@ export function BrandEvolution() {
         .be-orb-a { animation: be-orb-a 22s ease-in-out infinite; }
         .be-orb-b { animation: be-orb-b 26s ease-in-out infinite; }
         .be-halo  { animation: be-halo 4.8s ease-in-out infinite; }
-        .be-dot   { animation: be-dot 1.9s ease-in-out infinite; }
-        .be-shimmer { animation: be-shimmer 3.4s ease-in-out infinite; }
 
-        .be-connector-h {
+        /* Connector rail */
+        .be-rail-h {
           background: linear-gradient(90deg,
-            color-mix(in oklab, var(--gold) 55%, transparent) 0%,
-            color-mix(in oklab, var(--gold) 95%, transparent) 50%,
-            color-mix(in oklab, var(--emerald-deep) 65%, transparent) 100%);
+            color-mix(in oklab, var(--gold) 0%, transparent) 0%,
+            color-mix(in oklab, var(--gold) 55%, transparent) 15%,
+            color-mix(in oklab, var(--emerald-deep) 70%, transparent) 50%,
+            color-mix(in oklab, var(--gold) 55%, transparent) 85%,
+            color-mix(in oklab, var(--gold) 0%, transparent) 100%);
         }
-        .be-connector-v {
+        .be-rail-v {
           background: linear-gradient(180deg,
-            color-mix(in oklab, var(--gold) 55%, transparent) 0%,
-            color-mix(in oklab, var(--gold) 95%, transparent) 50%,
-            color-mix(in oklab, var(--emerald-deep) 65%, transparent) 100%);
+            color-mix(in oklab, var(--gold) 0%, transparent) 0%,
+            color-mix(in oklab, var(--gold) 55%, transparent) 15%,
+            color-mix(in oklab, var(--emerald-deep) 70%, transparent) 50%,
+            color-mix(in oklab, var(--gold) 55%, transparent) 85%,
+            color-mix(in oklab, var(--gold) 0%, transparent) 100%);
         }
-        .be-flow-h {
+
+        /* Traveling light trail on rail */
+        .be-trail-h {
           background: linear-gradient(90deg,
             transparent 0%,
-            color-mix(in oklab, var(--gold) 45%, transparent) 40%,
+            color-mix(in oklab, var(--gold) 40%, transparent) 35%,
             #fff 50%,
-            color-mix(in oklab, var(--gold) 45%, transparent) 60%,
+            color-mix(in oklab, var(--gold) 40%, transparent) 65%,
             transparent 100%);
-          filter: blur(0.5px);
-          animation: be-flow 3.4s cubic-bezier(0.4,0,0.2,1) infinite;
+          filter: blur(0.6px);
+          animation: be-trail-h 4.2s cubic-bezier(0.45,0,0.2,1) infinite;
         }
-        .be-flow-v {
+        .be-trail-v {
           background: linear-gradient(180deg,
             transparent 0%,
-            color-mix(in oklab, var(--gold) 45%, transparent) 40%,
+            color-mix(in oklab, var(--gold) 40%, transparent) 35%,
             #fff 50%,
-            color-mix(in oklab, var(--gold) 45%, transparent) 60%,
+            color-mix(in oklab, var(--gold) 40%, transparent) 65%,
             transparent 100%);
-          filter: blur(0.5px);
-          animation: be-flow-v 3.4s cubic-bezier(0.4,0,0.2,1) infinite;
+          filter: blur(0.6px);
+          animation: be-trail-v 4.2s cubic-bezier(0.45,0,0.2,1) infinite;
         }
-        .be-chev { animation: be-arrow-glide 3.4s cubic-bezier(0.4,0,0.2,1) infinite; }
+
+        /* Traveling glowing particle */
+        .be-particle {
+          width: 10px; height: 10px; border-radius: 9999px;
+          background: radial-gradient(circle, #fff 0%, color-mix(in oklab, var(--gold) 90%, transparent) 45%, transparent 70%);
+          box-shadow:
+            0 0 12px color-mix(in oklab, var(--gold) 85%, transparent),
+            0 0 28px color-mix(in oklab, var(--gold) 55%, transparent);
+        }
+        .be-particle-h { top: 50%; animation: be-particle-h 4.2s cubic-bezier(0.45,0,0.2,1) infinite; }
+        .be-particle-v { left: 50%; animation: be-particle-v 4.2s cubic-bezier(0.45,0,0.2,1) infinite; }
+
+        /* Center badge */
+        .be-badge {
+          background: linear-gradient(135deg,
+            color-mix(in oklab, #fff 90%, transparent) 0%,
+            color-mix(in oklab, var(--gold) 8%, #fff) 100%);
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
+          border: 1px solid color-mix(in oklab, var(--gold) 45%, transparent);
+          animation: be-badge-pulse 4.4s ease-in-out infinite;
+        }
+        .be-ring {
+          position: absolute; top: 50%; left: 50%;
+          border-radius: 9999px;
+          border: 1px dashed color-mix(in oklab, var(--gold) 55%, transparent);
+          pointer-events: none;
+        }
+        .be-ring-outer { width: 220px; height: 220px; animation: be-ring-rotate 22s linear infinite; }
+        .be-ring-inner { width: 168px; height: 168px; border-style: dotted; border-color: color-mix(in oklab, var(--emerald-deep) 50%, transparent); animation: be-ring-rotate-rev 18s linear infinite; }
+        .be-badge-underline {
+          position: absolute; left: 0; right: 0; bottom: -6px;
+          height: 2px; overflow: hidden; border-radius: 2px;
+        }
+        .be-badge-underline::before {
+          content: ""; position: absolute; inset: 0;
+          background: linear-gradient(90deg, transparent, var(--gold), transparent);
+          animation: be-underline-slide 3.2s ${EASE} infinite;
+        }
 
         .be-logo { transition: transform 500ms ${EASE}, filter 500ms ${EASE}; }
         .be-logo-past:hover { transform: scale(1.04); filter: brightness(1.05) drop-shadow(0 10px 26px color-mix(in oklab, var(--navy-deep) 25%, transparent)); }
         .be-logo-new:hover  { transform: scale(1.04); filter: brightness(1.06) drop-shadow(0 14px 34px color-mix(in oklab, var(--gold) 50%, transparent)); }
 
-        .be-trust:hover .be-trust-icon {
-          transform: scale(1.08) rotate(-4deg);
-          box-shadow: 0 4px 18px -4px color-mix(in oklab, var(--gold) 70%, transparent);
+        /* Trust cards */
+        .be-trust-card {
+          position: relative;
+          background: linear-gradient(180deg, #fff 0%, color-mix(in oklab, var(--gold) 4%, #fff) 100%);
+          border: 1px solid color-mix(in oklab, var(--navy-deep) 10%, transparent);
+          transition: transform 400ms ${EASE}, box-shadow 400ms ${EASE}, border-color 400ms ${EASE};
         }
-        .be-trust-icon { transition: transform 350ms ${EASE}, box-shadow 350ms ${EASE}; }
-        .be-trust:hover .be-trust-label { color: var(--emerald-deep); }
-        .be-trust-label { transition: color 300ms ${EASE}; }
+        .be-trust-card::before {
+          content: ""; position: absolute; inset: 0;
+          border-radius: inherit; padding: 1px;
+          background: linear-gradient(135deg, color-mix(in oklab, var(--gold) 55%, transparent), transparent 55%, color-mix(in oklab, var(--emerald-deep) 45%, transparent));
+          -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          -webkit-mask-composite: xor; mask-composite: exclude;
+          opacity: 0; transition: opacity 400ms ${EASE};
+          pointer-events: none;
+        }
+        .be-trust-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 24px 50px -28px color-mix(in oklab, var(--navy-deep) 40%, transparent),
+                      0 10px 24px -14px color-mix(in oklab, var(--gold) 40%, transparent);
+          border-color: color-mix(in oklab, var(--gold) 45%, transparent);
+        }
+        .be-trust-card:hover::before { opacity: 1; }
+        .be-trust-icon {
+          background: linear-gradient(135deg, color-mix(in oklab, var(--gold) 18%, #fff), #fff);
+          border: 1px solid color-mix(in oklab, var(--gold) 45%, transparent);
+          color: var(--gold);
+          transition: transform 400ms ${EASE}, box-shadow 400ms ${EASE};
+        }
+        .be-trust-card:hover .be-trust-icon {
+          transform: scale(1.08) rotate(-4deg);
+          box-shadow: 0 8px 22px -6px color-mix(in oklab, var(--gold) 65%, transparent);
+        }
 
         @media (prefers-reduced-motion: reduce) {
-          .be-orb-a, .be-orb-b, .be-halo, .be-dot, .be-shimmer,
-          .be-flow-h, .be-flow-v, .be-chev, .be-bg-grid { animation: none !important; }
+          .be-orb-a, .be-orb-b, .be-halo, .be-bg-grid,
+          .be-trail-h, .be-trail-v, .be-particle-h, .be-particle-v,
+          .be-badge, .be-ring-outer, .be-ring-inner,
+          .be-badge-underline::before { animation: none !important; }
         }
       `}</style>
 
@@ -228,20 +340,17 @@ export function BrandEvolution() {
         </div>
 
         {/* Horizontal brand transformation */}
-        <div className="mx-auto mt-16 max-w-6xl md:mt-20">
-          <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-[1fr_auto_1fr] md:gap-8 lg:gap-12">
-            {/* Spidernet */}
+        <div className="mx-auto mt-20 max-w-6xl md:mt-24">
+          <div className="grid grid-cols-1 items-center gap-14 md:grid-cols-[1fr_auto_1fr] md:gap-16 lg:gap-24">
+            {/* Spidernet (no label) */}
             <div
-              className="flex flex-col items-center md:items-end"
+              className="flex justify-center md:justify-end"
               style={{
                 opacity: shown ? 1 : 0,
                 transform: shown ? "translateX(0) scale(1)" : "translateX(-32px) scale(0.96)",
                 transition: `opacity 850ms ${EASE} 380ms, transform 850ms ${EASE} 380ms`,
               }}
             >
-              <span className="mb-4 text-[10px] font-semibold uppercase tracking-[0.32em] text-[var(--navy-deep)]/50">
-                Formerly
-              </span>
               <img
                 src={spidernetLogo.url}
                 alt="SpiderNet — former company logo"
@@ -251,62 +360,80 @@ export function BrandEvolution() {
               />
             </div>
 
-            {/* Connector */}
+            {/* Center — animated transformation */}
             <div
-              className="relative flex w-full flex-col items-center justify-center md:w-auto md:min-w-[220px] lg:min-w-[300px]"
+              className="relative flex w-full flex-col items-center justify-center md:w-auto md:min-w-[260px] lg:min-w-[340px]"
               style={{
                 opacity: shown ? 1 : 0,
                 transition: `opacity 700ms ${EASE} 640ms`,
               }}
             >
-              {/* Desktop horizontal connector */}
-              <div className="relative hidden w-full items-center md:flex">
-                <span className="be-dot h-1.5 w-1.5 rounded-full bg-[var(--gold)]" />
-                <div className="relative mx-2 h-px flex-1 overflow-hidden">
-                  <span className="be-connector-h absolute inset-0" />
-                  <span className="be-flow-h absolute inset-y-[-6px] left-0 w-24" />
+              {/* Desktop horizontal transformation */}
+              <div className="relative hidden w-full items-center justify-center md:flex">
+                {/* Full-width rail with particle behind the badge */}
+                <div className="absolute inset-x-0 top-1/2 -translate-y-1/2">
+                  <div className="relative mx-auto h-px w-full overflow-visible">
+                    <span className="be-rail-h absolute inset-0" />
+                    <span className="be-trail-h absolute inset-y-[-6px] left-0 w-32" />
+                    <span
+                      className="be-trail-h absolute inset-y-[-6px] left-0 w-32"
+                      style={{ animationDelay: "2.1s" }}
+                    />
+                    <span className="be-particle be-particle-h absolute" />
+                    <span
+                      className="be-particle be-particle-h absolute"
+                      style={{ animationDelay: "2.1s" }}
+                    />
+                  </div>
                 </div>
-                <span className="be-shimmer inline-flex items-center gap-2 rounded-full border border-[var(--gold)]/40 bg-white/85 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--navy-deep)] shadow-[0_10px_30px_-14px_color-mix(in_oklab,var(--gold)_60%,transparent)] backdrop-blur">
-                  <span className="h-1 w-1 rounded-full bg-[var(--gold)]" />
-                  Brand Evolution
-                  <span className="h-1 w-1 rounded-full bg-[var(--emerald-deep)]" />
-                </span>
-                <div className="relative mx-2 h-px flex-1 overflow-hidden">
-                  <span className="be-connector-h absolute inset-0" />
-                  <span
-                    className="be-flow-h absolute inset-y-[-6px] left-0 w-24"
-                    style={{ animationDelay: "1.6s" }}
-                  />
+
+                {/* Rotating dashed rings behind badge */}
+                <span className="be-ring be-ring-outer" />
+                <span className="be-ring be-ring-inner" />
+
+                {/* Premium badge */}
+                <div className="relative">
+                  <span className="be-badge relative inline-flex items-center gap-2.5 rounded-full px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.32em] text-[var(--navy-deep)]">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--gold)]" />
+                    Brand Evolution
+                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--emerald-deep)]" />
+                    <span className="be-badge-underline" />
+                  </span>
                 </div>
-                <span className="h-2 w-2 rounded-full bg-[var(--emerald-deep)] shadow-[0_0_0_4px_color-mix(in_oklab,var(--emerald-deep)_18%,transparent)]" />
               </div>
 
-              {/* Mobile vertical connector */}
+              {/* Mobile vertical transformation */}
               <div className="relative flex flex-col items-center md:hidden">
-                <span className="be-dot h-1.5 w-1.5 rounded-full bg-[var(--gold)]" />
-                <div className="relative mt-2 h-16 w-px overflow-hidden">
-                  <span className="be-connector-v absolute inset-0" />
-                  <span className="be-flow-v absolute inset-x-[-6px] top-0 h-10" />
+                <div className="relative h-20 w-px overflow-visible">
+                  <span className="be-rail-v absolute inset-0" />
+                  <span className="be-trail-v absolute inset-x-[-6px] top-0 h-12" />
+                  <span className="be-particle be-particle-v absolute" />
                 </div>
-                <span className="my-3 inline-flex items-center gap-2 rounded-full border border-[var(--gold)]/40 bg-white/85 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.28em] text-[var(--navy-deep)] shadow-sm backdrop-blur">
-                  <span className="h-1 w-1 rounded-full bg-[var(--gold)]" />
-                  Brand Evolution
-                  <span className="h-1 w-1 rounded-full bg-[var(--emerald-deep)]" />
-                </span>
-                <div className="relative h-16 w-px overflow-hidden">
-                  <span className="be-connector-v absolute inset-0" />
+                <div className="relative my-4">
+                  <span className="be-badge relative inline-flex items-center gap-2.5 rounded-full px-5 py-2.5 text-[10px] font-semibold uppercase tracking-[0.32em] text-[var(--navy-deep)]">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--gold)]" />
+                    Brand Evolution
+                    <span className="h-1.5 w-1.5 rounded-full bg-[var(--emerald-deep)]" />
+                    <span className="be-badge-underline" />
+                  </span>
+                </div>
+                <div className="relative h-20 w-px overflow-visible">
+                  <span className="be-rail-v absolute inset-0" />
                   <span
-                    className="be-flow-v absolute inset-x-[-6px] top-0 h-10"
-                    style={{ animationDelay: "1.6s" }}
+                    className="be-trail-v absolute inset-x-[-6px] top-0 h-12"
+                    style={{ animationDelay: "2.1s" }}
+                  />
+                  <span
+                    className="be-particle be-particle-v absolute"
+                    style={{ animationDelay: "2.1s" }}
                   />
                 </div>
-                <span className="mt-2 h-2 w-2 rounded-full bg-[var(--emerald-deep)] shadow-[0_0_0_4px_color-mix(in_oklab,var(--emerald-deep)_18%,transparent)]" />
               </div>
             </div>
 
-            {/* Roya Ventures */}
+            {/* Roya Ventures (no label) */}
             <div
-              className="relative flex flex-col items-center md:items-start"
+              className="relative flex justify-center md:justify-start"
               style={{
                 opacity: shown ? 1 : 0,
                 transform: shown ? "translateX(0) scale(1)" : "translateX(32px) scale(0.94)",
@@ -315,48 +442,56 @@ export function BrandEvolution() {
             >
               <span
                 aria-hidden
-                className="be-halo pointer-events-none absolute left-1/2 top-1/2 -z-10 h-56 w-56 -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl md:left-[30%]"
-                style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--gold) 28%, transparent), transparent 65%)" }}
+                className="be-halo pointer-events-none absolute left-1/2 top-1/2 -z-10 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl md:left-[35%]"
+                style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--gold) 30%, transparent), transparent 65%)" }}
               />
-              <span className="mb-4 text-[10px] font-semibold uppercase tracking-[0.32em] text-[var(--emerald-deep)]">
-                Now
-              </span>
               <img
                 src={royaLogo.url}
                 alt="Roya Ventures — new company logo"
-                className="be-logo be-logo-new h-24 w-auto max-w-[300px] object-contain md:h-28 lg:h-32"
+                className="be-logo be-logo-new h-24 w-auto max-w-[320px] object-contain md:h-28 lg:h-32"
                 loading="lazy"
-              />
-              <span
-                aria-hidden
-                className="mt-4 h-px w-40 bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent"
               />
             </div>
           </div>
         </div>
 
-        {/* Trust indicators */}
-        <div className="mx-auto mt-16 max-w-4xl md:mt-20">
-          <ul className="flex flex-col items-stretch divide-y divide-[var(--navy-deep)]/10 sm:flex-row sm:items-center sm:justify-center sm:divide-y-0 sm:divide-x">
-            {TRUST.map((label, i) => (
-              <li
+        {/* Trust indicators — premium feature cards */}
+        <div className="mx-auto mt-20 max-w-5xl md:mt-24">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-3 sm:gap-6">
+            {TRUST.map(({ label, detail, Icon }, i) => (
+              <div
                 key={label}
-                className="be-trust flex items-center justify-center gap-3 py-3 sm:px-8 sm:py-0"
+                className="be-trust-card group rounded-2xl p-6 md:p-7"
                 style={{
                   opacity: shown ? 1 : 0,
-                  transform: shown ? "translateY(0)" : "translateY(14px)",
-                  transition: `opacity 650ms ${EASE} ${1200 + i * 150}ms, transform 650ms ${EASE} ${1200 + i * 150}ms`,
+                  transform: shown ? "translateY(0)" : "translateY(16px)",
+                  transition: `opacity 700ms ${EASE} ${1200 + i * 150}ms, transform 700ms ${EASE} ${1200 + i * 150}ms`,
                 }}
               >
-                <span className="be-trust-icon grid h-7 w-7 shrink-0 place-items-center rounded-full border border-[var(--gold)]/50 bg-white text-[var(--gold)] shadow-[0_2px_10px_-4px_color-mix(in_oklab,var(--gold)_60%,transparent)]">
-                  <Check className="h-3.5 w-3.5" strokeWidth={2.75} />
-                </span>
-                <span className="be-trust-label text-sm font-medium tracking-wide text-[var(--navy-deep)] md:text-base">
-                  {label}
-                </span>
-              </li>
+                <div className="flex items-start gap-4">
+                  <span className="be-trust-icon grid h-11 w-11 shrink-0 place-items-center rounded-xl">
+                    <Icon className="h-5 w-5" strokeWidth={1.75} />
+                  </span>
+                  <div className="min-w-0">
+                    <h3 className="text-base font-semibold tracking-tight text-[var(--navy-deep)] md:text-lg">
+                      {label}
+                    </h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-[var(--navy-deep)]/65">
+                      {detail}
+                    </p>
+                  </div>
+                </div>
+                <span
+                  aria-hidden
+                  className="mt-5 block h-px w-full"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, transparent, color-mix(in oklab, var(--gold) 55%, transparent), transparent)",
+                  }}
+                />
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
     </section>
