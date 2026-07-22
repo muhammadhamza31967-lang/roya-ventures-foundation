@@ -135,7 +135,7 @@ function ContactPage() {
                   <ul className="mt-8 space-y-5">
                     <InfoItem icon={MapPin} label="Location">
                       <p className="mt-1.5 text-white/90 leading-relaxed">
-                        Riyadh, KSA
+                        Al Nasiriah Street, West Naseem Dist, Riyadh, KSA
                       </p>
                     </InfoItem>
 
