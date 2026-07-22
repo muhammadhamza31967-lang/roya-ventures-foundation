@@ -54,11 +54,16 @@ const AI_VIDEO_LOGOS: PartnerLogo[] = [
   { name: "Vizo361", url: vizo361Logo.url },
 ];
 
+const SMART_SCREEN_LOGOS: PartnerLogo[] = [
+  { name: "Windro", url: windroLogo.url },
+  { name: "ZhSunyco", url: zhsunycoLogo.url },
+];
+
 const PARTNER_CATEGORIES: { name: string; logos?: PartnerLogo[] }[] = [
   { name: "Core Technology Partners", logos: CORE_TECH_LOGOS },
   { name: "Software Platforms", logos: SOFTWARE_LOGOS },
   { name: "AI Video Analytics", logos: AI_VIDEO_LOGOS },
-  { name: "Smart Screens / Ink Displays" },
+  { name: "Smart Screens / Ink Displays", logos: SMART_SCREEN_LOGOS },
 ];
 
 
