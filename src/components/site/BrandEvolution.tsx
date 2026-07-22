@@ -299,64 +299,8 @@ export function BrandEvolution() {
       </div>
 
       <div className="container-px mx-auto">
-        {/* Header block */}
-        <div className="mx-auto max-w-3xl text-center">
-          <div
-            className="inline-flex items-center gap-3"
-            style={{
-              opacity: shown ? 1 : 0,
-              transform: shown ? "translateY(0)" : "translateY(12px)",
-              transition: `opacity 700ms ${EASE} 80ms, transform 700ms ${EASE} 80ms`,
-            }}
-          >
-            <span className="h-px w-10 bg-[var(--gold)]" />
-            <p className="text-[11px] font-semibold uppercase tracking-[0.4em] text-[var(--navy-deep)]/70">
-              Company Evolution
-            </p>
-            <span className="h-px w-10 bg-[var(--gold)]" />
-          </div>
-
-          <h2
-            className="mt-7 font-serif text-4xl leading-[1.05] tracking-tight text-[var(--navy-deep)] md:text-5xl lg:text-6xl"
-            aria-label="Spidernet is now Roya Ventures"
-          >
-            {HEADING_WORDS.map((word, i) => {
-              const isBrand = word === "Roya" || word === "Ventures";
-              return (
-                <span
-                  key={`${word}-${i}`}
-                  className="mr-[0.28em] inline-block"
-                  style={{
-                    opacity: shown ? 1 : 0,
-                    transform: shown ? "translateY(0)" : "translateY(18px)",
-                    transition: `opacity 700ms ${EASE} ${240 + i * 110}ms, transform 700ms ${EASE} ${240 + i * 110}ms`,
-                    color: isBrand ? "var(--emerald-deep)" : undefined,
-                  }}
-                >
-                  {word}
-                </span>
-              );
-            })}
-          </h2>
-
-          <p
-            className="mx-auto mt-7 max-w-2xl text-lg leading-relaxed font-light text-[var(--navy-deep)]/75 md:text-xl"
-            style={{
-              opacity: shown ? 1 : 0,
-              transform: shown ? "translateY(0)" : "translateY(14px)",
-              transition: `opacity 800ms ${EASE} 880ms, transform 800ms ${EASE} 880ms`,
-            }}
-          >
-            Spidernet is now part of Roya Ventures, reflecting our continued
-            commitment to delivering innovative technology solutions under a
-            stronger, unified brand. While our name has evolved, our dedication
-            to excellence, reliability, engineering expertise, and customer
-            success remains unchanged.
-          </p>
-        </div>
-
         {/* Unified brand evolution composition */}
-        <div className="mx-auto mt-24 max-w-6xl md:mt-28">
+        <div className="mx-auto max-w-6xl">
           {/* Desktop / tablet: horizontal single composition — mirrors mobile */}
           <div className="relative hidden md:flex md:items-center md:justify-between md:gap-6 lg:gap-10">
             {/* Spidernet */}
