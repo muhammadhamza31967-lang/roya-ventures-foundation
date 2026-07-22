@@ -160,7 +160,7 @@ function HomePage() {
                 <div className="mt-10 hairline max-w-[10rem]" />
                 <div className="mt-10 grid grid-cols-3 gap-6 max-w-md">
                   {[
-                    { k: "15+", v: "Years" },
+                    { k: "8+", v: "Years" },
                     { k: "400+", v: "Projects" },
                     { k: "11", v: "Practices" },
                   ].map((s) => (

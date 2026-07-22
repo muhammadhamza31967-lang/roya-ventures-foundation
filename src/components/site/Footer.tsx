@@ -147,7 +147,7 @@ export function Footer() {
                 <div className="pt-0.5">
                   <div className="text-[11px] tracking-[0.22em] uppercase text-white/45 mb-1">Address</div>
                   <div className="text-white/85 leading-relaxed">
-                    Riyadh, KSA<br />
+                    Al Nasiriah Street, West Naseem Dist, Riyadh, KSA<br />
                     <span className="text-white/55 text-xs">CR: 1010674528</span>
                   </div>
 
