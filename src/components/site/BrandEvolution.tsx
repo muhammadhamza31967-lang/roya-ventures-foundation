@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { Users, Award, TrendingUp } from "lucide-react";
 import spidernetLogo from "@/assets/brand/spidernet-logo.png.asset.json";
 import royaLogo from "@/assets/brand/roya-ventures-logo.png.asset.json";
 
@@ -26,24 +25,6 @@ function useInView<T extends HTMLElement>(threshold = 0.12) {
   return { ref, shown };
 }
 
-const HEADING_WORDS = ["Spidernet", "is", "now", "Roya", "Ventures"];
-const TRUST = [
-  {
-    label: "Same Leadership",
-    detail: "Guided by the founders who built our reputation.",
-    Icon: Users,
-  },
-  {
-    label: "Same Expertise",
-    detail: "Two decades of engineering knowledge, preserved.",
-    Icon: Award,
-  },
-  {
-    label: "Stronger Brand",
-    detail: "A unified identity, built for the next chapter.",
-    Icon: TrendingUp,
-  },
-];
 const EASE = "cubic-bezier(0.2,0.8,0.2,1)";
 
 export function BrandEvolution() {
