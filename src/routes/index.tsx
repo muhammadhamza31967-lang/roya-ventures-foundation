@@ -12,9 +12,12 @@ import { BrandEvolution } from "@/components/site/BrandEvolution";
 
 import { Reveal } from "@/components/site/Reveal";
 import { SERVICES } from "@/lib/services-data";
-import heroTech1 from "@/assets/hero-tech-1.jpg";
 import heroTech2 from "@/assets/hero-tech-2.jpg";
-import heroTech3 from "@/assets/hero-tech-3.jpg";
+import heroKafd from "@/assets/hero/KAFD.jpg.asset.json";
+import heroKafdResized from "@/assets/hero/KAFD-Resized.jpg.asset.json";
+import heroKingdom from "@/assets/hero/Kingdom-Center.jpg.asset.json";
+import heroKingdom2 from "@/assets/hero/Kingdom-Center_2.jpg.asset.json";
+import heroRiyadh from "@/assets/hero/Riyadh_Skyline.jpg.asset.json";
 import svcDatacenter from "@/assets/svc-datacenter.jpg";
 import svcNetworking from "@/assets/svc-networking.jpg";
 import svcFiber from "@/assets/svc-fiber.jpg";
