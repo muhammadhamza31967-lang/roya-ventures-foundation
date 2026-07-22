@@ -77,18 +77,21 @@ export function BrandEvolution() {
           0%   { background-position: 0 -60%; }
           100% { background-position: 0 160%; }
         }
-        /* Comet particle traveling along the rail */
+        /* Comet particle traveling along the rail — starts at origin,
+           stops at the second (destination) marker, pauses, then fades. */
         @keyframes be-comet-h {
-          0%   { left: -4%;  opacity: 0; }
+          0%   { left: 0%;   opacity: 0; }
           8%   { opacity: 1; }
-          92%  { opacity: 1; }
-          100% { left: 104%; opacity: 0; }
+          70%  { left: 100%; opacity: 1; }
+          80%  { left: 100%; opacity: 0; }
+          100% { left: 0%;   opacity: 0; }
         }
         @keyframes be-comet-v {
-          0%   { top: -4%;  opacity: 0; }
+          0%   { top: 0%;   opacity: 0; }
           8%   { opacity: 1; }
-          92%  { opacity: 1; }
-          100% { top: 104%; opacity: 0; }
+          70%  { top: 100%; opacity: 1; }
+          80%  { top: 100%; opacity: 0; }
+          100% { top: 0%;   opacity: 0; }
         }
         /* Glass centerpiece: shimmer + soft pulse */
         @keyframes be-glass-pulse {
