@@ -36,12 +36,20 @@ const CORE_TECH_LOGOS: PartnerLogo[] = [
   { name: "Prestige Saudi Co. Ltd.", url: prestigeLogo.url },
 ];
 
+const SOFTWARE_LOGOS: PartnerLogo[] = [
+  { name: "Entry2Exit", url: entry2exitLogo.url },
+  { name: "Fadel Software Solutions", url: fadelLogo.url },
+  { name: "Odoo", url: odooLogo.url },
+  { name: "Sapaad", url: sapaadLogo.url },
+];
+
 const PARTNER_CATEGORIES: { name: string; logos?: PartnerLogo[] }[] = [
   { name: "Core Technology Partners", logos: CORE_TECH_LOGOS },
-  { name: "Software Platforms" },
+  { name: "Software Platforms", logos: SOFTWARE_LOGOS },
   { name: "AI Video Analytics" },
   { name: "Smart Screens / Ink Displays" },
 ];
+
 
 function PartnersPage() {
   return (
