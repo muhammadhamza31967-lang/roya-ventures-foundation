@@ -62,7 +62,7 @@ const CAPABILITIES = [
 
 const TEAM_PREVIEW = [
   { img: team1.url, name: "Raza Saudagar", role: "Chief Executive" },
-  { img: team2, name: "Selma Ardıç", role: "Head of Engineering" },
+  { img: team2.url, name: "Khazi Zafar", role: "Chief Strategic & Planning" },
   { img: team3, name: "Daniel Okafor", role: "Data Centre Practice" },
   { img: team4, name: "Noor El-Hashem", role: "Network & Security" },
 ];
