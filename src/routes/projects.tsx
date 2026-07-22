@@ -16,6 +16,14 @@ import {
   BadgeCheck,
   Award,
   LifeBuoy,
+  Building2,
+  Landmark,
+  HeartPulse,
+  GraduationCap,
+  Server,
+  ShoppingBag,
+  Factory,
+  Hotel,
 } from "lucide-react";
 import nesmaCrew from "@/assets/projects/nesma/nesma-crew.jpg.asset.json";
 import nesmaCrane from "@/assets/projects/nesma/nesma-crane.jpg.asset.json";
