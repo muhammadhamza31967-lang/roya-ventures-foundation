@@ -25,7 +25,7 @@ import svcIt from "@/assets/svc-it.jpg";
 import team1 from "@/assets/team/Saudagar_Raza_CEO.png.asset.json";
 import team2 from "@/assets/team/Khazi_Zafar_Chief_Strategic_Planning.jpeg.asset.json";
 import team3 from "@/assets/team-3.jpg";
-import team4 from "@/assets/team-4.jpg";
+import team4 from "@/assets/team/Anas_COO.jpeg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -73,7 +73,7 @@ const TEAM_PREVIEW = [
   { img: team1.url, name: "Raza Saudagar", role: "Chief Executive" },
   { img: team2.url, name: "Khazi Zafar", role: "Chief Strategic & Planning" },
   { img: "", name: "Sameena Khazi", role: "HR & Admin" },
-  { img: team4, name: "Noor El-Hashem", role: "Network & Security" },
+  { img: team4.url, name: "Anas Saudagar", role: "Chief of Operations" },
 ];
 
 function HomePage() {
