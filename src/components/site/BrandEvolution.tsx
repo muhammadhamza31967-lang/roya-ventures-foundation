@@ -77,18 +77,21 @@ export function BrandEvolution() {
           0%   { background-position: 0 -60%; }
           100% { background-position: 0 160%; }
         }
-        /* Comet particle traveling along the rail */
+        /* Comet particle traveling along the rail — starts at origin,
+           stops at the second (destination) marker, pauses, then fades. */
         @keyframes be-comet-h {
-          0%   { left: -4%;  opacity: 0; }
+          0%   { left: 0%;   opacity: 0; }
           8%   { opacity: 1; }
-          92%  { opacity: 1; }
-          100% { left: 104%; opacity: 0; }
+          70%  { left: 100%; opacity: 1; }
+          80%  { left: 100%; opacity: 0; }
+          100% { left: 0%;   opacity: 0; }
         }
         @keyframes be-comet-v {
-          0%   { top: -4%;  opacity: 0; }
+          0%   { top: 0%;   opacity: 0; }
           8%   { opacity: 1; }
-          92%  { opacity: 1; }
-          100% { top: 104%; opacity: 0; }
+          70%  { top: 100%; opacity: 1; }
+          80%  { top: 100%; opacity: 0; }
+          100% { top: 0%;   opacity: 0; }
         }
         /* Glass centerpiece: shimmer + soft pulse */
         @keyframes be-glass-pulse {
@@ -394,25 +397,28 @@ export function BrandEvolution() {
             </div>
 
             {/* Connector rail with centered glass badge (mirrors mobile) */}
-            <div className="relative mx-6 h-px flex-1 lg:mx-10">
-              <span className="be-rail-h absolute inset-0" />
-              <span className="be-flow-h absolute -inset-y-[3px] inset-x-0" />
-              <span
-                className="be-endpoint absolute top-1/2 -translate-y-1/2"
-                style={{ left: "-5px", background: "color-mix(in oklab, #C8102E 85%, #fff)" }}
-              />
-              <span
-                className="be-endpoint absolute top-1/2 -translate-y-1/2"
-                style={{ right: "-5px", background: "var(--emerald-deep)" }}
-              />
-              <span className="be-comet be-comet-h absolute" />
-              <span
-                className="be-comet be-comet-h absolute"
-                style={{ animationDelay: "3.25s" }}
-              />
-              {/* Centerpiece badge on the line */}
+            <div className="relative mx-6 h-14 flex-1 lg:mx-10">
+              {/* Rail + flow + endpoints + comets all live on a 1px line at vertical center */}
+              <div className="pointer-events-none absolute inset-x-0 top-1/2 h-px -translate-y-1/2">
+                <span className="be-rail-h absolute inset-0" />
+                <span className="be-flow-h absolute -inset-y-[3px] inset-x-0" />
+                <span
+                  className="be-endpoint absolute top-1/2 -translate-y-1/2"
+                  style={{ left: "-5px", background: "color-mix(in oklab, #C8102E 85%, #fff)" }}
+                />
+                <span
+                  className="be-endpoint absolute top-1/2 -translate-y-1/2"
+                  style={{ right: "-5px", background: "var(--emerald-deep)" }}
+                />
+                <span className="be-comet be-comet-h absolute" />
+                <span
+                  className="be-comet be-comet-h absolute"
+                  style={{ animationDelay: "3.25s" }}
+                />
+              </div>
+              {/* Centerpiece badge on the same axis as the line */}
               <div
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                className="absolute left-1/2 top-1/2"
                 style={{
                   opacity: shown ? 1 : 0,
                   transform: shown ? "translate(-50%, -50%) scale(1)" : "translate(-50%, -50%) scale(0.9)",
@@ -435,6 +441,7 @@ export function BrandEvolution() {
                 </div>
               </div>
             </div>
+
 
             {/* Roya Ventures */}
             <div
