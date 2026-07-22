@@ -157,7 +157,7 @@ function ContactPage() {
                               )}
                               <a
                                 href={`mailto:${p.email}`}
-                                className="block text-[13.5px] text-white/85 hover:text-[var(--gold)] transition-colors whitespace-nowrap"
+                                className="block text-[13px] sm:text-[13.5px] text-white/85 hover:text-[var(--gold)] transition-colors break-all sm:break-normal sm:whitespace-nowrap"
                               >
                                 {p.email}
                               </a>

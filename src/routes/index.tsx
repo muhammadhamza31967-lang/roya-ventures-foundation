@@ -174,12 +174,12 @@ function HomePage() {
             </div>
             <div className="lg:col-span-7 lg:pt-2">
               <Reveal delay={0.1}>
-                <p className="text-xl md:text-2xl leading-[1.55] text-[var(--navy)] font-light text-justify hyphens-auto">
+                <p className="text-xl md:text-2xl leading-[1.55] text-[var(--navy)] font-light text-left md:text-justify hyphens-auto">
                   Roya Ventures is a multidisciplinary technology and engineering solutions firm —
                   delivering data centers, networks, security, electrical and IT infrastructure
                   under a single, accountable mandate.
                 </p>
-                <p className="mt-8 text-base md:text-[17px] leading-[1.85] text-muted-foreground text-justify hyphens-auto">
+                <p className="mt-8 text-base md:text-[17px] leading-[1.85] text-muted-foreground text-left md:text-justify hyphens-auto">
                   We work with enterprises, retailers, public institutions and developers to plan,
                   deploy and operate the physical and digital systems modern operations depend on.
                   Every engagement is delivered by senior engineers with full ownership of the
