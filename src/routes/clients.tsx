@@ -80,6 +80,18 @@ const HOSPITALITY_LOGOS = Object.entries(hospitalityModules)
   })
   .sort((a, b) => a.name.localeCompare(b.name));
 
+// Corporate Clients — official logos
+const corporateModules = import.meta.glob<{ default: { url: string } }>(
+  "@/assets/clients/corporate/*.png.asset.json",
+  { eager: true },
+);
+const CORPORATE_LOGOS = Object.entries(corporateModules)
+  .map(([path, mod]) => {
+    const name = path.match(/corporate\/(.+)\.png\.asset\.json$/)?.[1] ?? "";
+    return { name, url: mod.default.url };
+  })
+  .sort((a, b) => a.name.localeCompare(b.name));
+
 
 
 export const Route = createFileRoute("/clients")({
@@ -134,7 +146,7 @@ const CLIENT_CATEGORIES: { name: string; logoIds: number[]; logos?: { name: stri
   { name: "Beauty & Cosmetics", logoIds: [], logos: BEAUTY_LOGOS },
   { name: "Fragrance & Lifestyle", logoIds: [], logos: FRAGRANCE_LOGOS },
   { name: "Hospitality & Restaurants", logoIds: [], logos: HOSPITALITY_LOGOS },
-  { name: "Corporate Clients", logoIds: [] },
+  { name: "Corporate Clients", logoIds: [], logos: CORPORATE_LOGOS },
 ];
 
 
