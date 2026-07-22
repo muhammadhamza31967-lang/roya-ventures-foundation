@@ -13,6 +13,9 @@ import entry2exitLogo from "@/assets/partners/software/entry2exit.png.asset.json
 import fadelLogo from "@/assets/partners/software/fadel.png.asset.json";
 import odooLogo from "@/assets/partners/software/odoo.png.asset.json";
 import sapaadLogo from "@/assets/partners/software/sapaad.png.asset.json";
+import coramLogo from "@/assets/partners/ai-video/coram.png.asset.json";
+import trassirLogo from "@/assets/partners/ai-video/trassir.png.asset.json";
+import vizo361Logo from "@/assets/partners/ai-video/vizo361.png.asset.json";
 
 
 export const Route = createFileRoute("/partners")({
