@@ -202,7 +202,7 @@ function HomePage() {
 
       {/* Full-width feature image with floating quote panel */}
       <section className="relative isolate overflow-hidden">
-        <div className="relative h-[60vh] md:h-[80vh] w-full">
+        <div className="relative min-h-[560px] md:min-h-0 md:h-[80vh] w-full py-20 md:py-0">
           <img
             src={heroTech2}
             alt="Engineered data center infrastructure"
@@ -211,21 +211,22 @@ function HomePage() {
             height={1280}
             className="absolute inset-0 h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[var(--navy-deep)]/90 via-[var(--navy-deep)]/55 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[var(--navy-deep)]/90 via-[var(--navy-deep)]/70 md:via-[var(--navy-deep)]/55 to-[var(--navy-deep)]/40 md:to-transparent" />
           <div className="container-px mx-auto h-full relative flex items-center">
             <Reveal className="max-w-2xl">
               <p className="gold-rule text-[var(--gold)]">Engineering discipline</p>
-              <p className="mt-8 font-display text-3xl md:text-5xl font-light leading-[1.15] tracking-[-0.025em] text-white">
+              <p className="mt-6 md:mt-8 font-display text-xl sm:text-2xl md:text-5xl font-light leading-[1.25] md:leading-[1.15] tracking-[-0.025em] text-white">
                 "We measure success in uptime, response time and the silence of systems that just
                 work — long after our engineers have left the site."
               </p>
-              <div className="mt-10 flex items-center gap-5">
-                <div className="h-px w-16 bg-[var(--gold)]" />
-                <p className="text-sm tracking-[0.25em] uppercase text-white/70">The Roya Ventures Standard</p>
+              <div className="mt-8 md:mt-10 flex items-center gap-4 md:gap-5">
+                <div className="h-px w-12 md:w-16 bg-[var(--gold)] shrink-0" />
+                <p className="text-xs sm:text-sm tracking-[0.2em] md:tracking-[0.25em] uppercase text-white/70">The Roya Ventures Standard</p>
               </div>
             </Reveal>
           </div>
         </div>
+
       </section>
 
       {/* Capabilities — dark plaque, editorial capability manifesto */}
