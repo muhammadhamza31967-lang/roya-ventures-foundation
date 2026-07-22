@@ -12,9 +12,12 @@ import { BrandEvolution } from "@/components/site/BrandEvolution";
 
 import { Reveal } from "@/components/site/Reveal";
 import { SERVICES } from "@/lib/services-data";
-import heroTech1 from "@/assets/hero-tech-1.jpg";
 import heroTech2 from "@/assets/hero-tech-2.jpg";
-import heroTech3 from "@/assets/hero-tech-3.jpg";
+import heroKafd from "@/assets/hero/KAFD.jpg.asset.json";
+import heroKafdResized from "@/assets/hero/KAFD-Resized.jpg.asset.json";
+import heroKingdom from "@/assets/hero/Kingdom-Center.jpg.asset.json";
+import heroKingdom2 from "@/assets/hero/Kingdom-Center_2.jpg.asset.json";
+import heroRiyadh from "@/assets/hero/Riyadh_Skyline.jpg.asset.json";
 import svcDatacenter from "@/assets/svc-datacenter.jpg";
 import svcNetworking from "@/assets/svc-networking.jpg";
 import svcFiber from "@/assets/svc-fiber.jpg";
@@ -41,12 +44,11 @@ export const Route = createFileRoute("/")({
 });
 
 const HERO_SLIDES = [
-  { src: heroTech2, alt: "Enterprise data center hall with illuminated server racks" },
-  { src: svcFiber, alt: "Fiber optic cabling glowing blue" },
-  { src: svcSurveillance, alt: "Security operations centre with surveillance video wall" },
-  { src: heroTech1, alt: "Smart commercial building at dusk" },
-  { src: svcDatacenter, alt: "Modern data center corridor" },
-  { src: heroTech3, alt: "Abstract fiber light trails in navy and gold" },
+  { src: heroKafd.url, alt: "KAFD Riyadh skyline at dusk" },
+  { src: heroKafdResized.url, alt: "King Abdullah Financial District towers at twilight" },
+  { src: heroKingdom.url, alt: "Kingdom Centre tower rising above Riyadh" },
+  { src: heroKingdom2.url, alt: "Kingdom Centre illuminated against the evening sky" },
+  { src: heroRiyadh.url, alt: "Riyadh skyline panorama at sunset" },
 ];
 
 // Featured services on the homepage — first six from the master list
