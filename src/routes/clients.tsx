@@ -56,6 +56,19 @@ const BEAUTY_LOGOS = Object.entries(beautyModules)
   })
   .sort((a, b) => a.name.localeCompare(b.name));
 
+// Fragrance & Lifestyle — official logos
+const fragranceModules = import.meta.glob<{ default: { url: string } }>(
+  "@/assets/clients/fragrance/*.png.asset.json",
+  { eager: true },
+);
+const FRAGRANCE_LOGOS = Object.entries(fragranceModules)
+  .map(([path, mod]) => {
+    const name = path.match(/fragrance\/(.+)\.png\.asset\.json$/)?.[1] ?? "";
+    return { name, url: mod.default.url };
+  })
+  .sort((a, b) => a.name.localeCompare(b.name));
+
+
 export const Route = createFileRoute("/clients")({
   head: () => ({
     meta: [
@@ -106,7 +119,7 @@ const CLIENT_CATEGORIES: { name: string; logoIds: number[]; logos?: { name: stri
   { name: "Global Luxury Brands", logoIds: [], logos: LUXURY_LOGOS },
   { name: "Premium Fashion", logoIds: [], logos: FASHION_LOGOS },
   { name: "Beauty & Cosmetics", logoIds: [], logos: BEAUTY_LOGOS },
-  { name: "Fragrance & Lifestyle", logoIds: [] },
+  { name: "Fragrance & Lifestyle", logoIds: [], logos: FRAGRANCE_LOGOS },
   { name: "Hospitality & Restaurants", logoIds: [] },
   { name: "Corporate Clients", logoIds: [] },
 ];
