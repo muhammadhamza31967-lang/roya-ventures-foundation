@@ -8,6 +8,7 @@ import { ImageServiceCard } from "@/components/site/ImageServiceCard";
 import { StatGrid } from "@/components/site/StatGrid";
 import { CtaBanner } from "@/components/site/CtaBanner";
 import { PartnersMarquee } from "@/components/site/PartnersMarquee";
+import { BrandEvolution } from "@/components/site/BrandEvolution";
 
 import { Reveal } from "@/components/site/Reveal";
 import { SERVICES } from "@/lib/services-data";
@@ -132,6 +133,10 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Brand Evolution — Spidernet is now Roya Ventures */}
+      <BrandEvolution />
+
 
 
 
