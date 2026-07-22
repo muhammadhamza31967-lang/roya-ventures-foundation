@@ -3,12 +3,11 @@ import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { Reveal } from "@/components/site/Reveal";
-import { Handshake } from "lucide-react";
 import heroImage from "@/assets/hero-clients.jpg";
 import avayaLogo from "@/assets/partners/core/avaya.png.asset.json";
 import ciscoLogo from "@/assets/partners/core/cisco.png.asset.json";
 import hikvisionLogo from "@/assets/partners/core/hikvision.png.asset.json";
-import nexenLogo from "@/assets/partners/core/nexenlogo.png.asset.json";
+import nexenLogo from "@/assets/partners/core/nexen.png.asset.json";
 import prestigeLogo from "@/assets/partners/core/prestige.png.asset.json";
 
 export const Route = createFileRoute("/partners")({
@@ -23,20 +22,20 @@ export const Route = createFileRoute("/partners")({
   component: PartnersPage,
 });
 
-type PartnerLogo = { name: string; src: string };
+type PartnerLogo = { name: string; url: string };
 const CORE_TECH_LOGOS: PartnerLogo[] = [
-  { name: "Avaya", src: avayaLogo.url },
-  { name: "Cisco", src: ciscoLogo.url },
-  { name: "Hikvision", src: hikvisionLogo.url },
-  { name: "Nexen Strategy", src: nexenLogo.url },
-  { name: "Prestige Saudi Co. Ltd.", src: prestigeLogo.url },
+  { name: "Avaya", url: avayaLogo.url },
+  { name: "Cisco", url: ciscoLogo.url },
+  { name: "Hikvision", url: hikvisionLogo.url },
+  { name: "Nexen Strategy", url: nexenLogo.url },
+  { name: "Prestige Saudi Co. Ltd.", url: prestigeLogo.url },
 ];
 
-const PARTNER_CATEGORIES: { name: string; placeholders: number; logos?: PartnerLogo[] }[] = [
-  { name: "Core Technology Partners", placeholders: 0, logos: CORE_TECH_LOGOS },
-  { name: "Software Platforms", placeholders: 6 },
-  { name: "AI Video Analytics", placeholders: 6 },
-  { name: "Smart Screens / Ink Displays", placeholders: 6 },
+const PARTNER_CATEGORIES: { name: string; logos?: PartnerLogo[] }[] = [
+  { name: "Core Technology Partners", logos: CORE_TECH_LOGOS },
+  { name: "Software Platforms" },
+  { name: "AI Video Analytics" },
+  { name: "Smart Screens / Ink Displays" },
 ];
 
 function PartnersPage() {
@@ -66,84 +65,82 @@ function PartnersPage() {
         </div>
       </section>
 
-      {/* Partner categories */}
-      <section className="section-y relative overflow-hidden bg-[var(--ivory)]">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_left,color-mix(in_oklab,var(--gold)_10%,transparent),transparent_55%)]" />
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_bottom_right,color-mix(in_oklab,var(--navy)_8%,transparent),transparent_60%)]" />
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/40 to-transparent" />
-
+      {/* Partner categories — matches Clients page design */}
+      <section className="section-y relative overflow-hidden" style={{ background: "var(--grad-ivory)" }}>
         <div className="container-px mx-auto">
           <SectionHeading
             eyebrow="Partner Ecosystem"
             title={<>The specialists who <em className="not-italic text-[var(--gold)]">power our delivery.</em></>}
             description="A structured view of our technology alliances. Official partner logos will be added as they are finalized."
-            align="center"
           />
 
           <div className="mt-20 space-y-24">
-            {PARTNER_CATEGORIES.map((category, catIndex) => (
-              <Reveal key={category.name} delay={catIndex * 0.05}>
-                <div>
-                  {/* Category heading */}
-                  <div className="mb-10 flex flex-col items-center text-center">
-                    <p className="font-display text-[11px] tracking-[0.32em] uppercase text-[var(--gold)]">
-                      {String(catIndex + 1).padStart(2, "0")}
-                    </p>
-                    <h3 className="mt-3 font-display text-2xl md:text-3xl text-[var(--navy)] tracking-[-0.01em]">
-                      {category.name}
-                    </h3>
-                    <div className="mt-5 flex items-center gap-3">
-                      <span className="h-px w-8 bg-[color-mix(in_oklab,var(--gold)_40%,transparent)]" />
-                      <span className="h-1.5 w-1.5 rotate-45 bg-[var(--gold)]" />
-                      <span className="h-px w-8 bg-[color-mix(in_oklab,var(--gold)_40%,transparent)]" />
+            {PARTNER_CATEGORIES.map((category, catIndex) => {
+              const categoryLogos = (category.logos ?? []).map((l, i) => ({
+                key: l.name,
+                url: l.url,
+                alt: `${category.name} — ${l.name}`,
+                i,
+              }));
+              return (
+                <Reveal key={category.name} delay={catIndex * 0.05}>
+                  <div>
+                    {/* Category heading */}
+                    <div className="mb-10 flex flex-col items-center text-center">
+                      <p className="font-display text-[11px] tracking-[0.32em] uppercase text-[var(--gold)]">
+                        {String(catIndex + 1).padStart(2, "0")}
+                      </p>
+                      <h3 className="mt-3 font-display text-3xl md:text-4xl text-[var(--navy)] tracking-[-0.01em] font-semibold">
+                        {category.name}
+                      </h3>
+                      <div className="mt-5 flex items-center gap-3">
+                        <span className="h-px w-8 bg-[color-mix(in_oklab,var(--gold)_40%,transparent)]" />
+                        <span className="h-1.5 w-1.5 rotate-45 bg-[var(--gold)]" />
+                        <span className="h-px w-8 bg-[color-mix(in_oklab,var(--gold)_40%,transparent)]" />
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Logo grid */}
-                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
-                    {category.logos && category.logos.length > 0
-                      ? category.logos.map((logo, i) => (
-                          <Reveal key={logo.name} delay={(i % 12) * 0.025}>
+                    {/* Logo grid */}
+                    {categoryLogos.length > 0 ? (
+                      <div className="flex flex-wrap justify-center gap-5">
+                        {categoryLogos.map((logo) => (
+                          <Reveal
+                            key={logo.key}
+                            delay={(logo.i % 12) * 0.025}
+                            className="w-[calc(50%-10px)] sm:w-[calc(33.333%-13.333px)] md:w-[calc(25%-15px)] lg:w-[calc(16.666%-16.666px)]"
+                          >
                             <div
                               data-cursor="hover"
-                              className="group relative aspect-square rounded-2xl bg-white border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] flex items-center justify-center p-6 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[var(--gold)]/50 hover:shadow-[var(--shadow-elegant)] overflow-hidden"
+                              className="group relative aspect-square rounded-2xl bg-white border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] flex items-center justify-center p-3 sm:p-4 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[var(--gold)]/50 hover:shadow-[var(--shadow-elegant)] overflow-hidden"
                             >
                               <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,color-mix(in_oklab,var(--gold)_10%,transparent),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                               <img
-                                src={logo.src}
-                                alt={`${logo.name} logo`}
+                                src={logo.url}
+                                alt={logo.alt}
                                 loading="lazy"
-                                className="relative max-h-[70%] max-w-[80%] w-auto h-auto object-contain transition-transform duration-500 group-hover:scale-105"
+                                className="relative max-h-[88%] max-w-[92%] w-auto h-auto object-contain transition-transform duration-500 group-hover:scale-[1.04]"
                               />
                             </div>
                           </Reveal>
-                        ))
-                      : Array.from({ length: category.placeholders }).map((_, i) => (
-                          <Reveal key={i} delay={(i % 12) * 0.025}>
-                            <div
-                              data-cursor="hover"
-                              className="group relative aspect-square rounded-2xl bg-white border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] flex flex-col items-center justify-center gap-3 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[var(--gold)]/50 hover:shadow-[var(--shadow-elegant)] overflow-hidden"
-                            >
-                              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,color-mix(in_oklab,var(--gold)_10%,transparent),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                              <div className="relative flex h-14 w-14 items-center justify-center rounded-full border border-[color-mix(in_oklab,var(--gold)_30%,transparent)] bg-[var(--gold)]/5 transition-colors duration-500 group-hover:bg-[var(--gold)]/10">
-                                <Handshake className="h-6 w-6 text-[var(--gold)]/70 transition-colors duration-500 group-hover:text-[var(--gold)]" strokeWidth={1.5} />
-                              </div>
-                              <span className="relative font-display text-[11px] tracking-[0.18em] uppercase text-[var(--navy)]/50 transition-colors duration-500 group-hover:text-[var(--navy)]/70">
-                                Logo Coming Soon
-                              </span>
-                            </div>
-                          </Reveal>
                         ))}
+                      </div>
+                    ) : (
+                      <div className="rounded-2xl border border-dashed border-[color-mix(in_oklab,var(--navy)_18%,transparent)] bg-white/50 py-16 px-6 text-center">
+                        <p className="font-display text-sm tracking-[0.14em] uppercase text-[var(--navy)]/60">
+                          Logos coming soon
+                        </p>
+                        <p className="mt-2 text-sm text-muted-foreground italic max-w-md mx-auto">
+                          Partner logos for this category will be added in a future update.
+                        </p>
+                      </div>
+                    )}
                   </div>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
-
-        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/40 to-transparent" />
       </section>
     </SiteLayout>
   );
