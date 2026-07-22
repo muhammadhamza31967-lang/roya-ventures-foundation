@@ -288,7 +288,7 @@ function ClientsPage() {
                       <p className="font-display text-[11px] tracking-[0.32em] uppercase text-[var(--gold)]">
                         {String(catIndex + 1).padStart(2, "0")}
                       </p>
-                      <h3 className="mt-3 font-display text-2xl md:text-3xl text-[var(--navy)] tracking-[-0.01em]">
+                      <h3 className="mt-3 font-display text-3xl md:text-4xl text-[var(--navy)] tracking-[-0.01em] font-semibold">
                         {category.name}
                       </h3>
                       <div className="mt-5 flex items-center gap-3">
@@ -300,9 +300,13 @@ function ClientsPage() {
 
                     {/* Logo grid */}
                     {categoryLogos.length > 0 ? (
-                      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5">
+                      <div className="flex flex-wrap justify-center gap-5">
                         {categoryLogos.map((logo) => (
-                          <Reveal key={logo.key} delay={(logo.i % 12) * 0.025}>
+                          <Reveal
+                            key={logo.key}
+                            delay={(logo.i % 12) * 0.025}
+                            className="w-[calc(50%-10px)] sm:w-[calc(33.333%-13.333px)] md:w-[calc(25%-15px)] lg:w-[calc(16.666%-16.666px)]"
+                          >
                             <div
                               data-cursor="hover"
                               className="group relative aspect-square rounded-2xl bg-white border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] flex items-center justify-center p-3 sm:p-4 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1.5 hover:border-[var(--gold)]/50 hover:shadow-[var(--shadow-elegant)] overflow-hidden"
