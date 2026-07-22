@@ -72,8 +72,8 @@ function getInitials(name: string) {
 const TEAM_PREVIEW = [
   { img: team1.url, name: "Raza Saudagar", role: "Chief Executive" },
   { img: team2.url, name: "Khazi Zafar", role: "Chief Strategic & Planning" },
-  { img: team3.url, name: "Saudagar Naveed", role: "Procurement & Sales" },
   { img: team4.url, name: "Anas Saudagar", role: "Chief of Operations" },
+  { img: team3.url, name: "Saudagar Naveed", role: "Procurement & Sales" },
 ];
 
 function HomePage() {
