@@ -266,6 +266,20 @@ export function BrandEvolution() {
       </div>
 
       <div className="container-px mx-auto">
+        {/* Section heading */}
+        <div
+          className="mx-auto max-w-4xl text-center pb-16 md:pb-20"
+          style={{
+            opacity: shown ? 1 : 0,
+            transform: shown ? "translateY(0)" : "translateY(24px)",
+            transition: `opacity 900ms ${EASE} 200ms, transform 900ms ${EASE} 200ms`,
+          }}
+        >
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium tracking-[-0.02em] text-[var(--navy-deep)] leading-[1.15]">
+            A New Identity. <em className="not-italic text-[var(--gold)]">The Same Vision.</em>
+          </h2>
+        </div>
+
         {/* Unified brand evolution composition */}
         <div className="mx-auto max-w-6xl">
           {/* Desktop / tablet: horizontal single composition — mirrors mobile */}
