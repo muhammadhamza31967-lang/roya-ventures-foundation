@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Users, Award, TrendingUp } from "lucide-react";
-import spidernetLogo from "@/assets/brand/spidernet-logo.jpeg.asset.json";
-import royaLogo from "@/assets/brand/roya-ventures-logo.jpeg.asset.json";
+import spidernetLogo from "@/assets/brand/spidernet-logo.png.asset.json";
+import royaLogo from "@/assets/brand/roya-ventures-logo.png.asset.json";
 
 function useInView<T extends HTMLElement>(threshold = 0.12) {
   const ref = useRef<T | null>(null);
