@@ -146,7 +146,7 @@ const CLIENT_CATEGORIES: { name: string; logoIds: number[]; logos?: { name: stri
   { name: "Beauty & Cosmetics", logoIds: [], logos: BEAUTY_LOGOS },
   { name: "Fragrance & Lifestyle", logoIds: [], logos: FRAGRANCE_LOGOS },
   { name: "Hospitality & Restaurants", logoIds: [], logos: HOSPITALITY_LOGOS },
-  { name: "Corporate Clients", logoIds: [] },
+  { name: "Corporate Clients", logoIds: [], logos: CORPORATE_LOGOS },
 ];
 
 
