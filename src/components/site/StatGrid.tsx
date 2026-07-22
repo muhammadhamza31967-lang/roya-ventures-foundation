@@ -18,7 +18,7 @@ export function StatGrid({
         <div
           key={s.label}
           className={[
-            "relative p-8 md:p-12 group transition-colors duration-500",
+            "relative p-6 sm:p-8 md:p-12 group transition-colors duration-500",
             i > 0 ? "md:border-l" : "",
             i >= 2 ? "border-t md:border-t-0" : "",
             i === 1 ? "border-l md:border-l" : "",
@@ -26,12 +26,12 @@ export function StatGrid({
             invert ? "border-white/10 hover:bg-white/[0.04]" : "border-[color-mix(in_oklab,var(--navy)_8%,transparent)] hover:bg-white",
           ].join(" ")}
         >
-          <div className="absolute left-8 md:left-12 top-8 md:top-10 gold-divider opacity-60" />
-          <div className={["font-display flex items-baseline gap-1 text-5xl md:text-6xl font-semibold tracking-[-0.04em] mt-10", invert ? "text-white" : "text-[var(--navy)]"].join(" ")}>
+          <div className="absolute left-6 sm:left-8 md:left-12 top-6 sm:top-8 md:top-10 gold-divider opacity-60" />
+          <div className={["font-display flex items-baseline gap-1 text-3xl sm:text-4xl md:text-6xl font-semibold tracking-[-0.04em] mt-8 sm:mt-10 break-words", invert ? "text-white" : "text-[var(--navy)]"].join(" ")}>
             <span>{s.value}</span>
             {s.suffix && <span className="text-[var(--gold)]">{s.suffix}</span>}
           </div>
-          <p className={["mt-4 text-sm tracking-wide leading-relaxed", invert ? "text-white/65" : "text-muted-foreground"].join(" ")}>{s.label}</p>
+          <p className={["mt-3 sm:mt-4 text-xs sm:text-sm tracking-wide leading-relaxed", invert ? "text-white/65" : "text-muted-foreground"].join(" ")}>{s.label}</p>
         </div>
       ))}
     </div>
