@@ -397,25 +397,28 @@ export function BrandEvolution() {
             </div>
 
             {/* Connector rail with centered glass badge (mirrors mobile) */}
-            <div className="relative mx-6 h-px flex-1 lg:mx-10">
-              <span className="be-rail-h absolute inset-0" />
-              <span className="be-flow-h absolute -inset-y-[3px] inset-x-0" />
-              <span
-                className="be-endpoint absolute top-1/2 -translate-y-1/2"
-                style={{ left: "-5px", background: "color-mix(in oklab, #C8102E 85%, #fff)" }}
-              />
-              <span
-                className="be-endpoint absolute top-1/2 -translate-y-1/2"
-                style={{ right: "-5px", background: "var(--emerald-deep)" }}
-              />
-              <span className="be-comet be-comet-h absolute" />
-              <span
-                className="be-comet be-comet-h absolute"
-                style={{ animationDelay: "3.25s" }}
-              />
-              {/* Centerpiece badge on the line */}
+            <div className="relative mx-6 h-14 flex-1 lg:mx-10">
+              {/* Rail + flow + endpoints + comets all live on a 1px line at vertical center */}
+              <div className="pointer-events-none absolute inset-x-0 top-1/2 h-px -translate-y-1/2">
+                <span className="be-rail-h absolute inset-0" />
+                <span className="be-flow-h absolute -inset-y-[3px] inset-x-0" />
+                <span
+                  className="be-endpoint absolute top-1/2 -translate-y-1/2"
+                  style={{ left: "-5px", background: "color-mix(in oklab, #C8102E 85%, #fff)" }}
+                />
+                <span
+                  className="be-endpoint absolute top-1/2 -translate-y-1/2"
+                  style={{ right: "-5px", background: "var(--emerald-deep)" }}
+                />
+                <span className="be-comet be-comet-h absolute" />
+                <span
+                  className="be-comet be-comet-h absolute"
+                  style={{ animationDelay: "3.25s" }}
+                />
+              </div>
+              {/* Centerpiece badge on the same axis as the line */}
               <div
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                className="absolute left-1/2 top-1/2"
                 style={{
                   opacity: shown ? 1 : 0,
                   transform: shown ? "translate(-50%, -50%) scale(1)" : "translate(-50%, -50%) scale(0.9)",
@@ -438,6 +441,7 @@ export function BrandEvolution() {
                 </div>
               </div>
             </div>
+
 
             {/* Roya Ventures */}
             <div
