@@ -22,7 +22,7 @@ import svcSurveillance from "@/assets/svc-surveillance.jpg";
 import svcFirefighting from "@/assets/svc-firefighting.jpg";
 import svcElectrical from "@/assets/svc-electrical.jpg";
 import svcIt from "@/assets/svc-it.jpg";
-import team1 from "@/assets/team-1.jpg";
+import team1 from "@/assets/team/Saudagar_Raza_CEO.png.asset.json";
 import team2 from "@/assets/team-2.jpg";
 import team3 from "@/assets/team-3.jpg";
 import team4 from "@/assets/team-4.jpg";
@@ -61,7 +61,7 @@ const CAPABILITIES = [
 ];
 
 const TEAM_PREVIEW = [
-  { img: team1, name: "Alexander Hart", role: "Managing Director" },
+  { img: team1.url, name: "Raza Saudagar", role: "Chief Executive" },
   { img: team2, name: "Selma Ardıç", role: "Head of Engineering" },
   { img: team3, name: "Daniel Okafor", role: "Data Centre Practice" },
   { img: team4, name: "Noor El-Hashem", role: "Network & Security" },
