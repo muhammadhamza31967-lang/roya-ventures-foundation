@@ -16,14 +16,6 @@ import {
   BadgeCheck,
   Award,
   LifeBuoy,
-  Building2,
-  Landmark,
-  HeartPulse,
-  GraduationCap,
-  Server,
-  ShoppingBag,
-  Factory,
-  Hotel,
 } from "lucide-react";
 import nesmaCrew from "@/assets/projects/nesma/nesma-crew.jpg.asset.json";
 import nesmaCrane from "@/assets/projects/nesma/nesma-crane.jpg.asset.json";
@@ -101,66 +93,6 @@ const PROJECTS: Project[] = [
       dominosCeiling.url,
       dominosLadder.url,
       dominosCashier.url,
-    ],
-  },
-  {
-    company: "Ascend Financial Tower",
-    overview:
-      "Enterprise LAN, campus Wi-Fi and SD-WAN deployment across a 28-floor commercial tower, delivering secure, segmented connectivity for tenant operations.",
-    services: ["Networking", "Wi-Fi 6 Design", "SD-WAN Integration"],
-    category: "Commercial Building",
-    location: "Dubai, UAE",
-    status: "Successfully Delivered",
-    images: [
-      img("photo-1497366216548-37526070297c"),
-      img("photo-1519389950473-47ba0277781c"),
-      img("photo-1518770660439-4636190af475"),
-      img("photo-1486406146926-c627a92ad1ab"),
-    ],
-  },
-  {
-    company: "Harborline Logistics",
-    overview:
-      "OS2/OM4 fibre backbone and Cat6A structured cabling across a multi-warehouse logistics hub — link-certified to international standards with full as-built documentation.",
-    services: ["Ethernet & Fibre Cabling", "Backbone Design", "Certification"],
-    category: "Logistics & Warehousing",
-    location: "Dammam, KSA",
-    status: "Completed",
-    images: [
-      img("photo-1586528116311-ad8dd3c8310d"),
-      img("photo-1601599561213-832382fd07ba"),
-      img("photo-1581091012184-5c8f76ee1c65"),
-      img("photo-1553413077-190dd305871c"),
-    ],
-  },
-  {
-    company: "Crescent Medical City",
-    overview:
-      "Integrated IP surveillance, access control and EMS monitoring across a 600-bed healthcare campus — unified under a single command-centre dashboard.",
-    services: ["Surveillance", "Access Control", "EMS Integration"],
-    category: "Healthcare",
-    location: "Doha, Qatar",
-    status: "Successfully Delivered",
-    images: [
-      img("photo-1519494026892-80bbd2d6fd0d"),
-      img("photo-1504384308090-c894fdcc538d"),
-      img("photo-1516549655169-df83a0774514"),
-      img("photo-1580281658626-ee379f3cce93"),
-    ],
-  },
-  {
-    company: "Aurelia Retail Collection",
-    overview:
-      "POS hardware roll-out, digital signage networks and footfall analytics across 34 retail stores — centrally managed with real-time engagement reporting.",
-    services: ["POS Hardware & Software", "Digital Signage", "Footfall Analytics"],
-    category: "Retail",
-    location: "Multi-city, GCC",
-    status: "Completed",
-    images: [
-      img("photo-1441986300917-64674bd600d8"),
-      img("photo-1481437156560-3205f6a55735"),
-      img("photo-1555529771-7888783a18d3"),
-      img("photo-1519567241046-7f570eee3ce6"),
     ],
   },
 ];
