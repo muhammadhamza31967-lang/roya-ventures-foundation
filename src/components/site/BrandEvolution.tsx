@@ -373,63 +373,53 @@ export function BrandEvolution() {
 
         {/* Unified brand evolution composition */}
         <div className="mx-auto mt-24 max-w-6xl md:mt-28">
-          {/* Desktop / tablet: horizontal, single continuous composition */}
-          <div className="relative hidden md:block">
-            {/* Full-width connector layer, vertically centered on shared baseline */}
-            <div className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2">
-              <div className="relative mx-auto h-px w-full">
-                <span className="be-rail-h absolute inset-0" />
-                <span className="be-flow-h absolute -inset-y-[3px] inset-x-0" />
-                <span
-                  className="be-endpoint be-endpoint-a absolute top-1/2 -translate-y-1/2"
-                  style={{ left: "calc(16% - 5px)" }}
-                />
-                <span
-                  className="be-endpoint be-endpoint-b absolute top-1/2 -translate-y-1/2"
-                  style={{ left: "calc(84% - 5px)" }}
-                />
-                <span className="be-comet be-comet-h absolute" />
-                <span
-                  className="be-comet be-comet-h absolute"
-                  style={{ animationDelay: "3.25s" }}
-                />
-              </div>
+          {/* Desktop / tablet: horizontal single composition — mirrors mobile */}
+          <div className="relative hidden md:flex md:items-center md:justify-between md:gap-6 lg:gap-10">
+            {/* Spidernet */}
+            <div
+              className="relative shrink-0"
+              style={{
+                opacity: shown ? 1 : 0,
+                transform: shown ? "translateX(0)" : "translateX(-36px)",
+                transition: `opacity 900ms ${EASE} 380ms, transform 900ms ${EASE} 380ms`,
+              }}
+            >
+              <img
+                src={spidernetLogo.url}
+                alt="SpiderNet — former company logo"
+                className="be-logo be-logo-past h-20 w-auto max-w-[260px] object-contain lg:h-24"
+                loading="lazy"
+              />
+              <span aria-hidden className="be-pedestal" />
             </div>
 
-            {/* Row: Logo — Centerpiece — Logo, baseline aligned */}
-            <div className="relative grid grid-cols-[1fr_auto_1fr] items-center gap-16 lg:gap-28">
-              {/* Spidernet */}
+            {/* Connector rail with centered glass badge (mirrors mobile) */}
+            <div className="relative mx-6 h-px flex-1 lg:mx-10">
+              <span className="be-rail-h absolute inset-0" />
+              <span className="be-flow-h absolute -inset-y-[3px] inset-x-0" />
+              <span
+                className="be-endpoint absolute top-1/2 -translate-y-1/2"
+                style={{ left: "-5px", background: "color-mix(in oklab, #C8102E 85%, #fff)" }}
+              />
+              <span
+                className="be-endpoint absolute top-1/2 -translate-y-1/2"
+                style={{ right: "-5px", background: "var(--emerald-deep)" }}
+              />
+              <span className="be-comet be-comet-h absolute" />
+              <span
+                className="be-comet be-comet-h absolute"
+                style={{ animationDelay: "3.25s" }}
+              />
+              {/* Centerpiece badge on the line */}
               <div
-                className="relative flex justify-end pr-4 lg:pr-8"
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
                 style={{
                   opacity: shown ? 1 : 0,
-                  transform: shown ? "translateX(0)" : "translateX(-36px)",
-                  transition: `opacity 900ms ${EASE} 380ms, transform 900ms ${EASE} 380ms`,
-                }}
-              >
-                <div className="relative">
-                  <img
-                    src={spidernetLogo.url}
-                    alt="SpiderNet — former company logo"
-                    className="be-logo be-logo-past h-20 w-auto max-w-[260px] object-contain lg:h-24"
-                    loading="lazy"
-                  />
-                  <span aria-hidden className="be-pedestal" />
-                </div>
-              </div>
-
-              {/* Centerpiece: glass badge with dashed/dotted rings */}
-              <div
-                className="relative flex items-center justify-center"
-                style={{
-                  opacity: shown ? 1 : 0,
-                  transform: shown ? "scale(1)" : "scale(0.9)",
+                  transform: shown ? "translate(-50%, -50%) scale(1)" : "translate(-50%, -50%) scale(0.9)",
                   transition: `opacity 800ms ${EASE} 700ms, transform 800ms ${EASE} 700ms`,
                 }}
               >
-                <span className="be-ring be-ring-outer" />
-                <span className="be-ring be-ring-inner" />
-                <div className="be-glass relative flex items-center gap-3 rounded-full px-6 py-3">
+                <div className="be-glass relative flex items-center gap-2 rounded-full px-5 py-2.5 whitespace-nowrap lg:px-6 lg:py-3">
                   <span className="be-glass-shimmer" />
                   <span
                     className="h-1.5 w-1.5 rounded-full"
@@ -444,33 +434,32 @@ export function BrandEvolution() {
                   />
                 </div>
               </div>
+            </div>
 
-              {/* Roya Ventures */}
-              <div
-                className="relative flex justify-start pl-4 lg:pl-8"
-                style={{
-                  opacity: shown ? 1 : 0,
-                  transform: shown ? "translateX(0)" : "translateX(36px)",
-                  transition: `opacity 900ms ${EASE} 900ms, transform 900ms ${EASE} 900ms`,
-                }}
-              >
-                <div className="relative">
-                  <span
-                    aria-hidden
-                    className="be-halo pointer-events-none absolute left-1/2 top-1/2 -z-10 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl"
-                    style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--gold) 32%, transparent), transparent 65%)" }}
-                  />
-                  <img
-                    src={royaLogo.url}
-                    alt="Roya Ventures — new company logo"
-                    className="be-logo be-logo-new h-20 w-auto max-w-[280px] object-contain lg:h-24"
-                    loading="lazy"
-                  />
-                  <span aria-hidden className="be-pedestal" />
-                </div>
-              </div>
+            {/* Roya Ventures */}
+            <div
+              className="relative shrink-0"
+              style={{
+                opacity: shown ? 1 : 0,
+                transform: shown ? "translateX(0)" : "translateX(36px)",
+                transition: `opacity 900ms ${EASE} 900ms, transform 900ms ${EASE} 900ms`,
+              }}
+            >
+              <span
+                aria-hidden
+                className="be-halo pointer-events-none absolute left-1/2 top-1/2 -z-10 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl"
+                style={{ background: "radial-gradient(circle, color-mix(in oklab, var(--gold) 32%, transparent), transparent 65%)" }}
+              />
+              <img
+                src={royaLogo.url}
+                alt="Roya Ventures — new company logo"
+                className="be-logo be-logo-new h-20 w-auto max-w-[280px] object-contain lg:h-24"
+                loading="lazy"
+              />
+              <span aria-hidden className="be-pedestal" />
             </div>
           </div>
+
 
           {/* Mobile: vertical single composition */}
           <div className="relative flex flex-col items-center md:hidden">
