@@ -8,6 +8,7 @@ import { ImageServiceCard } from "@/components/site/ImageServiceCard";
 import { StatGrid } from "@/components/site/StatGrid";
 import { CtaBanner } from "@/components/site/CtaBanner";
 import { PartnersMarquee } from "@/components/site/PartnersMarquee";
+import { StrategicPartners } from "@/components/site/StrategicPartners";
 import { Reveal } from "@/components/site/Reveal";
 import { SERVICES } from "@/lib/services-data";
 import heroTech1 from "@/assets/hero-tech-1.jpg";
@@ -122,6 +123,10 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      <StrategicPartners />
+
+
 
       {/* Introduction — The Firm */}
       <section id="firm" className="section-y relative overflow-hidden">
