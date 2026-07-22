@@ -1,26 +1,34 @@
 import { SectionHeading } from "@/components/site/SectionHeading";
-import band1 from "@/assets/partners/band1.jpg.asset.json";
-import band2 from "@/assets/partners/band2.jpg.asset.json";
-import band3 from "@/assets/partners/band3.jpg.asset.json";
-import band4 from "@/assets/partners/band4.jpg.asset.json";
-import band5 from "@/assets/partners/band5.jpg.asset.json";
-import band6 from "@/assets/partners/band6.jpg.asset.json";
-import band7 from "@/assets/partners/band7.jpg.asset.json";
-import band8 from "@/assets/partners/band8.jpg.asset.json";
-import band9 from "@/assets/partners/band9.jpg.asset.json";
-import band10 from "@/assets/partners/band10.jpg.asset.json";
+import avayaLogo from "@/assets/partners/core/avaya.png.asset.json";
+import ciscoLogo from "@/assets/partners/core/cisco.png.asset.json";
+import hikvisionLogo from "@/assets/partners/core/hikvision.png.asset.json";
+import nexenLogo from "@/assets/partners/core/nexen.png.asset.json";
+import prestigeLogo from "@/assets/partners/core/prestige.png.asset.json";
+import entry2exitLogo from "@/assets/partners/software/entry2exit.png.asset.json";
+import fadelLogo from "@/assets/partners/software/fadel.png.asset.json";
+import odooLogo from "@/assets/partners/software/odoo.png.asset.json";
+import sapaadLogo from "@/assets/partners/software/sapaad.png.asset.json";
+import coramLogo from "@/assets/partners/ai-video/coram.png.asset.json";
+import trassirLogo from "@/assets/partners/ai-video/trassir.png.asset.json";
+import vizo361Logo from "@/assets/partners/ai-video/vizo361.png.asset.json";
+import windroLogo from "@/assets/partners/smart-screens/windro.png.asset.json";
+import zhsunycoLogo from "@/assets/partners/smart-screens/zhsunyco.png.asset.json";
 
 const PARTNERS = [
-  { name: "Xpandretail", src: band1.url },
-  { name: "TWW", src: band2.url },
-  { name: "Fadel Software Solution", src: band3.url },
-  { name: "Hikvision", src: band4.url },
-  { name: "GoFrugal", src: band5.url },
-  { name: "Sapaad", src: band6.url },
-  { name: "IBM", src: band7.url },
-  { name: "Avaya IP Office", src: band8.url },
-  { name: "Trillion", src: band9.url },
-  { name: "GoDaddy", src: band10.url },
+  { name: "Avaya", src: avayaLogo.url, href: "https://www.avaya.com/en/" },
+  { name: "Cisco", src: ciscoLogo.url, href: "https://www.cisco.com/" },
+  { name: "Hikvision", src: hikvisionLogo.url, href: "https://www.hikvision.com/sa/" },
+  { name: "Nexen Strategy", src: nexenLogo.url, href: "https://nexenstrategy.com/" },
+  { name: "DLI Saudi", src: prestigeLogo.url, href: "https://www.dlisaudi.com/" },
+  { name: "Entry2Exit", src: entry2exitLogo.url, href: "https://entry2exit.com/" },
+  { name: "Fadelsoft", src: fadelLogo.url, href: "https://fadelsoft.com/" },
+  { name: "Odoo", src: odooLogo.url, href: "https://www.odoo.com/" },
+  { name: "Sapaad", src: sapaadLogo.url, href: "https://www.sapaad.com/" },
+  { name: "Coram AI", src: coramLogo.url, href: "https://www.coram.ai/" },
+  { name: "TRASSIR", src: trassirLogo.url, href: "https://trassir.com/" },
+  { name: "Vizo361 AI", src: vizo361Logo.url, href: "https://vizo361.ai/" },
+  { name: "Windro", src: windroLogo.url, href: "https://windro.cn/" },
+  { name: "ZhSunyco", src: zhsunycoLogo.url, href: "https://www.zhsunyco.com/" },
 ];
 
 export function PartnersMarquee() {
@@ -47,20 +55,24 @@ export function PartnersMarquee() {
           WebkitMaskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
         }}
       >
-        <div className="flex w-max marquee-track">
+        <div className="flex w-max marquee-track items-center">
           {row.map((p, i) => (
-            <div
+            <a
               key={`${p.name}-${i}`}
-              className="mx-4 flex h-28 w-56 shrink-0 items-center justify-center rounded-2xl border border-[color-mix(in_oklab,var(--navy)_10%,transparent)] bg-white shadow-[var(--shadow-card)] px-5 py-3 transition-all duration-500 hover:-translate-y-1 hover:border-[var(--gold)]/60 hover:shadow-[var(--shadow-elegant)]"
+              href={p.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={p.name}
               data-cursor="hover"
+              className="mx-8 sm:mx-10 md:mx-12 flex h-[72px] md:h-[84px] shrink-0 items-center justify-center transition-all duration-300 hover:scale-105 hover:opacity-90"
             >
               <img
                 src={p.src}
                 alt={p.name}
                 loading="lazy"
-                className="max-h-24 max-w-[88%] w-auto h-auto object-contain"
+                className="h-full w-auto max-w-[140px] sm:max-w-[160px] md:max-w-[180px] object-contain"
               />
-            </div>
+            </a>
           ))}
         </div>
       </div>
