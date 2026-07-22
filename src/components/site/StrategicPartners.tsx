@@ -103,7 +103,7 @@ export function StrategicPartners() {
         </div>
 
         {/* Logos row — fixed min height to prevent layout shift */}
-        <div className="mt-12 min-h-[120px] sm:min-h-[140px]">
+        <div className="mt-12 min-h-[100px] sm:min-h-[120px]">
           <div
             key={activeCategory.key}
             className="overflow-x-auto overflow-y-visible no-scrollbar"
@@ -118,13 +118,13 @@ export function StrategicPartners() {
                   rel="noopener noreferrer"
                   data-cursor="hover"
                   style={{ animationDelay: `${i * 90}ms`, animationFillMode: "both" }}
-                  className="animate-fade-in flex shrink-0 items-center justify-center h-[70px] sm:h-[85px] md:h-[100px] w-auto transition-all duration-300 hover:scale-105 hover:opacity-90"
+                  className="animate-fade-in flex shrink-0 items-center justify-center h-[60px] sm:h-[72px] md:h-[84px] w-auto transition-all duration-300 hover:scale-105 hover:opacity-90"
                 >
                   <img
                     src={logo.url}
                     alt={logo.name}
                     loading="lazy"
-                    className="h-full w-auto max-w-[140px] sm:max-w-[170px] md:max-w-[200px] object-contain"
+                    className="h-full w-auto max-w-[120px] sm:max-w-[145px] md:max-w-[170px] object-contain"
                   />
                 </a>
               ))}
