@@ -8,7 +8,7 @@ import { ImageServiceCard } from "@/components/site/ImageServiceCard";
 import { StatGrid } from "@/components/site/StatGrid";
 import { CtaBanner } from "@/components/site/CtaBanner";
 import { PartnersMarquee } from "@/components/site/PartnersMarquee";
-import { StrategicPartners } from "@/components/site/StrategicPartners";
+
 import { Reveal } from "@/components/site/Reveal";
 import { SERVICES } from "@/lib/services-data";
 import heroTech1 from "@/assets/hero-tech-1.jpg";
@@ -24,7 +24,7 @@ import svcElectrical from "@/assets/svc-electrical.jpg";
 import svcIt from "@/assets/svc-it.jpg";
 import team1 from "@/assets/team/Saudagar_Raza_CEO.png.asset.json";
 import team2 from "@/assets/team/Khazi_Zafar_Chief_Strategic_Planning.jpeg.asset.json";
-import team3 from "@/assets/team-3.jpg";
+import team3 from "@/assets/team/Soudagar_Naveed_Procurement_Sales1.png.asset.json";
 import team4 from "@/assets/team/Anas_COO.jpeg.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -72,7 +72,7 @@ function getInitials(name: string) {
 const TEAM_PREVIEW = [
   { img: team1.url, name: "Raza Saudagar", role: "Chief Executive" },
   { img: team2.url, name: "Khazi Zafar", role: "Chief Strategic & Planning" },
-  { img: "", name: "Sameena Khazi", role: "HR & Admin" },
+  { img: team3.url, name: "Saudagar Naveed", role: "Procurement & Sales" },
   { img: team4.url, name: "Anas Saudagar", role: "Chief of Operations" },
 ];
 
@@ -133,7 +133,8 @@ function HomePage() {
         </div>
       </section>
 
-      <StrategicPartners />
+
+
 
 
 
