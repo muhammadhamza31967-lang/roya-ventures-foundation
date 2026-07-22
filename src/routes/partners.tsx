@@ -9,6 +9,11 @@ import ciscoLogo from "@/assets/partners/core/cisco.png.asset.json";
 import hikvisionLogo from "@/assets/partners/core/hikvision.png.asset.json";
 import nexenLogo from "@/assets/partners/core/nexen.png.asset.json";
 import prestigeLogo from "@/assets/partners/core/prestige.png.asset.json";
+import entry2exitLogo from "@/assets/partners/software/entry2exit.png.asset.json";
+import fadelLogo from "@/assets/partners/software/fadel.png.asset.json";
+import odooLogo from "@/assets/partners/software/odoo.png.asset.json";
+import sapaadLogo from "@/assets/partners/software/sapaad.png.asset.json";
+
 
 export const Route = createFileRoute("/partners")({
   head: () => ({
