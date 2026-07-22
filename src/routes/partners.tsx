@@ -46,10 +46,16 @@ const SOFTWARE_LOGOS: PartnerLogo[] = [
   { name: "Sapaad", url: sapaadLogo.url },
 ];
 
+const AI_VIDEO_LOGOS: PartnerLogo[] = [
+  { name: "Coram", url: coramLogo.url },
+  { name: "Trassir", url: trassirLogo.url },
+  { name: "Vizo361", url: vizo361Logo.url },
+];
+
 const PARTNER_CATEGORIES: { name: string; logos?: PartnerLogo[] }[] = [
   { name: "Core Technology Partners", logos: CORE_TECH_LOGOS },
   { name: "Software Platforms", logos: SOFTWARE_LOGOS },
-  { name: "AI Video Analytics" },
+  { name: "AI Video Analytics", logos: AI_VIDEO_LOGOS },
   { name: "Smart Screens / Ink Displays" },
 ];
 
