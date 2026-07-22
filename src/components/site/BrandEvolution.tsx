@@ -337,9 +337,6 @@ export function BrandEvolution() {
                     className="h-1.5 w-1.5 rounded-full"
                     style={{ background: "color-mix(in oklab, #C8102E 85%, #fff)" }}
                   />
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.36em] text-[var(--navy-deep)]">
-                    Brand Evolution
-                  </span>
                   <span
                     className="h-1.5 w-1.5 rounded-full"
                     style={{ background: "var(--emerald-deep)" }}
