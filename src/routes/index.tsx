@@ -124,6 +124,10 @@ function HomePage() {
         </div>
       </section>
 
+      <StrategicPartners />
+
+
+
       {/* Introduction — The Firm */}
       <section id="firm" className="section-y relative overflow-hidden">
         <div className="absolute inset-0 -z-10 bg-radial-gold" />
