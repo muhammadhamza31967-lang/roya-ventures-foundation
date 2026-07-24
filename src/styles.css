@@ -130,11 +130,16 @@
 /* ---------- Utility primitives ---------- */
 
 @utility container-px {
+  width: 100%;
+  max-inline-size: 1400px;
+  margin-inline: auto;
   padding-inline: 1.25rem;
   @media (min-width: 640px) { padding-inline: 2rem; }
-  @media (min-width: 1024px) { padding-inline: 3.5rem; }
-  @media (min-width: 1280px) { padding-inline: 5rem; }
+  @media (min-width: 1024px) { padding-inline: 3rem; }
+  @media (min-width: 1280px) { padding-inline: 3.5rem; }
+  @media (min-width: 1536px) { padding-inline: 4rem; }
 }
+
 
 @utility gold-rule {
   position: relative;
