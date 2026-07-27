@@ -1,6 +1,24 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, Cable, Cpu, Network, ShieldCheck, Flame, Code2, Activity, Zap, Server, Radio, Siren, KeyRound, MonitorPlay, ScanBarcode, ScanEye, HardDrive } from "lucide-react";
+import {
+  ArrowRight,
+  Cable,
+  Cpu,
+  Network,
+  ShieldCheck,
+  Flame,
+  Code2,
+  Activity,
+  Zap,
+  Server,
+  Radio,
+  Siren,
+  KeyRound,
+  MonitorPlay,
+  ScanBarcode,
+  ScanEye,
+  HardDrive,
+} from "lucide-react";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { HeroSlider } from "@/components/site/HeroSlider";
 import { SectionHeading } from "@/components/site/SectionHeading";
@@ -35,9 +53,16 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Roya Ventures — Technology Infrastructure & Engineering" },
-      { name: "description", content: "Roya Ventures designs, builds and supports technology infrastructure — data centers, networks, security, electrical and IT systems for modern enterprise." },
+      {
+        name: "description",
+        content:
+          "Roya Ventures designs, builds and supports technology infrastructure — data centers, networks, security, electrical and IT systems for modern enterprise.",
+      },
       { property: "og:title", content: "Roya Ventures — Technology Infrastructure & Engineering" },
-      { property: "og:description", content: "Data centers, networks, surveillance, electrical, fire protection and IT — engineered end to end." },
+      {
+        property: "og:description",
+        content: "Data centers, networks, surveillance, electrical, fire protection and IT — engineered end to end.",
+      },
     ],
   }),
   component: HomePage,
@@ -55,12 +80,36 @@ const HERO_SLIDES = [
 const HOME_SERVICES = SERVICES.slice(0, 6);
 
 const CAPABILITIES = [
-  { icon: Network, name: "End-to-End Project Execution", desc: "From design through commissioning — one accountable partner across every discipline." },
-  { icon: ShieldCheck, name: "Certified Professionals", desc: "Senior engineers with international certifications and decades of on-site delivery." },
-  { icon: Activity, name: "Quality Assurance", desc: "Documented QA/QC processes, factory testing and full commissioning acceptance." },
-  { icon: Cpu, name: "Innovative Engineering", desc: "Modern, standards-based designs — resilient, efficient and future-ready by intent." },
-  { icon: Server, name: "Scalable Infrastructure", desc: "Systems architected to grow with your business — modular, upgradable, non-disruptive." },
-  { icon: HardDrive, name: "Long-Term Support", desc: "AMCs, 24/7 monitoring and lifecycle maintenance that keep systems performing." },
+  {
+    icon: Network,
+    name: "End-to-End Project Execution",
+    desc: "From design through commissioning — one accountable partner across every discipline.",
+  },
+  {
+    icon: ShieldCheck,
+    name: "Certified Professionals",
+    desc: "Senior engineers with international certifications and decades of on-site delivery.",
+  },
+  {
+    icon: Activity,
+    name: "Quality Assurance",
+    desc: "Documented QA/QC processes, factory testing and full commissioning acceptance.",
+  },
+  {
+    icon: Cpu,
+    name: "Innovative Engineering",
+    desc: "Modern, standards-based designs — resilient, efficient and future-ready by intent.",
+  },
+  {
+    icon: Server,
+    name: "Scalable Infrastructure",
+    desc: "Systems architected to grow with your business — modular, upgradable, non-disruptive.",
+  },
+  {
+    icon: HardDrive,
+    name: "Long-Term Support",
+    desc: "AMCs, 24/7 monitoring and lifecycle maintenance that keep systems performing.",
+  },
 ];
 
 function getInitials(name: string) {
@@ -111,13 +160,10 @@ function HomePage() {
               className="mt-10 max-w-2xl text-lg md:text-xl leading-relaxed text-white/90 reveal font-light"
               style={{ animationDelay: "0.3s" }}
             >
-              From data centers and enterprise networks to surveillance, electrical and IT systems —
-              we design, build and support the systems that keep modern enterprises running.
+              From data centers and enterprise networks to surveillance, electrical and IT systems — we design, build
+              and support the systems that keep modern enterprises running.
             </p>
-            <div
-              className="mt-12 flex flex-wrap gap-5 reveal"
-              style={{ animationDelay: "0.45s" }}
-            >
+            <div className="mt-12 flex flex-wrap gap-5 reveal" style={{ animationDelay: "0.45s" }}>
               <Link to="/services" className="btn-primary btn-on-dark" data-cursor="hover">
                 Explore our services <ArrowRight className="h-4 w-4" />
               </Link>
@@ -127,7 +173,10 @@ function HomePage() {
             </div>
           </div>
 
-          <div className="mt-20 hidden md:flex items-end justify-between gap-8 reveal-soft" style={{ animationDelay: "0.7s" }}>
+          <div
+            className="mt-20 hidden md:flex items-end justify-between gap-8 reveal-soft"
+            style={{ animationDelay: "0.7s" }}
+          >
             <div className="flex items-center gap-4 text-white/65 text-xs tracking-[0.3em] uppercase">
               <span className="gold-divider" />
               <span>Infrastructure · Networks · Security · IT</span>
@@ -139,15 +188,17 @@ function HomePage() {
       {/* Brand Evolution — Spidernet is now Roya Ventures */}
       <BrandEvolution />
 
-
-
-
-
       {/* Introduction — The Firm */}
       <section id="firm" className="section-y relative overflow-hidden">
         <div className="absolute inset-0 -z-10 bg-radial-gold" />
-        <div aria-hidden className="pointer-events-none absolute -top-32 right-10 h-72 w-72 rounded-full border border-[var(--gold)]/15" />
-        <div aria-hidden className="pointer-events-none absolute bottom-10 -left-24 h-72 w-72 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--emerald-deep)_18%,transparent),transparent_65%)] blur-3xl" />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-32 right-10 h-72 w-72 rounded-full border border-[var(--gold)]/15"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute bottom-10 -left-24 h-72 w-72 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--emerald-deep)_18%,transparent),transparent_65%)] blur-3xl"
+        />
 
         <div className="container-px mx-auto">
           <div className="grid gap-16 lg:grid-cols-12 lg:gap-24 items-start">
@@ -155,7 +206,8 @@ function HomePage() {
               <Reveal>
                 <p className="gold-rule">The Firm</p>
                 <h2 className="heading-lg mt-8 leading-[1.05]">
-                  One partner for the technology systems that <em className="not-italic text-[var(--gold)]">power your business.</em>
+                  One partner for the technology systems that{" "}
+                  <em className="not-italic text-[var(--gold)]">power your business.</em>
                 </h2>
                 <div className="mt-10 hairline max-w-[10rem]" />
                 <div className="mt-10 grid grid-cols-3 gap-6 max-w-md">
@@ -165,7 +217,9 @@ function HomePage() {
                     { k: "11", v: "Practices" },
                   ].map((s) => (
                     <div key={s.v}>
-                      <div className="font-display text-3xl font-semibold text-[var(--navy)] tracking-[-0.03em]">{s.k}</div>
+                      <div className="font-display text-3xl font-semibold text-[var(--navy)] tracking-[-0.03em]">
+                        {s.k}
+                      </div>
                       <div className="mt-1 text-[11px] tracking-[0.22em] uppercase text-muted-foreground">{s.v}</div>
                     </div>
                   ))}
@@ -175,19 +229,22 @@ function HomePage() {
             <div className="lg:col-span-7 lg:pt-2">
               <Reveal delay={0.1}>
                 <p className="text-xl md:text-2xl leading-[1.55] text-[var(--navy)] font-light text-left md:text-justify hyphens-auto">
-                  Roya Ventures is a multidisciplinary technology and engineering solutions firm —
-                  delivering data centers, networks, security, electrical and IT infrastructure
-                  under a single, accountable mandate.
+                  Roya Ventures is a multidisciplinary technology and engineering solutions firm — delivering data
+                  centers, networks, security, electrical and IT infrastructure under a single, accountable mandate.
                 </p>
                 <p className="mt-8 text-base md:text-[17px] leading-[1.85] text-muted-foreground text-left md:text-justify hyphens-auto">
-                  We work with enterprises, retailers, public institutions and developers to plan,
-                  deploy and operate the physical and digital systems modern operations depend on.
-                  Every engagement is delivered by senior engineers with full ownership of the
-                  outcome — from initial design through commissioning and long-term support.
+                  We work with enterprises, retailers, public institutions and developers to plan, deploy and operate
+                  the physical and digital systems modern operations depend on. Every engagement is delivered by senior
+                  engineers with full ownership of the outcome — from initial design through commissioning and long-term
+                  support.
                 </p>
                 <div className="mt-12 flex flex-wrap gap-4">
-                  <Link to="/about" className="btn-ghost" data-cursor="hover">About the firm <ArrowRight className="h-4 w-4" /></Link>
-                  <Link to="/team" className="btn-ghost" data-cursor="hover">Meet our people <ArrowRight className="h-4 w-4" /></Link>
+                  <Link to="/about" className="btn-ghost" data-cursor="hover">
+                    About the firm <ArrowRight className="h-4 w-4" />
+                  </Link>
+                  <Link to="/team" className="btn-ghost" data-cursor="hover">
+                    Meet our people <ArrowRight className="h-4 w-4" />
+                  </Link>
                 </div>
               </Reveal>
             </div>
@@ -197,8 +254,6 @@ function HomePage() {
 
       {/* What We Do — editorial capability index */}
       <WhatWeDo />
-
-
 
       {/* Full-width feature image with floating quote panel */}
       <section className="relative isolate overflow-hidden">
@@ -216,24 +271,26 @@ function HomePage() {
             <Reveal className="max-w-2xl">
               <p className="gold-rule text-[var(--gold)]">Engineering discipline</p>
               <p className="mt-6 md:mt-8 font-display text-xl sm:text-2xl md:text-5xl font-light leading-[1.25] md:leading-[1.15] tracking-[-0.025em] text-white">
-                "We measure success in uptime, response time and the silence of systems that just
-                work — long after our engineers have left the site."
+                "We measure success in uptime, response time and the silence of systems that just work — long after our
+                engineers have left the site."
               </p>
               <div className="mt-8 md:mt-10 flex items-center gap-4 md:gap-5">
                 <div className="h-px w-12 md:w-16 bg-[var(--gold)] shrink-0" />
-                <p className="text-xs sm:text-sm tracking-[0.2em] md:tracking-[0.25em] uppercase text-white/70">The Roya Ventures Standard</p>
+                <p className="text-xs sm:text-sm tracking-[0.2em] md:tracking-[0.25em] uppercase text-white/70">
+                  The Roya Ventures Standard
+                </p>
               </div>
             </Reveal>
           </div>
         </div>
-
       </section>
 
       {/* Capabilities — dark plaque, editorial capability manifesto */}
       <section className="section-y relative overflow-hidden" style={{ background: "var(--grad-ivory)" }}>
         <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-radial-gold opacity-60" />
         <div className="container-px mx-auto">
-          <div className="relative isolate overflow-hidden rounded-[2rem] bg-noise text-white shadow-[0_50px_120px_-40px_rgba(14,36,64,0.55)]"
+          <div
+            className="relative isolate overflow-hidden rounded-[2rem] bg-noise text-white shadow-[0_50px_120px_-40px_rgba(14,36,64,0.55)]"
             style={{ background: "linear-gradient(135deg, #0E2440 0%, #18314E 55%, #0F3A30 100%)" }}
           >
             {/* Ambient glows */}
@@ -260,12 +317,15 @@ function HomePage() {
                   </h2>
                   <div className="mt-8 h-px w-16 bg-[var(--gold)]" />
                   <p className="mt-8 text-[17px] leading-[1.85] text-white/75 font-light">
-                    Beyond the disciplines we practice, our value is in how we execute — with senior
-                    ownership, engineering rigour and a long-term commitment to the systems we deliver.
+                    Beyond the disciplines we practice, our value is in how we execute — with senior ownership,
+                    engineering rigour and a long-term commitment to the systems we deliver.
                   </p>
                   <div className="mt-10 flex flex-wrap gap-3">
                     {["Senior-led", "Standards-driven", "Vendor-neutral", "Lifecycle support"].map((t) => (
-                      <span key={t} className="text-[11px] tracking-[0.22em] uppercase px-3.5 py-2 rounded-full border border-[var(--gold)]/30 bg-white/[0.03] text-white/80">
+                      <span
+                        key={t}
+                        className="text-[11px] tracking-[0.22em] uppercase px-3.5 py-2 rounded-full border border-[var(--gold)]/30 bg-white/[0.03] text-white/80"
+                      >
                         {t}
                       </span>
                     ))}
@@ -275,7 +335,6 @@ function HomePage() {
 
               {/* Right — capability list */}
               <div className="lg:col-span-7 lg:self-center lg:pt-10">
-
                 <ul className="grid gap-3 sm:grid-cols-2">
                   {CAPABILITIES.map(({ icon: Icon, name, desc }, i) => (
                     <Reveal key={name} delay={(i % 4) * 0.05}>
@@ -283,7 +342,10 @@ function HomePage() {
                         className="group relative h-full rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-5 transition-all duration-500 hover:-translate-y-0.5 hover:border-[var(--gold)]/50 hover:bg-white/[0.06]"
                         data-cursor="hover"
                       >
-                        <span aria-hidden className="absolute left-0 top-5 bottom-5 w-[2px] bg-[var(--gold)] scale-y-0 origin-top transition-transform duration-500 group-hover:scale-y-100 rounded-r" />
+                        <span
+                          aria-hidden
+                          className="absolute left-0 top-5 bottom-5 w-[2px] bg-[var(--gold)] scale-y-0 origin-top transition-transform duration-500 group-hover:scale-y-100 rounded-r"
+                        />
                         <div className="flex items-start gap-4">
                           <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg border border-[var(--gold)]/30 bg-[var(--gold)]/[0.06] text-[var(--gold)] transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-[var(--navy)] group-hover:rotate-[-4deg]">
                             <Icon className="h-4 w-4" strokeWidth={1.5} />
@@ -293,7 +355,9 @@ function HomePage() {
                               <span className="font-display text-[11px] tracking-[0.2em] text-[var(--gold)]/80">
                                 {String(i + 1).padStart(2, "0")}
                               </span>
-                              <h3 className="text-[15px] font-semibold text-white tracking-tight leading-snug">{name}</h3>
+                              <h3 className="text-[15px] font-semibold text-white tracking-tight leading-snug">
+                                {name}
+                              </h3>
                             </div>
                             <p className="mt-2 text-[13px] leading-[1.7] text-white/65 font-light">{desc}</p>
                           </div>
@@ -312,8 +376,7 @@ function HomePage() {
       <section
         className="relative section-y overflow-hidden text-white bg-noise"
         style={{
-          background:
-            "linear-gradient(135deg, #0E2440 0%, #18314E 45%, #0F3A30 100%)",
+          background: "linear-gradient(135deg, #0E2440 0%, #18314E 45%, #0F3A30 100%)",
         }}
       >
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklab,var(--gold)_30%,transparent),transparent_55%)]" />
@@ -327,7 +390,11 @@ function HomePage() {
           <div className="max-w-3xl mb-16">
             <SectionHeading
               eyebrow="By the numbers"
-              title={<>Infrastructure delivered with <em className="not-italic text-[var(--gold)]">measurable rigour.</em></>}
+              title={
+                <>
+                  Infrastructure delivered with <em className="not-italic text-[var(--gold)]">measurable rigour.</em>
+                </>
+              }
               description="A track record built across data centers, enterprise networks and mission-critical systems."
               invert
             />
@@ -335,7 +402,7 @@ function HomePage() {
           <StatGrid
             invert
             stats={[
-              { value: "15", suffix: "+", label: "Years of engineering practice" },
+              { value: "8", suffix: "+", label: "Years of engineering practice" },
               { value: "400", suffix: "+", label: "Projects delivered" },
               { value: "99.99", suffix: "%", label: "Average system uptime" },
               { value: "24", suffix: "/7", label: "Support and monitoring" },
@@ -352,19 +419,29 @@ function HomePage() {
             <div className="lg:col-span-8">
               <SectionHeading
                 eyebrow="Our people"
-                title={<>Senior engineers, architects and <em className="not-italic text-[var(--gold)]">technology specialists.</em></>}
+                title={
+                  <>
+                    Senior engineers, architects and{" "}
+                    <em className="not-italic text-[var(--gold)]">technology specialists.</em>
+                  </>
+                }
                 description="Roya Ventures is built around hands-on practitioners with decades of experience across infrastructure, networks and IT."
               />
             </div>
             <div className="lg:col-span-4 flex lg:justify-end">
-              <Link to="/team" className="btn-ghost" data-cursor="hover">Meet the team <ArrowRight className="h-4 w-4" /></Link>
+              <Link to="/team" className="btn-ghost" data-cursor="hover">
+                Meet the team <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {TEAM_PREVIEW.map((p, i) => (
               <Reveal key={p.name} delay={i * 0.08}>
-                <article className="group relative h-full rounded-[1.25rem] overflow-hidden bg-card border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] shadow-[var(--shadow-card)] transition-all duration-700 hover:shadow-[var(--shadow-elegant)] hover:-translate-y-2" data-cursor="hover">
+                <article
+                  className="group relative h-full rounded-[1.25rem] overflow-hidden bg-card border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] shadow-[var(--shadow-card)] transition-all duration-700 hover:shadow-[var(--shadow-elegant)] hover:-translate-y-2"
+                  data-cursor="hover"
+                >
                   <div className="relative aspect-[3/4] w-full overflow-hidden bg-[var(--navy)]">
                     {p.img ? (
                       <img
@@ -385,7 +462,9 @@ function HomePage() {
                   </div>
                   <div className="relative p-7 md:p-8">
                     <p className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] font-semibold">{p.role}</p>
-                    <h3 className="mt-3 font-display text-xl md:text-2xl font-semibold text-[var(--navy)] tracking-[-0.02em] leading-tight">{p.name}</h3>
+                    <h3 className="mt-3 font-display text-xl md:text-2xl font-semibold text-[var(--navy)] tracking-[-0.02em] leading-tight">
+                      {p.name}
+                    </h3>
                     <div className="mt-5 h-px w-10 bg-[var(--gold)] transition-all duration-500 group-hover:w-20" />
                   </div>
                 </article>
@@ -419,7 +498,7 @@ function HomePage() {
 const CAPABILITY_ICONS: Record<string, typeof Zap> = {
   "electrical-contracts": Zap,
   "data-center-setup": Server,
-  "networking": Network,
+  networking: Network,
   "ethernet-fiber-cabling": Cable,
   "fire-fighting": Flame,
   "ems-access-control": ShieldCheck,
@@ -443,8 +522,14 @@ function WhatWeDo() {
     <section className="section-y relative overflow-hidden" style={{ background: "var(--grad-ivory)" }}>
       {/* branded decorative backdrop */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-grid-soft opacity-[0.35]" />
-      <div aria-hidden className="pointer-events-none absolute -top-40 -left-40 h-[32rem] w-[32rem] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_10%,transparent),transparent_65%)] blur-2xl" />
-      <div aria-hidden className="pointer-events-none absolute -bottom-40 -right-32 h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--emerald-deep)_18%,transparent),transparent_65%)] blur-3xl" />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-40 -left-40 h-[32rem] w-[32rem] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_10%,transparent),transparent_65%)] blur-2xl"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-40 -right-32 h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--emerald-deep)_18%,transparent),transparent_65%)] blur-3xl"
+      />
 
       <div className="container-px mx-auto">
         {/* Editorial header row */}
@@ -452,13 +537,11 @@ function WhatWeDo() {
           <div className="md:col-span-8">
             <p className="eyebrow text-[var(--gold)]">What we do</p>
             <h2 className="mt-4 font-display text-3xl md:text-5xl font-light tracking-[-0.025em] leading-[1.05] text-[var(--navy)]">
-              End-to-end engineering, technology and{" "}
-              <em className="not-italic text-[var(--gold)]">infrastructure</em>{" "}
-              — delivered as one practice.
+              End-to-end engineering, technology and <em className="not-italic text-[var(--gold)]">infrastructure</em> —
+              delivered as one practice.
             </h2>
           </div>
           <div className="md:col-span-4 md:text-right" />
-
         </div>
 
         {/* Two-column editorial: feature image ↔ capability index */}
@@ -468,7 +551,10 @@ function WhatWeDo() {
             <div className="relative">
               {/* Gold hairline corner accents */}
               <span aria-hidden className="absolute -top-3 -left-3 h-7 w-7 border-t border-l border-[var(--gold)]/70" />
-              <span aria-hidden className="absolute -bottom-3 -right-3 h-7 w-7 border-b border-r border-[var(--gold)]/70" />
+              <span
+                aria-hidden
+                className="absolute -bottom-3 -right-3 h-7 w-7 border-b border-r border-[var(--gold)]/70"
+              />
 
               {/* Image frame */}
               <div className="relative overflow-hidden rounded-[1.25rem] border border-[color-mix(in_oklab,var(--navy)_10%,transparent)] shadow-[var(--shadow-elegant)] aspect-[4/5] bg-[var(--navy)]">
@@ -598,8 +684,8 @@ function WhatWeDo() {
 
             <div className="mt-8 flex items-center justify-between gap-6">
               <p className="text-[13px] text-muted-foreground max-w-sm">
-                A single accountable partner for the systems that keep modern
-                organisations powered, connected and secure.
+                A single accountable partner for the systems that keep modern organisations powered, connected and
+                secure.
               </p>
               <Link to="/services" className="btn-ghost shrink-0" data-cursor="hover">
                 All services <ArrowRight className="h-4 w-4" />
@@ -611,5 +697,3 @@ function WhatWeDo() {
     </section>
   );
 }
-
-
