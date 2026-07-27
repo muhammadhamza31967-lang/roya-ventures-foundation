@@ -54,8 +54,8 @@ export function PageHero({
         <div className={["max-w-5xl", align === "center" ? "mx-auto text-center" : ""].join(" ")}>
           <p
             className={[
-              "gold-rule reveal-soft",
-              align === "center" ? "before:left-1/2 before:-translate-x-[calc(100%+1rem)]" : "",
+              "reveal-soft",
+              align === "center" ? "gold-rule-center" : "gold-rule",
             ].join(" ")}
             style={{ animationDelay: "0.05s" }}
           >

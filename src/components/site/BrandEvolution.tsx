@@ -387,8 +387,9 @@ export function BrandEvolution() {
               <img
                 src={spidernetLogo.url}
                 alt="SpiderNet — former company logo"
+                width={220}
+                height={64}
                 className="be-logo be-logo-past h-16 w-auto max-w-[220px] object-contain"
-                loading="lazy"
               />
               <span aria-hidden className="be-pedestal" />
             </div>
@@ -444,8 +445,9 @@ export function BrandEvolution() {
               <img
                 src={royaLogo.url}
                 alt="Roya Ventures — new company logo"
+                width={260}
+                height={80}
                 className="be-logo be-logo-new h-20 w-auto max-w-[260px] object-contain"
-                loading="lazy"
               />
               <span aria-hidden className="be-pedestal" />
             </div>

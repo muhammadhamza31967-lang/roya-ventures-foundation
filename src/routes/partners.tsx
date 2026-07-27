@@ -76,7 +76,6 @@ function PartnersPage() {
         subtitle="A curated ecosystem of technology manufacturers and solution providers enabling world-class engineering and digital infrastructure."
         image={heroImage}
         height="compact"
-        align="center"
       />
 
       {/* Introduction */}
