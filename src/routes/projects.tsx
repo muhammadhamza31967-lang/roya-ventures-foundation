@@ -35,8 +35,7 @@ import dominosCeiling from "@/assets/projects/dominos/dominos-ceiling.jpg.asset.
 import dominosLadder from "@/assets/projects/dominos/dominos-ladder.jpg.asset.json";
 
 // Royalty-free placeholder imagery (Unsplash) — replace later with official project photos.
-const img = (id: string, w = 1600) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
+const img = (id: string, w = 1600) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
 
 const HERO_IMAGE = img("photo-1581091226825-a6a2a5aee158");
 
@@ -51,12 +50,11 @@ type Project = {
   galleryImages?: string[]; // optional override for the Explore More lightbox
 };
 
-
 const PROJECTS: Project[] = [
   {
     company: "Nesma LED Lighting Project",
     overview:
-      "Delivered a large-scale government LED street lighting upgrade across Jeddah, replacing conventional luminaires with energy-efficient LED systems to improve public infrastructure, energy efficiency, and long-term operational performance. Project highlight: 10,000+ LED luminaires successfully replaced across Jeddah.",
+      "Delivered a large-scale government LED street lighting upgrade across Jeddah, replacing conventional luminaires with energy-efficient LED systems to improve public infrastructure, energy efficiency, and long-term operational performance. Project highlight: 18,000+ LED luminaires successfully replaced across Jeddah.",
     services: [
       "LED Lighting Upgrade",
       "Electrical Infrastructure",
@@ -68,12 +66,7 @@ const PROJECTS: Project[] = [
     category: "Government Infrastructure",
     location: "Jeddah, KSA",
     status: "Successfully Delivered",
-    images: [
-      nesmaStreet.url,
-      nesmaCrane.url,
-      nesmaCrew.url,
-      nesmaInspection.url,
-    ],
+    images: [nesmaStreet.url, nesmaCrane.url, nesmaCrew.url, nesmaInspection.url],
     galleryImages: [
       img("photo-1581093588401-fbb62a02f120"),
       img("photo-1565043666747-69f6646db940"),
@@ -96,22 +89,41 @@ const PROJECTS: Project[] = [
     category: "Retail Surveillance",
     location: "Kingdom of Saudi Arabia (KSA)",
     status: "Successfully Delivered",
-    images: [
-      dominosHikvision.url,
-      dominosCeiling.url,
-      dominosLadder.url,
-      dominosCashier.url,
-    ],
+    images: [dominosHikvision.url, dominosCeiling.url, dominosLadder.url, dominosCashier.url],
   },
 ];
 
 const TRUST = [
-  { icon: Users, title: "Experienced Engineering Team", text: "Senior practitioners leading every mandate — from survey to sign-off." },
-  { icon: Wrench, title: "Turnkey Project Delivery", text: "One accountable partner for design, supply, install and commissioning." },
-  { icon: ShieldCheck, title: "Safety & Compliance", text: "NFPA, civil-defence and international standards embedded in every phase." },
-  { icon: BadgeCheck, title: "Certified Professionals", text: "Manufacturer-certified engineers across electrical, networking and security." },
-  { icon: Award, title: "Quality Assurance", text: "Rigorous QA/QC controls, test reports and full as-built documentation." },
-  { icon: LifeBuoy, title: "Long-Term Support", text: "AMCs, monitoring and 24/7 response — well beyond project handover." },
+  {
+    icon: Users,
+    title: "Experienced Engineering Team",
+    text: "Senior practitioners leading every mandate — from survey to sign-off.",
+  },
+  {
+    icon: Wrench,
+    title: "Turnkey Project Delivery",
+    text: "One accountable partner for design, supply, install and commissioning.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Safety & Compliance",
+    text: "NFPA, civil-defence and international standards embedded in every phase.",
+  },
+  {
+    icon: BadgeCheck,
+    title: "Certified Professionals",
+    text: "Manufacturer-certified engineers across electrical, networking and security.",
+  },
+  {
+    icon: Award,
+    title: "Quality Assurance",
+    text: "Rigorous QA/QC controls, test reports and full as-built documentation.",
+  },
+  {
+    icon: LifeBuoy,
+    title: "Long-Term Support",
+    text: "AMCs, monitoring and 24/7 response — well beyond project handover.",
+  },
 ];
 
 const INDUSTRIES = [
@@ -129,9 +141,17 @@ export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
       { title: "Projects — Roya Ventures" },
-      { name: "description", content: "Selected engineering and technology projects delivered by Roya Ventures — electrical infrastructure, data centres, networking, surveillance and enterprise IT across diverse industries." },
+      {
+        name: "description",
+        content:
+          "Selected engineering and technology projects delivered by Roya Ventures — electrical infrastructure, data centres, networking, surveillance and enterprise IT across diverse industries.",
+      },
       { property: "og:title", content: "Projects — Roya Ventures" },
-      { property: "og:description", content: "Proven delivery across every project — infrastructure, technology and integrated engineering solutions." },
+      {
+        property: "og:description",
+        content:
+          "Proven delivery across every project — infrastructure, technology and integrated engineering solutions.",
+      },
       { property: "og:image", content: HERO_IMAGE },
       { name: "twitter:image", content: HERO_IMAGE },
     ],
@@ -149,20 +169,13 @@ function StatusBadge({ status }: { status: Project["status"] }) {
 }
 
 /* --------- Unified premium gallery: 1 large + 2 stacked right + 1 full-width bottom --------- */
-function Gallery({
-  project,
-  onOpen,
-}: {
-  project: Project;
-  onOpen: (index: number) => void;
-}) {
+function Gallery({ project, onOpen }: { project: Project; onOpen: (index: number) => void }) {
   const [a, b, c, d] = project.images;
   const alt = (i: number) => `${project.company} — image ${i + 1}`;
 
   const tileBase =
     "group relative overflow-hidden rounded-2xl shadow-[var(--shadow-card)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]";
-  const imgBase =
-    "h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.06]";
+  const imgBase = "h-full w-full object-cover transition-transform duration-[1400ms] ease-out group-hover:scale-[1.06]";
 
   return (
     <div className="relative before:absolute before:-inset-3 md:before:-inset-4 before:rounded-[1.75rem] before:border before:border-[var(--gold)]/25 before:-z-10">
@@ -227,18 +240,13 @@ function ProjectBlock({ project, index }: { project: Project; index: number }) {
       </Reveal>
 
       {/* Details */}
-      <Reveal
-        delay={0.1}
-        className={["lg:col-span-5", reverse ? "lg:order-1" : ""].join(" ")}
-      >
+      <Reveal delay={0.1} className={["lg:col-span-5", reverse ? "lg:order-1" : ""].join(" ")}>
         <p className="gold-rule">
           Project {String(index + 1).padStart(2, "0")} · {project.category}
         </p>
         <h3 className="heading-md mt-6 text-[var(--navy)]">{project.company}</h3>
         <div className="mt-5 gold-divider" />
-        <p className="mt-6 text-base md:text-lg leading-relaxed text-muted-foreground font-light">
-          {project.overview}
-        </p>
+        <p className="mt-6 text-base md:text-lg leading-relaxed text-muted-foreground font-light">{project.overview}</p>
 
         <div className="mt-8">
           <p className="text-[11px] tracking-[0.28em] uppercase text-[var(--navy)]/60 font-semibold">
@@ -272,7 +280,10 @@ function ProjectBlock({ project, index }: { project: Project; index: number }) {
             data-cursor="hover"
           >
             Explore More
-            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={2} />
+            <ArrowRight
+              className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+              strokeWidth={2}
+            />
           </button>
         </div>
       </Reveal>
@@ -284,11 +295,9 @@ function ProjectBlock({ project, index }: { project: Project; index: number }) {
         initialIndex={startIndex}
         onClose={() => setOpen(false)}
       />
-
     </div>
   );
 }
-
 
 function ProjectsPage() {
   return (
@@ -304,8 +313,14 @@ function ProjectsPage() {
       {/* Introduction */}
       <section className="section-y relative overflow-hidden">
         <div className="absolute inset-0 -z-10 bg-radial-gold" />
-        <div aria-hidden className="pointer-events-none absolute -top-32 -right-24 h-[24rem] w-[24rem] rounded-full border border-[var(--gold)]/15" />
-        <div aria-hidden className="pointer-events-none absolute -bottom-24 -left-24 h-[22rem] w-[22rem] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--emerald-deep)_18%,transparent),transparent_65%)] blur-3xl" />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-32 -right-24 h-[24rem] w-[24rem] rounded-full border border-[var(--gold)]/15"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-24 -left-24 h-[22rem] w-[22rem] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--emerald-deep)_18%,transparent),transparent_65%)] blur-3xl"
+        />
         <div className="container-px mx-auto grid gap-14 lg:grid-cols-12 lg:gap-20">
           <div className="lg:col-span-5">
             <Reveal>
@@ -318,28 +333,31 @@ function ProjectsPage() {
           </div>
           <Reveal as="div" delay={0.1} className="lg:col-span-7 space-y-7">
             <p className="text-xl leading-[1.7] text-[var(--navy)]/85 font-light">
-              Every project reflects our commitment to quality, precision, safety and long-term
-              client success.
+              Every project reflects our commitment to quality, precision, safety and long-term client success.
             </p>
             <p className="text-base text-muted-foreground leading-relaxed">
-              From electrical infrastructure and data centres to ELV systems and enterprise IT
-              solutions, Roya Ventures delivers projects that create lasting value — engineered
-              by senior practitioners, supported well beyond handover.
+              From electrical infrastructure and data centres to ELV systems and enterprise IT solutions, Roya Ventures
+              delivers projects that create lasting value — engineered by senior practitioners, supported well beyond
+              handover.
             </p>
           </Reveal>
         </div>
       </section>
 
       {/* Featured Projects Showcase */}
-      <section
-        className="relative section-y overflow-hidden"
-        style={{ background: "var(--grad-ivory)" }}
-      >
-        <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/50 to-transparent" />
+      <section className="relative section-y overflow-hidden" style={{ background: "var(--grad-ivory)" }}>
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/50 to-transparent"
+        />
         <div className="container-px mx-auto">
           <SectionHeading
             eyebrow="Featured projects"
-            title={<>Engineering delivered <em className="not-italic text-[var(--gold)]">at every scale.</em></>}
+            title={
+              <>
+                Engineering delivered <em className="not-italic text-[var(--gold)]">at every scale.</em>
+              </>
+            }
             description="A selection of mandates across infrastructure, technology and integrated systems."
           />
           <div className="mt-20 space-y-28 md:space-y-36">
@@ -359,13 +377,23 @@ function ProjectsPage() {
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_bottom_left,color-mix(in_oklab,var(--emerald-deep)_60%,transparent),transparent_55%)]" />
         <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/70 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/40 to-transparent" />
-        <div aria-hidden className="pointer-events-none absolute -top-40 -left-40 h-[34rem] w-[34rem] rounded-full border border-[var(--gold)]/12 float-shape -z-10" />
-        <div aria-hidden className="pointer-events-none absolute -bottom-32 -right-32 h-[28rem] w-[28rem] rounded-full border border-[var(--gold)]/10 -z-10" />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-40 -left-40 h-[34rem] w-[34rem] rounded-full border border-[var(--gold)]/12 float-shape -z-10"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-32 -right-32 h-[28rem] w-[28rem] rounded-full border border-[var(--gold)]/10 -z-10"
+        />
 
         <div className="container-px mx-auto">
           <SectionHeading
             eyebrow="Why clients choose us"
-            title={<>The reasons organisations <em className="not-italic text-[var(--gold)]">trust Roya Ventures.</em></>}
+            title={
+              <>
+                The reasons organisations <em className="not-italic text-[var(--gold)]">trust Roya Ventures.</em>
+              </>
+            }
             description="Six commitments that define how we work — and why clients return, project after project."
             invert
           />
@@ -395,7 +423,11 @@ function ProjectsPage() {
         <div className="container-px mx-auto">
           <SectionHeading
             eyebrow="Industries"
-            title={<>Sectors we <em className="not-italic text-[var(--gold)]">serve.</em></>}
+            title={
+              <>
+                Sectors we <em className="not-italic text-[var(--gold)]">serve.</em>
+              </>
+            }
             description="Deep experience across the industries where infrastructure and technology have to work — every hour of every day."
           />
           <div className="mt-16 grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
