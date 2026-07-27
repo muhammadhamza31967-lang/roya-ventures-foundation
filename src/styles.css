@@ -161,6 +161,29 @@
   }
 }
 
+@utility gold-rule-center {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    width: 2.5rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold));
+  }
+  &::after {
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+}
+
+
 @utility section-y {
   padding-block: 4rem;
   @media (min-width: 768px) { padding-block: 5.5rem; }

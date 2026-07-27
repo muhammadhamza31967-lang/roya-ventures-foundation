@@ -16,7 +16,7 @@ export function SectionHeading({
   return (
     <div className={["max-w-3xl", align === "center" ? "mx-auto text-center" : ""].join(" ")}>
       {eyebrow && (
-        <p className={["gold-rule", align === "center" ? "before:left-1/2 before:-translate-x-[calc(100%+1rem)]" : ""].join(" ")}>
+        <p className={align === "center" ? "gold-rule-center" : "gold-rule"}>
           {eyebrow}
         </p>
       )}
