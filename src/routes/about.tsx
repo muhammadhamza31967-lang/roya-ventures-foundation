@@ -108,7 +108,7 @@ function AboutPage() {
               <div className="relative">
                 <div className="absolute -inset-4 border border-[var(--gold)]/30 rounded-2xl -z-10" />
                 <div className="overflow-hidden rounded-2xl shadow-[var(--shadow-elegant)]">
-                  <img src={aboutMission} alt="Strategic review" width={1400} height={1000} loading="lazy" className="w-full aspect-[4/3] object-cover transition-transform duration-[1800ms] hover:scale-105" />
+                  <img src={aboutMission.url} alt="Strategic review" width={1400} height={1000} loading="lazy" className="w-full aspect-[4/3] object-cover transition-transform duration-[1800ms] hover:scale-105" />
                 </div>
               </div>
             </Reveal>
