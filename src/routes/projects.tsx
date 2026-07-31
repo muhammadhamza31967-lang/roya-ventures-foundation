@@ -171,7 +171,7 @@ const PROJECTS: Project[] = [
   {
     company: "Retail IT Infrastructure — Chalhoub Group",
     overview:
-      "Designed and deployed enterprise retail IT infrastructure for the Chalhoub Group, supporting luxury brands including Tom Ford, Valentino, Jimmy Choo, PRADA, Lacoste, Swarovski, Michael Kors, Make Up For Ever, and Ghawali across Saudi Arabia. Successfully delivered secure, scalable, and enterprise-grade IT infrastructure to support nationwide retail operations, ensuring reliable connectivity and long-term operational performance. Project highlights: delivered enterprise IT infrastructure for 30+ luxury brands across 200+ retail projects, with scalable structured cabling and enterprise network infrastructure for reliable nationwide connectivity.",
+      "Designed and deployed enterprise retail IT infrastructure for the Chalhoub Group, supporting luxury brands including Tom Ford, Valentino, Jimmy Choo, PRADA, Lacoste, Swarovski, Michael Kors, Make Up For Ever, and Ghawali across Saudi Arabia. Successfully delivered secure, scalable, and enterprise-grade IT infrastructure to support nationwide retail operations, ensuring reliable connectivity and long-term operational performance.",
     services: [
       "IDF & IT Infrastructure",
       "Rack Installation & Management",
