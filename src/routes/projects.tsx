@@ -50,6 +50,10 @@ import chRetailJimmy from "@/assets/projects/chalhoub-retail/jimmy-choo.webp.ass
 import chRetailPrada from "@/assets/projects/chalhoub-retail/prada.webp.asset.json";
 import chRetailSwarovski from "@/assets/projects/chalhoub-retail/swarovski.jpg.asset.json";
 import chRetailTomFord from "@/assets/projects/chalhoub-retail/tom-ford.jpg.asset.json";
+import warehouseRacking from "@/assets/projects/warehouse/warehouse-racking.jpg.asset.json";
+import warehouseCctv from "@/assets/projects/warehouse/warehouse-cctv.jpg.asset.json";
+import warehouseDatacenter from "@/assets/projects/warehouse/warehouse-datacenter.jpg.asset.json";
+import warehouseCabling from "@/assets/projects/warehouse/warehouse-cabling.jpg.asset.json";
 
 
 // Royalty-free placeholder imagery (Unsplash) — replace later with official project photos.
