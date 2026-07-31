@@ -212,6 +212,24 @@ const PROJECTS: Project[] = [
     status: "Completed",
     images: [warehouseRacking.url, warehouseCctv.url, warehouseDatacenter.url, warehouseCabling.url],
   },
+  {
+    company: "Café Security & IT Infrastructure — Bateel El'an & JOE & THE JUICE",
+    overview:
+      "Delivered integrated security and IT infrastructure solutions for Bateel El'an and JOE & THE JUICE, providing reliable surveillance, enterprise networking, and connectivity to support seamless day-to-day operations across multiple café and spa locations. Successfully implemented secure, scalable infrastructure while minimizing disruption to business operations and enhancing operational efficiency.",
+    services: [
+      "IP CCTV Surveillance",
+      "Structured Cabling (Cat6)",
+      "Network Infrastructure",
+      "Enterprise Wi-Fi Deployment",
+      "Network Cabinet Installation",
+      "Audio/Video & Background Music Systems",
+      "Testing, Commissioning & Technical Support",
+    ],
+    category: "Café Security & IT Infrastructure",
+    location: "Riyadh, Saudi Arabia",
+    status: "Completed",
+    images: [cafeJoeJuiceExterior.url, cafeBateel.url, cafeJoeJuiceInterior.url, cafeFurless.url],
+  },
 ];
 
 
