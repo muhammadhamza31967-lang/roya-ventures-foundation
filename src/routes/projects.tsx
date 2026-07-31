@@ -41,6 +41,7 @@ import sephoraUWalk from "@/assets/projects/sephora/U_Walk_Sephora_CCTV_Work.web
 import nujaimaChanel from "@/assets/projects/nujaima/chanel-cctv-lan.webp.asset.json";
 import nujaimaDataCentre from "@/assets/projects/nujaima/data-centre.jpeg.asset.json";
 import nujaimaCabling from "@/assets/projects/nujaima/network-cable-labeling.jpg.asset.json";
+import nujaimaSolitaire from "@/assets/projects/nujaima/chanel-solitaire.jpeg.asset.json";
 import chalhoubCabling from "@/assets/projects/chalhoub/cable-pulling.jpg.asset.json";
 import chalhoubDatacenter from "@/assets/projects/chalhoub/datacenter.jpg.asset.json";
 import chalhoubElv from "@/assets/projects/chalhoub/elv-system.webp.asset.json";
