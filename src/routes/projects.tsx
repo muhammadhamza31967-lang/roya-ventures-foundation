@@ -38,6 +38,10 @@ import sephoraOlaya from "@/assets/projects/sephora/Sephora_Olaya.webp.asset.jso
 import sephoraKingdom from "@/assets/projects/sephora/Sephohra_Kingdom.webp.asset.json";
 import sephoraApWork from "@/assets/projects/sephora/Sephora_Store_AP_Work2.jpg.asset.json";
 import sephoraUWalk from "@/assets/projects/sephora/U_Walk_Sephora_CCTV_Work.webp.asset.json";
+import nujaimaChanel from "@/assets/projects/nujaima/chanel-cctv-lan.webp.asset.json";
+import nujaimaDataCentre from "@/assets/projects/nujaima/data-centre.jpeg.asset.json";
+import nujaimaCabling from "@/assets/projects/nujaima/network-cable-labeling.jpg.asset.json";
+import nujaimaSolitaire from "@/assets/projects/nujaima/chanel-solitaire.jpeg.asset.json";
 
 // Royalty-free placeholder imagery (Unsplash) — replace later with official project photos.
 const img = (id: string, w = 1600) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
@@ -116,6 +120,24 @@ const PROJECTS: Project[] = [
     location: "Across Saudi Arabia",
     status: "On-Going",
     images: [sephoraOlaya.url, sephoraKingdom.url, sephoraApWork.url, sephoraUWalk.url],
+  },
+  {
+    company: "Enterprise Data Center & Retail IT Infrastructure — Al Nujaima Trading Co.",
+    overview:
+      "Designed and deployed enterprise data center and retail IT infrastructure for Al Nujaima Trading Co., supporting luxury retail brands including Étoile, Tod's, Chanel, Roger Vivier, and ETRO across Saudi Arabia. Key technologies: Enterprise LAN Switching • PoE Infrastructure • Enterprise Wi-Fi • Fiber Backbone • IoT Edge Devices • IP Surveillance • Secure SD-WAN/VPN Connectivity. Project highlight: successfully delivered secure and scalable enterprise network infrastructure supporting luxury retail boutiques across Saudi Arabia, with centralized connectivity to the head office.",
+    services: [
+      "Data Center Infrastructure",
+      "Server Cabinet & Rack Management",
+      "Fiber Optic Backbone",
+      "Structured Cabling",
+      "UPS & Power Backup",
+      "Retail Network Infrastructure",
+      "IP Surveillance Systems",
+    ],
+    category: "Enterprise IT Infrastructure",
+    location: "Riyadh, Saudi Arabia",
+    status: "Completed",
+    images: [nujaimaChanel.url, nujaimaDataCentre.url, nujaimaCabling.url, nujaimaSolitaire.url],
   },
 ];
 
