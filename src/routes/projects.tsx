@@ -121,6 +121,24 @@ const PROJECTS: Project[] = [
     status: "On-Going",
     images: [sephoraOlaya.url, sephoraKingdom.url, sephoraApWork.url, sephoraUWalk.url],
   },
+  {
+    company: "Enterprise Data Center & Retail IT Infrastructure — Al Nujaima Trading Co.",
+    overview:
+      "Designed and deployed enterprise data center and retail IT infrastructure for Al Nujaima Trading Co., supporting luxury retail brands including Étoile, Tod's, Chanel, Roger Vivier, and ETRO across Saudi Arabia. Key technologies: Enterprise LAN Switching • PoE Infrastructure • Enterprise Wi-Fi • Fiber Backbone • IoT Edge Devices • IP Surveillance • Secure SD-WAN/VPN Connectivity. Project highlight: successfully delivered secure and scalable enterprise network infrastructure supporting luxury retail boutiques across Saudi Arabia, with centralized connectivity to the head office.",
+    services: [
+      "Data Center Infrastructure",
+      "Server Cabinet & Rack Management",
+      "Fiber Optic Backbone",
+      "Structured Cabling",
+      "UPS & Power Backup",
+      "Retail Network Infrastructure",
+      "IP Surveillance Systems",
+    ],
+    category: "Enterprise IT Infrastructure",
+    location: "Riyadh, Saudi Arabia",
+    status: "Completed",
+    images: [nujaimaChanel.url, nujaimaDataCentre.url, nujaimaCabling.url, nujaimaSolitaire.url],
+  },
 ];
 
 
