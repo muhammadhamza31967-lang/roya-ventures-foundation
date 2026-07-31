@@ -54,6 +54,10 @@ import warehouseRacking from "@/assets/projects/warehouse/warehouse-racking.jpg.
 import warehouseCctv from "@/assets/projects/warehouse/warehouse-cctv.jpg.asset.json";
 import warehouseDatacenter from "@/assets/projects/warehouse/warehouse-datacenter.jpg.asset.json";
 import warehouseCabling from "@/assets/projects/warehouse/warehouse-cabling.jpg.asset.json";
+import cafeJoeJuiceExterior from "@/assets/projects/cafe/joe-juice-cctv.webp.asset.json";
+import cafeBateel from "@/assets/projects/cafe/bateel-solitaire.jpg.asset.json";
+import cafeJoeJuiceInterior from "@/assets/projects/cafe/joe-juice-interior.webp.asset.json";
+import cafeFurless from "@/assets/projects/cafe/furless.jpg.asset.json";
 
 
 // Royalty-free placeholder imagery (Unsplash) — replace later with official project photos.
