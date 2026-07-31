@@ -186,7 +186,26 @@ const PROJECTS: Project[] = [
     status: "Completed",
     images: [chRetailSwarovski.url, chRetailTomFord.url, chRetailJimmy.url, chRetailPrada.url],
   },
+  {
+    company: "Warehouse Surveillance & Network Upgrade — Domino's, Emirates & Chalhoub Group",
+    overview:
+      "Delivered a complete warehouse surveillance and enterprise network infrastructure solution for a shared logistics facility serving Domino's, Emirates, and Chalhoub Group, enhancing operational visibility, inventory management, and overall site security. Successfully implemented a reliable, high-performance network and surveillance environment to support day-to-day warehouse operations and future scalability.",
+    services: [
+      "Data Center Setup",
+      "Network Cabinet Installation",
+      "Rack & Cable Management",
+      "PoE Switching Infrastructure",
+      "Fiber Optic Backbone",
+      "IP CCTV Surveillance",
+      "Enterprise Wi-Fi Infrastructure",
+    ],
+    category: "Warehouse Surveillance & Networking",
+    location: "Riyadh & Jeddah, Saudi Arabia",
+    status: "Completed",
+    images: [warehouseRacking.url, warehouseCctv.url, warehouseDatacenter.url, warehouseCabling.url],
+  },
 ];
+
 
 
 
