@@ -93,6 +93,8 @@ const PROJECTS: Project[] = [
     category: "Retail Surveillance",
     location: "Kingdom of Saudi Arabia (KSA)",
     status: "Successfully Delivered",
+    images: [dominosHikvision.url, dominosCeiling.url, dominosLadder.url, dominosCashier.url],
+  },
   {
     company: "Retail Security & IT Infrastructure — Sephora KSA",
     overview:
