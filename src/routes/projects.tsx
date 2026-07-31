@@ -49,7 +49,7 @@ type Project = {
   services: string[];
   category: string;
   location: string;
-  status: "Completed" | "Successfully Delivered";
+  status: "Completed" | "Successfully Delivered" | "On-Going";
   images: string[]; // at least 4; used for the visible gallery composition
   galleryImages?: string[]; // optional override for the Explore More lightbox
 };
