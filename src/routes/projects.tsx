@@ -168,6 +168,24 @@ const PROJECTS: Project[] = [
 
     images: [chalhoubDatacenter.url, chalhoubElv.url, chalhoubCabling.url, chalhoubTesting.url],
   },
+  {
+    company: "Retail IT Infrastructure — Chalhoub Group",
+    overview:
+      "Designed and deployed enterprise retail IT infrastructure for the Chalhoub Group, supporting luxury brands including Tom Ford, Valentino, Jimmy Choo, PRADA, Lacoste, Swarovski, Michael Kors, Make Up For Ever, and Ghawali across Saudi Arabia. Successfully delivered secure, scalable, and enterprise-grade IT infrastructure to support nationwide retail operations, ensuring reliable connectivity and long-term operational performance. Project highlights: delivered enterprise IT infrastructure for 30+ luxury brands across 200+ retail projects, with scalable structured cabling and enterprise network infrastructure for reliable nationwide connectivity.",
+    services: [
+      "IDF & IT Infrastructure",
+      "Rack Installation & Management",
+      "Fiber Optic Backbone",
+      "Structured Cabling",
+      "UPS & Power Backup",
+      "Physical Surveillance Infrastructure",
+      "IoT Device Installation",
+    ],
+    category: "Retail IT Infrastructure",
+    location: "Across Saudi Arabia",
+    status: "Completed",
+    images: [chRetailSwarovski.url, chRetailTomFord.url, chRetailJimmy.url, chRetailPrada.url],
+  },
 ];
 
 
