@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
@@ -9,6 +9,8 @@ import { ProjectLightbox } from "@/components/site/ProjectLightbox";
 import {
   MapPin,
   ArrowRight,
+  ArrowDown,
+  ArrowUp,
   CheckCircle2,
   ChevronDown,
   ShieldCheck,
@@ -78,6 +80,27 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
+    company: "Retail Security & IT Infrastructure — Sephora KSA",
+    overview:
+      "Delivering end-to-end IT infrastructure, IP surveillance, structured cabling, wireless networking, and AV solutions for Sephora stores across Saudi Arabia, supporting new store rollouts, upgrades, expansion, and ongoing lifecycle maintenance. Project highlight: successfully supporting 43+ Sephora stores across Saudi Arabia, delivering enterprise IT infrastructure, surveillance, structured cabling, wireless networking, and AV solutions for new store launches, upgrades, and reliable day-to-day operations.",
+    services: [
+      "IP CCTV Surveillance",
+      "Structured Cabling (Cat6 & Fiber)",
+      "Enterprise Wi-Fi",
+      "Network Infrastructure",
+      "Audio-Visual Systems",
+      "IT Infrastructure Deployment",
+      "POS & Workstation Integration",
+      "Server Rack & Cabinet Setup",
+      "Preventive Maintenance",
+      "Infrastructure Upgrades",
+    ],
+    category: "Retail IT & Security",
+    location: "Across Saudi Arabia",
+    status: "On-Going",
+    images: [sephoraOlaya.url, sephoraKingdom.url, sephoraApWork.url, sephoraUWalk.url],
+  },
+  {
     company: "Nesma LED Lighting Project",
     overview:
       "Delivered a large-scale government LED street lighting upgrade across Jeddah, replacing conventional luminaires with energy-efficient LED systems to improve public infrastructure, energy efficiency, and long-term operational performance. Project highlight: 18,000+ LED luminaires successfully replaced across Jeddah.",
@@ -116,27 +139,6 @@ const PROJECTS: Project[] = [
     location: "Kingdom of Saudi Arabia (KSA)",
     status: "Successfully Delivered",
     images: [dominosHikvision.url, dominosCeiling.url, dominosLadder.url, dominosCashier.url],
-  },
-  {
-    company: "Retail Security & IT Infrastructure — Sephora KSA",
-    overview:
-      "Delivering end-to-end IT infrastructure, IP surveillance, structured cabling, wireless networking, and AV solutions for Sephora stores across Saudi Arabia, supporting new store rollouts, upgrades, expansion, and ongoing lifecycle maintenance. Project highlight: successfully supporting 43+ Sephora stores across Saudi Arabia, delivering enterprise IT infrastructure, surveillance, structured cabling, wireless networking, and AV solutions for new store launches, upgrades, and reliable day-to-day operations.",
-    services: [
-      "IP CCTV Surveillance",
-      "Structured Cabling (Cat6 & Fiber)",
-      "Enterprise Wi-Fi",
-      "Network Infrastructure",
-      "Audio-Visual Systems",
-      "IT Infrastructure Deployment",
-      "POS & Workstation Integration",
-      "Server Rack & Cabinet Setup",
-      "Preventive Maintenance",
-      "Infrastructure Upgrades",
-    ],
-    category: "Retail IT & Security",
-    location: "Across Saudi Arabia",
-    status: "On-Going",
-    images: [sephoraOlaya.url, sephoraKingdom.url, sephoraApWork.url, sephoraUWalk.url],
   },
   {
     company: "Enterprise Data Center & Retail IT Infrastructure — Al Nujaima Trading Co.",
@@ -479,7 +481,29 @@ function ProjectBlock({ project, index }: { project: Project; index: number }) {
   );
 }
 
+const PROJECTS_STEP = 2;
+
 function ProjectsPage() {
+  const [visibleCount, setVisibleCount] = useState(PROJECTS_STEP);
+  const showcaseRef = useRef<HTMLDivElement | null>(null);
+  const blockRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const allVisible = visibleCount >= PROJECTS.length;
+
+  const handleViewMore = () => {
+    const nextIndex = visibleCount;
+    setVisibleCount((c) => Math.min(c + PROJECTS_STEP, PROJECTS.length));
+    window.setTimeout(() => {
+      blockRefs.current[nextIndex]?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 320);
+  };
+
+  const handleViewLess = () => {
+    setVisibleCount(PROJECTS_STEP);
+    window.setTimeout(() => {
+      showcaseRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 60);
+  };
+
   return (
     <SiteLayout transparentHeader>
       <PageHero
@@ -530,7 +554,7 @@ function ProjectsPage() {
           aria-hidden
           className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/50 to-transparent"
         />
-        <div className="container-px mx-auto">
+        <div className="container-px mx-auto" ref={showcaseRef}>
           <SectionHeading
             eyebrow="Featured projects"
             title={
@@ -541,9 +565,31 @@ function ProjectsPage() {
             description="A selection of mandates across infrastructure, technology and integrated systems."
           />
           <div className="mt-20 space-y-28 md:space-y-36">
-            {PROJECTS.map((project, i) => (
-              <ProjectBlock key={project.company} project={project} index={i} />
+            {PROJECTS.slice(0, visibleCount).map((project, i) => (
+              <div
+                key={project.company}
+                ref={(el) => {
+                  blockRefs.current[i] = el;
+                }}
+                className="scroll-mt-28 animate-fade-in"
+              >
+                <ProjectBlock project={project} index={i} />
+              </div>
             ))}
+          </div>
+
+          <div className="mt-20 flex justify-center">
+            {allVisible ? (
+              <button type="button" onClick={handleViewLess} className="btn-primary group">
+                View Less Projects
+                <ArrowUp className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5" />
+              </button>
+            ) : (
+              <button type="button" onClick={handleViewMore} className="btn-primary group">
+                View More Projects
+                <ArrowDown className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5" />
+              </button>
+            )}
           </div>
         </div>
       </section>
