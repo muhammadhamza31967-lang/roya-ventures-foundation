@@ -10,6 +10,7 @@ import {
   MapPin,
   ArrowRight,
   CheckCircle2,
+  ChevronDown,
   ShieldCheck,
   Users,
   Wrench,
@@ -252,6 +253,10 @@ function ProjectBlock({ project, index }: { project: Project; index: number }) {
   const reverse = index % 2 === 1;
   const [open, setOpen] = useState(false);
   const [startIndex, setStartIndex] = useState(0);
+  const [servicesExpanded, setServicesExpanded] = useState(false);
+  const visibleServices = project.services.slice(0, 4);
+  const extraServices = project.services.slice(4);
+  const hasExtraServices = extraServices.length > 0;
 
   const openAt = (i: number) => {
     setStartIndex(i);
@@ -279,7 +284,7 @@ function ProjectBlock({ project, index }: { project: Project; index: number }) {
             Services delivered
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
-            {project.services.map((s) => (
+            {visibleServices.map((s) => (
               <span
                 key={s}
                 className="rounded-full border border-[color-mix(in_oklab,var(--navy)_15%,transparent)] bg-white px-3.5 py-1.5 text-xs font-medium text-[var(--navy)]/85"
@@ -288,6 +293,40 @@ function ProjectBlock({ project, index }: { project: Project; index: number }) {
               </span>
             ))}
           </div>
+
+          {hasExtraServices && (
+            <div
+              className={[
+                "overflow-hidden transition-all duration-300 ease-out",
+                servicesExpanded ? "max-h-48 opacity-100 mt-3" : "max-h-0 opacity-0 mt-0",
+              ].join(" ")}
+            >
+              <div className="flex flex-wrap gap-2">
+                {extraServices.map((s) => (
+                  <span
+                    key={s}
+                    className="rounded-full border border-[color-mix(in_oklab,var(--navy)_15%,transparent)] bg-white px-3.5 py-1.5 text-xs font-medium text-[var(--navy)]/85"
+                  >
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {hasExtraServices && (
+            <button
+              type="button"
+              onClick={() => setServicesExpanded((v) => !v)}
+              className="group mt-4 inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.2em] uppercase text-[var(--gold)] transition-colors duration-300 hover:text-[var(--navy)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--gold)]"
+            >
+              {servicesExpanded ? "View Less" : "View More"}
+              <ChevronDown
+                className={`h-3.5 w-3.5 transition-transform duration-300 ${servicesExpanded ? "rotate-180" : ""}`}
+                strokeWidth={2}
+              />
+            </button>
+          )}
         </div>
 
         <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-[var(--navy)]/75">
