@@ -145,23 +145,23 @@ const PROJECTS: Project[] = [
     images: [nujaimaChanel.url, nujaimaDataCentre.url, nujaimaCabling.url, nujaimaSolitaire.url],
   },
   {
-    company: "Enterprise ELV Infrastructure — Chalhoub Group, Riyadh Office",
+    company: "Enterprise ELV Infrastructure — Chalhoub Group",
     overview:
-      "Comprehensive Enterprise ELV and ICT infrastructure solution for the Chalhoub Group's Riyadh office, delivering reliable connectivity, security, and communication systems to support daily business operations. Scope included a main server room (MDF) with multiple IDFs, 1200+ nodes for user data and IP telephony, and cabling infrastructure for physical security. Key technologies: multilayer enterprise LAN switching, PoE, enterprise Wi-Fi access points, IoT and edge devices, IP surveillance with VMS, AV systems, digital signage, video conferencing, UPS systems, and modern computing devices. Project highlights: delivered a secure, scalable, high-performance network environment integrating security, communication, and server room infrastructure into a unified solution for the corporate headquarters.",
+      "Delivered a comprehensive Enterprise ELV and ICT infrastructure solution for the Chalhoub Group, providing secure connectivity, enterprise networking, communication systems, and server infrastructure to support day-to-day business operations across its Riyadh office. Successfully implemented a scalable, high-performance environment by integrating networking, structured cabling, server rooms, digital signage, and security infrastructure into a unified enterprise solution.",
     services: [
       "Structured Cabling (Cat6 & Fiber)",
       "Enterprise Network Infrastructure",
-      "MDF & IDF Server Room Setup",
-      "1200+ Data & IP Telephony Nodes",
+      "MDF & IDF Server Rooms",
+      "User Data & IP Telephony",
       "Physical Security Cabling",
-      "Hardware Installation & Mounting",
-      "UPS Installation, Testing & Commissioning",
-      "Digital Signage Installation",
-      "Access Point Mounting & Testing",
+      "UPS Installation & Commissioning",
+      "Digital Signage",
+      "Enterprise Wi-Fi Access Points",
     ],
     category: "Enterprise ELV & ICT",
-    location: "Riyadh & Jeddah",
+    location: "Riyadh & Jeddah, Saudi Arabia",
     status: "Completed",
+
     images: [chalhoubDatacenter.url, chalhoubElv.url, chalhoubCabling.url, chalhoubTesting.url],
   },
 ];
