@@ -226,7 +226,7 @@ function HomePage() {
                 </div>
               </Reveal>
             </div>
-            <div className="lg:col-span-7 lg:pt-2">
+            <div className="lg:col-span-7 lg:pt-12">
               <Reveal delay={0.1}>
                 <p className="text-base md:text-[17px] leading-[1.85] text-muted-foreground text-left md:text-justify hyphens-auto">
                   Roya Ventures is a multidisciplinary technology and engineering solutions firm — delivering data
