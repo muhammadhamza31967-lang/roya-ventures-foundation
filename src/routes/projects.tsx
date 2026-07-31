@@ -46,6 +46,10 @@ import chalhoubCabling from "@/assets/projects/chalhoub/cable-pulling.jpg.asset.
 import chalhoubDatacenter from "@/assets/projects/chalhoub/datacenter.jpg.asset.json";
 import chalhoubElv from "@/assets/projects/chalhoub/elv-system.webp.asset.json";
 import chalhoubTesting from "@/assets/projects/chalhoub/testing.jpg.asset.json";
+import chRetailJimmy from "@/assets/projects/chalhoub-retail/jimmy-choo.webp.asset.json";
+import chRetailPrada from "@/assets/projects/chalhoub-retail/prada.webp.asset.json";
+import chRetailSwarovski from "@/assets/projects/chalhoub-retail/swarovski.jpg.asset.json";
+import chRetailTomFord from "@/assets/projects/chalhoub-retail/tom-ford.jpg.asset.json";
 
 
 // Royalty-free placeholder imagery (Unsplash) — replace later with official project photos.
@@ -163,6 +167,24 @@ const PROJECTS: Project[] = [
     status: "Completed",
 
     images: [chalhoubDatacenter.url, chalhoubElv.url, chalhoubCabling.url, chalhoubTesting.url],
+  },
+  {
+    company: "Retail IT Infrastructure — Chalhoub Group",
+    overview:
+      "Designed and deployed enterprise retail IT infrastructure for the Chalhoub Group, supporting luxury brands including Tom Ford, Valentino, Jimmy Choo, PRADA, Lacoste, Swarovski, Michael Kors, Make Up For Ever, and Ghawali across Saudi Arabia. Successfully delivered secure, scalable, and enterprise-grade IT infrastructure to support nationwide retail operations, ensuring reliable connectivity and long-term operational performance. Project highlights: delivered enterprise IT infrastructure for 30+ luxury brands across 200+ retail projects, with scalable structured cabling and enterprise network infrastructure for reliable nationwide connectivity.",
+    services: [
+      "IDF & IT Infrastructure",
+      "Rack Installation & Management",
+      "Fiber Optic Backbone",
+      "Structured Cabling",
+      "UPS & Power Backup",
+      "Physical Surveillance Infrastructure",
+      "IoT Device Installation",
+    ],
+    category: "Retail IT Infrastructure",
+    location: "Across Saudi Arabia",
+    status: "Completed",
+    images: [chRetailSwarovski.url, chRetailTomFord.url, chRetailJimmy.url, chRetailPrada.url],
   },
 ];
 
