@@ -9,6 +9,8 @@ import { ProjectLightbox } from "@/components/site/ProjectLightbox";
 import {
   MapPin,
   ArrowRight,
+  ArrowDown,
+  ArrowUp,
   CheckCircle2,
   ChevronDown,
   ShieldCheck,
