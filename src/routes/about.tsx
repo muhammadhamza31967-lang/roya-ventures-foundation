@@ -50,7 +50,7 @@ function AboutPage() {
           <div className="lg:col-span-5">
             <Reveal>
               <p className="gold-rule">Company overview</p>
-              <h2 className="heading-md mt-6">A house of advisors, operators and <em className="not-italic text-[var(--gold)]">capital specialists.</em></h2>
+              <h2 className="heading-sub-lg mt-6">A house of advisors, operators and <em className="not-italic text-[var(--gold)]">capital specialists.</em></h2>
               <div className="mt-8 gold-divider" />
             </Reveal>
           </div>

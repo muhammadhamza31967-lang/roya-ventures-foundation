@@ -523,7 +523,7 @@ function ProjectsPage() {
           <div className="lg:col-span-5">
             <Reveal>
               <p className="gold-rule">Our track record</p>
-              <h2 className="heading-md mt-6">
+              <h2 className="heading-sub-lg mt-6">
                 Proven delivery <em className="not-italic text-[var(--gold)]">across every project.</em>
               </h2>
               <div className="mt-8 gold-divider" />
