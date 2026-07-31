@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
@@ -552,7 +552,7 @@ function ProjectsPage() {
           aria-hidden
           className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/50 to-transparent"
         />
-        <div className="container-px mx-auto">
+        <div className="container-px mx-auto" ref={showcaseRef}>
           <SectionHeading
             eyebrow="Featured projects"
             title={
@@ -563,9 +563,31 @@ function ProjectsPage() {
             description="A selection of mandates across infrastructure, technology and integrated systems."
           />
           <div className="mt-20 space-y-28 md:space-y-36">
-            {PROJECTS.map((project, i) => (
-              <ProjectBlock key={project.company} project={project} index={i} />
+            {PROJECTS.slice(0, visibleCount).map((project, i) => (
+              <div
+                key={project.company}
+                ref={(el) => {
+                  blockRefs.current[i] = el;
+                }}
+                className="scroll-mt-28 animate-fade-in"
+              >
+                <ProjectBlock project={project} index={i} />
+              </div>
             ))}
+          </div>
+
+          <div className="mt-20 flex justify-center">
+            {allVisible ? (
+              <button type="button" onClick={handleViewLess} className="btn-primary group">
+                View Less Projects
+                <ArrowUp className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5" />
+              </button>
+            ) : (
+              <button type="button" onClick={handleViewMore} className="btn-primary group">
+                View More Projects
+                <ArrowDown className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5" />
+              </button>
+            )}
           </div>
         </div>
       </section>
