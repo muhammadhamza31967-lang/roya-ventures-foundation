@@ -42,6 +42,11 @@ import nujaimaChanel from "@/assets/projects/nujaima/chanel-cctv-lan.webp.asset.
 import nujaimaDataCentre from "@/assets/projects/nujaima/data-centre.jpeg.asset.json";
 import nujaimaCabling from "@/assets/projects/nujaima/network-cable-labeling.jpg.asset.json";
 import nujaimaSolitaire from "@/assets/projects/nujaima/chanel-solitaire.jpeg.asset.json";
+import chalhoubCabling from "@/assets/projects/chalhoub/cable-pulling.jpg.asset.json";
+import chalhoubDatacenter from "@/assets/projects/chalhoub/datacenter.jpg.asset.json";
+import chalhoubElv from "@/assets/projects/chalhoub/elv-system.webp.asset.json";
+import chalhoubTesting from "@/assets/projects/chalhoub/testing.jpg.asset.json";
+
 
 // Royalty-free placeholder imagery (Unsplash) — replace later with official project photos.
 const img = (id: string, w = 1600) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
@@ -139,7 +144,28 @@ const PROJECTS: Project[] = [
     status: "Completed",
     images: [nujaimaChanel.url, nujaimaDataCentre.url, nujaimaCabling.url, nujaimaSolitaire.url],
   },
+  {
+    company: "Enterprise ELV Infrastructure — Chalhoub Group, Riyadh Office",
+    overview:
+      "Comprehensive Enterprise ELV and ICT infrastructure solution for the Chalhoub Group's Riyadh office, delivering reliable connectivity, security, and communication systems to support daily business operations. Scope included a main server room (MDF) with multiple IDFs, 1200+ nodes for user data and IP telephony, and cabling infrastructure for physical security. Key technologies: multilayer enterprise LAN switching, PoE, enterprise Wi-Fi access points, IoT and edge devices, IP surveillance with VMS, AV systems, digital signage, video conferencing, UPS systems, and modern computing devices. Project highlights: delivered a secure, scalable, high-performance network environment integrating security, communication, and server room infrastructure into a unified solution for the corporate headquarters.",
+    services: [
+      "Structured Cabling (Cat6 & Fiber)",
+      "Enterprise Network Infrastructure",
+      "MDF & IDF Server Room Setup",
+      "1200+ Data & IP Telephony Nodes",
+      "Physical Security Cabling",
+      "Hardware Installation & Mounting",
+      "UPS Installation, Testing & Commissioning",
+      "Digital Signage Installation",
+      "Access Point Mounting & Testing",
+    ],
+    category: "Enterprise ELV & ICT",
+    location: "Riyadh & Jeddah",
+    status: "Completed",
+    images: [chalhoubDatacenter.url, chalhoubElv.url, chalhoubCabling.url, chalhoubTesting.url],
+  },
 ];
+
 
 
 const TRUST = [
