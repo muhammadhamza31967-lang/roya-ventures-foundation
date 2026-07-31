@@ -124,7 +124,7 @@ const PROJECTS: Project[] = [
   {
     company: "Enterprise Data Center & Retail IT Infrastructure — Al Nujaima Trading Co.",
     overview:
-      "Designed and deployed enterprise data center and retail IT infrastructure for Al Nujaima Trading Co., supporting luxury retail brands including Étoile, Tod's, Chanel, Roger Vivier, and ETRO across Saudi Arabia. Key technologies: Enterprise LAN Switching • PoE Infrastructure • Enterprise Wi-Fi • Fiber Backbone • IoT Edge Devices • IP Surveillance • Secure SD-WAN/VPN Connectivity. Project highlight: successfully delivered secure and scalable enterprise network infrastructure supporting luxury retail boutiques across Saudi Arabia, with centralized connectivity to the head office.",
+      "Designed and deployed enterprise data center and retail IT infrastructure for Al Nujaima Trading Co., supporting luxury retail brands including Étoile, Tod's, Chanel, Roger Vivier, and ETRO across Saudi Arabia. Successfully delivered secure, scalable, and centrally managed network infrastructure, enabling reliable connectivity and seamless operations across corporate and retail locations.",
     services: [
       "Data Center Infrastructure",
       "Server Cabinet & Rack Management",
