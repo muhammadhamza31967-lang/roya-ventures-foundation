@@ -50,12 +50,12 @@ function AboutPage() {
           <div className="lg:col-span-5">
             <Reveal>
               <p className="gold-rule">Company overview</p>
-              <h2 className="heading-lg mt-6">A house of advisors, operators and <em className="not-italic text-[var(--gold)]">capital specialists.</em></h2>
+              <h2 className="heading-md mt-6">A house of advisors, operators and <em className="not-italic text-[var(--gold)]">capital specialists.</em></h2>
               <div className="mt-8 gold-divider" />
             </Reveal>
           </div>
           <Reveal as="div" delay={0.1} className="lg:col-span-7 space-y-7">
-            <p className="text-xl leading-[1.7] text-[var(--navy)]/85 font-light">
+            <p className="text-base text-muted-foreground leading-relaxed">
               For more than 8 Years, Roya Ventures has worked alongside boards, founders and
               institutional investors to address the questions that define long-term value.
 
