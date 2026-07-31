@@ -78,6 +78,27 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
+    company: "Retail Security & IT Infrastructure — Sephora KSA",
+    overview:
+      "Delivering end-to-end IT infrastructure, IP surveillance, structured cabling, wireless networking, and AV solutions for Sephora stores across Saudi Arabia, supporting new store rollouts, upgrades, expansion, and ongoing lifecycle maintenance. Project highlight: successfully supporting 43+ Sephora stores across Saudi Arabia, delivering enterprise IT infrastructure, surveillance, structured cabling, wireless networking, and AV solutions for new store launches, upgrades, and reliable day-to-day operations.",
+    services: [
+      "IP CCTV Surveillance",
+      "Structured Cabling (Cat6 & Fiber)",
+      "Enterprise Wi-Fi",
+      "Network Infrastructure",
+      "Audio-Visual Systems",
+      "IT Infrastructure Deployment",
+      "POS & Workstation Integration",
+      "Server Rack & Cabinet Setup",
+      "Preventive Maintenance",
+      "Infrastructure Upgrades",
+    ],
+    category: "Retail IT & Security",
+    location: "Across Saudi Arabia",
+    status: "On-Going",
+    images: [sephoraOlaya.url, sephoraKingdom.url, sephoraApWork.url, sephoraUWalk.url],
+  },
+  {
     company: "Nesma LED Lighting Project",
     overview:
       "Delivered a large-scale government LED street lighting upgrade across Jeddah, replacing conventional luminaires with energy-efficient LED systems to improve public infrastructure, energy efficiency, and long-term operational performance. Project highlight: 18,000+ LED luminaires successfully replaced across Jeddah.",
@@ -116,27 +137,6 @@ const PROJECTS: Project[] = [
     location: "Kingdom of Saudi Arabia (KSA)",
     status: "Successfully Delivered",
     images: [dominosHikvision.url, dominosCeiling.url, dominosLadder.url, dominosCashier.url],
-  },
-  {
-    company: "Retail Security & IT Infrastructure — Sephora KSA",
-    overview:
-      "Delivering end-to-end IT infrastructure, IP surveillance, structured cabling, wireless networking, and AV solutions for Sephora stores across Saudi Arabia, supporting new store rollouts, upgrades, expansion, and ongoing lifecycle maintenance. Project highlight: successfully supporting 43+ Sephora stores across Saudi Arabia, delivering enterprise IT infrastructure, surveillance, structured cabling, wireless networking, and AV solutions for new store launches, upgrades, and reliable day-to-day operations.",
-    services: [
-      "IP CCTV Surveillance",
-      "Structured Cabling (Cat6 & Fiber)",
-      "Enterprise Wi-Fi",
-      "Network Infrastructure",
-      "Audio-Visual Systems",
-      "IT Infrastructure Deployment",
-      "POS & Workstation Integration",
-      "Server Rack & Cabinet Setup",
-      "Preventive Maintenance",
-      "Infrastructure Upgrades",
-    ],
-    category: "Retail IT & Security",
-    location: "Across Saudi Arabia",
-    status: "On-Going",
-    images: [sephoraOlaya.url, sephoraKingdom.url, sephoraApWork.url, sephoraUWalk.url],
   },
   {
     company: "Enterprise Data Center & Retail IT Infrastructure — Al Nujaima Trading Co.",
