@@ -46,6 +46,10 @@ import chalhoubCabling from "@/assets/projects/chalhoub/cable-pulling.jpg.asset.
 import chalhoubDatacenter from "@/assets/projects/chalhoub/datacenter.jpg.asset.json";
 import chalhoubElv from "@/assets/projects/chalhoub/elv-system.webp.asset.json";
 import chalhoubTesting from "@/assets/projects/chalhoub/testing.jpg.asset.json";
+import chRetailJimmy from "@/assets/projects/chalhoub-retail/jimmy-choo.webp.asset.json";
+import chRetailPrada from "@/assets/projects/chalhoub-retail/prada.webp.asset.json";
+import chRetailSwarovski from "@/assets/projects/chalhoub-retail/swarovski.jpg.asset.json";
+import chRetailTomFord from "@/assets/projects/chalhoub-retail/tom-ford.jpg.asset.json";
 
 
 // Royalty-free placeholder imagery (Unsplash) — replace later with official project photos.
