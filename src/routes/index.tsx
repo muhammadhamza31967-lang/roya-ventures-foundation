@@ -205,7 +205,7 @@ function HomePage() {
             <div className="lg:col-span-5 lg:sticky lg:top-32">
               <Reveal>
               <p className="gold-rule">The Firm</p>
-                <h2 className="heading-sub-lg mt-8 leading-[1.05]">
+                <h2 className="heading-lg mt-8 leading-[1.05]">
                   One partner for the technology systems that{" "}
                   <em className="not-italic text-[var(--gold)]">power your business.</em>
                 </h2>
