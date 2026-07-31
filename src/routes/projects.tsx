@@ -33,6 +33,10 @@ import dominosHikvision from "@/assets/projects/dominos/dominos-hikvision.jpg.as
 import dominosCashier from "@/assets/projects/dominos/dominos-cashier.jpg.asset.json";
 import dominosCeiling from "@/assets/projects/dominos/dominos-ceiling.jpg.asset.json";
 import dominosLadder from "@/assets/projects/dominos/dominos-ladder.jpg.asset.json";
+import sephoraOlaya from "@/assets/projects/sephora/Sephora_Olaya.webp.asset.json";
+import sephoraKingdom from "@/assets/projects/sephora/Sephohra_Kingdom.webp.asset.json";
+import sephoraApWork from "@/assets/projects/sephora/Sephora_Store_AP_Work2.jpg.asset.json";
+import sephoraUWalk from "@/assets/projects/sephora/U_Walk_Sephora_CCTV_Work.webp.asset.json";
 
 // Royalty-free placeholder imagery (Unsplash) — replace later with official project photos.
 const img = (id: string, w = 1600) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
