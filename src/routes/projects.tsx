@@ -475,24 +475,23 @@ function ProjectBlock({ project, index }: { project: Project; index: number }) {
   );
 }
 
-const PROJECTS_STEP = 2;
+const PROJECTS_INITIAL = 4;
 
 function ProjectsPage() {
-  const [visibleCount, setVisibleCount] = useState(PROJECTS_STEP);
+  const [visibleCount, setVisibleCount] = useState(PROJECTS_INITIAL);
   const showcaseRef = useRef<HTMLDivElement | null>(null);
   const blockRefs = useRef<Array<HTMLDivElement | null>>([]);
   const allVisible = visibleCount >= PROJECTS.length;
 
   const handleViewMore = () => {
-    const nextIndex = visibleCount;
-    setVisibleCount((c) => Math.min(c + PROJECTS_STEP, PROJECTS.length));
+    setVisibleCount(PROJECTS.length);
     window.setTimeout(() => {
-      blockRefs.current[nextIndex]?.scrollIntoView({ behavior: "smooth", block: "start" });
+      blockRefs.current[PROJECTS_INITIAL]?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 320);
   };
 
   const handleViewLess = () => {
-    setVisibleCount(PROJECTS_STEP);
+    setVisibleCount(PROJECTS_INITIAL);
     window.setTimeout(() => {
       showcaseRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 60);
