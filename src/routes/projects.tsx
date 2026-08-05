@@ -101,23 +101,6 @@ const PROJECTS: Project[] = [
     images: [sephoraOlaya.url, sephoraKingdom.url, sephoraApWork.url, sephoraUWalk.url],
   },
   {
-    company: "Nesma LED Lighting Project",
-    overview:
-      "Delivered a large-scale government LED street lighting upgrade across Jeddah, replacing conventional luminaires with energy-efficient LED systems to improve public infrastructure, energy efficiency, and long-term operational performance. Project highlight: 18,000+ LED luminaires successfully replaced across Jeddah.",
-    services: [
-      "LED Lighting Upgrade",
-      "Electrical Infrastructure",
-      "Street Lighting Installation",
-      "Laser Measurement",
-      "Flux Meter Testing",
-      "GPS Site Tracking",
-    ],
-    category: "Government Infrastructure",
-    location: "Jeddah, KSA",
-    status: "Successfully Delivered",
-    images: [nesmaStreet.url, nesmaCrane.url, nesmaCrew.url, nesmaInspection.url],
-  },
-  {
     company: "Domino's Pizza CCTV System Upgrade",
     overview:
       "Upgraded the surveillance infrastructure across Domino's Pizza outlets in Saudi Arabia by replacing legacy analogue CCTV systems with modern IP-based surveillance solutions, enhancing security, monitoring, and operational reliability. Project highlight: successfully upgraded the CCTV infrastructure across Domino's Pizza stores throughout Saudi Arabia.",
@@ -225,6 +208,23 @@ const PROJECTS: Project[] = [
     location: "Riyadh, Saudi Arabia",
     status: "Completed",
     images: [cafeJoeJuiceExterior.url, cafeBateel.url, cafeJoeJuiceInterior.url, cafeFurless.url],
+  },
+  {
+    company: "Nesma LED Lighting Project",
+    overview:
+      "Delivered a large-scale government LED street lighting upgrade across Jeddah, replacing conventional luminaires with energy-efficient LED systems to improve public infrastructure, energy efficiency, and long-term operational performance. Project highlight: 18,000+ LED luminaires successfully replaced across Jeddah.",
+    services: [
+      "LED Lighting Upgrade",
+      "Electrical Infrastructure",
+      "Street Lighting Installation",
+      "Laser Measurement",
+      "Flux Meter Testing",
+      "GPS Site Tracking",
+    ],
+    category: "Government Infrastructure",
+    location: "Jeddah, KSA",
+    status: "Successfully Delivered",
+    images: [nesmaStreet.url, nesmaCrane.url, nesmaCrew.url, nesmaInspection.url],
   },
 ];
 
@@ -475,24 +475,23 @@ function ProjectBlock({ project, index }: { project: Project; index: number }) {
   );
 }
 
-const PROJECTS_STEP = 2;
+const PROJECTS_INITIAL = 4;
 
 function ProjectsPage() {
-  const [visibleCount, setVisibleCount] = useState(PROJECTS_STEP);
+  const [visibleCount, setVisibleCount] = useState(PROJECTS_INITIAL);
   const showcaseRef = useRef<HTMLDivElement | null>(null);
   const blockRefs = useRef<Array<HTMLDivElement | null>>([]);
   const allVisible = visibleCount >= PROJECTS.length;
 
   const handleViewMore = () => {
-    const nextIndex = visibleCount;
-    setVisibleCount((c) => Math.min(c + PROJECTS_STEP, PROJECTS.length));
+    setVisibleCount(PROJECTS.length);
     window.setTimeout(() => {
-      blockRefs.current[nextIndex]?.scrollIntoView({ behavior: "smooth", block: "start" });
+      blockRefs.current[PROJECTS_INITIAL]?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 320);
   };
 
   const handleViewLess = () => {
-    setVisibleCount(PROJECTS_STEP);
+    setVisibleCount(PROJECTS_INITIAL);
     window.setTimeout(() => {
       showcaseRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 60);
