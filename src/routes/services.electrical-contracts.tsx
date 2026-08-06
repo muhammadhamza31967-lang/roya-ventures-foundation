@@ -10,10 +10,6 @@ import {
   Sun,
   BatteryCharging,
   ShieldCheck,
-  Award,
-  BadgeCheck,
-  Cpu,
-  LineChart,
   Landmark,
   Store,
   Server,
@@ -130,11 +126,11 @@ const OFFERINGS = [
 
 
 const WHY = [
-  { icon: Award, title: "8+ Years of Industry Success" },
-  { icon: ShieldCheck, title: "Quality Control, Security & Compliance Assurance" },
-  { icon: BadgeCheck, title: "Certified Engineers" },
-  { icon: Cpu, title: "Advanced Technologies Used" },
-  { icon: LineChart, title: "Reporting and Support" },
+  { title: "8+ Years of Industry Success" },
+  { title: "Quality Control, Security & Compliance Assurance" },
+  { title: "Certified Engineers" },
+  { title: "Advanced Technologies Used" },
+  { title: "Reporting and Support" },
 ];
 
 const PROCESS = [
@@ -327,7 +323,7 @@ function ElectricalContractsPage() {
                     loading="lazy"
                     width={1280}
                     height={960}
-                    className="h-[19rem] md:h-[23rem] w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105"
+                    className="h-[20rem] md:h-[25rem] w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[color-mix(in_oklab,var(--navy)_85%,transparent)] via-transparent to-transparent" />
                   <div className="absolute inset-x-0 bottom-0 p-7">
@@ -354,7 +350,7 @@ function ElectricalContractsPage() {
                         loading="lazy"
                         width={1280}
                         height={960}
-                        className="h-32 md:h-40 w-full object-cover opacity-85 transition-all duration-700 group-hover:opacity-100 group-hover:scale-105"
+                        className="h-40 md:h-48 w-full object-cover opacity-85 transition-all duration-700 group-hover:opacity-100 group-hover:scale-105"
                       />
                       <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/0 transition-all duration-500 group-hover:ring-[var(--gold)]/45" />
                     </div>
@@ -365,34 +361,28 @@ function ElectricalContractsPage() {
 
             {/* Feature cards */}
             <div className="space-y-4">
-              {WHY.map((w, i) => {
-                const Icon = w.icon;
-                return (
-                  <Reveal key={w.title} delay={i * 0.06}>
+              {WHY.map((w, i) => (
+                <Reveal key={w.title} delay={i * 0.06}>
+                  <div
+                    className="group relative flex items-center gap-5 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.045] backdrop-blur-sm p-6 md:p-7 transition-all duration-500 hover:bg-white/[0.08] hover:border-[var(--gold)]/45 hover:-translate-y-1 hover:shadow-[0_24px_60px_-30px_color-mix(in_oklab,var(--gold)_60%,transparent)]"
+                    data-cursor="hover"
+                  >
                     <div
-                      className="group relative flex items-start gap-5 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.045] backdrop-blur-sm p-6 md:p-7 transition-all duration-500 hover:bg-white/[0.08] hover:border-[var(--gold)]/45 hover:-translate-y-1 hover:shadow-[0_24px_60px_-30px_color-mix(in_oklab,var(--gold)_60%,transparent)]"
-                      data-cursor="hover"
-                    >
-                      <div
-                        aria-hidden
-                        className="absolute left-0 top-0 h-full w-px bg-gradient-to-b from-transparent via-[var(--gold)]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                      />
-                      <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-[var(--gold)]/35 bg-gradient-to-br from-[color-mix(in_oklab,var(--gold)_14%,transparent)] to-transparent text-[var(--gold)] transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-[var(--navy)]">
-                        <Icon className="h-5 w-5" strokeWidth={1.5} />
-                      </div>
-                      <div className="min-w-0">
-                        <h3 className="text-base md:text-lg font-semibold leading-snug text-white">
-                          {w.title}
-                        </h3>
-                        <div className="mt-4 h-px w-10 bg-[var(--gold)]/70 transition-all duration-500 group-hover:w-20" />
-                      </div>
-                      <span className="ml-auto self-center font-display text-xs tracking-[0.35em] text-white/25">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
+                      aria-hidden
+                      className="absolute left-0 top-0 h-full w-px bg-gradient-to-b from-transparent via-[var(--gold)]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                    />
+                    <div className="min-w-0 flex-1">
+                      <h3 className="text-base md:text-lg font-semibold leading-snug text-white">
+                        {w.title}
+                      </h3>
+                      <div className="mt-4 h-px w-10 bg-[var(--gold)]/70 transition-all duration-500 group-hover:w-20" />
                     </div>
-                  </Reveal>
-                );
-              })}
+                    <span className="shrink-0 font-display text-2xl md:text-3xl font-semibold tracking-tight text-transparent [-webkit-text-stroke:1.5px_var(--gold)] opacity-50 transition-all duration-500 group-hover:opacity-100">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                  </div>
+                </Reveal>
+              ))}
             </div>
           </div>
 
