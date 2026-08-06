@@ -415,40 +415,79 @@ function ElectricalContractsPage() {
               className="absolute left-[1.4rem] top-2 bottom-2 w-px lg:left-0 lg:right-0 lg:top-[1.4rem] lg:bottom-auto lg:h-px lg:w-auto bg-[linear-gradient(to_bottom,transparent,color-mix(in_oklab,var(--gold)_60%,transparent)_12%,color-mix(in_oklab,var(--gold)_60%,transparent)_88%,transparent)] lg:bg-[linear-gradient(to_right,transparent,color-mix(in_oklab,var(--gold)_60%,transparent)_10%,color-mix(in_oklab,var(--gold)_60%,transparent)_90%,transparent)]"
             />
             <ol className="relative grid gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-5">
-              {PROCESS.map(([title, text], i) => (
-                <Reveal key={title} delay={i * 0.08} as="li" className="h-full">
-                  <div className="group relative h-full" data-cursor="hover">
-                    {/* node */}
-                    <div className="absolute left-0 top-1 lg:static lg:mx-auto lg:mb-6 lg:flex lg:justify-center">
-                      <div className="relative grid h-11 w-11 place-items-center rounded-full border border-[var(--gold)]/50 bg-[var(--ivory)] font-display text-xs tracking-[0.08em] text-[var(--gold)] shadow-[0_10px_28px_-14px_color-mix(in_oklab,var(--gold)_80%,transparent)] transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-[var(--navy)] group-hover:scale-110">
-                        {String(i + 1).padStart(2, "0")}
-                        <span
-                          aria-hidden
-                          className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-[var(--gold)]/35 scale-100 opacity-0 transition-all duration-700 group-hover:scale-[1.55] group-hover:opacity-100"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="pl-[4.25rem] lg:pl-0 h-full">
-                      <div className="relative h-full overflow-hidden rounded-2xl border border-[color-mix(in_oklab,var(--navy)_9%,transparent)] bg-card/85 backdrop-blur-sm p-6 lg:p-6 shadow-[var(--shadow-card)] transition-all duration-500 group-hover:-translate-y-1.5 group-hover:border-[var(--gold)]/45 group-hover:shadow-[var(--shadow-elegant)]">
-                        <span
-                          aria-hidden
-                          className="pointer-events-none absolute -bottom-6 -right-2 select-none font-display text-[6rem] font-semibold leading-none text-transparent [-webkit-text-stroke:1.5px_color-mix(in_oklab,var(--gold)_45%,transparent)] opacity-[0.14] transition-all duration-700 group-hover:opacity-25"
+              {PROCESS.map(([title, text], i) => {
+                const isActive = activeStep === i;
+                return (
+                  <Reveal key={title} delay={i * 0.08} as="li" className="h-full">
+                    <div
+                      className="group relative h-full"
+                      data-cursor="hover"
+                      onMouseEnter={() => setActiveStep(i)}
+                      onMouseLeave={() => setActiveStep(null)}
+                      onClick={() => setActiveStep(isActive ? null : i)}
+                    >
+                      {/* node */}
+                      <div className="absolute left-0 top-1 lg:static lg:mx-auto lg:mb-6 lg:flex lg:justify-center">
+                        <div
+                          className={`relative grid h-11 w-11 place-items-center rounded-full border font-display text-xs tracking-[0.08em] shadow-[0_10px_28px_-14px_color-mix(in_oklab,var(--gold)_80%,transparent)] transition-all duration-500 ${
+                            isActive
+                              ? "bg-[var(--gold)] text-[var(--navy)] scale-110 border-[var(--gold)]"
+                              : "border-[var(--gold)]/50 bg-[var(--ivory)] text-[var(--gold)] group-hover:bg-[var(--gold)] group-hover:text-[var(--navy)] group-hover:scale-110"
+                          }`}
                         >
                           {String(i + 1).padStart(2, "0")}
-                        </span>
-                        <div className="h-px w-8 bg-[var(--gold)] transition-all duration-500 group-hover:w-16" />
-                        <h3 className="relative mt-4 font-display text-lg font-semibold tracking-[-0.02em] text-[var(--navy)]">
-                          {title}
-                        </h3>
-                        <p className="relative mt-3 text-[14px] leading-[1.7] text-muted-foreground">
-                          {text}
-                        </p>
+                          <span
+                            aria-hidden
+                            className={`pointer-events-none absolute inset-0 rounded-full ring-1 ring-[var(--gold)]/35 scale-100 transition-all duration-700 ${
+                              isActive
+                                ? "scale-[1.55] opacity-100"
+                                : "opacity-0 group-hover:scale-[1.55] group-hover:opacity-100"
+                            }`}
+                          />
+                        </div>
+                      </div>
+
+                      <div className="pl-[4.25rem] lg:pl-0 h-full">
+                        <div
+                          className={`relative h-full min-h-[13rem] md:min-h-[14rem] overflow-hidden rounded-2xl border bg-card/85 backdrop-blur-sm p-6 lg:p-6 shadow-[var(--shadow-card)] transition-all duration-500 ${
+                            isActive
+                              ? "-translate-y-1.5 border-[var(--gold)]/45 shadow-[var(--shadow-elegant)]"
+                              : "border-[color-mix(in_oklab,var(--navy)_9%,transparent)] group-hover:-translate-y-1 group-hover:border-[var(--gold)]/45 group-hover:shadow-[var(--shadow-elegant)]"
+                          }`}
+                        >
+                          <span
+                            aria-hidden
+                            className={`pointer-events-none absolute -bottom-6 -right-2 select-none font-display text-[6rem] font-semibold leading-none text-transparent [-webkit-text-stroke:1.5px_color-mix(in_oklab,var(--gold)_45%,transparent)] transition-all duration-700 ${
+                              isActive ? "opacity-25" : "opacity-[0.14] group-hover:opacity-25"
+                            }`}
+                          >
+                            {String(i + 1).padStart(2, "0")}
+                          </span>
+                          <div
+                            className={`h-px bg-[var(--gold)] transition-all duration-500 ${
+                              isActive ? "w-16" : "w-8 group-hover:w-16"
+                            }`}
+                          />
+                          <h3 className="relative mt-4 font-display text-lg font-semibold tracking-[-0.02em] text-[var(--navy)]">
+                            {title}
+                          </h3>
+                          <div
+                            className={`grid transition-all duration-500 ease-out ${
+                              isActive
+                                ? "grid-rows-[1fr] opacity-100 mt-3"
+                                : "grid-rows-[0fr] opacity-0"
+                            }`}
+                          >
+                            <p className="overflow-hidden text-[14px] leading-[1.7] text-muted-foreground">
+                              {text}
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </Reveal>
-              ))}
+                  </Reveal>
+                );
+              })}
             </ol>
           </div>
         </div>
