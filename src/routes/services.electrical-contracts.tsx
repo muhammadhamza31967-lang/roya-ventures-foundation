@@ -350,7 +350,7 @@ function ElectricalContractsPage() {
                         loading="lazy"
                         width={1280}
                         height={960}
-                        className="h-40 md:h-48 w-full object-cover opacity-85 transition-all duration-700 group-hover:opacity-100 group-hover:scale-105"
+                        className="h-32 md:h-[9.5rem] w-full object-cover opacity-85 transition-all duration-700 group-hover:opacity-100 group-hover:scale-105"
                       />
                       <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/0 transition-all duration-500 group-hover:ring-[var(--gold)]/45" />
                     </div>
@@ -538,7 +538,7 @@ function ElectricalContractsPage() {
                   />
                   <AccordionPrimitive.Header className="flex">
                     <AccordionPrimitive.Trigger className="group/trigger flex flex-1 items-center gap-4 md:gap-6 px-5 md:px-8 py-6 text-left cursor-pointer">
-                      <span className="hidden sm:block font-display text-xs tracking-[0.3em] text-[var(--navy)]/30 transition-colors duration-500 group-data-[state=open]:text-[var(--gold)]">
+                      <span className="hidden sm:block font-display text-2xl md:text-3xl font-semibold tracking-tight text-transparent [-webkit-text-stroke:1.5px_var(--gold)] opacity-45 transition-all duration-500 group-hover:opacity-80 group-data-[state=open]:opacity-100">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <span className="flex-1 font-display text-base md:text-lg font-semibold leading-snug tracking-[-0.01em] text-[var(--navy)]">
