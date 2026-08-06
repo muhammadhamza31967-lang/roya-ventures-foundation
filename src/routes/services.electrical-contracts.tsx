@@ -30,9 +30,9 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import heroElectrical from "@/assets/svc-electrical.jpg";
-import logoChalhoub from "@/assets/clients/corporate/chalhoub.png";
-import logoSephora from "@/assets/clients/corporate/sephora-2.png";
-import logoDominos from "@/assets/clients/hospitality/dominos.png";
+import logoChalhoub from "@/assets/clients/corporate/chalhoub.png.asset.json";
+import logoSephora from "@/assets/clients/corporate/sephora-2.png.asset.json";
+import logoDominos from "@/assets/clients/hospitality/dominos.png.asset.json";
 
 export const Route = createFileRoute("/services/electrical-contracts")({
   head: () => ({
@@ -381,7 +381,7 @@ function ElectricalContractsPage() {
                     className="grid place-items-center rounded-2xl bg-card border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] p-6 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1 hover:border-[var(--gold)]/40"
                   >
                     <img
-                      src={logo}
+                      src={logo.url}
                       alt="Client logo"
                       className="h-10 md:h-12 w-auto object-contain opacity-80 transition-opacity duration-500 hover:opacity-100"
                     />
