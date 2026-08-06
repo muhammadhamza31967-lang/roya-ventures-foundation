@@ -446,7 +446,7 @@ function DataCenterSetupPage() {
                               isActive ? "w-16" : "w-8 group-hover:w-16"
                             }`}
                           />
-                          <h3 className="mt-4 font-display text-lg font-semibold tracking-[-0.02em] text-[var(--navy)]">
+                          <h3 className="mt-4 font-display text-lg font-semibold leading-[1.3] tracking-[-0.02em] text-[var(--navy)] lg:flex lg:min-h-[3.4rem] lg:items-start">
                             {title}
                           </h3>
                           <div
@@ -472,7 +472,7 @@ function DataCenterSetupPage() {
       </section>
 
       {/* Industries */}
-      <section className="section-y bg-[var(--stone)]">
+      <section className="section-y bg-[var(--stone)] bg-blueprint">
         <div className="container-px mx-auto">
           <SectionHeading eyebrow="Sectors" title={<>Industries We Serve</>} />
           <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
