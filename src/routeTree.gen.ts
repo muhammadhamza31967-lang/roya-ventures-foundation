@@ -67,9 +67,9 @@ const ServicesIndexRoute = ServicesIndexRouteImport.update({
 } as any)
 const ServicesElectricalContractsRoute =
   ServicesElectricalContractsRouteImport.update({
-    id: '/services/electrical-contracts',
-    path: '/services/electrical-contracts',
-    getParentRoute: () => rootRouteImport,
+    id: '/electrical-contracts',
+    path: '/electrical-contracts',
+    getParentRoute: () => ServicesRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
@@ -157,7 +157,6 @@ export interface RootRouteChildren {
   ProjectsRoute: typeof ProjectsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TeamRoute: typeof TeamRoute
-  ServicesElectricalContractsRoute: typeof ServicesElectricalContractsRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
@@ -228,10 +227,10 @@ declare module '@tanstack/react-router' {
     }
     '/services/electrical-contracts': {
       id: '/services/electrical-contracts'
-      path: '/services/electrical-contracts'
+      path: '/electrical-contracts'
       fullPath: '/services/electrical-contracts'
       preLoaderRoute: typeof ServicesElectricalContractsRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof ServicesRoute
     }
   }
 }
@@ -245,9 +244,18 @@ const rootRouteChildren: RootRouteChildren = {
   ProjectsRoute: ProjectsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TeamRoute: TeamRoute,
-  ServicesElectricalContractsRoute: ServicesElectricalContractsRoute,
   ServicesIndexRoute: ServicesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
