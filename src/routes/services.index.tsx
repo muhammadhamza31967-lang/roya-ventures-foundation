@@ -43,8 +43,8 @@ function ServicesPage() {
           />
 
           <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-9">
-            {SERVICES.map((s, i) => (
-              <Reveal key={s.slug} delay={(i % 3) * 0.08}>
+            {SERVICES.map((s, i) => {
+              const card = (
                 <ImageServiceCard
                   image={s.image}
                   title={s.title}
@@ -52,8 +52,23 @@ function ServicesPage() {
                   index={i}
                   size="tall"
                 />
-              </Reveal>
-            ))}
+              );
+              return (
+                <Reveal key={s.slug} delay={(i % 3) * 0.08}>
+                  {s.slug === "electrical-contracts" ? (
+                    <Link
+                      to="/services/electrical-contracts"
+                      className="block h-full"
+                      aria-label={`${s.title} — view service details`}
+                    >
+                      {card}
+                    </Link>
+                  ) : (
+                    card
+                  )}
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </section>
