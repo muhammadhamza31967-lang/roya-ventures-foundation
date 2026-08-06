@@ -18,6 +18,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ClientsRouteImport } from './routes/clients'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesElectricalContractsRouteImport } from './routes/services.electrical-contracts'
 
 const TeamRoute = TeamRouteImport.update({
   id: '/team',
@@ -64,6 +65,12 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesElectricalContractsRoute =
+  ServicesElectricalContractsRouteImport.update({
+    id: '/electrical-contracts',
+    path: '/electrical-contracts',
+    getParentRoute: () => ServicesRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -72,9 +79,10 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/partners': typeof PartnersRoute
   '/projects': typeof ProjectsRoute
-  '/services': typeof ServicesRoute
+  '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
+  '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -83,9 +91,10 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/partners': typeof PartnersRoute
   '/projects': typeof ProjectsRoute
-  '/services': typeof ServicesRoute
+  '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
+  '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -95,9 +104,10 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/partners': typeof PartnersRoute
   '/projects': typeof ProjectsRoute
-  '/services': typeof ServicesRoute
+  '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
+  '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -111,6 +121,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/sitemap.xml'
     | '/team'
+    | '/services/electrical-contracts'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -122,6 +133,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/sitemap.xml'
     | '/team'
+    | '/services/electrical-contracts'
   id:
     | '__root__'
     | '/'
@@ -133,6 +145,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/sitemap.xml'
     | '/team'
+    | '/services/electrical-contracts'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -142,7 +155,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   PartnersRoute: typeof PartnersRoute
   ProjectsRoute: typeof ProjectsRoute
-  ServicesRoute: typeof ServicesRoute
+  ServicesRoute: typeof ServicesRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TeamRoute: typeof TeamRoute
 }
@@ -212,8 +225,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/electrical-contracts': {
+      id: '/services/electrical-contracts'
+      path: '/electrical-contracts'
+      fullPath: '/services/electrical-contracts'
+      preLoaderRoute: typeof ServicesElectricalContractsRouteImport
+      parentRoute: typeof ServicesRoute
+    }
   }
 }
+
+interface ServicesRouteChildren {
+  ServicesElectricalContractsRoute: typeof ServicesElectricalContractsRoute
+}
+
+const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesElectricalContractsRoute: ServicesElectricalContractsRoute,
+}
+
+const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
+  ServicesRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -222,7 +254,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   PartnersRoute: PartnersRoute,
   ProjectsRoute: ProjectsRoute,
-  ServicesRoute: ServicesRoute,
+  ServicesRoute: ServicesRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TeamRoute: TeamRoute,
 }

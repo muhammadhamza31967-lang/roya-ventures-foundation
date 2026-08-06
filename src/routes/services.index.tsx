@@ -9,7 +9,7 @@ import { ClientsMarquee } from "@/components/site/ClientsMarquee";
 import { SERVICES } from "@/lib/services-data";
 import heroServices from "@/assets/hero-services.jpg";
 
-export const Route = createFileRoute("/services")({
+export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
       { title: "Services — Roya Ventures" },
