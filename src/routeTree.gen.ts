@@ -19,6 +19,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesNetworkingRouteImport } from './routes/services.networking'
+import { Route as ServicesFireFightingRouteImport } from './routes/services.fire-fighting'
 import { Route as ServicesElectricalContractsRouteImport } from './routes/services.electrical-contracts'
 import { Route as ServicesDataCenterSetupRouteImport } from './routes/services.data-center-setup'
 
@@ -72,6 +73,11 @@ const ServicesNetworkingRoute = ServicesNetworkingRouteImport.update({
   path: '/services/networking',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesFireFightingRoute = ServicesFireFightingRouteImport.update({
+  id: '/services/fire-fighting',
+  path: '/services/fire-fighting',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesElectricalContractsRoute =
   ServicesElectricalContractsRouteImport.update({
     id: '/services/electrical-contracts',
@@ -95,6 +101,7 @@ export interface FileRoutesByFullPath {
   '/team': typeof TeamRoute
   '/services/data-center-setup': typeof ServicesDataCenterSetupRoute
   '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
+  '/services/fire-fighting': typeof ServicesFireFightingRoute
   '/services/networking': typeof ServicesNetworkingRoute
   '/services/': typeof ServicesIndexRoute
 }
@@ -109,6 +116,7 @@ export interface FileRoutesByTo {
   '/team': typeof TeamRoute
   '/services/data-center-setup': typeof ServicesDataCenterSetupRoute
   '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
+  '/services/fire-fighting': typeof ServicesFireFightingRoute
   '/services/networking': typeof ServicesNetworkingRoute
   '/services': typeof ServicesIndexRoute
 }
@@ -124,6 +132,7 @@ export interface FileRoutesById {
   '/team': typeof TeamRoute
   '/services/data-center-setup': typeof ServicesDataCenterSetupRoute
   '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
+  '/services/fire-fighting': typeof ServicesFireFightingRoute
   '/services/networking': typeof ServicesNetworkingRoute
   '/services/': typeof ServicesIndexRoute
 }
@@ -140,6 +149,7 @@ export interface FileRouteTypes {
     | '/team'
     | '/services/data-center-setup'
     | '/services/electrical-contracts'
+    | '/services/fire-fighting'
     | '/services/networking'
     | '/services/'
   fileRoutesByTo: FileRoutesByTo
@@ -154,6 +164,7 @@ export interface FileRouteTypes {
     | '/team'
     | '/services/data-center-setup'
     | '/services/electrical-contracts'
+    | '/services/fire-fighting'
     | '/services/networking'
     | '/services'
   id:
@@ -168,6 +179,7 @@ export interface FileRouteTypes {
     | '/team'
     | '/services/data-center-setup'
     | '/services/electrical-contracts'
+    | '/services/fire-fighting'
     | '/services/networking'
     | '/services/'
   fileRoutesById: FileRoutesById
@@ -183,6 +195,7 @@ export interface RootRouteChildren {
   TeamRoute: typeof TeamRoute
   ServicesDataCenterSetupRoute: typeof ServicesDataCenterSetupRoute
   ServicesElectricalContractsRoute: typeof ServicesElectricalContractsRoute
+  ServicesFireFightingRoute: typeof ServicesFireFightingRoute
   ServicesNetworkingRoute: typeof ServicesNetworkingRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
 }
@@ -259,6 +272,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesNetworkingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/fire-fighting': {
+      id: '/services/fire-fighting'
+      path: '/services/fire-fighting'
+      fullPath: '/services/fire-fighting'
+      preLoaderRoute: typeof ServicesFireFightingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/electrical-contracts': {
       id: '/services/electrical-contracts'
       path: '/services/electrical-contracts'
@@ -287,6 +307,7 @@ const rootRouteChildren: RootRouteChildren = {
   TeamRoute: TeamRoute,
   ServicesDataCenterSetupRoute: ServicesDataCenterSetupRoute,
   ServicesElectricalContractsRoute: ServicesElectricalContractsRoute,
+  ServicesFireFightingRoute: ServicesFireFightingRoute,
   ServicesNetworkingRoute: ServicesNetworkingRoute,
   ServicesIndexRoute: ServicesIndexRoute,
 }
