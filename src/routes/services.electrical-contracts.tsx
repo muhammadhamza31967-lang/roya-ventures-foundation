@@ -184,6 +184,7 @@ const FAQS: [string, string][] = [
 ];
 
 function ElectricalContractsPage() {
+  const [activeStep, setActiveStep] = useState<number | null>(null);
   return (
     <SiteLayout transparentHeader>
       <PageHero
