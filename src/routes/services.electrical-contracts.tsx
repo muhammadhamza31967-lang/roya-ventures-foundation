@@ -350,7 +350,7 @@ function ElectricalContractsPage() {
                         loading="lazy"
                         width={1280}
                         height={960}
-                        className="h-40 md:h-48 w-full object-cover opacity-85 transition-all duration-700 group-hover:opacity-100 group-hover:scale-105"
+                        className="h-32 md:h-[9.5rem] w-full object-cover opacity-85 transition-all duration-700 group-hover:opacity-100 group-hover:scale-105"
                       />
                       <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/0 transition-all duration-500 group-hover:ring-[var(--gold)]/45" />
                     </div>
@@ -403,41 +403,77 @@ function ElectricalContractsPage() {
             title={<>How We Work</>}
             description="We deliver tailored solutions that address your unique business challenges for measurable operational efficiency."
           />
-          <div className="mt-16 relative">
-            {/* horizontal rail */}
+          <div className="mt-16 relative mx-auto max-w-5xl">
+            {/* continuous rail */}
             <div
               aria-hidden
-              className="hidden lg:block absolute left-[10%] right-[10%] top-[3.25rem] h-px bg-[linear-gradient(to_right,transparent,color-mix(in_oklab,var(--gold)_55%,transparent),transparent)]"
+              className="absolute top-2 bottom-2 left-[1.4rem] md:left-1/2 md:-translate-x-px w-px bg-[linear-gradient(to_bottom,transparent,color-mix(in_oklab,var(--gold)_60%,transparent)_12%,color-mix(in_oklab,var(--gold)_60%,transparent)_88%,transparent)]"
             />
-            <ol className="grid gap-8 lg:gap-5 lg:grid-cols-5">
-              {PROCESS.map(([title, text], i) => (
-                <Reveal key={title} delay={i * 0.08} as="li">
-                  <div className="group relative h-full pl-12 lg:pl-0" data-cursor="hover">
-                    {/* mobile rail */}
+            <ol className="relative space-y-8 md:space-y-0">
+              {PROCESS.map(([title, text], i) => {
+                const right = i % 2 === 1;
+                return (
+                  <Reveal key={title} delay={i * 0.08} as="li">
                     <div
-                      aria-hidden
-                      className="lg:hidden absolute left-[1.375rem] top-12 bottom-[-2rem] w-px bg-[var(--gold)]/25 last:hidden"
-                    />
-                    {/* node */}
-                    <div className="absolute left-0 top-0 lg:static lg:mx-auto grid h-11 w-11 place-items-center rounded-full border border-[var(--gold)]/45 bg-[var(--ivory)] font-display text-xs tracking-[0.1em] text-[var(--gold)] shadow-[0_10px_28px_-14px_color-mix(in_oklab,var(--gold)_80%,transparent)] transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-[var(--navy)] group-hover:scale-110">
-                      {String(i + 1).padStart(2, "0")}
-                      <span
+                      className={`group relative md:grid md:grid-cols-2 md:items-center md:gap-14 ${
+                        i > 0 ? "md:-mt-6" : ""
+                      }`}
+                      data-cursor="hover"
+                    >
+                      {/* node */}
+                      <div className="absolute left-0 top-1 md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-10">
+                        <div className="relative grid h-11 w-11 place-items-center rounded-full border border-[var(--gold)]/50 bg-[var(--ivory)] font-display text-xs tracking-[0.08em] text-[var(--gold)] shadow-[0_10px_28px_-14px_color-mix(in_oklab,var(--gold)_80%,transparent)] transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-[var(--navy)] group-hover:scale-110">
+                          {String(i + 1).padStart(2, "0")}
+                          <span
+                            aria-hidden
+                            className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-[var(--gold)]/35 scale-100 opacity-0 transition-all duration-700 group-hover:scale-[1.55] group-hover:opacity-100"
+                          />
+                        </div>
+                      </div>
+
+                      {/* connector to card */}
+                      <div
                         aria-hidden
-                        className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-[var(--gold)]/30 scale-100 opacity-0 transition-all duration-700 group-hover:scale-150 group-hover:opacity-100"
+                        className={`hidden md:block absolute top-1/2 h-px w-10 bg-[linear-gradient(to_right,color-mix(in_oklab,var(--gold)_60%,transparent),transparent)] transition-all duration-500 group-hover:w-14 ${
+                          right ? "left-1/2" : "right-1/2 rotate-180"
+                        }`}
                       />
+
+                      <div
+                        className={`pl-[4.25rem] md:pl-0 md:py-10 ${
+                          right ? "md:col-start-2 md:pl-14" : "md:col-start-1 md:pr-14"
+                        }`}
+                      >
+                        <div
+                          className={`relative overflow-hidden rounded-2xl border border-[color-mix(in_oklab,var(--navy)_9%,transparent)] bg-card/85 backdrop-blur-sm p-7 md:p-8 shadow-[var(--shadow-card)] transition-all duration-500 group-hover:-translate-y-1.5 group-hover:border-[var(--gold)]/45 group-hover:shadow-[var(--shadow-elegant)] ${
+                            right ? "" : "md:text-right"
+                          }`}
+                        >
+                          <span
+                            aria-hidden
+                            className={`pointer-events-none absolute -bottom-6 select-none font-display text-[6rem] font-semibold leading-none text-transparent [-webkit-text-stroke:1.5px_color-mix(in_oklab,var(--gold)_45%,transparent)] opacity-[0.14] transition-all duration-700 group-hover:opacity-25 ${
+                              right ? "-left-2" : "-right-2"
+                            }`}
+                          >
+                            {String(i + 1).padStart(2, "0")}
+                          </span>
+                          <div
+                            className={`h-px w-8 bg-[var(--gold)] transition-all duration-500 group-hover:w-16 ${
+                              right ? "" : "md:ml-auto"
+                            }`}
+                          />
+                          <h3 className="relative mt-5 font-display text-lg xl:text-xl font-semibold tracking-[-0.02em] text-[var(--navy)]">
+                            {title}
+                          </h3>
+                          <p className="relative mt-3 text-[15px] leading-[1.75] text-muted-foreground">
+                            {text}
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                    <div className="mt-0 lg:mt-8 h-full rounded-2xl border border-[color-mix(in_oklab,var(--navy)_9%,transparent)] bg-card/80 backdrop-blur-sm p-7 shadow-[var(--shadow-card)] transition-all duration-500 group-hover:-translate-y-2 group-hover:border-[var(--gold)]/40 group-hover:shadow-[var(--shadow-elegant)]">
-                      <div className="h-px w-8 bg-[var(--gold)] transition-all duration-500 group-hover:w-16" />
-                      <h3 className="mt-5 font-display text-lg xl:text-xl font-semibold tracking-[-0.02em] text-[var(--navy)]">
-                        {title}
-                      </h3>
-                      <p className="mt-3 text-[15px] leading-[1.75] text-muted-foreground">
-                        {text}
-                      </p>
-                    </div>
-                  </div>
-                </Reveal>
-              ))}
+                  </Reveal>
+                );
+              })}
             </ol>
           </div>
         </div>
@@ -538,7 +574,7 @@ function ElectricalContractsPage() {
                   />
                   <AccordionPrimitive.Header className="flex">
                     <AccordionPrimitive.Trigger className="group/trigger flex flex-1 items-center gap-4 md:gap-6 px-5 md:px-8 py-6 text-left cursor-pointer">
-                      <span className="hidden sm:block font-display text-xs tracking-[0.3em] text-[var(--navy)]/30 transition-colors duration-500 group-data-[state=open]:text-[var(--gold)]">
+                      <span className="hidden sm:block font-display text-2xl md:text-3xl font-semibold tracking-tight text-transparent [-webkit-text-stroke:1.5px_var(--gold)] opacity-45 transition-all duration-500 group-hover:opacity-80 group-data-[state=open]:opacity-100">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <span className="flex-1 font-display text-base md:text-lg font-semibold leading-snug tracking-[-0.01em] text-[var(--navy)]">
