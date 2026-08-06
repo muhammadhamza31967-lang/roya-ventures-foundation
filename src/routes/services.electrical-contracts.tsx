@@ -219,37 +219,68 @@ function ElectricalContractsPage() {
 
       {/* Services breakdown */}
       <section className="section-y bg-[var(--stone)] relative overflow-hidden">
-        <div className="container-px mx-auto">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -left-40 top-1/3 h-[36rem] w-[36rem] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_14%,transparent),transparent_70%)]"
+        />
+        <div className="container-px mx-auto relative">
           <SectionHeading
             eyebrow="Services breakdown"
             title={<>What We Offer</>}
             description="We handle all types of electrical contracts, from design and supply to installation and commissioning."
           />
+
           <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {OFFERINGS.map((s, i) => {
-              const Icon = s.icon;
-              return (
-                <Reveal key={s.title} delay={(i % 3) * 0.07}>
+            {BREAKDOWN.map((cell, i) =>
+              cell.kind === "image" ? (
+                <Reveal key={`img-${cell.src}`} delay={(i % 3) * 0.07}>
+                  <figure
+                    className="group relative h-full min-h-[18rem] overflow-hidden rounded-2xl border border-[color-mix(in_oklab,var(--navy)_10%,transparent)] shadow-[var(--shadow-card)]"
+                    data-cursor="hover"
+                  >
+                    <img
+                      src={cell.src}
+                      alt={cell.alt}
+                      loading="lazy"
+                      width={1280}
+                      height={960}
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[color-mix(in_oklab,var(--navy)_88%,transparent)] via-[color-mix(in_oklab,var(--navy)_35%,transparent)] to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 p-7">
+                      <div className="h-px w-10 bg-[var(--gold)] transition-all duration-500 group-hover:w-24" />
+                      <figcaption className="mt-4 font-display text-xl font-semibold tracking-[-0.02em] text-white">
+                        {cell.caption}
+                      </figcaption>
+                    </div>
+                    <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/0 transition-all duration-500 group-hover:ring-[var(--gold)]/45" />
+                  </figure>
+                </Reveal>
+              ) : (
+                <Reveal key={cell.title} delay={(i % 3) * 0.07}>
                   <article
                     className="group relative h-full overflow-hidden rounded-2xl bg-card p-8 md:p-9 border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[var(--shadow-elegant)] hover:border-[var(--gold)]/40"
                     data-cursor="hover"
                   >
+                    <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_26%,transparent),transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                     <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/60 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                     <span className="absolute right-6 top-6 font-display text-xs tracking-[0.35em] text-[var(--navy)]/25">
-                      {String(i + 1).padStart(2, "0")}
+                      {String(cell.n).padStart(2, "0")}
                     </span>
-                    <div className="relative grid h-14 w-14 place-items-center rounded-xl border border-[var(--gold)]/35 bg-gradient-to-br from-[color-mix(in_oklab,var(--gold)_12%,transparent)] to-transparent text-[var(--gold)] transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-[var(--navy)]">
-                      <Icon className="h-6 w-6" strokeWidth={1.4} />
+                    <div className="relative grid h-14 w-14 place-items-center rounded-xl border border-[var(--gold)]/35 bg-gradient-to-br from-[color-mix(in_oklab,var(--gold)_12%,transparent)] to-transparent text-[var(--gold)] transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-[var(--navy)] group-hover:shadow-[0_12px_30px_-12px_color-mix(in_oklab,var(--gold)_70%,transparent)]">
+                      <cell.icon className="h-6 w-6" strokeWidth={1.4} />
                     </div>
-                    <h3 className="mt-7 font-display text-xl md:text-2xl font-semibold tracking-[-0.02em] text-[var(--navy)]">
-                      {s.title}
+                    <h3 className="relative mt-7 font-display text-xl md:text-2xl font-semibold tracking-[-0.02em] text-[var(--navy)]">
+                      {cell.title}
                     </h3>
-                    <p className="mt-4 text-[15px] leading-[1.75] text-muted-foreground">{s.text}</p>
-                    <div className="mt-7 h-px w-10 bg-[var(--gold)] transition-all duration-500 group-hover:w-24" />
+                    <p className="relative mt-4 text-[15px] leading-[1.75] text-muted-foreground">
+                      {cell.text}
+                    </p>
+                    <div className="relative mt-7 h-px w-10 bg-[var(--gold)] transition-all duration-500 group-hover:w-24" />
                   </article>
                 </Reveal>
-              );
-            })}
+              ),
+            )}
           </div>
           <div className="mt-14 flex justify-center">
             <Link to="/contact" className="btn-primary">
@@ -273,25 +304,87 @@ function ElectricalContractsPage() {
             description="Here's what makes us different."
             invert
           />
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {WHY.map((w, i) => {
-              const Icon = w.icon;
-              return (
-                <Reveal key={w.title} delay={(i % 3) * 0.07}>
-                  <div
-                    className="group h-full rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm p-8 transition-all duration-500 hover:bg-white/[0.07] hover:border-[var(--gold)]/40 hover:-translate-y-1"
-                    data-cursor="hover"
-                  >
-                    <div className="grid h-12 w-12 place-items-center rounded-xl border border-[var(--gold)]/35 text-[var(--gold)] transition-colors duration-500 group-hover:bg-[var(--gold)] group-hover:text-[var(--navy)]">
-                      <Icon className="h-5 w-5" strokeWidth={1.5} />
-                    </div>
-                    <h3 className="mt-6 text-lg font-semibold leading-snug text-white">{w.title}</h3>
-                    <div className="mt-6 gold-divider" />
+
+          <div className="mt-16 grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14 items-start">
+            {/* Visual column */}
+            <Reveal>
+              <div className="lg:sticky lg:top-28 space-y-5">
+                <div className="group relative overflow-hidden rounded-2xl border border-white/10 shadow-[var(--shadow-elegant)]">
+                  <img
+                    src={elecTesting}
+                    alt="Certified engineer testing an electrical distribution board"
+                    loading="lazy"
+                    width={1280}
+                    height={960}
+                    className="h-[19rem] md:h-[23rem] w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[color-mix(in_oklab,var(--navy)_85%,transparent)] via-transparent to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-7">
+                    <p className="font-display text-4xl md:text-5xl font-semibold tracking-[-0.03em] text-[var(--gold)]">
+                      8+
+                    </p>
+                    <p className="mt-2 text-sm uppercase tracking-[0.25em] text-white/70">
+                      Years in the field
+                    </p>
                   </div>
-                </Reveal>
-              );
-            })}
+                </div>
+                <div className="grid grid-cols-2 gap-5">
+                  {[
+                    { src: elecSwitchgear, alt: "Switchgear and distribution panel room" },
+                    { src: elecIndustrial, alt: "Engineers inspecting industrial cable trays" },
+                  ].map((im) => (
+                    <div
+                      key={im.alt}
+                      className="group relative overflow-hidden rounded-2xl border border-white/10"
+                    >
+                      <img
+                        src={im.src}
+                        alt={im.alt}
+                        loading="lazy"
+                        width={1280}
+                        height={960}
+                        className="h-32 md:h-40 w-full object-cover opacity-85 transition-all duration-700 group-hover:opacity-100 group-hover:scale-105"
+                      />
+                      <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/0 transition-all duration-500 group-hover:ring-[var(--gold)]/45" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Feature cards */}
+            <div className="space-y-4">
+              {WHY.map((w, i) => {
+                const Icon = w.icon;
+                return (
+                  <Reveal key={w.title} delay={i * 0.06}>
+                    <div
+                      className="group relative flex items-start gap-5 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.045] backdrop-blur-sm p-6 md:p-7 transition-all duration-500 hover:bg-white/[0.08] hover:border-[var(--gold)]/45 hover:-translate-y-1 hover:shadow-[0_24px_60px_-30px_color-mix(in_oklab,var(--gold)_60%,transparent)]"
+                      data-cursor="hover"
+                    >
+                      <div
+                        aria-hidden
+                        className="absolute left-0 top-0 h-full w-px bg-gradient-to-b from-transparent via-[var(--gold)]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                      />
+                      <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-[var(--gold)]/35 bg-gradient-to-br from-[color-mix(in_oklab,var(--gold)_14%,transparent)] to-transparent text-[var(--gold)] transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-[var(--navy)]">
+                        <Icon className="h-5 w-5" strokeWidth={1.5} />
+                      </div>
+                      <div className="min-w-0">
+                        <h3 className="text-base md:text-lg font-semibold leading-snug text-white">
+                          {w.title}
+                        </h3>
+                        <div className="mt-4 h-px w-10 bg-[var(--gold)]/70 transition-all duration-500 group-hover:w-20" />
+                      </div>
+                      <span className="ml-auto self-center font-display text-xs tracking-[0.35em] text-white/25">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </div>
           </div>
+
           <div className="mt-14 flex justify-center">
             <Link to="/contact" className="btn-primary btn-on-dark">
               Get Free Consultation <ArrowRight className="h-4 w-4" />
@@ -310,25 +403,37 @@ function ElectricalContractsPage() {
             description="We deliver tailored solutions that address your unique business challenges for measurable operational efficiency."
           />
           <div className="mt-16 relative">
+            {/* horizontal rail */}
             <div
               aria-hidden
-              className="hidden lg:block absolute left-0 right-0 top-8 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/45 to-transparent"
+              className="hidden lg:block absolute left-[10%] right-[10%] top-[3.25rem] h-px bg-[linear-gradient(to_right,transparent,color-mix(in_oklab,var(--gold)_55%,transparent),transparent)]"
             />
-            <ol className="grid gap-8 lg:grid-cols-5">
+            <ol className="grid gap-8 lg:gap-5 lg:grid-cols-5">
               {PROCESS.map(([title, text], i) => (
-                <Reveal key={title} delay={i * 0.07} as="li">
-                  <div className="group relative h-full pl-8 lg:pl-0">
+                <Reveal key={title} delay={i * 0.08} as="li">
+                  <div className="group relative h-full pl-12 lg:pl-0" data-cursor="hover">
+                    {/* mobile rail */}
                     <div
                       aria-hidden
-                      className="lg:hidden absolute left-[15px] top-10 bottom-0 w-px bg-[var(--gold)]/25"
+                      className="lg:hidden absolute left-[1.375rem] top-12 bottom-[-2rem] w-px bg-[var(--gold)]/25 last:hidden"
                     />
-                    <div className="absolute left-0 top-1 lg:static grid h-8 w-8 place-items-center rounded-full border border-[var(--gold)]/50 bg-[var(--ivory)] font-display text-xs text-[var(--gold)] transition-colors duration-500 group-hover:bg-[var(--gold)] group-hover:text-[var(--navy)]">
+                    {/* node */}
+                    <div className="absolute left-0 top-0 lg:static lg:mx-auto grid h-11 w-11 place-items-center rounded-full border border-[var(--gold)]/45 bg-[var(--ivory)] font-display text-xs tracking-[0.1em] text-[var(--gold)] shadow-[0_10px_28px_-14px_color-mix(in_oklab,var(--gold)_80%,transparent)] transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-[var(--navy)] group-hover:scale-110">
                       {String(i + 1).padStart(2, "0")}
+                      <span
+                        aria-hidden
+                        className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-[var(--gold)]/30 scale-100 opacity-0 transition-all duration-700 group-hover:scale-150 group-hover:opacity-100"
+                      />
                     </div>
-                    <h3 className="mt-0 lg:mt-8 font-display text-xl font-semibold tracking-[-0.02em] text-[var(--navy)]">
-                      {title}
-                    </h3>
-                    <p className="mt-3 text-[15px] leading-[1.75] text-muted-foreground">{text}</p>
+                    <div className="mt-0 lg:mt-8 h-full rounded-2xl border border-[color-mix(in_oklab,var(--navy)_9%,transparent)] bg-card/80 backdrop-blur-sm p-7 shadow-[var(--shadow-card)] transition-all duration-500 group-hover:-translate-y-2 group-hover:border-[var(--gold)]/40 group-hover:shadow-[var(--shadow-elegant)]">
+                      <div className="h-px w-8 bg-[var(--gold)] transition-all duration-500 group-hover:w-16" />
+                      <h3 className="mt-5 font-display text-lg xl:text-xl font-semibold tracking-[-0.02em] text-[var(--navy)]">
+                        {title}
+                      </h3>
+                      <p className="mt-3 text-[15px] leading-[1.75] text-muted-foreground">
+                        {text}
+                      </p>
+                    </div>
                   </div>
                 </Reveal>
               ))}
@@ -336,6 +441,7 @@ function ElectricalContractsPage() {
           </div>
         </div>
       </section>
+
 
       {/* Industries */}
       <section className="section-y bg-[var(--stone)]">
