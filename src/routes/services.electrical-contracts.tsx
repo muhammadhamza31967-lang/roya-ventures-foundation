@@ -489,7 +489,7 @@ function ElectricalContractsPage() {
             description="For over 8+ years, enterprises across Saudi Arabia have trusted Roya Ventures to power their operations."
           />
           <div className="mt-20 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-start">
-            <Reveal className="lg:pt-8">
+            <Reveal className="lg:pt-10">
               <div className="grid grid-cols-3 gap-5">
                 {[logoChalhoub, logoSephora, logoDominos].map((logo, i) => (
                   <div
