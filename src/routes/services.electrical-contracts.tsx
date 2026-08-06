@@ -30,6 +30,10 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import heroElectrical from "@/assets/svc-electrical.jpg";
+import elecSwitchgear from "@/assets/elec/elec-switchgear.jpg";
+import elecIndustrial from "@/assets/elec/elec-industrial.jpg";
+import elecSolar from "@/assets/elec/elec-solar.jpg";
+import elecTesting from "@/assets/elec/elec-testing.jpg";
 import logoChalhoub from "@/assets/clients/corporate/chalhoub.png.asset.json";
 import logoSephora from "@/assets/clients/corporate/sephora-2.png.asset.json";
 import logoDominos from "@/assets/clients/hospitality/dominos.png.asset.json";
