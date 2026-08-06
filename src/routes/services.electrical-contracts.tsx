@@ -414,13 +414,13 @@ function ElectricalContractsPage() {
               aria-hidden
               className="absolute left-[1.4rem] top-2 bottom-2 w-px lg:left-0 lg:right-0 lg:top-[1.4rem] lg:bottom-auto lg:h-px lg:w-auto bg-[linear-gradient(to_bottom,transparent,color-mix(in_oklab,var(--gold)_60%,transparent)_12%,color-mix(in_oklab,var(--gold)_60%,transparent)_88%,transparent)] lg:bg-[linear-gradient(to_right,transparent,color-mix(in_oklab,var(--gold)_60%,transparent)_10%,color-mix(in_oklab,var(--gold)_60%,transparent)_90%,transparent)]"
             />
-            <ol className="relative grid gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-5">
+            <ol className="relative grid gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-5 items-start">
               {PROCESS.map(([title, text], i) => {
                 const isActive = activeStep === i;
                 return (
-                  <Reveal key={title} delay={i * 0.08} as="li" className="h-full">
+                  <Reveal key={title} delay={i * 0.08} as="li">
                     <div
-                      className="group relative h-full"
+                      className="group relative"
                       data-cursor="hover"
                       onMouseEnter={() => setActiveStep(i)}
                       onMouseLeave={() => setActiveStep(null)}
@@ -447,12 +447,12 @@ function ElectricalContractsPage() {
                         </div>
                       </div>
 
-                      <div className="pl-[4.25rem] lg:pl-0 h-full">
+                      <div className="pl-[4.25rem] lg:pl-0">
                         <div
-                          className={`relative h-full min-h-[13rem] md:min-h-[14rem] overflow-hidden rounded-2xl border bg-card/85 backdrop-blur-sm p-6 lg:p-6 shadow-[var(--shadow-card)] transition-all duration-500 ${
+                          className={`relative overflow-hidden rounded-2xl border bg-card/85 backdrop-blur-sm p-6 shadow-[var(--shadow-card)] transition-all duration-500 ${
                             isActive
-                              ? "-translate-y-1.5 border-[var(--gold)]/45 shadow-[var(--shadow-elegant)]"
-                              : "border-[color-mix(in_oklab,var(--navy)_9%,transparent)] group-hover:-translate-y-1 group-hover:border-[var(--gold)]/45 group-hover:shadow-[var(--shadow-elegant)]"
+                              ? "border-[var(--gold)]/45 shadow-[var(--shadow-elegant)]"
+                              : "border-[color-mix(in_oklab,var(--navy)_9%,transparent)] group-hover:border-[var(--gold)]/45"
                           }`}
                         >
                           <span
@@ -468,11 +468,9 @@ function ElectricalContractsPage() {
                               isActive ? "w-16" : "w-8 group-hover:w-16"
                             }`}
                           />
-                          <div className="mt-4 min-h-[3.25rem] md:min-h-[3.5rem]">
-                            <h3 className="font-display text-lg font-semibold tracking-[-0.02em] text-[var(--navy)]">
-                              {title}
-                            </h3>
-                          </div>
+                          <h3 className="mt-4 font-display text-lg font-semibold tracking-[-0.02em] text-[var(--navy)]">
+                            {title}
+                          </h3>
                           <div
                             className={`grid transition-all duration-500 ease-out ${
                               isActive
