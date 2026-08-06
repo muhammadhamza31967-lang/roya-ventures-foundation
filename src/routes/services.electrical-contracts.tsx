@@ -115,6 +115,46 @@ const OFFERINGS = [
   },
 ];
 
+type BreakdownCell =
+  | { kind: "card"; n: number; icon: LucideIcon; title: string; text: string }
+  | { kind: "image"; src: string; alt: string; caption: string };
+
+const IMAGE_CELLS: Record<number, { src: string; alt: string; caption: string }> = {
+  3: {
+    src: elecSwitchgear,
+    alt: "Low-voltage switchgear and distribution panel room",
+    caption: "Switchgear & distribution rooms",
+  },
+  7: {
+    src: elecIndustrial,
+    alt: "Certified engineers inspecting industrial cable trays",
+    caption: "Industrial & factory wiring",
+  },
+  11: {
+    src: elecSolar,
+    alt: "Commercial rooftop solar photovoltaic array at sunset",
+    caption: "Solar & renewable energy",
+  },
+};
+
+const BREAKDOWN: BreakdownCell[] = (() => {
+  const cells: BreakdownCell[] = [];
+  let s = 0;
+  for (let i = 0; i < OFFERINGS.length + Object.keys(IMAGE_CELLS).length; i++) {
+    const img = IMAGE_CELLS[i];
+    if (img) {
+      cells.push({ kind: "image", ...img });
+    } else {
+      const o = OFFERINGS[s];
+      cells.push({ kind: "card", n: s + 1, icon: o.icon, title: o.title, text: o.text });
+      s++;
+    }
+  }
+  return cells;
+})();
+
+
+
 const WHY = [
   { icon: Award, title: "8+ Years of Industry Success" },
   { icon: ShieldCheck, title: "Quality Control, Security & Compliance Assurance" },
