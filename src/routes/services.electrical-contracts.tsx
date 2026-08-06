@@ -76,86 +76,57 @@ const OFFERINGS = [
     icon: Zap,
     title: "LV/HV Electrical Systems",
     text: "Design, install, and commission systems that are safe, compliant, and built to handle the load.",
+    image: elecLvhv,
   },
   {
     icon: Gauge,
     title: "LV/MV Power Distribution",
     text: "Handle load analysis, cabling and full commissioning so power flows without interruption.",
+    image: elecDistribution,
   },
   {
     icon: LayoutGrid,
     title: "Panels & Distribution Boards",
     text: "Designing and installing panel systems that are organised, clearly labelled and easy to maintain.",
+    image: elecPanels,
   },
   {
     icon: Network,
     title: "Distribution & Power Management",
     text: "We map your power requirements, design the most efficient distribution network, and implement monitoring solutions.",
+    image: elecTesting,
   },
   {
     icon: Building2,
     title: "Building Electrical Fit-Outs",
     text: "Lighting, power, distribution boards, earthing, cable management, and everything in between.",
+    image: elecFitout,
   },
   {
     icon: Factory,
     title: "Industrial & Factory Wiring",
     text: "Industrial environments demand higher loads, safety standards, and zero tolerance for downtime.",
+    image: elecIndustrial,
   },
   {
     icon: Sun,
     title: "Solar & Renewable Energy",
     text: "Designing and installing solar PV systems for commercial and industrial facilities integrated cleanly with your existing electrical infrastructure.",
+    image: elecSolar,
   },
   {
     icon: BatteryCharging,
     title: "Generator & UPS Systems",
     text: "We design, supply, and install generator sets and UPS systems that kick in instantly, keeping your critical systems online.",
+    image: elecGenerator,
   },
   {
     icon: ShieldCheck,
     title: "Switchgear",
     text: "We supply and test switchgear assemblies that meet your load requirements that comply with international safety standards.",
+    image: elecSwitchgear,
   },
 ];
-
-type BreakdownCell =
-  | { kind: "card"; n: number; icon: LucideIcon; title: string; text: string }
-  | { kind: "image"; src: string; alt: string; caption: string };
-
-const IMAGE_CELLS: Record<number, { src: string; alt: string; caption: string }> = {
-  3: {
-    src: elecSwitchgear,
-    alt: "Low-voltage switchgear and distribution panel room",
-    caption: "Switchgear & distribution rooms",
-  },
-  7: {
-    src: elecIndustrial,
-    alt: "Certified engineers inspecting industrial cable trays",
-    caption: "Industrial & factory wiring",
-  },
-  11: {
-    src: elecSolar,
-    alt: "Commercial rooftop solar photovoltaic array at sunset",
-    caption: "Solar & renewable energy",
-  },
-};
-
-const BREAKDOWN: BreakdownCell[] = (() => {
-  const cells: BreakdownCell[] = [];
-  let s = 0;
-  for (let i = 0; i < OFFERINGS.length + Object.keys(IMAGE_CELLS).length; i++) {
-    const img = IMAGE_CELLS[i];
-    if (img) {
-      cells.push({ kind: "image", ...img });
-    } else {
-      const o = OFFERINGS[s];
-      cells.push({ kind: "card", n: s + 1, icon: o.icon, title: o.title, text: o.text });
-      s++;
-    }
-  }
-  return cells;
-})();
 
 
 
