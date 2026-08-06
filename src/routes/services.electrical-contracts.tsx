@@ -481,30 +481,33 @@ function ElectricalContractsPage() {
       </section>
 
       {/* Trusted across the region */}
-      <section className="section-y pt-4 md:pt-6">
+      <section className="section-y">
         <div className="container-px mx-auto">
-          <SectionHeading
-            eyebrow="Track record"
-            title={<>Trusted Across the Region</>}
-            description="For over 8+ years, enterprises across Saudi Arabia have trusted Roya Ventures to power their operations."
-          />
-          <div className="mt-20 grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-start">
-            <Reveal className="lg:pt-10">
-              <div className="grid grid-cols-3 gap-5">
-                {[logoChalhoub, logoSephora, logoDominos].map((logo, i) => (
-                  <div
-                    key={i}
-                    className="grid place-items-center rounded-2xl bg-card border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] p-6 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1 hover:border-[var(--gold)]/40"
-                  >
-                    <img
-                      src={logo.url}
-                      alt="Client logo"
-                      className="h-10 md:h-12 w-auto object-contain opacity-80 transition-opacity duration-500 hover:opacity-100"
-                    />
-                  </div>
-                ))}
-              </div>
-            </Reveal>
+          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-start">
+            <div>
+              <p className="gold-rule">Track record</p>
+              <h2 className="heading-lg mt-6">Trusted Across the Region</h2>
+              <p className="mt-6 text-lg md:text-xl leading-relaxed font-light text-muted-foreground">
+                For over 8+ years, enterprises across Saudi Arabia have trusted Roya Ventures to power their operations.
+              </p>
+              <div className="mt-8 gold-divider" />
+              <Reveal>
+                <div className="mt-16 grid grid-cols-3 gap-5">
+                  {[logoChalhoub, logoSephora, logoDominos].map((logo, i) => (
+                    <div
+                      key={i}
+                      className="grid place-items-center rounded-2xl bg-card border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] p-6 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1 hover:border-[var(--gold)]/40"
+                    >
+                      <img
+                        src={logo.url}
+                        alt="Client logo"
+                        className="h-10 md:h-12 w-auto object-contain opacity-80 transition-opacity duration-500 hover:opacity-100"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+            </div>
             <Reveal delay={0.1}>
               <div className="relative overflow-hidden rounded-2xl border border-[var(--gold)]/30 bg-gradient-to-br from-white to-[var(--stone)] p-9 shadow-[var(--shadow-card)]">
                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/60 to-transparent" />
