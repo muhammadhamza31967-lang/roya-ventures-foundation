@@ -468,9 +468,11 @@ function ElectricalContractsPage() {
                               isActive ? "w-16" : "w-8 group-hover:w-16"
                             }`}
                           />
-                          <h3 className="relative mt-4 font-display text-lg font-semibold tracking-[-0.02em] text-[var(--navy)]">
-                            {title}
-                          </h3>
+                          <div className="mt-4 min-h-[3.25rem] md:min-h-[3.5rem]">
+                            <h3 className="font-display text-lg font-semibold tracking-[-0.02em] text-[var(--navy)]">
+                              {title}
+                            </h3>
+                          </div>
                           <div
                             className={`grid transition-all duration-500 ease-out ${
                               isActive
