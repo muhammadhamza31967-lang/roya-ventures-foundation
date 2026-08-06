@@ -1,3 +1,4 @@
+import type { LucideIcon } from "lucide-react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
