@@ -18,6 +18,7 @@ import { Route as ClientsRouteImport } from './routes/clients'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesNetworkingRouteImport } from './routes/services.networking'
 import { Route as ServicesElectricalContractsRouteImport } from './routes/services.electrical-contracts'
 import { Route as ServicesDataCenterSetupRouteImport } from './routes/services.data-center-setup'
 
@@ -66,6 +67,11 @@ const ServicesIndexRoute = ServicesIndexRouteImport.update({
   path: '/services/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesNetworkingRoute = ServicesNetworkingRouteImport.update({
+  id: '/services/networking',
+  path: '/services/networking',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesElectricalContractsRoute =
   ServicesElectricalContractsRouteImport.update({
     id: '/services/electrical-contracts',
@@ -89,6 +95,7 @@ export interface FileRoutesByFullPath {
   '/team': typeof TeamRoute
   '/services/data-center-setup': typeof ServicesDataCenterSetupRoute
   '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
+  '/services/networking': typeof ServicesNetworkingRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -102,6 +109,7 @@ export interface FileRoutesByTo {
   '/team': typeof TeamRoute
   '/services/data-center-setup': typeof ServicesDataCenterSetupRoute
   '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
+  '/services/networking': typeof ServicesNetworkingRoute
   '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
@@ -116,6 +124,7 @@ export interface FileRoutesById {
   '/team': typeof TeamRoute
   '/services/data-center-setup': typeof ServicesDataCenterSetupRoute
   '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
+  '/services/networking': typeof ServicesNetworkingRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
@@ -131,6 +140,7 @@ export interface FileRouteTypes {
     | '/team'
     | '/services/data-center-setup'
     | '/services/electrical-contracts'
+    | '/services/networking'
     | '/services/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -144,6 +154,7 @@ export interface FileRouteTypes {
     | '/team'
     | '/services/data-center-setup'
     | '/services/electrical-contracts'
+    | '/services/networking'
     | '/services'
   id:
     | '__root__'
@@ -157,6 +168,7 @@ export interface FileRouteTypes {
     | '/team'
     | '/services/data-center-setup'
     | '/services/electrical-contracts'
+    | '/services/networking'
     | '/services/'
   fileRoutesById: FileRoutesById
 }
@@ -171,6 +183,7 @@ export interface RootRouteChildren {
   TeamRoute: typeof TeamRoute
   ServicesDataCenterSetupRoute: typeof ServicesDataCenterSetupRoute
   ServicesElectricalContractsRoute: typeof ServicesElectricalContractsRoute
+  ServicesNetworkingRoute: typeof ServicesNetworkingRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
@@ -239,6 +252,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/networking': {
+      id: '/services/networking'
+      path: '/services/networking'
+      fullPath: '/services/networking'
+      preLoaderRoute: typeof ServicesNetworkingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/electrical-contracts': {
       id: '/services/electrical-contracts'
       path: '/services/electrical-contracts'
@@ -267,6 +287,7 @@ const rootRouteChildren: RootRouteChildren = {
   TeamRoute: TeamRoute,
   ServicesDataCenterSetupRoute: ServicesDataCenterSetupRoute,
   ServicesElectricalContractsRoute: ServicesElectricalContractsRoute,
+  ServicesNetworkingRoute: ServicesNetworkingRoute,
   ServicesIndexRoute: ServicesIndexRoute,
 }
 export const routeTree = rootRouteImport
