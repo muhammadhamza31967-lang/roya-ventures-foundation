@@ -512,7 +512,22 @@ function ElectricalContractsPage() {
                 <p className="mt-4 text-[15px] leading-[1.75] text-muted-foreground">
                   Full electrical fit-out across 12 branches. Delivered on time.
                 </p>
-                <Link to="/projects" className="btn-primary mt-8 inline-flex">
+                <div className="mt-6 grid grid-cols-3 gap-3">
+                  {[shotRetail, shotStore, shotSite].map((img, i) => (
+                    <div
+                      key={i}
+                      className="group overflow-hidden rounded-xl border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1 hover:border-[var(--gold)]/45 hover:shadow-[var(--shadow-elegant)]"
+                    >
+                      <img
+                        src={img.url}
+                        alt="Completed electrical project"
+                        loading="lazy"
+                        className="h-20 sm:h-24 w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <Link to="/projects" className="btn-primary mt-7 inline-flex">
                   See More Projects <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
