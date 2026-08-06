@@ -19,6 +19,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesElectricalContractsRouteImport } from './routes/services.electrical-contracts'
+import { Route as ServicesDataCenterSetupRouteImport } from './routes/services.data-center-setup'
 
 const TeamRoute = TeamRouteImport.update({
   id: '/team',
@@ -71,6 +72,11 @@ const ServicesElectricalContractsRoute =
     path: '/services/electrical-contracts',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ServicesDataCenterSetupRoute = ServicesDataCenterSetupRouteImport.update({
+  id: '/services/data-center-setup',
+  path: '/services/data-center-setup',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -81,6 +87,7 @@ export interface FileRoutesByFullPath {
   '/projects': typeof ProjectsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
+  '/services/data-center-setup': typeof ServicesDataCenterSetupRoute
   '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
   '/services/': typeof ServicesIndexRoute
 }
@@ -93,6 +100,7 @@ export interface FileRoutesByTo {
   '/projects': typeof ProjectsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
+  '/services/data-center-setup': typeof ServicesDataCenterSetupRoute
   '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
   '/services': typeof ServicesIndexRoute
 }
@@ -106,6 +114,7 @@ export interface FileRoutesById {
   '/projects': typeof ProjectsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
+  '/services/data-center-setup': typeof ServicesDataCenterSetupRoute
   '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
   '/services/': typeof ServicesIndexRoute
 }
@@ -120,6 +129,7 @@ export interface FileRouteTypes {
     | '/projects'
     | '/sitemap.xml'
     | '/team'
+    | '/services/data-center-setup'
     | '/services/electrical-contracts'
     | '/services/'
   fileRoutesByTo: FileRoutesByTo
@@ -132,6 +142,7 @@ export interface FileRouteTypes {
     | '/projects'
     | '/sitemap.xml'
     | '/team'
+    | '/services/data-center-setup'
     | '/services/electrical-contracts'
     | '/services'
   id:
@@ -144,6 +155,7 @@ export interface FileRouteTypes {
     | '/projects'
     | '/sitemap.xml'
     | '/team'
+    | '/services/data-center-setup'
     | '/services/electrical-contracts'
     | '/services/'
   fileRoutesById: FileRoutesById
@@ -157,6 +169,7 @@ export interface RootRouteChildren {
   ProjectsRoute: typeof ProjectsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TeamRoute: typeof TeamRoute
+  ServicesDataCenterSetupRoute: typeof ServicesDataCenterSetupRoute
   ServicesElectricalContractsRoute: typeof ServicesElectricalContractsRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
 }
@@ -233,6 +246,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesElectricalContractsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/data-center-setup': {
+      id: '/services/data-center-setup'
+      path: '/services/data-center-setup'
+      fullPath: '/services/data-center-setup'
+      preLoaderRoute: typeof ServicesDataCenterSetupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -245,19 +265,10 @@ const rootRouteChildren: RootRouteChildren = {
   ProjectsRoute: ProjectsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TeamRoute: TeamRoute,
+  ServicesDataCenterSetupRoute: ServicesDataCenterSetupRoute,
   ServicesElectricalContractsRoute: ServicesElectricalContractsRoute,
   ServicesIndexRoute: ServicesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
