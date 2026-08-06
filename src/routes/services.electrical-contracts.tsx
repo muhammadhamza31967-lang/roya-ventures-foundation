@@ -403,77 +403,47 @@ function ElectricalContractsPage() {
             title={<>How We Work</>}
             description="We deliver tailored solutions that address your unique business challenges for measurable operational efficiency."
           />
-          <div className="mt-16 relative mx-auto max-w-5xl">
-            {/* continuous rail */}
+          <div className="mt-14 relative mx-auto max-w-7xl">
+            {/* continuous rail — horizontal on desktop, vertical on mobile */}
             <div
               aria-hidden
-              className="absolute top-2 bottom-2 left-[1.4rem] md:left-1/2 md:-translate-x-px w-px bg-[linear-gradient(to_bottom,transparent,color-mix(in_oklab,var(--gold)_60%,transparent)_12%,color-mix(in_oklab,var(--gold)_60%,transparent)_88%,transparent)]"
+              className="absolute left-[1.4rem] top-2 bottom-2 w-px lg:left-0 lg:right-0 lg:top-[1.4rem] lg:bottom-auto lg:h-px lg:w-auto bg-[linear-gradient(to_bottom,transparent,color-mix(in_oklab,var(--gold)_60%,transparent)_12%,color-mix(in_oklab,var(--gold)_60%,transparent)_88%,transparent)] lg:bg-[linear-gradient(to_right,transparent,color-mix(in_oklab,var(--gold)_60%,transparent)_10%,color-mix(in_oklab,var(--gold)_60%,transparent)_90%,transparent)]"
             />
-            <ol className="relative space-y-8 md:space-y-0">
-              {PROCESS.map(([title, text], i) => {
-                const right = i % 2 === 1;
-                return (
-                  <Reveal key={title} delay={i * 0.08} as="li">
-                    <div
-                      className={`group relative md:grid md:grid-cols-2 md:items-center md:gap-14 ${
-                        i > 0 ? "md:-mt-6" : ""
-                      }`}
-                      data-cursor="hover"
-                    >
-                      {/* node */}
-                      <div className="absolute left-0 top-1 md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 z-10">
-                        <div className="relative grid h-11 w-11 place-items-center rounded-full border border-[var(--gold)]/50 bg-[var(--ivory)] font-display text-xs tracking-[0.08em] text-[var(--gold)] shadow-[0_10px_28px_-14px_color-mix(in_oklab,var(--gold)_80%,transparent)] transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-[var(--navy)] group-hover:scale-110">
-                          {String(i + 1).padStart(2, "0")}
-                          <span
-                            aria-hidden
-                            className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-[var(--gold)]/35 scale-100 opacity-0 transition-all duration-700 group-hover:scale-[1.55] group-hover:opacity-100"
-                          />
-                        </div>
-                      </div>
-
-                      {/* connector to card */}
-                      <div
-                        aria-hidden
-                        className={`hidden md:block absolute top-1/2 h-px w-10 bg-[linear-gradient(to_right,color-mix(in_oklab,var(--gold)_60%,transparent),transparent)] transition-all duration-500 group-hover:w-14 ${
-                          right ? "left-1/2" : "right-1/2 rotate-180"
-                        }`}
-                      />
-
-                      <div
-                        className={`pl-[4.25rem] md:pl-0 md:py-10 ${
-                          right ? "md:col-start-2 md:pl-14" : "md:col-start-1 md:pr-14"
-                        }`}
-                      >
-                        <div
-                          className={`relative overflow-hidden rounded-2xl border border-[color-mix(in_oklab,var(--navy)_9%,transparent)] bg-card/85 backdrop-blur-sm p-7 md:p-8 shadow-[var(--shadow-card)] transition-all duration-500 group-hover:-translate-y-1.5 group-hover:border-[var(--gold)]/45 group-hover:shadow-[var(--shadow-elegant)] ${
-                            right ? "" : "md:text-right"
-                          }`}
-                        >
-                          <span
-                            aria-hidden
-                            className={`pointer-events-none absolute -bottom-6 select-none font-display text-[6rem] font-semibold leading-none text-transparent [-webkit-text-stroke:1.5px_color-mix(in_oklab,var(--gold)_45%,transparent)] opacity-[0.14] transition-all duration-700 group-hover:opacity-25 ${
-                              right ? "-left-2" : "-right-2"
-                            }`}
-                          >
-                            {String(i + 1).padStart(2, "0")}
-                          </span>
-                          <div
-                            className={`h-px w-8 bg-[var(--gold)] transition-all duration-500 group-hover:w-16 ${
-                              right ? "" : "md:ml-auto"
-                            }`}
-                          />
-                          <h3 className="relative mt-5 font-display text-lg xl:text-xl font-semibold tracking-[-0.02em] text-[var(--navy)]">
-                            {title}
-                          </h3>
-                          <p className="relative mt-3 text-[15px] leading-[1.75] text-muted-foreground">
-                            {text}
-                          </p>
-                        </div>
+            <ol className="relative grid gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-5">
+              {PROCESS.map(([title, text], i) => (
+                <Reveal key={title} delay={i * 0.08} as="li" className="h-full">
+                  <div className="group relative h-full" data-cursor="hover">
+                    {/* node */}
+                    <div className="absolute left-0 top-1 lg:static lg:mx-auto lg:mb-6 lg:flex lg:justify-center">
+                      <div className="relative grid h-11 w-11 place-items-center rounded-full border border-[var(--gold)]/50 bg-[var(--ivory)] font-display text-xs tracking-[0.08em] text-[var(--gold)] shadow-[0_10px_28px_-14px_color-mix(in_oklab,var(--gold)_80%,transparent)] transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-[var(--navy)] group-hover:scale-110">
+                        {String(i + 1).padStart(2, "0")}
+                        <span
+                          aria-hidden
+                          className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-[var(--gold)]/35 scale-100 opacity-0 transition-all duration-700 group-hover:scale-[1.55] group-hover:opacity-100"
+                        />
                       </div>
                     </div>
-                  </Reveal>
-                );
-              })}
+
+                    <div className="pl-[4.25rem] lg:pl-0 h-full">
+                      <div className="relative h-full overflow-hidden rounded-2xl border border-[color-mix(in_oklab,var(--navy)_9%,transparent)] bg-card/85 backdrop-blur-sm p-6 lg:p-6 shadow-[var(--shadow-card)] transition-all duration-500 group-hover:-translate-y-1.5 group-hover:border-[var(--gold)]/45 group-hover:shadow-[var(--shadow-elegant)]">
+                        <span
+                          aria-hidden
+                          className="pointer-events-none absolute -bottom-6 -right-2 select-none font-display text-[6rem] font-semibold leading-none text-transparent [-webkit-text-stroke:1.5px_color-mix(in_oklab,var(--gold)_45%,transparent)] opacity-[0.14] transition-all duration-700 group-hover:opacity-25"
+                        >
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <div className="h-px w-8 bg-[var(--gold)] transition-all duration-500 group-hover:w-16" />
+                        <h3 className="relative mt-4 font-display text-lg font-semibold tracking-[-0.02em] text-[var(--navy)]">
+                          {title}
+                        </h3>
+                        <p className="relative mt-3 text-[14px] leading-[1.7] text-muted-foreground">
+                          {text}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
             </ol>
           </div>
         </div>
