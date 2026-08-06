@@ -19,17 +19,15 @@ import {
   Store,
   Server,
   CheckCircle2,
+  Plus,
+  Minus,
 } from "lucide-react";
+import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { Reveal } from "@/components/site/Reveal";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Accordion, AccordionContent, AccordionItem } from "@/components/ui/accordion";
 import heroElectrical from "@/assets/svc-electrical.jpg";
 import elecSwitchgear from "@/assets/elec/elec-switchgear.jpg";
 import elecIndustrial from "@/assets/elec/elec-industrial.jpg";
