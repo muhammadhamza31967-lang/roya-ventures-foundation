@@ -1,4 +1,3 @@
-import type { LucideIcon } from "lucide-react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -33,6 +32,11 @@ import elecSwitchgear from "@/assets/elec/elec-switchgear.jpg";
 import elecIndustrial from "@/assets/elec/elec-industrial.jpg";
 import elecSolar from "@/assets/elec/elec-solar.jpg";
 import elecTesting from "@/assets/elec/elec-testing.jpg";
+import elecLvhv from "@/assets/elec/elec-lvhv.jpg";
+import elecDistribution from "@/assets/elec/elec-distribution.jpg";
+import elecPanels from "@/assets/elec/elec-panels.jpg";
+import elecFitout from "@/assets/elec/elec-fitout.jpg";
+import elecGenerator from "@/assets/elec/elec-generator.jpg";
 import logoChalhoub from "@/assets/clients/corporate/chalhoub.png.asset.json";
 import logoSephora from "@/assets/clients/corporate/sephora-2.png.asset.json";
 import logoDominos from "@/assets/clients/hospitality/dominos.png.asset.json";
@@ -71,86 +75,57 @@ const OFFERINGS = [
     icon: Zap,
     title: "LV/HV Electrical Systems",
     text: "Design, install, and commission systems that are safe, compliant, and built to handle the load.",
+    image: elecLvhv,
   },
   {
     icon: Gauge,
     title: "LV/MV Power Distribution",
     text: "Handle load analysis, cabling and full commissioning so power flows without interruption.",
+    image: elecDistribution,
   },
   {
     icon: LayoutGrid,
     title: "Panels & Distribution Boards",
     text: "Designing and installing panel systems that are organised, clearly labelled and easy to maintain.",
+    image: elecPanels,
   },
   {
     icon: Network,
     title: "Distribution & Power Management",
     text: "We map your power requirements, design the most efficient distribution network, and implement monitoring solutions.",
+    image: elecTesting,
   },
   {
     icon: Building2,
     title: "Building Electrical Fit-Outs",
     text: "Lighting, power, distribution boards, earthing, cable management, and everything in between.",
+    image: elecFitout,
   },
   {
     icon: Factory,
     title: "Industrial & Factory Wiring",
     text: "Industrial environments demand higher loads, safety standards, and zero tolerance for downtime.",
+    image: elecIndustrial,
   },
   {
     icon: Sun,
     title: "Solar & Renewable Energy",
     text: "Designing and installing solar PV systems for commercial and industrial facilities integrated cleanly with your existing electrical infrastructure.",
+    image: elecSolar,
   },
   {
     icon: BatteryCharging,
     title: "Generator & UPS Systems",
     text: "We design, supply, and install generator sets and UPS systems that kick in instantly, keeping your critical systems online.",
+    image: elecGenerator,
   },
   {
     icon: ShieldCheck,
     title: "Switchgear",
     text: "We supply and test switchgear assemblies that meet your load requirements that comply with international safety standards.",
+    image: elecSwitchgear,
   },
 ];
-
-type BreakdownCell =
-  | { kind: "card"; n: number; icon: LucideIcon; title: string; text: string }
-  | { kind: "image"; src: string; alt: string; caption: string };
-
-const IMAGE_CELLS: Record<number, { src: string; alt: string; caption: string }> = {
-  3: {
-    src: elecSwitchgear,
-    alt: "Low-voltage switchgear and distribution panel room",
-    caption: "Switchgear & distribution rooms",
-  },
-  7: {
-    src: elecIndustrial,
-    alt: "Certified engineers inspecting industrial cable trays",
-    caption: "Industrial & factory wiring",
-  },
-  11: {
-    src: elecSolar,
-    alt: "Commercial rooftop solar photovoltaic array at sunset",
-    caption: "Solar & renewable energy",
-  },
-};
-
-const BREAKDOWN: BreakdownCell[] = (() => {
-  const cells: BreakdownCell[] = [];
-  let s = 0;
-  for (let i = 0; i < OFFERINGS.length + Object.keys(IMAGE_CELLS).length; i++) {
-    const img = IMAGE_CELLS[i];
-    if (img) {
-      cells.push({ kind: "image", ...img });
-    } else {
-      const o = OFFERINGS[s];
-      cells.push({ kind: "card", n: s + 1, icon: o.icon, title: o.title, text: o.text });
-      s++;
-    }
-  }
-  return cells;
-})();
 
 
 
@@ -274,57 +249,50 @@ function ElectricalContractsPage() {
           />
 
           <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {BREAKDOWN.map((cell, i) =>
-              cell.kind === "image" ? (
-                <Reveal key={`img-${cell.src}`} delay={(i % 3) * 0.07}>
-                  <figure
-                    className="group relative h-full min-h-[18rem] overflow-hidden rounded-2xl border border-[color-mix(in_oklab,var(--navy)_10%,transparent)] shadow-[var(--shadow-card)]"
-                    data-cursor="hover"
-                  >
-                    <img
-                      src={cell.src}
-                      alt={cell.alt}
-                      loading="lazy"
-                      width={1280}
-                      height={960}
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[color-mix(in_oklab,var(--navy)_88%,transparent)] via-[color-mix(in_oklab,var(--navy)_35%,transparent)] to-transparent" />
-                    <div className="absolute inset-x-0 bottom-0 p-7">
-                      <div className="h-px w-10 bg-[var(--gold)] transition-all duration-500 group-hover:w-24" />
-                      <figcaption className="mt-4 font-display text-xl font-semibold tracking-[-0.02em] text-white">
-                        {cell.caption}
-                      </figcaption>
+            {OFFERINGS.map((o, i) => (
+              <Reveal key={o.title} delay={(i % 3) * 0.07} className="h-full">
+                <article
+                  className="group relative h-full min-h-[20rem] md:min-h-[22rem] overflow-hidden rounded-2xl border border-[color-mix(in_oklab,var(--navy)_10%,transparent)] shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[var(--shadow-elegant)]"
+                  data-cursor="hover"
+                >
+                  <img
+                    src={o.image}
+                    alt={o.title}
+                    loading="lazy"
+                    width={1280}
+                    height={960}
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"
+                  />
+                  {/* Base overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[color-mix(in_oklab,var(--navy)_92%,transparent)] via-[color-mix(in_oklab,var(--navy)_45%,transparent)] to-[color-mix(in_oklab,var(--navy)_12%,transparent)]" />
+                  {/* Hover deepen */}
+                  <div className="absolute inset-0 bg-[color-mix(in_oklab,var(--navy)_45%,transparent)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+                  <span className="absolute right-6 top-6 font-display text-xs tracking-[0.35em] text-white/45">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+
+                  <div className="absolute inset-x-0 bottom-0 p-7 md:p-8 transition-transform duration-500 ease-out group-hover:-translate-y-1">
+                    <div className="grid h-12 w-12 place-items-center rounded-xl border border-[var(--gold)]/45 bg-[color-mix(in_oklab,var(--gold)_14%,transparent)] text-[var(--gold)] backdrop-blur-sm transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-[var(--navy)]">
+                      <o.icon className="h-5 w-5" strokeWidth={1.4} />
                     </div>
-                    <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/0 transition-all duration-500 group-hover:ring-[var(--gold)]/45" />
-                  </figure>
-                </Reveal>
-              ) : (
-                <Reveal key={cell.title} delay={(i % 3) * 0.07}>
-                  <article
-                    className="group relative h-full overflow-hidden rounded-2xl bg-card p-8 md:p-9 border border-[color-mix(in_oklab,var(--navy)_8%,transparent)] shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[var(--shadow-elegant)] hover:border-[var(--gold)]/40"
-                    data-cursor="hover"
-                  >
-                    <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_26%,transparent),transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                    <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/60 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                    <span className="absolute right-6 top-6 font-display text-xs tracking-[0.35em] text-[var(--navy)]/25">
-                      {String(cell.n).padStart(2, "0")}
-                    </span>
-                    <div className="relative grid h-14 w-14 place-items-center rounded-xl border border-[var(--gold)]/35 bg-gradient-to-br from-[color-mix(in_oklab,var(--gold)_12%,transparent)] to-transparent text-[var(--gold)] transition-all duration-500 group-hover:bg-[var(--gold)] group-hover:text-[var(--navy)] group-hover:shadow-[0_12px_30px_-12px_color-mix(in_oklab,var(--gold)_70%,transparent)]">
-                      <cell.icon className="h-6 w-6" strokeWidth={1.4} />
-                    </div>
-                    <h3 className="relative mt-7 font-display text-xl md:text-2xl font-semibold tracking-[-0.02em] text-[var(--navy)]">
-                      {cell.title}
+                    <h3 className="mt-5 font-display text-xl md:text-2xl font-semibold leading-tight tracking-[-0.02em] text-white">
+                      {o.title}
                     </h3>
-                    <p className="relative mt-4 text-[15px] leading-[1.75] text-muted-foreground">
-                      {cell.text}
-                    </p>
-                    <div className="relative mt-7 h-px w-10 bg-[var(--gold)] transition-all duration-500 group-hover:w-24" />
-                  </article>
-                </Reveal>
-              ),
-            )}
+                    <div className="grid grid-rows-[0fr] opacity-0 transition-all duration-500 ease-out group-hover:grid-rows-[1fr] group-hover:opacity-100 group-hover:mt-4">
+                      <p className="overflow-hidden text-[15px] leading-[1.7] text-white/85">
+                        {o.text}
+                      </p>
+                    </div>
+                    <div className="mt-6 h-px w-10 bg-[var(--gold)] transition-all duration-500 group-hover:w-24" />
+                  </div>
+
+                  <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/0 transition-all duration-500 group-hover:ring-[var(--gold)]/45" />
+                </article>
+              </Reveal>
+            ))}
           </div>
+
           <div className="mt-14 flex justify-center">
             <Link to="/contact" className="btn-primary">
               Start Your Electrical Contract Project <ArrowRight className="h-4 w-4" />
