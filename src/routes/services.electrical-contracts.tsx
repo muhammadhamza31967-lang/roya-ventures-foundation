@@ -560,22 +560,45 @@ function ElectricalContractsPage() {
       </section>
 
       {/* FAQs */}
-      <section className="section-y bg-[var(--stone)]">
-        <div className="container-px mx-auto">
+      <section className="section-y bg-[var(--stone)] relative overflow-hidden">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-40 top-10 h-[34rem] w-[34rem] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--gold)_14%,transparent),transparent_70%)]"
+        />
+        <div className="container-px mx-auto relative">
           <SectionHeading eyebrow="FAQs" title={<>Frequently asked questions</>} />
           <div className="mt-14 mx-auto max-w-4xl">
-            <Accordion type="single" collapsible className="space-y-4">
+            <Accordion type="single" collapsible className="space-y-4 md:space-y-5">
               {FAQS.map(([q, a], i) => (
                 <AccordionItem
                   key={q}
                   value={`item-${i}`}
-                  className="rounded-2xl border border-[color-mix(in_oklab,var(--navy)_10%,transparent)] bg-card px-6 shadow-[var(--shadow-card)] transition-colors duration-500 hover:border-[var(--gold)]/40"
+                  className="group relative overflow-hidden rounded-2xl border border-[color-mix(in_oklab,var(--navy)_10%,transparent)] bg-[color-mix(in_oklab,var(--card)_92%,transparent)] backdrop-blur-sm shadow-[var(--shadow-card)] transition-all duration-500 hover:border-[var(--gold)]/45 hover:shadow-[var(--shadow-elegant)] data-[state=open]:border-[var(--gold)]/50 data-[state=open]:shadow-[var(--shadow-elegant)]"
+                  data-cursor="hover"
                 >
-                  <AccordionTrigger className="text-left font-display text-base md:text-lg font-semibold text-[var(--navy)] hover:no-underline">
-                    {q}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-[15px] leading-[1.75] text-muted-foreground">
-                    {a}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-data-[state=open]:opacity-100"
+                  />
+                  <AccordionPrimitive.Header className="flex">
+                    <AccordionPrimitive.Trigger className="group/trigger flex flex-1 items-center gap-4 md:gap-6 px-5 md:px-8 py-6 text-left cursor-pointer">
+                      <span className="hidden sm:block font-display text-xs tracking-[0.3em] text-[var(--navy)]/30 transition-colors duration-500 group-data-[state=open]:text-[var(--gold)]">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="flex-1 font-display text-base md:text-lg font-semibold leading-snug tracking-[-0.01em] text-[var(--navy)]">
+                        {q}
+                      </span>
+                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[var(--gold)]/40 text-[var(--gold)] transition-all duration-500 group-hover:bg-[var(--gold)]/10 group-data-[state=open]:bg-[var(--gold)] group-data-[state=open]:text-[var(--navy)] group-data-[state=open]:rotate-180">
+                        <Plus className="h-4 w-4 transition-opacity duration-300 group-data-[state=open]:opacity-0" />
+                        <Minus className="absolute h-4 w-4 opacity-0 transition-opacity duration-300 group-data-[state=open]:opacity-100" />
+                      </span>
+                    </AccordionPrimitive.Trigger>
+                  </AccordionPrimitive.Header>
+                  <AccordionContent className="px-5 md:px-8 pb-7 pt-0">
+                    <div className="gold-divider mb-5" />
+                    <p className="text-[15px] md:text-base leading-[1.8] text-muted-foreground sm:pl-[3.25rem]">
+                      {a}
+                    </p>
                   </AccordionContent>
                 </AccordionItem>
               ))}
@@ -583,6 +606,7 @@ function ElectricalContractsPage() {
           </div>
         </div>
       </section>
+
 
       {/* Final CTA */}
       <section className="relative bg-[var(--ivory)] py-20 md:py-28">
