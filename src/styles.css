@@ -477,3 +477,33 @@
   border-radius: 1.25rem;
   box-shadow: var(--shadow-card);
 }
+
+/* Subtle engineering / blueprint pattern for section backgrounds */
+@utility bg-blueprint {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+      linear-gradient(color-mix(in oklab, var(--navy) 5%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in oklab, var(--navy) 5%, transparent) 1px, transparent 1px),
+      linear-gradient(color-mix(in oklab, var(--gold) 9%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in oklab, var(--gold) 9%, transparent) 1px, transparent 1px);
+    background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px;
+    background-position: -1px -1px;
+    mask-image: radial-gradient(ellipse 90% 75% at 50% 45%, black 35%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 75% at 50% 45%, black 35%, transparent 100%);
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: radial-gradient(ellipse 55% 45% at 50% 0%, color-mix(in oklab, var(--gold) 8%, transparent), transparent 65%);
+  }
+}
