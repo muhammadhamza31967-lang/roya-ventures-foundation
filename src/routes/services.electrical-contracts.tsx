@@ -36,6 +36,9 @@ import elecGenerator from "@/assets/elec/elec-generator.jpg";
 import logoChalhoub from "@/assets/clients/corporate/chalhoub.png.asset.json";
 import logoSephora from "@/assets/clients/corporate/sephora-2.png.asset.json";
 import logoDominos from "@/assets/clients/hospitality/dominos.png.asset.json";
+import shotRetail from "@/assets/projects/chalhoub-retail/prada.webp.asset.json";
+import shotStore from "@/assets/projects/sephora/Sephora_Olaya.webp.asset.json";
+import shotSite from "@/assets/projects/nesma/nesma-crew.jpg.asset.json";
 
 export const Route = createFileRoute("/services/electrical-contracts")({
   head: () => ({
