@@ -212,9 +212,9 @@ function HomePage() {
                 <div className="mt-10 hairline max-w-[10rem]" />
                 <div className="mt-10 grid grid-cols-3 gap-6 max-w-md">
                   {[
-                    { k: "8+", v: "Years" },
-                    { k: "400+", v: "Projects" },
-                    { k: "11", v: "Practices" },
+                    { k: "10+", v: "Years" },
+                    { k: "500+", v: "Projects" },
+                    { k: "12+", v: "Practices" },
                   ].map((s) => (
                     <div key={s.v}>
                       <div className="font-display text-3xl font-semibold text-[var(--navy)] tracking-[-0.03em]">
