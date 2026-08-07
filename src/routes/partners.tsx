@@ -99,7 +99,7 @@ function PartnersPage() {
           <SectionHeading
             eyebrow="Partner Ecosystem"
             title={<>The specialists who <em className="not-italic text-[var(--gold)]">power our delivery.</em></>}
-            description="A structured view of our technology alliances. Official partner logos will be added as they are finalized."
+            description="A structured view of our technology alliances."
           />
 
           <div className="mt-20 space-y-24">
