@@ -10,6 +10,7 @@ import svcSignage from "@/assets/svc-signage.jpg";
 import svcPos from "@/assets/svc-pos.jpg";
 import svcWebdev from "@/assets/svc-webdev.jpg";
 import svcIt from "@/assets/svc-it.jpg";
+import svcFacility from "@/assets/svc-facility.jpg";
 
 export type Service = {
   slug: string;
@@ -20,14 +21,6 @@ export type Service = {
 };
 
 export const SERVICES: Service[] = [
-  {
-    slug: "electrical-contracts",
-    title: "Electrical Contracts",
-    short: "End-to-end electrical engineering for commercial and industrial projects.",
-    description:
-      "Design, installation and commissioning of LV/HV electrical systems — switchgear, panels, distribution and power management — engineered for reliability at scale.",
-    image: svcElectrical,
-  },
   {
     slug: "data-center-setup",
     title: "Data Center Setup",
@@ -53,28 +46,20 @@ export const SERVICES: Service[] = [
     image: svcFiber,
   },
   {
-    slug: "fire-fighting",
-    title: "Fire Fighting",
-    short: "Active and passive fire protection systems.",
-    description:
-      "Hydrant networks, sprinkler systems, FM-200 and Novec clean-agent suppression — designed, supplied and commissioned to NFPA and civil-defence standards.",
-    image: svcFirefighting,
-  },
-  {
-    slug: "ems-access-control",
-    title: "EMS System & Access Control",
-    short: "Energy management and intelligent access control.",
-    description:
-      "BMS-integrated energy monitoring with biometric, card and mobile credential access — unified under a single, auditable operations dashboard.",
-    image: svcEms,
-  },
-  {
     slug: "surveillance-system",
     title: "Surveillance System",
     short: "IP CCTV, analytics and command-centre integration.",
     description:
       "High-resolution IP surveillance with edge analytics, intelligent video search and 24/7 control-room integration for enterprises, retail and infrastructure.",
     image: svcSurveillance,
+  },
+  {
+    slug: "integrated-facility-management",
+    title: "Integrated Facility Management",
+    short: "Single-mandate maintenance for buildings and technical assets.",
+    description:
+      "Hard and soft FM under one accountable team — MEP maintenance, technical asset care, planned preventive schedules and responsive on-call support across your sites.",
+    image: svcFacility,
   },
   {
     slug: "digital-signage-footfall",
@@ -107,5 +92,29 @@ export const SERVICES: Service[] = [
     description:
       "End-user support, server and cloud administration, cybersecurity hardening and procurement — delivered as flexible managed-service engagements.",
     image: svcIt,
+  },
+  {
+    slug: "ems-access-control",
+    title: "EMS System & Access Control",
+    short: "Energy management and intelligent access control.",
+    description:
+      "BMS-integrated energy monitoring with biometric, card and mobile credential access — unified under a single, auditable operations dashboard.",
+    image: svcEms,
+  },
+  {
+    slug: "fire-fighting",
+    title: "Fire Fighting",
+    short: "Active and passive fire protection systems.",
+    description:
+      "Hydrant networks, sprinkler systems, FM-200 and Novec clean-agent suppression — designed, supplied and commissioned to NFPA and civil-defence standards.",
+    image: svcFirefighting,
+  },
+  {
+    slug: "electrical-contracts",
+    title: "Electrical Contracts",
+    short: "End-to-end electrical engineering for commercial and industrial projects.",
+    description:
+      "Design, installation and commissioning of LV/HV electrical systems — switchgear, panels, distribution and power management — engineered for reliability at scale.",
+    image: svcElectrical,
   },
 ];
