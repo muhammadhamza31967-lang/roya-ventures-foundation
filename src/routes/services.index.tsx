@@ -15,7 +15,7 @@ export const Route = createFileRoute("/services/")({
       { title: "Services — Roya Ventures" },
       { name: "description", content: "Roya Ventures' technology and engineering services — electrical, data centers, networking, fiber, fire protection, surveillance, EMS, signage, POS, web and IT." },
       { property: "og:title", content: "Services — Roya Ventures" },
-      { property: "og:description", content: "Eleven specialised practices for modern technology infrastructure." },
+      { property: "og:description", content: "Twelve specialised practices for modern technology infrastructure." },
     ],
   }),
   component: ServicesPage,
@@ -26,7 +26,7 @@ function ServicesPage() {
     <SiteLayout transparentHeader>
       <PageHero
         eyebrow="Our services"
-        title={<>Eleven disciplines. <span className="text-[var(--gold)]">One engineering standard.</span></>}
+        title={<>Twelve disciplines. <span className="text-[var(--gold)]">One engineering standard.</span></>}
         subtitle="A coordinated set of technology and engineering capabilities — designed, deployed and supported by senior practitioners under a single mandate."
         image={heroServices}
         height="compact"
