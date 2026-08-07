@@ -10,7 +10,8 @@ import svcSignage from "@/assets/svc-signage-new.jpg";
 import svcPos from "@/assets/svc-pos.jpg";
 import svcWebdev from "@/assets/svc-webdev.jpg";
 import svcIt from "@/assets/svc-it.jpg";
-import svcFacility from "@/assets/svc-facility.jpg";
+import svcFacilityAsset from "@/assets/svc-facility-new.jpg.asset.json";
+const svcFacility = svcFacilityAsset.url;
 
 export type Service = {
   slug: string;
@@ -47,7 +48,7 @@ export const SERVICES: Service[] = [
   },
   {
     slug: "surveillance-system",
-    title: "Surveillance System",
+    title: "Surveillance System & AI Video Analytics",
     short: "IP CCTV, analytics and command-centre integration.",
     description:
       "High-resolution IP surveillance with edge analytics, intelligent video search and 24/7 control-room integration for enterprises, retail and infrastructure.",
@@ -56,14 +57,14 @@ export const SERVICES: Service[] = [
   {
     slug: "integrated-facility-management",
     title: "Integrated Facility Management",
-    short: "Single-mandate maintenance for buildings and technical assets.",
+    short: "Track Visitors, Items & Vehicles",
     description:
-      "Hard and soft FM under one accountable team — MEP maintenance, technical asset care, planned preventive schedules and responsive on-call support across your sites.",
+      "Integrated Facility Management (IFM) brings together all critical front-of-house and operational technologies into one seamless, intelligent ecosystem. Our IFM platform unifies visitor management kiosks, queue and flow management systems, smart parking and access control hardware, digital conferencing and meeting-room scheduling solutions, and secure document management software into a single, centrally governed environment.",
     image: svcFacility,
   },
   {
     slug: "digital-signage-footfall",
-    title: "Digital Signage & Footfall System",
+    title: "Digital Signage & INK Displays",
     short: "Video walls, displays and footfall analytics.",
     description:
       "Centrally managed digital signage networks paired with footfall and dwell-time analytics — turning physical spaces into measurable engagement channels.",
