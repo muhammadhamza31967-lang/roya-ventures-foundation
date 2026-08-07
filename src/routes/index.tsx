@@ -596,11 +596,6 @@ function WhatWeDo() {
                 </div>
               </div>
 
-              {/* Footnote strip */}
-              <div className="mt-5 flex items-center gap-3 text-[10px] tracking-[0.3em] uppercase text-[var(--navy)]/55">
-                <span className="h-px w-8 bg-[var(--gold)]" />
-                <span>Hover the index — the story updates</span>
-              </div>
             </div>
           </div>
 
