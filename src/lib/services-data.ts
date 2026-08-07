@@ -1,4 +1,5 @@
-import svcElectrical from "@/assets/svc-electrical.jpg";
+import svcElectricalAsset from "@/assets/svc-electrical-new.png.asset.json";
+const svcElectrical = svcElectricalAsset.url;
 import svcDatacenter from "@/assets/svc-datacenter.jpg";
 import svcNetworking from "@/assets/svc-networking.jpg";
 import svcFiber from "@/assets/svc-fiber.jpg";
