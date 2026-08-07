@@ -20,6 +20,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesNetworkingRouteImport } from './routes/services.networking'
 import { Route as ServicesFireFightingRouteImport } from './routes/services.fire-fighting'
+import { Route as ServicesEmsAccessControlRouteImport } from './routes/services.ems-access-control'
 import { Route as ServicesElectricalContractsRouteImport } from './routes/services.electrical-contracts'
 import { Route as ServicesDataCenterSetupRouteImport } from './routes/services.data-center-setup'
 
@@ -78,6 +79,12 @@ const ServicesFireFightingRoute = ServicesFireFightingRouteImport.update({
   path: '/services/fire-fighting',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesEmsAccessControlRoute =
+  ServicesEmsAccessControlRouteImport.update({
+    id: '/services/ems-access-control',
+    path: '/services/ems-access-control',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ServicesElectricalContractsRoute =
   ServicesElectricalContractsRouteImport.update({
     id: '/services/electrical-contracts',
@@ -101,6 +108,7 @@ export interface FileRoutesByFullPath {
   '/team': typeof TeamRoute
   '/services/data-center-setup': typeof ServicesDataCenterSetupRoute
   '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
+  '/services/ems-access-control': typeof ServicesEmsAccessControlRoute
   '/services/fire-fighting': typeof ServicesFireFightingRoute
   '/services/networking': typeof ServicesNetworkingRoute
   '/services/': typeof ServicesIndexRoute
@@ -116,6 +124,7 @@ export interface FileRoutesByTo {
   '/team': typeof TeamRoute
   '/services/data-center-setup': typeof ServicesDataCenterSetupRoute
   '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
+  '/services/ems-access-control': typeof ServicesEmsAccessControlRoute
   '/services/fire-fighting': typeof ServicesFireFightingRoute
   '/services/networking': typeof ServicesNetworkingRoute
   '/services': typeof ServicesIndexRoute
@@ -132,6 +141,7 @@ export interface FileRoutesById {
   '/team': typeof TeamRoute
   '/services/data-center-setup': typeof ServicesDataCenterSetupRoute
   '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
+  '/services/ems-access-control': typeof ServicesEmsAccessControlRoute
   '/services/fire-fighting': typeof ServicesFireFightingRoute
   '/services/networking': typeof ServicesNetworkingRoute
   '/services/': typeof ServicesIndexRoute
@@ -149,6 +159,7 @@ export interface FileRouteTypes {
     | '/team'
     | '/services/data-center-setup'
     | '/services/electrical-contracts'
+    | '/services/ems-access-control'
     | '/services/fire-fighting'
     | '/services/networking'
     | '/services/'
@@ -164,6 +175,7 @@ export interface FileRouteTypes {
     | '/team'
     | '/services/data-center-setup'
     | '/services/electrical-contracts'
+    | '/services/ems-access-control'
     | '/services/fire-fighting'
     | '/services/networking'
     | '/services'
@@ -179,6 +191,7 @@ export interface FileRouteTypes {
     | '/team'
     | '/services/data-center-setup'
     | '/services/electrical-contracts'
+    | '/services/ems-access-control'
     | '/services/fire-fighting'
     | '/services/networking'
     | '/services/'
@@ -195,6 +208,7 @@ export interface RootRouteChildren {
   TeamRoute: typeof TeamRoute
   ServicesDataCenterSetupRoute: typeof ServicesDataCenterSetupRoute
   ServicesElectricalContractsRoute: typeof ServicesElectricalContractsRoute
+  ServicesEmsAccessControlRoute: typeof ServicesEmsAccessControlRoute
   ServicesFireFightingRoute: typeof ServicesFireFightingRoute
   ServicesNetworkingRoute: typeof ServicesNetworkingRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
@@ -279,6 +293,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesFireFightingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/ems-access-control': {
+      id: '/services/ems-access-control'
+      path: '/services/ems-access-control'
+      fullPath: '/services/ems-access-control'
+      preLoaderRoute: typeof ServicesEmsAccessControlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/electrical-contracts': {
       id: '/services/electrical-contracts'
       path: '/services/electrical-contracts'
@@ -307,6 +328,7 @@ const rootRouteChildren: RootRouteChildren = {
   TeamRoute: TeamRoute,
   ServicesDataCenterSetupRoute: ServicesDataCenterSetupRoute,
   ServicesElectricalContractsRoute: ServicesElectricalContractsRoute,
+  ServicesEmsAccessControlRoute: ServicesEmsAccessControlRoute,
   ServicesFireFightingRoute: ServicesFireFightingRoute,
   ServicesNetworkingRoute: ServicesNetworkingRoute,
   ServicesIndexRoute: ServicesIndexRoute,
@@ -314,13 +336,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
