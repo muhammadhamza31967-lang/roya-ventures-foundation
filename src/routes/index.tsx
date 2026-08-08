@@ -204,7 +204,7 @@ function HomePage() {
           <div className="grid gap-16 lg:grid-cols-12 lg:gap-24 items-start">
             <div className="lg:col-span-5 lg:sticky lg:top-32">
               <Reveal>
-              <p className="gold-rule">The Firm</p>
+                <p className="gold-rule">The Firm</p>
                 <h2 className="heading-lg mt-8 leading-[1.05]">
                   One partner for the technology systems that{" "}
                   <em className="not-italic text-[var(--gold)]">power your business.</em>
@@ -402,8 +402,8 @@ function HomePage() {
           <StatGrid
             invert
             stats={[
-              { value: "8", suffix: "+", label: "Years of engineering practice" },
-              { value: "400", suffix: "+", label: "Projects delivered" },
+              { value: "10", suffix: "+", label: "Years of engineering practice" },
+              { value: "500", suffix: "+", label: "Projects delivered" },
               { value: "99.99", suffix: "%", label: "Average system uptime" },
               { value: "24", suffix: "/7", label: "Support and monitoring" },
             ]}
@@ -595,7 +595,6 @@ function WhatWeDo() {
                   </p>
                 </div>
               </div>
-
             </div>
           </div>
 
