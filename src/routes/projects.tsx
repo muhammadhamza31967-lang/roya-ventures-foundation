@@ -99,7 +99,14 @@ const PROJECTS: Project[] = [
     category: "Retail IT & Security",
     location: "Across Saudi Arabia",
     status: "On-Going",
-    images: [sephoraOlaya.url, sephoraKingdom.url, sephoraApWork.url, sephoraUWalk.url],
+    images: [sephoraMeetingRoom.url, sephoraKingdom.url, sephoraApWork.url, sephoraUWalk.url],
+    galleryImages: [
+      sephoraMeetingRoom.url,
+      sephoraOlaya.url,
+      sephoraKingdom.url,
+      sephoraApWork.url,
+      sephoraUWalk.url,
+    ],
   },
   {
     company: "Domino's Pizza CCTV System Upgrade",
