@@ -248,7 +248,17 @@ const PROJECTS: Project[] = [
     category: "Café Security & IT Infrastructure",
     location: "Riyadh, Saudi Arabia",
     status: "Completed",
-    images: [cafeJoeJuiceExterior.url, cafeBateel.url, cafeJoeJuiceInterior.url, cafeFurless.url],
+    images: [cafeNew1.url, cafeBateel.url, cafeJoeJuiceInterior.url, cafeNew3.url],
+    galleryImages: [
+      cafeBateel.url,
+      cafeJoeJuiceInterior.url,
+      cafeNew1.url,
+      cafeNew2.url,
+      cafeNew3.url,
+      cafeNew4.url,
+      cafeNew5.url,
+      cafeNew6.url,
+    ],
   },
   {
     company: "Nesma LED Lighting Project",
