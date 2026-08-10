@@ -65,7 +65,6 @@ import cafeBateel from "@/assets/projects/cafe/bateel-solitaire.jpg.asset.json";
 import cafeJoeJuiceInterior from "@/assets/projects/cafe/joe-juice-interior.webp.asset.json";
 import cafeFurless from "@/assets/projects/cafe/furless.jpg.asset.json";
 
-
 // Royalty-free placeholder imagery (Unsplash) — replace later with official project photos.
 const img = (id: string, w = 1600) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
 
@@ -103,13 +102,7 @@ const PROJECTS: Project[] = [
     location: "Across Saudi Arabia",
     status: "On-Going",
     images: [sephoraMeetingRoom.url, sephoraKingdom.url, sephoraApWork.url, sephoraUWalk.url],
-    galleryImages: [
-      sephoraMeetingRoom.url,
-      sephoraOlaya.url,
-      sephoraKingdom.url,
-      sephoraApWork.url,
-      sephoraUWalk.url,
-    ],
+    galleryImages: [sephoraMeetingRoom.url, sephoraOlaya.url, sephoraKingdom.url, sephoraApWork.url, sephoraUWalk.url],
   },
   {
     company: "Domino's Pizza CCTV System Upgrade",
@@ -178,7 +171,7 @@ const PROJECTS: Project[] = [
   {
     company: "Retail IT Infrastructure — Chalhoub Group",
     overview:
-      "Designed and deployed enterprise retail IT infrastructure for the Chalhoub Group, supporting luxury brands including Tom Ford, Valentino, Jimmy Choo, PRADA, Lacoste, Swarovski, Michael Kors, Make Up For Ever, and Ghawali across Saudi Arabia. Successfully delivered secure, scalable, and enterprise-grade IT infrastructure to support nationwide retail operations, ensuring reliable connectivity and long-term operational performance.",
+      "Designed and deployed enterprise retail IT infrastructure for the Chalhoub Group, supporting luxury brands like  FACES, TANAGRA, TUMI and LOCCITANE, Tom Ford, Valentino, Jimmy Choo, Lacoste, Swarovski, Michael Kors, Make Up Forever, and Ghawali across Saudi Arabia. Successfully delivered secure, scalable, and enterprise-grade IT infrastructure to support nationwide retail operations, ensuring reliable connectivity and long-term operational performance.",
     services: [
       "IDF & IT Infrastructure",
       "Rack Installation & Management",
@@ -247,9 +240,6 @@ const PROJECTS: Project[] = [
     images: [nesmaStreet.url, nesmaCrane.url, nesmaCrew.url, nesmaInspection.url],
   },
 ];
-
-
-
 
 const TRUST = [
   {
