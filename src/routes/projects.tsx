@@ -40,6 +40,7 @@ import sephoraOlaya from "@/assets/projects/sephora/Sephora_Olaya.webp.asset.jso
 import sephoraKingdom from "@/assets/projects/sephora/Sephohra_Kingdom.webp.asset.json";
 import sephoraApWork from "@/assets/projects/sephora/Sephora_Store_AP_Work2.jpg.asset.json";
 import sephoraUWalk from "@/assets/projects/sephora/U_Walk_Sephora_CCTV_Work.webp.asset.json";
+import sephoraMeetingRoom from "@/assets/projects/sephora/P1.jpg.asset.json";
 import nujaimaChanel from "@/assets/projects/nujaima/chanel-cctv-lan.webp.asset.json";
 import nujaimaDataCentre from "@/assets/projects/nujaima/data-centre.jpeg.asset.json";
 import nujaimaCabling from "@/assets/projects/nujaima/network-cable-labeling.jpg.asset.json";
