@@ -190,6 +190,17 @@ const PROJECTS: Project[] = [
     location: "Across Saudi Arabia",
     status: "Completed",
     images: [chRetailSwarovski.url, chRetailTomFord.url, chRetailJimmy.url, chRetailPrada.url],
+    galleryImages: [
+      chRetailSwarovski.url,
+      chRetailTomFord.url,
+      chRetailJimmy.url,
+      chRetailPrada.url,
+      chRetailMichaelKors.url,
+      chRetailFaces.url,
+      chRetailTumi.url,
+      chRetailLoccitane.url,
+      chRetailLacoste.url,
+    ],
   },
   {
     company: "Warehouse Surveillance & Network Upgrade — Domino's, Emirates & Chalhoub Group",
