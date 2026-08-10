@@ -56,6 +56,11 @@ import chRetailJimmy from "@/assets/projects/chalhoub-retail/jimmy-choo.webp.ass
 import chRetailPrada from "@/assets/projects/chalhoub-retail/prada.webp.asset.json";
 import chRetailSwarovski from "@/assets/projects/chalhoub-retail/swarovski.jpg.asset.json";
 import chRetailTomFord from "@/assets/projects/chalhoub-retail/tom-ford.jpg.asset.json";
+import chRetailMichaelKors from "@/assets/projects/chalhoub-retail/michael-kors.jpg.asset.json";
+import chRetailFaces from "@/assets/projects/chalhoub-retail/faces.jpg.asset.json";
+import chRetailTumi from "@/assets/projects/chalhoub-retail/tumi.jpg.asset.json";
+import chRetailLoccitane from "@/assets/projects/chalhoub-retail/loccitane.jpg.asset.json";
+import chRetailLacoste from "@/assets/projects/chalhoub-retail/lacoste.jpg.asset.json";
 import warehouseRacking from "@/assets/projects/warehouse/warehouse-racking.jpg.asset.json";
 import warehouseCctv from "@/assets/projects/warehouse/warehouse-cctv.jpg.asset.json";
 import warehouseDatacenter from "@/assets/projects/warehouse/warehouse-datacenter.jpg.asset.json";
