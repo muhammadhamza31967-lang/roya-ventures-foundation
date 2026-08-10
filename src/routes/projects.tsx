@@ -61,6 +61,10 @@ import chRetailFaces from "@/assets/projects/chalhoub-retail/faces.jpg.asset.jso
 import chRetailTumi from "@/assets/projects/chalhoub-retail/tumi.jpg.asset.json";
 import chRetailLoccitane from "@/assets/projects/chalhoub-retail/loccitane.jpg.asset.json";
 import chRetailLacoste from "@/assets/projects/chalhoub-retail/lacoste.jpg.asset.json";
+import chRetailLacoste2 from "@/assets/projects/chalhoub-retail/lacoste-2.png.asset.json";
+import chRetailLacoste3 from "@/assets/projects/chalhoub-retail/lacoste-3.jpg.asset.json";
+import chRetailSwarovskiStore from "@/assets/projects/chalhoub-retail/swarovski-store.jpg.asset.json";
+import chRetailLoccitane2 from "@/assets/projects/chalhoub-retail/loccitane-2.jpg.asset.json";
 import warehouseRacking from "@/assets/projects/warehouse/warehouse-racking.jpg.asset.json";
 import warehouseCctv from "@/assets/projects/warehouse/warehouse-cctv.jpg.asset.json";
 import warehouseDatacenter from "@/assets/projects/warehouse/warehouse-datacenter.jpg.asset.json";
