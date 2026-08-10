@@ -45,6 +45,9 @@ import nujaimaChanel from "@/assets/projects/nujaima/chanel-cctv-lan.webp.asset.
 import nujaimaDataCentre from "@/assets/projects/nujaima/data-centre.jpeg.asset.json";
 import nujaimaCabling from "@/assets/projects/nujaima/network-cable-labeling.jpg.asset.json";
 import nujaimaSolitaire from "@/assets/projects/nujaima/chanel-solitaire.jpeg.asset.json";
+import nujaimaRack1 from "@/assets/projects/nujaima/P3.jpg.asset.json";
+import nujaimaRack2 from "@/assets/projects/nujaima/P3.1.jpg.asset.json";
+import nujaimaRack3 from "@/assets/projects/nujaima/P3.2.jpg.asset.json";
 import chalhoubCabling from "@/assets/projects/chalhoub/cable-pulling.jpg.asset.json";
 import chalhoubDatacenter from "@/assets/projects/chalhoub/datacenter.jpg.asset.json";
 import chalhoubElv from "@/assets/projects/chalhoub/elv-system.webp.asset.json";
@@ -142,6 +145,15 @@ const PROJECTS: Project[] = [
     location: "Riyadh, Saudi Arabia",
     status: "Completed",
     images: [nujaimaChanel.url, nujaimaDataCentre.url, nujaimaCabling.url, nujaimaSolitaire.url],
+    galleryImages: [
+      nujaimaChanel.url,
+      nujaimaDataCentre.url,
+      nujaimaCabling.url,
+      nujaimaSolitaire.url,
+      nujaimaRack1.url,
+      nujaimaRack2.url,
+      nujaimaRack3.url,
+    ],
   },
   {
     company: "Enterprise ELV Infrastructure — Chalhoub Group",
