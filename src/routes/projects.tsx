@@ -145,6 +145,15 @@ const PROJECTS: Project[] = [
     location: "Riyadh, Saudi Arabia",
     status: "Completed",
     images: [nujaimaChanel.url, nujaimaDataCentre.url, nujaimaCabling.url, nujaimaSolitaire.url],
+    galleryImages: [
+      nujaimaChanel.url,
+      nujaimaDataCentre.url,
+      nujaimaCabling.url,
+      nujaimaSolitaire.url,
+      nujaimaRack1.url,
+      nujaimaRack2.url,
+      nujaimaRack3.url,
+    ],
   },
   {
     company: "Enterprise ELV Infrastructure — Chalhoub Group",
