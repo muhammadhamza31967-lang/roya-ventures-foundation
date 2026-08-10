@@ -204,6 +204,10 @@ const PROJECTS: Project[] = [
       chRetailTumi.url,
       chRetailLoccitane.url,
       chRetailLacoste.url,
+      chRetailLacoste2.url,
+      chRetailLacoste3.url,
+      chRetailSwarovskiStore.url,
+      chRetailLoccitane2.url,
     ],
   },
   {
