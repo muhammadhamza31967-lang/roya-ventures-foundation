@@ -233,9 +233,9 @@ const PROJECTS: Project[] = [
     images: [warehouseRacking.url, warehouseCctv.url, warehouseDatacenter.url, warehouseCabling.url],
   },
   {
-    company: "Café Security & IT Infrastructure — Bateel El'an & JOE & THE JUICE",
+    company: "Restaurant’s Security & IT Infrastructure -Bateel Café, Charcoza & Dominos",
     overview:
-      "Delivered integrated security and IT infrastructure solutions for Bateel El'an and JOE & THE JUICE, providing reliable surveillance, enterprise networking, and connectivity to support seamless day-to-day operations across multiple café and spa locations. Successfully implemented secure, scalable infrastructure while minimizing disruption to business operations and enhancing operational efficiency.",
+      "Delivered integrated security and IT infrastructure solutions for Bateel Café, Dominos and CHARCOZA, providing reliable surveillance, enterprise networking, and connectivity to support seamless day-to-day operations across multiple café and restaurants. Successfully implemented secure, scalable infrastructure while minimizing disruption to business operations and enhancing operational efficiency.",
     services: [
       "IP CCTV Surveillance",
       "Structured Cabling (Cat6)",
