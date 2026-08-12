@@ -202,17 +202,25 @@ export function Footer() {
           <p className="text-xs tracking-[0.18em] text-white/55">
             © {new Date().getFullYear()} ROYA VENTURES — ALL RIGHTS RESERVED
           </p>
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="group inline-flex items-center gap-3 text-xs uppercase tracking-[0.22em] text-white/70 hover:text-[var(--gold)] transition-colors"
-            aria-label="Back to top"
-            data-cursor="hover"
-          >
-            Back to top
-            <span className="grid h-9 w-9 place-items-center rounded-full border border-white/20 group-hover:border-[var(--gold)] transition-all duration-500 group-hover:-translate-y-0.5">
-              <ArrowUp className="h-3.5 w-3.5" />
-            </span>
-          </button>
+          <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-5">
+            <p className="text-xs tracking-[0.14em] text-white/55">
+              Designed &amp; Developed by{" "}
+              <span className="font-semibold tracking-[0.18em] text-[var(--gold)]">Nexen Strategy</span>
+            </p>
+            <span aria-hidden className="hidden sm:block h-5 w-px bg-white/20" />
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="group inline-flex items-center gap-3 text-xs uppercase tracking-[0.22em] text-white/70 hover:text-[var(--gold)] transition-colors"
+              aria-label="Back to top"
+              data-cursor="hover"
+            >
+              Back to top
+              <span className="grid h-9 w-9 place-items-center rounded-full border border-white/20 group-hover:border-[var(--gold)] transition-all duration-500 group-hover:-translate-y-0.5">
+                <ArrowUp className="h-3.5 w-3.5" />
+              </span>
+            </button>
+          </div>
+
         </div>
       </div>
     </footer>
