@@ -20,10 +20,8 @@ const SERVICES = [
   "EMS System & Access Control",
 ];
 
-
 const PHONES = ["+966 509600042", "+966 50 287 9339"];
-const EMAILS = ["info@royaventure.com"];
-
+const EMAILS = ["info@royaventure.com", "sales@royaventure.com"];
 
 function ColumnHeading({ children }: { children: React.ReactNode }) {
   return (
@@ -42,26 +40,32 @@ export function Footer() {
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_left,color-mix(in_oklab,var(--gold)_22%,transparent),transparent_55%)]" />
       <div className="absolute inset-y-0 right-0 -z-10 w-1/2 bg-[radial-gradient(ellipse_at_bottom_right,color-mix(in_oklab,var(--emerald-deep)_65%,transparent),transparent_60%)]" />
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 opacity-[0.08] bg-grid-soft" />
-      <div aria-hidden className="pointer-events-none absolute -top-44 -right-40 -z-10 h-[30rem] w-[30rem] rounded-full border border-[var(--gold)]/15" />
-      <div aria-hidden className="pointer-events-none absolute -top-24 -right-20 -z-10 h-[20rem] w-[20rem] rounded-full border border-[var(--gold)]/10" />
-      <div aria-hidden className="pointer-events-none absolute -bottom-32 -left-32 -z-10 h-[24rem] w-[24rem] rounded-full border border-[var(--gold)]/10" />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-44 -right-40 -z-10 h-[30rem] w-[30rem] rounded-full border border-[var(--gold)]/15"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-24 -right-20 -z-10 h-[20rem] w-[20rem] rounded-full border border-[var(--gold)]/10"
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-32 -left-32 -z-10 h-[24rem] w-[24rem] rounded-full border border-[var(--gold)]/10"
+      />
 
       {/* Top gold hairline */}
-      <div aria-hidden className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/60 to-transparent" />
+      <div
+        aria-hidden
+        className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/60 to-transparent"
+      />
 
       <div className="container-px mx-auto relative">
         {/* Main grid */}
         <div className="grid gap-12 md:gap-x-10 lg:gap-x-16 xl:gap-x-20 md:grid-cols-2 lg:grid-cols-12 pt-16 pb-12">
           {/* Brand column — logos + description */}
           <div className="lg:col-span-4">
-
             <div className="inline-flex items-center gap-5 md:gap-6 rounded-2xl bg-white/95 px-5 py-3.5 shadow-lg ring-1 ring-white/20">
-              <img
-                src={logo.url}
-                alt="Roya Ventures"
-                className="h-12 md:h-14 lg:h-16 w-auto"
-                loading="lazy"
-              />
+              <img src={logo.url} alt="Roya Ventures" className="h-12 md:h-14 lg:h-16 w-auto" loading="lazy" />
               <span aria-hidden className="h-10 md:h-12 w-px bg-[var(--navy)]/15" />
               <img
                 src={visionLogo.url}
@@ -71,8 +75,8 @@ export function Footer() {
               />
             </div>
             <p className="mt-7 text-[14.5px] leading-[1.85] text-white/70 font-light max-w-md">
-              A multidisciplinary technology and engineering firm — delivering data centers,
-              networks, security and IT under a single accountable mandate.
+              A multidisciplinary technology and engineering firm — delivering data centers, networks, security and IT
+              under a single accountable mandate.
             </p>
 
             <div className="mt-8 flex gap-3">
@@ -96,7 +100,6 @@ export function Footer() {
 
           {/* Quick Links */}
           <div className="lg:col-span-2">
-
             <ColumnHeading>Quick Links</ColumnHeading>
             <ul className="space-y-3.5 text-sm">
               {QUICK.map((q) => (
@@ -116,9 +119,6 @@ export function Footer() {
 
           {/* Services (single column) */}
           <div className="lg:col-span-3">
-
-
-
             <ColumnHeading>Services</ColumnHeading>
             <ul className="space-y-3.5 text-sm">
               {SERVICES.map((s) => (
@@ -137,7 +137,6 @@ export function Footer() {
 
           {/* Contact */}
           <div className="lg:col-span-3">
-
             <ColumnHeading>Contact</ColumnHeading>
             <ul className="space-y-5 text-sm">
               <li className="flex items-start gap-4">
@@ -147,10 +146,10 @@ export function Footer() {
                 <div className="pt-0.5">
                   <div className="text-[11px] tracking-[0.22em] uppercase text-white/45 mb-1">Address</div>
                   <div className="text-white/85 leading-relaxed">
-                    Al Nasiriah Street, West Naseem Dist, Riyadh, KSA<br />
+                    Al Nasiriah Street, West Naseem Dist, Riyadh, KSA
+                    <br />
                     <span className="text-white/55 text-xs">CR: 1010674528</span>
                   </div>
-
                 </div>
               </li>
               <li className="flex items-start gap-4">
@@ -195,7 +194,6 @@ export function Footer() {
               </li>
             </ul>
           </div>
-
         </div>
 
         <div aria-hidden className="hairline opacity-30" />
