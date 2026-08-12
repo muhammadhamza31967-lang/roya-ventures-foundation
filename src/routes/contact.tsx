@@ -10,7 +10,10 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact — Roya Ventures" },
-      { name: "description", content: "Reach Roya Ventures' partners directly. Begin a confidential conversation about your mandate." },
+      {
+        name: "description",
+        content: "Reach Roya Ventures' partners directly. Begin a confidential conversation about your mandate.",
+      },
       { property: "og:title", content: "Contact — Roya Ventures" },
       { property: "og:description", content: "Begin a confidential conversation with our partners." },
     ],
@@ -21,12 +24,11 @@ export const Route = createFileRoute("/contact")({
 const DIRECTORY: { name: string; phone?: string; email: string }[] = [
   { name: "Info", email: "info@royaventure.com" },
   { name: "Raza Saudagar", phone: "+966 5096 00042", email: "raza.saudagar@royaventure.com" },
-  { name: "Khazi Zafar", phone: "+966 5013 59647", email: "khazi.zafar@royaventure.com" },
+  { name: "Khazi Zafar", phone: "+966 5013 59647", email: "zafar.khazi@royaventure.com" },
   { name: "Naveed Saudagar", phone: "+966 5376 81985", email: "naveed.saudagar@royaventure.com" },
   { name: "Anas Saudagar", phone: "+966 5028 79339", email: "anas.saudagar@royaventure.com" },
-  { name: "Zaid", email: "zaid@royaventure.com" },
+  { name: "Zaid", email: "zaid.rumaan@royaventure.com" },
 ];
-
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
@@ -42,7 +44,11 @@ function ContactPage() {
     <SiteLayout transparentHeader>
       <PageHero
         eyebrow="Get in touch"
-        title={<>Begin a <span className="text-[var(--gold)]">confidential</span> conversation.</>}
+        title={
+          <>
+            Begin a <span className="text-[var(--gold)]">confidential</span> conversation.
+          </>
+        }
         subtitle="Every relationship begins with a private dialogue. Share the question that matters — a partner will respond personally."
         image={heroContact}
         height="compact"
@@ -85,7 +91,9 @@ function ContactPage() {
                     </div>
                     <Field label="Subject" name="subject" />
                     <div>
-                      <label htmlFor="message" className="eyebrow text-[var(--navy)] mb-3 block">Message</label>
+                      <label htmlFor="message" className="eyebrow text-[var(--navy)] mb-3 block">
+                        Message
+                      </label>
                       <textarea
                         id="message"
                         name="message"
@@ -102,9 +110,15 @@ function ContactPage() {
                         className="group inline-flex items-center gap-3 rounded-full bg-[var(--gold)] text-[var(--navy)] px-9 py-4 text-[13px] font-bold uppercase tracking-[0.18em] transition-all duration-300 hover:bg-[var(--navy)] hover:text-white shadow-[0_15px_40px_-15px_color-mix(in_oklab,var(--gold)_60%,transparent)] hover:shadow-[0_18px_45px_-12px_color-mix(in_oklab,var(--navy)_50%,transparent)] hover:-translate-y-2"
                       >
                         {sent ? (
-                          <>Message sent <Check className="h-4 w-4 transition-transform duration-500 group-hover:scale-110" /></>
+                          <>
+                            Message sent{" "}
+                            <Check className="h-4 w-4 transition-transform duration-500 group-hover:scale-110" />
+                          </>
                         ) : (
-                          <>Send message <Send className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" /></>
+                          <>
+                            Send message{" "}
+                            <Send className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
+                          </>
                         )}
                       </button>
                       <p className="text-xs text-muted-foreground tracking-wide hidden sm:block">
@@ -143,9 +157,7 @@ function ContactPage() {
                       <ul className="mt-3 divide-y divide-white/10">
                         {DIRECTORY.map((p) => (
                           <li key={p.name} className="py-4 first:pt-2">
-                            <div className="text-[15px] font-semibold tracking-wide text-white">
-                              {p.name}
-                            </div>
+                            <div className="text-[15px] font-semibold tracking-wide text-white">{p.name}</div>
                             <div className="mt-2 space-y-1.5">
                               {p.phone && (
                                 <a
@@ -163,15 +175,11 @@ function ContactPage() {
                               </a>
                             </div>
                           </li>
-
                         ))}
                       </ul>
                     </InfoItem>
                   </ul>
-
-
                 </div>
-
               </div>
             </Reveal>
           </div>
@@ -184,12 +192,21 @@ function ContactPage() {
 }
 
 function Field({
-  label, name, type = "text", required = false,
-}: { label: string; name: string; type?: string; required?: boolean }) {
+  label,
+  name,
+  type = "text",
+  required = false,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+}) {
   return (
     <div>
       <label htmlFor={name} className="eyebrow text-[var(--navy)] mb-3 block">
-        {label}{required && <span className="text-[var(--gold)] ml-1">*</span>}
+        {label}
+        {required && <span className="text-[var(--gold)] ml-1">*</span>}
       </label>
       <input
         id={name}
@@ -202,15 +219,7 @@ function Field({
   );
 }
 
-function InfoItem({
-  icon: Icon,
-  label,
-  children,
-}: {
-  icon: typeof Mail;
-  label: string;
-  children: React.ReactNode;
-}) {
+function InfoItem({ icon: Icon, label, children }: { icon: typeof Mail; label: string; children: React.ReactNode }) {
   return (
     <li className="group grid grid-cols-[auto_1fr] gap-5">
       <div className="relative shrink-0">
