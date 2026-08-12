@@ -205,7 +205,14 @@ export function Footer() {
           <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-5">
             <p className="text-xs tracking-[0.14em] text-white/55">
               Designed &amp; Developed by{" "}
-              <span className="font-semibold tracking-[0.18em] text-[var(--gold)]">Nexen Strategy</span>
+              <a
+                href="https://nexenstrategy.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold tracking-[0.18em] text-[var(--gold)]"
+              >
+                Nexen Strategy
+              </a>
             </p>
             <span aria-hidden className="hidden sm:block h-5 w-px bg-white/20" />
             <button
@@ -220,7 +227,6 @@ export function Footer() {
               </span>
             </button>
           </div>
-
         </div>
       </div>
     </footer>
