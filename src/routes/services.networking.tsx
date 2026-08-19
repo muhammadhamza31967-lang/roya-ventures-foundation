@@ -198,7 +198,7 @@ function NetworkingSetupPage() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="text-base md:text-[17px] leading-[1.85] text-muted-foreground lg:pt-6">
-                If you're seeing dropped connections and network lag, it's usually due to poorly configured
+                If you are experiencing dropped connections and network latency, it's usually due to poorly configured
                 infrastructure that struggles to support your daily traffic. What you want is seamless, secure, and
                 high-speed connectivity that reliably covers your entire workspace. Here's how you get it.
               </p>
