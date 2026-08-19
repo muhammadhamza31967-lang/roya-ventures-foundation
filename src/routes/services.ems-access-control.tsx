@@ -380,7 +380,7 @@ function EmsAccessControlPage() {
         <div className="container-px mx-auto">
           <SectionHeading
             eyebrow="Our process"
-            title={<>Process of How We Work (What Happens After the Yes)</>}
+            title={<>Process of How We Work</>}
             description="Integrated systems require a structured approach, and here is how we ensure everything works together from day one."
           />
           <div className="mt-14 relative mx-auto max-w-7xl">
