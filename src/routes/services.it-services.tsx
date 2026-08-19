@@ -291,7 +291,7 @@ function ITServicesPage() {
               <div className="lg:sticky lg:top-28 space-y-5">
                 <div className="group relative overflow-hidden rounded-2xl border border-white/10 shadow-[var(--shadow-elegant)]">
                   <img
-                    src={itTeam}
+                    src={itWhyUsImg1.url}
                     alt="Certified IT consultants planning an infrastructure project"
                     loading="lazy"
                     width={1280}
