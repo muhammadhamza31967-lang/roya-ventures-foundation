@@ -111,6 +111,14 @@ function ServicesPage() {
                     >
                       {card}
                     </Link>
+                  ) : s.slug === "pos-hardware-software" ? (
+                    <Link
+                      to="/services/pos-hardware-software"
+                      className="block h-full"
+                      aria-label={`${s.title} — view service details`}
+                    >
+                      {card}
+                    </Link>
                   ) : (
 
 

@@ -19,6 +19,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesSurveillanceSystemRouteImport } from './routes/services.surveillance-system'
+import { Route as ServicesPosHardwareSoftwareRouteImport } from './routes/services.pos-hardware-software'
 import { Route as ServicesNetworkingRouteImport } from './routes/services.networking'
 import { Route as ServicesFireFightingRouteImport } from './routes/services.fire-fighting'
 import { Route as ServicesEmsAccessControlRouteImport } from './routes/services.ems-access-control'
@@ -77,6 +78,12 @@ const ServicesSurveillanceSystemRoute =
     path: '/services/surveillance-system',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ServicesPosHardwareSoftwareRoute =
+  ServicesPosHardwareSoftwareRouteImport.update({
+    id: '/services/pos-hardware-software',
+    path: '/services/pos-hardware-software',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ServicesNetworkingRoute = ServicesNetworkingRouteImport.update({
   id: '/services/networking',
   path: '/services/networking',
@@ -126,6 +133,7 @@ export interface FileRoutesByFullPath {
   '/services/ems-access-control': typeof ServicesEmsAccessControlRoute
   '/services/fire-fighting': typeof ServicesFireFightingRoute
   '/services/networking': typeof ServicesNetworkingRoute
+  '/services/pos-hardware-software': typeof ServicesPosHardwareSoftwareRoute
   '/services/surveillance-system': typeof ServicesSurveillanceSystemRoute
   '/services/': typeof ServicesIndexRoute
 }
@@ -144,6 +152,7 @@ export interface FileRoutesByTo {
   '/services/ems-access-control': typeof ServicesEmsAccessControlRoute
   '/services/fire-fighting': typeof ServicesFireFightingRoute
   '/services/networking': typeof ServicesNetworkingRoute
+  '/services/pos-hardware-software': typeof ServicesPosHardwareSoftwareRoute
   '/services/surveillance-system': typeof ServicesSurveillanceSystemRoute
   '/services': typeof ServicesIndexRoute
 }
@@ -163,6 +172,7 @@ export interface FileRoutesById {
   '/services/ems-access-control': typeof ServicesEmsAccessControlRoute
   '/services/fire-fighting': typeof ServicesFireFightingRoute
   '/services/networking': typeof ServicesNetworkingRoute
+  '/services/pos-hardware-software': typeof ServicesPosHardwareSoftwareRoute
   '/services/surveillance-system': typeof ServicesSurveillanceSystemRoute
   '/services/': typeof ServicesIndexRoute
 }
@@ -183,6 +193,7 @@ export interface FileRouteTypes {
     | '/services/ems-access-control'
     | '/services/fire-fighting'
     | '/services/networking'
+    | '/services/pos-hardware-software'
     | '/services/surveillance-system'
     | '/services/'
   fileRoutesByTo: FileRoutesByTo
@@ -201,6 +212,7 @@ export interface FileRouteTypes {
     | '/services/ems-access-control'
     | '/services/fire-fighting'
     | '/services/networking'
+    | '/services/pos-hardware-software'
     | '/services/surveillance-system'
     | '/services'
   id:
@@ -219,6 +231,7 @@ export interface FileRouteTypes {
     | '/services/ems-access-control'
     | '/services/fire-fighting'
     | '/services/networking'
+    | '/services/pos-hardware-software'
     | '/services/surveillance-system'
     | '/services/'
   fileRoutesById: FileRoutesById
@@ -238,6 +251,7 @@ export interface RootRouteChildren {
   ServicesEmsAccessControlRoute: typeof ServicesEmsAccessControlRoute
   ServicesFireFightingRoute: typeof ServicesFireFightingRoute
   ServicesNetworkingRoute: typeof ServicesNetworkingRoute
+  ServicesPosHardwareSoftwareRoute: typeof ServicesPosHardwareSoftwareRoute
   ServicesSurveillanceSystemRoute: typeof ServicesSurveillanceSystemRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
 }
@@ -314,6 +328,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesSurveillanceSystemRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/pos-hardware-software': {
+      id: '/services/pos-hardware-software'
+      path: '/services/pos-hardware-software'
+      fullPath: '/services/pos-hardware-software'
+      preLoaderRoute: typeof ServicesPosHardwareSoftwareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/networking': {
       id: '/services/networking'
       path: '/services/networking'
@@ -374,6 +395,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesEmsAccessControlRoute: ServicesEmsAccessControlRoute,
   ServicesFireFightingRoute: ServicesFireFightingRoute,
   ServicesNetworkingRoute: ServicesNetworkingRoute,
+  ServicesPosHardwareSoftwareRoute: ServicesPosHardwareSoftwareRoute,
   ServicesSurveillanceSystemRoute: ServicesSurveillanceSystemRoute,
   ServicesIndexRoute: ServicesIndexRoute,
 }
