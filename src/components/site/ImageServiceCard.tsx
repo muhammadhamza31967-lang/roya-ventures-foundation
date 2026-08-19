@@ -59,7 +59,7 @@ export function ImageServiceCard({
 
         {/* Description: collapsed by default, expands on hover */}
         <div className="grid grid-rows-[0fr] opacity-0 transition-all duration-700 group-hover:grid-rows-[1fr] group-hover:opacity-100 group-hover:mt-4">
-          <p className="overflow-hidden text-white/85 text-[15px] leading-relaxed line-clamp-2 sm:line-clamp-3 lg:line-clamp-none">
+          <p className="overflow-hidden text-white/85 text-[15px] leading-relaxed line-clamp-2 sm:line-clamp-3 lg:line-clamp-none lg:overflow-hidden">
             {description}
           </p>
         </div>
