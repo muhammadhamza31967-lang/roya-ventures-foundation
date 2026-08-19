@@ -31,6 +31,7 @@ import itCloud from "@/assets/it/it-cloud.jpg";
 import itSecurity from "@/assets/it/it-security.jpg";
 import itOutsourcing from "@/assets/it/it-outsourcing.jpg";
 import itTeam from "@/assets/it/it-team.jpg";
+import itWhyUsImg1 from "@/assets/it/it-services-whyus-img1.avif.asset.json";
 import logoChalhoub from "@/assets/clients/corporate/chalhoub.png.asset.json";
 import logoSephora from "@/assets/clients/corporate/sephora-2.png.asset.json";
 import logoNesma from "@/assets/clients/corporate/nesma-telecom.png.asset.json";
@@ -290,7 +291,7 @@ function ITServicesPage() {
               <div className="lg:sticky lg:top-28 space-y-5">
                 <div className="group relative overflow-hidden rounded-2xl border border-white/10 shadow-[var(--shadow-elegant)]">
                   <img
-                    src={itTeam}
+                    src={itWhyUsImg1.url}
                     alt="Certified IT consultants planning an infrastructure project"
                     loading="lazy"
                     width={1280}
