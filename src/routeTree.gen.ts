@@ -18,6 +18,7 @@ import { Route as ClientsRouteImport } from './routes/clients'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesWebsiteDevelopmentAmcsRouteImport } from './routes/services.website-development-amcs'
 import { Route as ServicesSurveillanceSystemRouteImport } from './routes/services.surveillance-system'
 import { Route as ServicesPosHardwareSoftwareRouteImport } from './routes/services.pos-hardware-software'
 import { Route as ServicesNetworkingRouteImport } from './routes/services.networking'
@@ -72,6 +73,12 @@ const ServicesIndexRoute = ServicesIndexRouteImport.update({
   path: '/services/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesWebsiteDevelopmentAmcsRoute =
+  ServicesWebsiteDevelopmentAmcsRouteImport.update({
+    id: '/services/website-development-amcs',
+    path: '/services/website-development-amcs',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ServicesSurveillanceSystemRoute =
   ServicesSurveillanceSystemRouteImport.update({
     id: '/services/surveillance-system',
@@ -135,6 +142,7 @@ export interface FileRoutesByFullPath {
   '/services/networking': typeof ServicesNetworkingRoute
   '/services/pos-hardware-software': typeof ServicesPosHardwareSoftwareRoute
   '/services/surveillance-system': typeof ServicesSurveillanceSystemRoute
+  '/services/website-development-amcs': typeof ServicesWebsiteDevelopmentAmcsRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -154,6 +162,7 @@ export interface FileRoutesByTo {
   '/services/networking': typeof ServicesNetworkingRoute
   '/services/pos-hardware-software': typeof ServicesPosHardwareSoftwareRoute
   '/services/surveillance-system': typeof ServicesSurveillanceSystemRoute
+  '/services/website-development-amcs': typeof ServicesWebsiteDevelopmentAmcsRoute
   '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
@@ -174,6 +183,7 @@ export interface FileRoutesById {
   '/services/networking': typeof ServicesNetworkingRoute
   '/services/pos-hardware-software': typeof ServicesPosHardwareSoftwareRoute
   '/services/surveillance-system': typeof ServicesSurveillanceSystemRoute
+  '/services/website-development-amcs': typeof ServicesWebsiteDevelopmentAmcsRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
@@ -195,6 +205,7 @@ export interface FileRouteTypes {
     | '/services/networking'
     | '/services/pos-hardware-software'
     | '/services/surveillance-system'
+    | '/services/website-development-amcs'
     | '/services/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -214,6 +225,7 @@ export interface FileRouteTypes {
     | '/services/networking'
     | '/services/pos-hardware-software'
     | '/services/surveillance-system'
+    | '/services/website-development-amcs'
     | '/services'
   id:
     | '__root__'
@@ -233,6 +245,7 @@ export interface FileRouteTypes {
     | '/services/networking'
     | '/services/pos-hardware-software'
     | '/services/surveillance-system'
+    | '/services/website-development-amcs'
     | '/services/'
   fileRoutesById: FileRoutesById
 }
@@ -253,6 +266,7 @@ export interface RootRouteChildren {
   ServicesNetworkingRoute: typeof ServicesNetworkingRoute
   ServicesPosHardwareSoftwareRoute: typeof ServicesPosHardwareSoftwareRoute
   ServicesSurveillanceSystemRoute: typeof ServicesSurveillanceSystemRoute
+  ServicesWebsiteDevelopmentAmcsRoute: typeof ServicesWebsiteDevelopmentAmcsRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
@@ -319,6 +333,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services/'
       preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/website-development-amcs': {
+      id: '/services/website-development-amcs'
+      path: '/services/website-development-amcs'
+      fullPath: '/services/website-development-amcs'
+      preLoaderRoute: typeof ServicesWebsiteDevelopmentAmcsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/surveillance-system': {
@@ -397,6 +418,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesNetworkingRoute: ServicesNetworkingRoute,
   ServicesPosHardwareSoftwareRoute: ServicesPosHardwareSoftwareRoute,
   ServicesSurveillanceSystemRoute: ServicesSurveillanceSystemRoute,
+  ServicesWebsiteDevelopmentAmcsRoute: ServicesWebsiteDevelopmentAmcsRoute,
   ServicesIndexRoute: ServicesIndexRoute,
 }
 export const routeTree = rootRouteImport
