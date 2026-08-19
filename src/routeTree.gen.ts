@@ -18,6 +18,7 @@ import { Route as ClientsRouteImport } from './routes/clients'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesSurveillanceSystemRouteImport } from './routes/services.surveillance-system'
 import { Route as ServicesNetworkingRouteImport } from './routes/services.networking'
 import { Route as ServicesFireFightingRouteImport } from './routes/services.fire-fighting'
 import { Route as ServicesEmsAccessControlRouteImport } from './routes/services.ems-access-control'
@@ -69,6 +70,12 @@ const ServicesIndexRoute = ServicesIndexRouteImport.update({
   path: '/services/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesSurveillanceSystemRoute =
+  ServicesSurveillanceSystemRouteImport.update({
+    id: '/services/surveillance-system',
+    path: '/services/surveillance-system',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ServicesNetworkingRoute = ServicesNetworkingRouteImport.update({
   id: '/services/networking',
   path: '/services/networking',
@@ -111,6 +118,7 @@ export interface FileRoutesByFullPath {
   '/services/ems-access-control': typeof ServicesEmsAccessControlRoute
   '/services/fire-fighting': typeof ServicesFireFightingRoute
   '/services/networking': typeof ServicesNetworkingRoute
+  '/services/surveillance-system': typeof ServicesSurveillanceSystemRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -127,6 +135,7 @@ export interface FileRoutesByTo {
   '/services/ems-access-control': typeof ServicesEmsAccessControlRoute
   '/services/fire-fighting': typeof ServicesFireFightingRoute
   '/services/networking': typeof ServicesNetworkingRoute
+  '/services/surveillance-system': typeof ServicesSurveillanceSystemRoute
   '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
@@ -144,6 +153,7 @@ export interface FileRoutesById {
   '/services/ems-access-control': typeof ServicesEmsAccessControlRoute
   '/services/fire-fighting': typeof ServicesFireFightingRoute
   '/services/networking': typeof ServicesNetworkingRoute
+  '/services/surveillance-system': typeof ServicesSurveillanceSystemRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
@@ -162,6 +172,7 @@ export interface FileRouteTypes {
     | '/services/ems-access-control'
     | '/services/fire-fighting'
     | '/services/networking'
+    | '/services/surveillance-system'
     | '/services/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -178,6 +189,7 @@ export interface FileRouteTypes {
     | '/services/ems-access-control'
     | '/services/fire-fighting'
     | '/services/networking'
+    | '/services/surveillance-system'
     | '/services'
   id:
     | '__root__'
@@ -194,6 +206,7 @@ export interface FileRouteTypes {
     | '/services/ems-access-control'
     | '/services/fire-fighting'
     | '/services/networking'
+    | '/services/surveillance-system'
     | '/services/'
   fileRoutesById: FileRoutesById
 }
@@ -211,6 +224,7 @@ export interface RootRouteChildren {
   ServicesEmsAccessControlRoute: typeof ServicesEmsAccessControlRoute
   ServicesFireFightingRoute: typeof ServicesFireFightingRoute
   ServicesNetworkingRoute: typeof ServicesNetworkingRoute
+  ServicesSurveillanceSystemRoute: typeof ServicesSurveillanceSystemRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
@@ -279,6 +293,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/surveillance-system': {
+      id: '/services/surveillance-system'
+      path: '/services/surveillance-system'
+      fullPath: '/services/surveillance-system'
+      preLoaderRoute: typeof ServicesSurveillanceSystemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/networking': {
       id: '/services/networking'
       path: '/services/networking'
@@ -331,6 +352,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesEmsAccessControlRoute: ServicesEmsAccessControlRoute,
   ServicesFireFightingRoute: ServicesFireFightingRoute,
   ServicesNetworkingRoute: ServicesNetworkingRoute,
+  ServicesSurveillanceSystemRoute: ServicesSurveillanceSystemRoute,
   ServicesIndexRoute: ServicesIndexRoute,
 }
 export const routeTree = rootRouteImport
