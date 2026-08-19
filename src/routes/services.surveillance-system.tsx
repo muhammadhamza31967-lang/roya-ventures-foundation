@@ -52,8 +52,7 @@ export const Route = createFileRoute("/services/surveillance-system")({
       { property: "og:title", content: "Surveillance System in Saudi Arabia — Roya Ventures" },
       {
         property: "og:description",
-        content:
-          "Advanced CCTV and AI video analytics systems designed, installed and supported across Saudi Arabia.",
+        content: "Advanced CCTV and AI video analytics systems designed, installed and supported across Saudi Arabia.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -380,7 +379,7 @@ function SurveillancePage() {
         <div className="container-px mx-auto">
           <SectionHeading
             eyebrow="Our process"
-            title={<>Process of How We Work (What Happens After Yes)</>}
+            title={<>Process of How We Work</>}
             description="A surveillance system is only as good as its design, and here is how we ensure everything works together from day one."
           />
           <div className="mt-14 relative mx-auto max-w-7xl">

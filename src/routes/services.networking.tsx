@@ -365,7 +365,7 @@ function NetworkingSetupPage() {
         <div className="container-px mx-auto">
           <SectionHeading
             eyebrow="Our process"
-            title={<>Process of How We Work (What Happens After Yes)</>}
+            title={<>Process of How We Work</>}
             description="We deliver tailored solutions that address your unique business challenges for measurable operational efficiency."
           />
           <div className="mt-14 relative mx-auto max-w-7xl">

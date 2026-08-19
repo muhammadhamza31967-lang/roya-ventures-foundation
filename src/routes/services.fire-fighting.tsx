@@ -370,7 +370,7 @@ function FireFightingPage() {
         <div className="container-px mx-auto">
           <SectionHeading
             eyebrow="Our process"
-            title={<>Process of How We Work (What Happens After Yes)</>}
+            title={<>Process of How We Work</>}
             description="We deliver fire protection solutions addressed in a precise sequence for measurable outcomes."
           />
           <div className="mt-14 relative mx-auto max-w-7xl">
