@@ -163,7 +163,7 @@ const FAQS: [string, string][] = [
   ["What size projects do you take on?", "All sizes. From single-floor office fit-outs to large industrial campuses."],
   [
     "Do you provide your electrical contracting service only in Saudi Arabia or other countries as well?",
-    "We are based in Saudi Arabia, but we also offer our services in other countries.",
+    "We are based in Saudi Arabia",
   ],
   [
     "What happens after I book a call?",
