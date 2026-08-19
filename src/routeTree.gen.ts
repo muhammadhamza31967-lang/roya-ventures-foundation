@@ -23,6 +23,7 @@ import { Route as ServicesNetworkingRouteImport } from './routes/services.networ
 import { Route as ServicesFireFightingRouteImport } from './routes/services.fire-fighting'
 import { Route as ServicesEmsAccessControlRouteImport } from './routes/services.ems-access-control'
 import { Route as ServicesElectricalContractsRouteImport } from './routes/services.electrical-contracts'
+import { Route as ServicesDigitalSignageFootfallRouteImport } from './routes/services.digital-signage-footfall'
 import { Route as ServicesDataCenterSetupRouteImport } from './routes/services.data-center-setup'
 
 const TeamRoute = TeamRouteImport.update({
@@ -98,6 +99,12 @@ const ServicesElectricalContractsRoute =
     path: '/services/electrical-contracts',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ServicesDigitalSignageFootfallRoute =
+  ServicesDigitalSignageFootfallRouteImport.update({
+    id: '/services/digital-signage-footfall',
+    path: '/services/digital-signage-footfall',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ServicesDataCenterSetupRoute = ServicesDataCenterSetupRouteImport.update({
   id: '/services/data-center-setup',
   path: '/services/data-center-setup',
@@ -114,6 +121,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
   '/services/data-center-setup': typeof ServicesDataCenterSetupRoute
+  '/services/digital-signage-footfall': typeof ServicesDigitalSignageFootfallRoute
   '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
   '/services/ems-access-control': typeof ServicesEmsAccessControlRoute
   '/services/fire-fighting': typeof ServicesFireFightingRoute
@@ -131,6 +139,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
   '/services/data-center-setup': typeof ServicesDataCenterSetupRoute
+  '/services/digital-signage-footfall': typeof ServicesDigitalSignageFootfallRoute
   '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
   '/services/ems-access-control': typeof ServicesEmsAccessControlRoute
   '/services/fire-fighting': typeof ServicesFireFightingRoute
@@ -149,6 +158,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
   '/services/data-center-setup': typeof ServicesDataCenterSetupRoute
+  '/services/digital-signage-footfall': typeof ServicesDigitalSignageFootfallRoute
   '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
   '/services/ems-access-control': typeof ServicesEmsAccessControlRoute
   '/services/fire-fighting': typeof ServicesFireFightingRoute
@@ -168,6 +178,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/team'
     | '/services/data-center-setup'
+    | '/services/digital-signage-footfall'
     | '/services/electrical-contracts'
     | '/services/ems-access-control'
     | '/services/fire-fighting'
@@ -185,6 +196,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/team'
     | '/services/data-center-setup'
+    | '/services/digital-signage-footfall'
     | '/services/electrical-contracts'
     | '/services/ems-access-control'
     | '/services/fire-fighting'
@@ -202,6 +214,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/team'
     | '/services/data-center-setup'
+    | '/services/digital-signage-footfall'
     | '/services/electrical-contracts'
     | '/services/ems-access-control'
     | '/services/fire-fighting'
@@ -220,6 +233,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TeamRoute: typeof TeamRoute
   ServicesDataCenterSetupRoute: typeof ServicesDataCenterSetupRoute
+  ServicesDigitalSignageFootfallRoute: typeof ServicesDigitalSignageFootfallRoute
   ServicesElectricalContractsRoute: typeof ServicesElectricalContractsRoute
   ServicesEmsAccessControlRoute: typeof ServicesEmsAccessControlRoute
   ServicesFireFightingRoute: typeof ServicesFireFightingRoute
@@ -328,6 +342,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesElectricalContractsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/digital-signage-footfall': {
+      id: '/services/digital-signage-footfall'
+      path: '/services/digital-signage-footfall'
+      fullPath: '/services/digital-signage-footfall'
+      preLoaderRoute: typeof ServicesDigitalSignageFootfallRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/data-center-setup': {
       id: '/services/data-center-setup'
       path: '/services/data-center-setup'
@@ -348,6 +369,7 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TeamRoute: TeamRoute,
   ServicesDataCenterSetupRoute: ServicesDataCenterSetupRoute,
+  ServicesDigitalSignageFootfallRoute: ServicesDigitalSignageFootfallRoute,
   ServicesElectricalContractsRoute: ServicesElectricalContractsRoute,
   ServicesEmsAccessControlRoute: ServicesEmsAccessControlRoute,
   ServicesFireFightingRoute: ServicesFireFightingRoute,
