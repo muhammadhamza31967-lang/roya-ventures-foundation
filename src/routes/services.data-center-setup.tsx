@@ -102,7 +102,7 @@ const OFFERINGS = [
 ];
 
 const WHY = [
-  { title: "8+ Years of Industry Success" },
+  { title: "10+ Years of Industry Success" },
   { title: "Quality Control, Security & Compliance Assurance" },
   { title: "Certified Engineers" },
   { title: "Advanced Technologies Used" },
@@ -466,7 +466,8 @@ function DataCenterSetupPage() {
               <p className="gold-rule">Track record</p>
               <h2 className="heading-lg mt-6">Trusted Across the Region</h2>
               <p className="mt-6 text-lg md:text-xl leading-relaxed font-light text-muted-foreground">
-                For over 8+ years, enterprises across Saudi Arabia have trusted Roya Ventures with their infrastructure.
+                For over 10+ years, enterprises across Saudi Arabia have trusted Roya Ventures with their
+                infrastructure.
               </p>
               <div className="mt-8 gold-divider" />
               <Reveal>
