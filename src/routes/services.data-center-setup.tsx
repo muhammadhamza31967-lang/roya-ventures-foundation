@@ -134,7 +134,7 @@ const FAQS: [string, string][] = [
     "Can you work around our live operations?",
     "Yes. We regularly upgrade and expand data centers without disrupting live systems.",
   ],
-  ["Do you design to Tier standards?", "Yes. We design with Uptime Institute to Tier I and Tier III requirements."],
+  ["Do you design to Tier standards?", "Yes. We design with Uptime Institute to Tier I to Tier III requirements."],
   [
     "Do you supply the equipment as well?",
     "Yes. We supply servers, racks, UPS systems, PDUs, cooling units, and all related equipment from trusted vendors.",
