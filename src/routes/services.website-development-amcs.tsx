@@ -365,7 +365,7 @@ function WebDevServicePage() {
         <div className="container-px mx-auto">
           <SectionHeading
             eyebrow="Our process"
-            title={<>Process of How We Work (What Happens After Yes)</>}
+            title={<>Process of How We Work</>}
             description="Both best web design and AMC start with a proper plan. Here's our approach."
           />
           <div className="mt-14 relative mx-auto max-w-7xl">
