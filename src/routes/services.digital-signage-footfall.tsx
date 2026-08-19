@@ -31,6 +31,7 @@ import signFootfall from "@/assets/sign/sign-footfall.jpg";
 import signHeatmap from "@/assets/sign/sign-heatmap.jpg";
 import signAnalytics from "@/assets/sign/sign-analytics.jpg";
 import signEngineer from "@/assets/sign/sign-engineer.jpg";
+import whyUsMain from "@/assets/sign/about-mission.jpg.asset.json";
 import logoChalhoub from "@/assets/clients/corporate/chalhoub.png.asset.json";
 import logoSephora from "@/assets/clients/corporate/sephora-2.png.asset.json";
 import logoNesma from "@/assets/clients/corporate/nesma-telecom.png.asset.json";
@@ -303,8 +304,8 @@ function DigitalSignagePage() {
               <div className="lg:sticky lg:top-28 space-y-5">
                 <div className="group relative overflow-hidden rounded-2xl border border-white/10 shadow-[var(--shadow-elegant)]">
                   <img
-                    src={signEngineer}
-                    alt="Certified engineer installing a digital signage display"
+                    src={whyUsMain.url}
+                    alt="Roya Ventures team reviewing project plans in a modern office"
                     loading="lazy"
                     width={1280}
                     height={960}
