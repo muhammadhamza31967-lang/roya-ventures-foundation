@@ -166,7 +166,7 @@ function NetworkingSetupPage() {
             Networking Setup in <span className="text-[var(--gold)]">Saudi Arabia</span>
           </>
         }
-        subtitle="As a leading Networking company in Saudi Arabia, we've been designing, building, and managing enterprise networks."
+        subtitle="As a leading Networking company in Saudi Arabia, we've been designing, building, SMBs & Enterprise networks."
         image={heroNetworking}
         height="compact"
       >
