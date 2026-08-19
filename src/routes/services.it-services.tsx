@@ -117,10 +117,7 @@ const PROCESS: [string, string][] = [
   ],
   ["Gap Analysis & Recommendations", "We identify what's working, what's at risk, and what needs to change."],
   ["Agree the Engagement Model", "We agree on an engagement model that matches your needs and budget."],
-  [
-    "Implementation",
-    "We implement what's been agreed, on schedule, with minimal disruption to your daily operations.",
-  ],
+  ["Implementation", "We implement what's been agreed, on schedule, with minimal disruption to your daily operations."],
   [
     "Ongoing Management & Support",
     "We manage the ongoing IT function, so your team can focus on their actual jobs, not on IT issues.",
@@ -367,7 +364,7 @@ function ITServicesPage() {
         <div className="container-px mx-auto">
           <SectionHeading
             eyebrow="Our process"
-            title={<>Process of How We Work (What Happens After Yes)</>}
+            title={<>Process of How We Work</>}
             description="The best IT infrastructure starts with a proper plan. Here's our approach."
           />
           <div className="mt-14 relative mx-auto max-w-7xl">
