@@ -304,8 +304,8 @@ function DigitalSignagePage() {
               <div className="lg:sticky lg:top-28 space-y-5">
                 <div className="group relative overflow-hidden rounded-2xl border border-white/10 shadow-[var(--shadow-elegant)]">
                   <img
-                    src={signEngineer}
-                    alt="Certified engineer installing a digital signage display"
+                    src={whyUsMain.url}
+                    alt="Roya Ventures team reviewing project plans in a modern office"
                     loading="lazy"
                     width={1280}
                     height={960}
