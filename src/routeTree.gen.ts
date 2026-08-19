@@ -22,6 +22,7 @@ import { Route as ServicesWebsiteDevelopmentAmcsRouteImport } from './routes/ser
 import { Route as ServicesSurveillanceSystemRouteImport } from './routes/services.surveillance-system'
 import { Route as ServicesPosHardwareSoftwareRouteImport } from './routes/services.pos-hardware-software'
 import { Route as ServicesNetworkingRouteImport } from './routes/services.networking'
+import { Route as ServicesItServicesRouteImport } from './routes/services.it-services'
 import { Route as ServicesFireFightingRouteImport } from './routes/services.fire-fighting'
 import { Route as ServicesEmsAccessControlRouteImport } from './routes/services.ems-access-control'
 import { Route as ServicesElectricalContractsRouteImport } from './routes/services.electrical-contracts'
@@ -96,6 +97,11 @@ const ServicesNetworkingRoute = ServicesNetworkingRouteImport.update({
   path: '/services/networking',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesItServicesRoute = ServicesItServicesRouteImport.update({
+  id: '/services/it-services',
+  path: '/services/it-services',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesFireFightingRoute = ServicesFireFightingRouteImport.update({
   id: '/services/fire-fighting',
   path: '/services/fire-fighting',
@@ -139,6 +145,7 @@ export interface FileRoutesByFullPath {
   '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
   '/services/ems-access-control': typeof ServicesEmsAccessControlRoute
   '/services/fire-fighting': typeof ServicesFireFightingRoute
+  '/services/it-services': typeof ServicesItServicesRoute
   '/services/networking': typeof ServicesNetworkingRoute
   '/services/pos-hardware-software': typeof ServicesPosHardwareSoftwareRoute
   '/services/surveillance-system': typeof ServicesSurveillanceSystemRoute
@@ -159,6 +166,7 @@ export interface FileRoutesByTo {
   '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
   '/services/ems-access-control': typeof ServicesEmsAccessControlRoute
   '/services/fire-fighting': typeof ServicesFireFightingRoute
+  '/services/it-services': typeof ServicesItServicesRoute
   '/services/networking': typeof ServicesNetworkingRoute
   '/services/pos-hardware-software': typeof ServicesPosHardwareSoftwareRoute
   '/services/surveillance-system': typeof ServicesSurveillanceSystemRoute
@@ -180,6 +188,7 @@ export interface FileRoutesById {
   '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
   '/services/ems-access-control': typeof ServicesEmsAccessControlRoute
   '/services/fire-fighting': typeof ServicesFireFightingRoute
+  '/services/it-services': typeof ServicesItServicesRoute
   '/services/networking': typeof ServicesNetworkingRoute
   '/services/pos-hardware-software': typeof ServicesPosHardwareSoftwareRoute
   '/services/surveillance-system': typeof ServicesSurveillanceSystemRoute
@@ -202,6 +211,7 @@ export interface FileRouteTypes {
     | '/services/electrical-contracts'
     | '/services/ems-access-control'
     | '/services/fire-fighting'
+    | '/services/it-services'
     | '/services/networking'
     | '/services/pos-hardware-software'
     | '/services/surveillance-system'
@@ -222,6 +232,7 @@ export interface FileRouteTypes {
     | '/services/electrical-contracts'
     | '/services/ems-access-control'
     | '/services/fire-fighting'
+    | '/services/it-services'
     | '/services/networking'
     | '/services/pos-hardware-software'
     | '/services/surveillance-system'
@@ -242,6 +253,7 @@ export interface FileRouteTypes {
     | '/services/electrical-contracts'
     | '/services/ems-access-control'
     | '/services/fire-fighting'
+    | '/services/it-services'
     | '/services/networking'
     | '/services/pos-hardware-software'
     | '/services/surveillance-system'
@@ -263,6 +275,7 @@ export interface RootRouteChildren {
   ServicesElectricalContractsRoute: typeof ServicesElectricalContractsRoute
   ServicesEmsAccessControlRoute: typeof ServicesEmsAccessControlRoute
   ServicesFireFightingRoute: typeof ServicesFireFightingRoute
+  ServicesItServicesRoute: typeof ServicesItServicesRoute
   ServicesNetworkingRoute: typeof ServicesNetworkingRoute
   ServicesPosHardwareSoftwareRoute: typeof ServicesPosHardwareSoftwareRoute
   ServicesSurveillanceSystemRoute: typeof ServicesSurveillanceSystemRoute
@@ -363,6 +376,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesNetworkingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/it-services': {
+      id: '/services/it-services'
+      path: '/services/it-services'
+      fullPath: '/services/it-services'
+      preLoaderRoute: typeof ServicesItServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/fire-fighting': {
       id: '/services/fire-fighting'
       path: '/services/fire-fighting'
@@ -415,6 +435,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesElectricalContractsRoute: ServicesElectricalContractsRoute,
   ServicesEmsAccessControlRoute: ServicesEmsAccessControlRoute,
   ServicesFireFightingRoute: ServicesFireFightingRoute,
+  ServicesItServicesRoute: ServicesItServicesRoute,
   ServicesNetworkingRoute: ServicesNetworkingRoute,
   ServicesPosHardwareSoftwareRoute: ServicesPosHardwareSoftwareRoute,
   ServicesSurveillanceSystemRoute: ServicesSurveillanceSystemRoute,

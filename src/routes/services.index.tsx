@@ -127,7 +127,16 @@ function ServicesPage() {
                     >
                       {card}
                     </Link>
+                  ) : s.slug === "it-services" ? (
+                    <Link
+                      to="/services/it-services"
+                      className="block h-full"
+                      aria-label={`${s.title} — view service details`}
+                    >
+                      {card}
+                    </Link>
                   ) : (
+
                     card
                   )}
                 </Reveal>
