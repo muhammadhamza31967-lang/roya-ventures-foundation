@@ -143,14 +143,6 @@ const PROCESS: [string, string][] = [
     "Testing & Commissioning",
     "Every connected system is tested to verify functionality, communication, security, and reliability before handover.",
   ],
-  [
-    "Training & Handover",
-    "We train your facilities, administration, security, and management teams on daily operation, monitoring, reporting, and system management.",
-  ],
-  [
-    "Ongoing Support",
-    "We offer ongoing monitoring, maintenance, technical support, upgrades, and performance tracking to keep your facility technology operating reliably.",
-  ],
 ];
 
 const INDUSTRIES = [
