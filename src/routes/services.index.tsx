@@ -135,6 +135,15 @@ function ServicesPage() {
                     >
                       {card}
                     </Link>
+                  ) : s.slug === "ethernet-fiber-cabling" ? (
+                    <Link
+                      to="/services/ethernet-fiber-cabling"
+                      className="block h-full"
+                      aria-label={`${s.title} — view service details`}
+                    >
+                      {card}
+                    </Link>
+
                   ) : (
 
                     card

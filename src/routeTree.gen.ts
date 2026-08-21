@@ -24,6 +24,7 @@ import { Route as ServicesPosHardwareSoftwareRouteImport } from './routes/servic
 import { Route as ServicesNetworkingRouteImport } from './routes/services.networking'
 import { Route as ServicesItServicesRouteImport } from './routes/services.it-services'
 import { Route as ServicesFireFightingRouteImport } from './routes/services.fire-fighting'
+import { Route as ServicesEthernetFiberCablingRouteImport } from './routes/services.ethernet-fiber-cabling'
 import { Route as ServicesEmsAccessControlRouteImport } from './routes/services.ems-access-control'
 import { Route as ServicesElectricalContractsRouteImport } from './routes/services.electrical-contracts'
 import { Route as ServicesDigitalSignageFootfallRouteImport } from './routes/services.digital-signage-footfall'
@@ -107,6 +108,12 @@ const ServicesFireFightingRoute = ServicesFireFightingRouteImport.update({
   path: '/services/fire-fighting',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesEthernetFiberCablingRoute =
+  ServicesEthernetFiberCablingRouteImport.update({
+    id: '/services/ethernet-fiber-cabling',
+    path: '/services/ethernet-fiber-cabling',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ServicesEmsAccessControlRoute =
   ServicesEmsAccessControlRouteImport.update({
     id: '/services/ems-access-control',
@@ -144,6 +151,7 @@ export interface FileRoutesByFullPath {
   '/services/digital-signage-footfall': typeof ServicesDigitalSignageFootfallRoute
   '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
   '/services/ems-access-control': typeof ServicesEmsAccessControlRoute
+  '/services/ethernet-fiber-cabling': typeof ServicesEthernetFiberCablingRoute
   '/services/fire-fighting': typeof ServicesFireFightingRoute
   '/services/it-services': typeof ServicesItServicesRoute
   '/services/networking': typeof ServicesNetworkingRoute
@@ -165,6 +173,7 @@ export interface FileRoutesByTo {
   '/services/digital-signage-footfall': typeof ServicesDigitalSignageFootfallRoute
   '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
   '/services/ems-access-control': typeof ServicesEmsAccessControlRoute
+  '/services/ethernet-fiber-cabling': typeof ServicesEthernetFiberCablingRoute
   '/services/fire-fighting': typeof ServicesFireFightingRoute
   '/services/it-services': typeof ServicesItServicesRoute
   '/services/networking': typeof ServicesNetworkingRoute
@@ -187,6 +196,7 @@ export interface FileRoutesById {
   '/services/digital-signage-footfall': typeof ServicesDigitalSignageFootfallRoute
   '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
   '/services/ems-access-control': typeof ServicesEmsAccessControlRoute
+  '/services/ethernet-fiber-cabling': typeof ServicesEthernetFiberCablingRoute
   '/services/fire-fighting': typeof ServicesFireFightingRoute
   '/services/it-services': typeof ServicesItServicesRoute
   '/services/networking': typeof ServicesNetworkingRoute
@@ -210,6 +220,7 @@ export interface FileRouteTypes {
     | '/services/digital-signage-footfall'
     | '/services/electrical-contracts'
     | '/services/ems-access-control'
+    | '/services/ethernet-fiber-cabling'
     | '/services/fire-fighting'
     | '/services/it-services'
     | '/services/networking'
@@ -231,6 +242,7 @@ export interface FileRouteTypes {
     | '/services/digital-signage-footfall'
     | '/services/electrical-contracts'
     | '/services/ems-access-control'
+    | '/services/ethernet-fiber-cabling'
     | '/services/fire-fighting'
     | '/services/it-services'
     | '/services/networking'
@@ -252,6 +264,7 @@ export interface FileRouteTypes {
     | '/services/digital-signage-footfall'
     | '/services/electrical-contracts'
     | '/services/ems-access-control'
+    | '/services/ethernet-fiber-cabling'
     | '/services/fire-fighting'
     | '/services/it-services'
     | '/services/networking'
@@ -274,6 +287,7 @@ export interface RootRouteChildren {
   ServicesDigitalSignageFootfallRoute: typeof ServicesDigitalSignageFootfallRoute
   ServicesElectricalContractsRoute: typeof ServicesElectricalContractsRoute
   ServicesEmsAccessControlRoute: typeof ServicesEmsAccessControlRoute
+  ServicesEthernetFiberCablingRoute: typeof ServicesEthernetFiberCablingRoute
   ServicesFireFightingRoute: typeof ServicesFireFightingRoute
   ServicesItServicesRoute: typeof ServicesItServicesRoute
   ServicesNetworkingRoute: typeof ServicesNetworkingRoute
@@ -390,6 +404,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesFireFightingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/ethernet-fiber-cabling': {
+      id: '/services/ethernet-fiber-cabling'
+      path: '/services/ethernet-fiber-cabling'
+      fullPath: '/services/ethernet-fiber-cabling'
+      preLoaderRoute: typeof ServicesEthernetFiberCablingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/ems-access-control': {
       id: '/services/ems-access-control'
       path: '/services/ems-access-control'
@@ -434,6 +455,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesDigitalSignageFootfallRoute: ServicesDigitalSignageFootfallRoute,
   ServicesElectricalContractsRoute: ServicesElectricalContractsRoute,
   ServicesEmsAccessControlRoute: ServicesEmsAccessControlRoute,
+  ServicesEthernetFiberCablingRoute: ServicesEthernetFiberCablingRoute,
   ServicesFireFightingRoute: ServicesFireFightingRoute,
   ServicesItServicesRoute: ServicesItServicesRoute,
   ServicesNetworkingRoute: ServicesNetworkingRoute,
