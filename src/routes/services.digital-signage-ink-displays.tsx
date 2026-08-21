@@ -39,7 +39,7 @@ import shotNesma1 from "@/assets/projects/nesma/nesma-street.jpg.asset.json";
 import shotNesma2 from "@/assets/projects/nesma/nesma-crane.jpg.asset.json";
 import shotNesma3 from "@/assets/projects/nesma/nesma-crew.jpg.asset.json";
 
-export const Route = createFileRoute("/services/digital-signage-footfall")({
+export const Route = createFileRoute("/services/digital-signage-ink-displays")({
   head: () => ({
     meta: [
       { title: "Digital Signage & INK Displays in Saudi Arabia — Roya Ventures" },
@@ -60,7 +60,7 @@ export const Route = createFileRoute("/services/digital-signage-footfall")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/services/digital-signage-footfall" }],
+    links: [{ rel: "canonical", href: "/services/digital-signage-ink-displays" }],
   }),
   component: DigitalSignagePage,
 });

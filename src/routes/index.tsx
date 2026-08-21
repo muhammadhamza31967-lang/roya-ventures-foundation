@@ -503,7 +503,7 @@ const CAPABILITY_ICONS: Record<string, typeof Zap> = {
   "fire-fighting": Flame,
   "ems-access-control": ShieldCheck,
   "surveillance-system": ScanEye,
-  "digital-signage-footfall": MonitorPlay,
+  "digital-signage-ink-displays": MonitorPlay,
   "pos-hardware-software": ScanBarcode,
   "website-development-amcs": Code2,
   "it-services": HardDrive,
