@@ -27,7 +27,7 @@ import { Route as ServicesFireFightingRouteImport } from './routes/services.fire
 import { Route as ServicesEthernetFiberCablingRouteImport } from './routes/services.ethernet-fiber-cabling'
 import { Route as ServicesEmsAccessControlRouteImport } from './routes/services.ems-access-control'
 import { Route as ServicesElectricalContractsRouteImport } from './routes/services.electrical-contracts'
-import { Route as ServicesDigitalSignageFootfallRouteImport } from './routes/services.digital-signage-footfall'
+import { Route as ServicesDigitalSignageInkDisplaysRouteImport } from './routes/services.digital-signage-ink-displays'
 import { Route as ServicesDataCenterSetupRouteImport } from './routes/services.data-center-setup'
 
 const TeamRoute = TeamRouteImport.update({
@@ -126,10 +126,10 @@ const ServicesElectricalContractsRoute =
     path: '/services/electrical-contracts',
     getParentRoute: () => rootRouteImport,
   } as any)
-const ServicesDigitalSignageFootfallRoute =
-  ServicesDigitalSignageFootfallRouteImport.update({
-    id: '/services/digital-signage-footfall',
-    path: '/services/digital-signage-footfall',
+const ServicesDigitalSignageInkDisplaysRoute =
+  ServicesDigitalSignageInkDisplaysRouteImport.update({
+    id: '/services/digital-signage-ink-displays',
+    path: '/services/digital-signage-ink-displays',
     getParentRoute: () => rootRouteImport,
   } as any)
 const ServicesDataCenterSetupRoute = ServicesDataCenterSetupRouteImport.update({
@@ -148,7 +148,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
   '/services/data-center-setup': typeof ServicesDataCenterSetupRoute
-  '/services/digital-signage-footfall': typeof ServicesDigitalSignageFootfallRoute
+  '/services/digital-signage-ink-displays': typeof ServicesDigitalSignageInkDisplaysRoute
   '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
   '/services/ems-access-control': typeof ServicesEmsAccessControlRoute
   '/services/ethernet-fiber-cabling': typeof ServicesEthernetFiberCablingRoute
@@ -170,7 +170,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
   '/services/data-center-setup': typeof ServicesDataCenterSetupRoute
-  '/services/digital-signage-footfall': typeof ServicesDigitalSignageFootfallRoute
+  '/services/digital-signage-ink-displays': typeof ServicesDigitalSignageInkDisplaysRoute
   '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
   '/services/ems-access-control': typeof ServicesEmsAccessControlRoute
   '/services/ethernet-fiber-cabling': typeof ServicesEthernetFiberCablingRoute
@@ -193,7 +193,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
   '/services/data-center-setup': typeof ServicesDataCenterSetupRoute
-  '/services/digital-signage-footfall': typeof ServicesDigitalSignageFootfallRoute
+  '/services/digital-signage-ink-displays': typeof ServicesDigitalSignageInkDisplaysRoute
   '/services/electrical-contracts': typeof ServicesElectricalContractsRoute
   '/services/ems-access-control': typeof ServicesEmsAccessControlRoute
   '/services/ethernet-fiber-cabling': typeof ServicesEthernetFiberCablingRoute
@@ -217,7 +217,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/team'
     | '/services/data-center-setup'
-    | '/services/digital-signage-footfall'
+    | '/services/digital-signage-ink-displays'
     | '/services/electrical-contracts'
     | '/services/ems-access-control'
     | '/services/ethernet-fiber-cabling'
@@ -239,7 +239,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/team'
     | '/services/data-center-setup'
-    | '/services/digital-signage-footfall'
+    | '/services/digital-signage-ink-displays'
     | '/services/electrical-contracts'
     | '/services/ems-access-control'
     | '/services/ethernet-fiber-cabling'
@@ -261,7 +261,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/team'
     | '/services/data-center-setup'
-    | '/services/digital-signage-footfall'
+    | '/services/digital-signage-ink-displays'
     | '/services/electrical-contracts'
     | '/services/ems-access-control'
     | '/services/ethernet-fiber-cabling'
@@ -284,7 +284,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TeamRoute: typeof TeamRoute
   ServicesDataCenterSetupRoute: typeof ServicesDataCenterSetupRoute
-  ServicesDigitalSignageFootfallRoute: typeof ServicesDigitalSignageFootfallRoute
+  ServicesDigitalSignageInkDisplaysRoute: typeof ServicesDigitalSignageInkDisplaysRoute
   ServicesElectricalContractsRoute: typeof ServicesElectricalContractsRoute
   ServicesEmsAccessControlRoute: typeof ServicesEmsAccessControlRoute
   ServicesEthernetFiberCablingRoute: typeof ServicesEthernetFiberCablingRoute
@@ -425,11 +425,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesElectricalContractsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/services/digital-signage-footfall': {
-      id: '/services/digital-signage-footfall'
-      path: '/services/digital-signage-footfall'
-      fullPath: '/services/digital-signage-footfall'
-      preLoaderRoute: typeof ServicesDigitalSignageFootfallRouteImport
+    '/services/digital-signage-ink-displays': {
+      id: '/services/digital-signage-ink-displays'
+      path: '/services/digital-signage-ink-displays'
+      fullPath: '/services/digital-signage-ink-displays'
+      preLoaderRoute: typeof ServicesDigitalSignageInkDisplaysRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/data-center-setup': {
@@ -452,7 +452,8 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TeamRoute: TeamRoute,
   ServicesDataCenterSetupRoute: ServicesDataCenterSetupRoute,
-  ServicesDigitalSignageFootfallRoute: ServicesDigitalSignageFootfallRoute,
+  ServicesDigitalSignageInkDisplaysRoute:
+    ServicesDigitalSignageInkDisplaysRoute,
   ServicesElectricalContractsRoute: ServicesElectricalContractsRoute,
   ServicesEmsAccessControlRoute: ServicesEmsAccessControlRoute,
   ServicesEthernetFiberCablingRoute: ServicesEthernetFiberCablingRoute,

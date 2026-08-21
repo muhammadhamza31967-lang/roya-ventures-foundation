@@ -63,7 +63,7 @@ export const SERVICES: Service[] = [
     image: svcFacility,
   },
   {
-    slug: "digital-signage-footfall",
+    slug: "digital-signage-ink-displays",
     title: "Digital Signage & INK Displays",
     short: "Video walls, displays and footfall analytics.",
     description:
