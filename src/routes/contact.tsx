@@ -35,12 +35,37 @@ const DIRECTORY: { name: string; phone?: string; email: string }[] = [
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const send = useServerFn(sendContactMessage);
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 4500);
-    (e.target as HTMLFormElement).reset();
+    const form = e.target as HTMLFormElement;
+    const raw = Object.fromEntries(new FormData(form).entries());
+
+    const parsed = contactSchema.safeParse(raw);
+    if (!parsed.success) {
+      setError(parsed.error.issues[0]?.message ?? "Please check the form and try again.");
+      return;
+    }
+
+    setError(null);
+    setSending(true);
+    try {
+      const result = await send({ data: parsed.data });
+      if (!result.ok) {
+        setError(result.error);
+        return;
+      }
+      setSent(true);
+      setTimeout(() => setSent(false), 4500);
+      form.reset();
+    } catch {
+      setError("We couldn't send your message. Please try again.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
