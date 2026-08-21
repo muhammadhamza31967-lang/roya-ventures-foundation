@@ -120,8 +120,6 @@ const WHY = [
   { title: "Certified Engineers" },
   { title: "Advanced Technologies Used" },
   { title: "Centralised Management & Visibility" },
-  { title: "Quality Control, Security & Compliance Assurance" },
-  { title: "Reporting and Support" },
 ];
 
 const PROCESS: [string, string][] = [
