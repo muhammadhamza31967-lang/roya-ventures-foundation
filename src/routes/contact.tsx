@@ -1,5 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { useState, type FormEvent } from "react";
+import { contactSchema } from "@/lib/contact-schema";
+import { sendContactMessage } from "@/lib/contact.functions";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
@@ -32,12 +35,37 @@ const DIRECTORY: { name: string; phone?: string; email: string }[] = [
 
 function ContactPage() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const send = useServerFn(sendContactMessage);
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 4500);
-    (e.target as HTMLFormElement).reset();
+    const form = e.target as HTMLFormElement;
+    const raw = Object.fromEntries(new FormData(form).entries());
+
+    const parsed = contactSchema.safeParse(raw);
+    if (!parsed.success) {
+      setError(parsed.error.issues[0]?.message ?? "Please check the form and try again.");
+      return;
+    }
+
+    setError(null);
+    setSending(true);
+    try {
+      const result = await send({ data: parsed.data });
+      if (!result.ok) {
+        setError(result.error);
+        return;
+      }
+      setSent(true);
+      setTimeout(() => setSent(false), 4500);
+      form.reset();
+    } catch {
+      setError("We couldn't send your message. Please try again.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -103,11 +131,17 @@ function ContactPage() {
                         className="w-full rounded-xl border border-[color-mix(in_oklab,var(--navy)_12%,transparent)] bg-[var(--ivory)]/40 px-4 py-3.5 text-[15px] text-[var(--navy)] placeholder:text-muted-foreground/60 transition-all duration-300 hover:border-[color-mix(in_oklab,var(--navy)_22%,transparent)] focus:border-[var(--gold)] focus:bg-white focus:outline-none focus:ring-4 focus:ring-[var(--gold)]/10 resize-none"
                       />
                     </div>
+                    {error && (
+                      <p role="alert" className="text-sm text-red-700">
+                        {error}
+                      </p>
+                    )}
                     <div className="pt-3 flex items-center gap-5">
                       <button
                         type="submit"
+                        disabled={sending}
                         data-cursor="hover"
-                        className="group inline-flex items-center gap-3 rounded-full bg-[var(--gold)] text-[var(--navy)] px-9 py-4 text-[13px] font-bold uppercase tracking-[0.18em] transition-all duration-300 hover:bg-[var(--navy)] hover:text-white shadow-[0_15px_40px_-15px_color-mix(in_oklab,var(--gold)_60%,transparent)] hover:shadow-[0_18px_45px_-12px_color-mix(in_oklab,var(--navy)_50%,transparent)] hover:-translate-y-2"
+                        className="group inline-flex items-center gap-3 rounded-full bg-[var(--gold)] text-[var(--navy)] px-9 py-4 text-[13px] font-bold uppercase tracking-[0.18em] transition-all duration-300 hover:bg-[var(--navy)] hover:text-white shadow-[0_15px_40px_-15px_color-mix(in_oklab,var(--gold)_60%,transparent)] hover:shadow-[0_18px_45px_-12px_color-mix(in_oklab,var(--navy)_50%,transparent)] hover:-translate-y-2 disabled:opacity-70 disabled:pointer-events-none"
                       >
                         {sent ? (
                           <>
@@ -116,7 +150,7 @@ function ContactPage() {
                           </>
                         ) : (
                           <>
-                            Send message{" "}
+                            {sending ? "Sending" : "Send message"}{" "}
                             <Send className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
                           </>
                         )}
