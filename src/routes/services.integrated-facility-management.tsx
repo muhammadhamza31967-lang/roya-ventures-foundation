@@ -408,7 +408,7 @@ function IFMPage() {
               aria-hidden
               className="absolute left-[1.4rem] top-2 bottom-2 w-px lg:left-0 lg:right-0 lg:top-[1.4rem] lg:bottom-auto lg:h-px lg:w-auto bg-[linear-gradient(to_bottom,transparent,color-mix(in_oklab,var(--gold)_60%,transparent)_12%,color-mix(in_oklab,var(--gold)_60%,transparent)_88%,transparent)] lg:bg-[linear-gradient(to_right,transparent,color-mix(in_oklab,var(--gold)_60%,transparent)_10%,color-mix(in_oklab,var(--gold)_60%,transparent)_90%,transparent)]"
             />
-            <ol className="relative grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5 items-start">
+            <ol className="relative grid gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-5 items-start">
               {PROCESS.map(([title, text], i) => {
                 const isActive = activeStep === i;
                 return (
