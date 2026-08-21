@@ -60,7 +60,7 @@ export const Route = createFileRoute("/services/digital-signage-ink-displays")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "canonical", href: "/services/digital-signage-footfall" }],
+    links: [{ rel: "canonical", href: "/services/digital-signage-ink-displays" }],
   }),
   component: DigitalSignagePage,
 });
