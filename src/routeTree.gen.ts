@@ -23,6 +23,7 @@ import { Route as ServicesSurveillanceSystemRouteImport } from './routes/service
 import { Route as ServicesPosHardwareSoftwareRouteImport } from './routes/services.pos-hardware-software'
 import { Route as ServicesNetworkingRouteImport } from './routes/services.networking'
 import { Route as ServicesItServicesRouteImport } from './routes/services.it-services'
+import { Route as ServicesIntegratedFacilityManagementRouteImport } from './routes/services.integrated-facility-management'
 import { Route as ServicesFireFightingRouteImport } from './routes/services.fire-fighting'
 import { Route as ServicesEthernetFiberCablingRouteImport } from './routes/services.ethernet-fiber-cabling'
 import { Route as ServicesEmsAccessControlRouteImport } from './routes/services.ems-access-control'
@@ -103,6 +104,12 @@ const ServicesItServicesRoute = ServicesItServicesRouteImport.update({
   path: '/services/it-services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesIntegratedFacilityManagementRoute =
+  ServicesIntegratedFacilityManagementRouteImport.update({
+    id: '/services/integrated-facility-management',
+    path: '/services/integrated-facility-management',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ServicesFireFightingRoute = ServicesFireFightingRouteImport.update({
   id: '/services/fire-fighting',
   path: '/services/fire-fighting',
@@ -153,6 +160,7 @@ export interface FileRoutesByFullPath {
   '/services/ems-access-control': typeof ServicesEmsAccessControlRoute
   '/services/ethernet-fiber-cabling': typeof ServicesEthernetFiberCablingRoute
   '/services/fire-fighting': typeof ServicesFireFightingRoute
+  '/services/integrated-facility-management': typeof ServicesIntegratedFacilityManagementRoute
   '/services/it-services': typeof ServicesItServicesRoute
   '/services/networking': typeof ServicesNetworkingRoute
   '/services/pos-hardware-software': typeof ServicesPosHardwareSoftwareRoute
@@ -175,6 +183,7 @@ export interface FileRoutesByTo {
   '/services/ems-access-control': typeof ServicesEmsAccessControlRoute
   '/services/ethernet-fiber-cabling': typeof ServicesEthernetFiberCablingRoute
   '/services/fire-fighting': typeof ServicesFireFightingRoute
+  '/services/integrated-facility-management': typeof ServicesIntegratedFacilityManagementRoute
   '/services/it-services': typeof ServicesItServicesRoute
   '/services/networking': typeof ServicesNetworkingRoute
   '/services/pos-hardware-software': typeof ServicesPosHardwareSoftwareRoute
@@ -198,6 +207,7 @@ export interface FileRoutesById {
   '/services/ems-access-control': typeof ServicesEmsAccessControlRoute
   '/services/ethernet-fiber-cabling': typeof ServicesEthernetFiberCablingRoute
   '/services/fire-fighting': typeof ServicesFireFightingRoute
+  '/services/integrated-facility-management': typeof ServicesIntegratedFacilityManagementRoute
   '/services/it-services': typeof ServicesItServicesRoute
   '/services/networking': typeof ServicesNetworkingRoute
   '/services/pos-hardware-software': typeof ServicesPosHardwareSoftwareRoute
@@ -222,6 +232,7 @@ export interface FileRouteTypes {
     | '/services/ems-access-control'
     | '/services/ethernet-fiber-cabling'
     | '/services/fire-fighting'
+    | '/services/integrated-facility-management'
     | '/services/it-services'
     | '/services/networking'
     | '/services/pos-hardware-software'
@@ -244,6 +255,7 @@ export interface FileRouteTypes {
     | '/services/ems-access-control'
     | '/services/ethernet-fiber-cabling'
     | '/services/fire-fighting'
+    | '/services/integrated-facility-management'
     | '/services/it-services'
     | '/services/networking'
     | '/services/pos-hardware-software'
@@ -266,6 +278,7 @@ export interface FileRouteTypes {
     | '/services/ems-access-control'
     | '/services/ethernet-fiber-cabling'
     | '/services/fire-fighting'
+    | '/services/integrated-facility-management'
     | '/services/it-services'
     | '/services/networking'
     | '/services/pos-hardware-software'
@@ -289,6 +302,7 @@ export interface RootRouteChildren {
   ServicesEmsAccessControlRoute: typeof ServicesEmsAccessControlRoute
   ServicesEthernetFiberCablingRoute: typeof ServicesEthernetFiberCablingRoute
   ServicesFireFightingRoute: typeof ServicesFireFightingRoute
+  ServicesIntegratedFacilityManagementRoute: typeof ServicesIntegratedFacilityManagementRoute
   ServicesItServicesRoute: typeof ServicesItServicesRoute
   ServicesNetworkingRoute: typeof ServicesNetworkingRoute
   ServicesPosHardwareSoftwareRoute: typeof ServicesPosHardwareSoftwareRoute
@@ -397,6 +411,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesItServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/integrated-facility-management': {
+      id: '/services/integrated-facility-management'
+      path: '/services/integrated-facility-management'
+      fullPath: '/services/integrated-facility-management'
+      preLoaderRoute: typeof ServicesIntegratedFacilityManagementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/fire-fighting': {
       id: '/services/fire-fighting'
       path: '/services/fire-fighting'
@@ -458,6 +479,8 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesEmsAccessControlRoute: ServicesEmsAccessControlRoute,
   ServicesEthernetFiberCablingRoute: ServicesEthernetFiberCablingRoute,
   ServicesFireFightingRoute: ServicesFireFightingRoute,
+  ServicesIntegratedFacilityManagementRoute:
+    ServicesIntegratedFacilityManagementRoute,
   ServicesItServicesRoute: ServicesItServicesRoute,
   ServicesNetworkingRoute: ServicesNetworkingRoute,
   ServicesPosHardwareSoftwareRoute: ServicesPosHardwareSoftwareRoute,
